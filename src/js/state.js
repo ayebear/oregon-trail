@@ -11,11 +11,11 @@ States can contain:
 	onExit(): Called when a state is left/removed
 */
 class StateStack {
-	constructor(initialState) {
+	constructor(initialState, ...args) {
 		// Get root DOM element (this can be changed if needed)
 		this.root = $(rootElement)
 
-		this.push(initialState)
+		this.push(initialState, ...args)
 	}
 
 	// Removes all DOM elements from the root before displaying
