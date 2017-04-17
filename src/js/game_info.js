@@ -2,7 +2,7 @@ const paceArray = ["steady", "strenuous", "grueling"];
 const rationsArray = ["filling", "meager", "bare bones"];
 const healthArray = ["good", "fair", "poor", "very poor", "dying"];
 
-class partyMember {
+class PartyMember {
     constructor(name, isWagonLeader){
         this.name = name;
         this.isWagonLeader = isWagonLeader;
@@ -10,7 +10,7 @@ class partyMember {
     }
 }
 
-class supplies {
+class Supplies {
     constructor(money){
         this.money = money;
         this.oxen = 0;
@@ -23,10 +23,10 @@ class supplies {
     }
 }
 
-class party {
-    constructor(){
-        this.partyMembers = [];
-        this.supplies = null;
+class Party {
+    constructor(partyMembers, supplies){
+        this.partyMembers = partyMembers;
+        this.supplies = supplies;
         this.pace = 1; //from 1 to 3
         this.health = 1; //from 1 to 5
         this.rations = 1; //from 1 to 3;
@@ -46,3 +46,6 @@ class party {
         return healthArray[this.health - 1];
     }
 }
+
+//global variable for our party
+let theParty = null;
