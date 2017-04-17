@@ -188,7 +188,7 @@ let mainChoice = new Choice(null, [
 let buyingYoke  = new InputValue("There are 2 Oxen in a yoke! I recommend at least 3 yoke. I charge $40 a yoke.",
 	"How many yoke do you want?", 1, 9,
 	function(input){
-		if (input * 40 <= theParty.supplies.money){
+		if (input * 40 <= party.supplies.money){
 			return true;
 		}
 		else
@@ -199,9 +199,9 @@ let buyingYoke  = new InputValue("There are 2 Oxen in a yoke! I recommend at lea
 	},
 	mainChoice,
 	function(input){
-		theParty.supplies.money -= (input * 40);
-		theParty.supplies.oxen += input;
-		alert("You now have " + theParty.supplies.oxen + " Oxen and $" + theParty.supplies.money);
+		party.supplies.money -= (input * 40);
+		party.supplies.oxen += input;
+		alert("You now have " + party.supplies.oxen + " Oxen and $" + party.supplies.money);
 	});
 
 

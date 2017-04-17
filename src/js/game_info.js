@@ -35,7 +35,7 @@ class Party {
 
 	//returns the pace in string format;
 	get paceString(){
-		return paceArray[this.pace -1];
+		return paceArray[this.pace - 1];
 	}
 
 	get rationsString(){
@@ -48,4 +48,4 @@ class Party {
 }
 
 //global variable for our party
-let theParty = null;
+let party = null;
