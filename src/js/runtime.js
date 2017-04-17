@@ -5,6 +5,21 @@ let activeChoice = null;
 //make this global, might be nessecary
 $(document).ready(function(){
 
+	// Define some states
+	let mainMenu = new Menu(["Play", "High scores", "Quit"])
+	let playMenu = new Menu(["Continue traveling", "Rest"])
+
+	// Test the state stack
+	console.log("==========")
+	let state = new StateStack(mainMenu)
+	console.log("==========")
+	state.push(playMenu)
+	console.log("==========")
+	state.pop()
+	console.log("==========")
+	state.pop()
+	console.log("==========")
+
 	function setActiveChoice(choice){
 		activeChoice = choice;
 		activeChoice.display();
