@@ -1,0 +1,21 @@
+.menu button {
+	background-color: #2265A3;
+	border: 2px solid gray;
+	color: white;
+	padding: 12px 24px;
+	cursor: pointer;
+	width: 50%; /* This should be 100% once the other elements on the page are placed, and the game div is setup properly */
+	display: block;
+	font-size: 1em;
+	font-family: sans-serif;
+}
+
+.menu button:not(:last-child) {
+	border-bottom: none; /* Prevent double borders */
+}
+
+.menu button:hover {
+	color: black;
+	background-color: #6FDFFF;
+	font-weight: bold;
+}

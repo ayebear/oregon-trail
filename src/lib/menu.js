@@ -39,9 +39,11 @@ class Menu {
 		this.root.append(`<h3>${this.description}</h3>`)
 
 		// Add buttons with onclicks
-		// this.root.append("<ul></ul>")
+		let buttonHtml = '<div class="menu">'
 		for (let item of this.choices) {
-
+			buttonHtml += `<button>${item.text}</button>`
 		}
+		buttonHtml += "</div>"
+		this.root.append(buttonHtml)
 	}
 }
