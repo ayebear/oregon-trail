@@ -31,19 +31,22 @@ class Menu {
 	}
 
 	display() {
-		console.log(this.description)
-		console.log(this.choices)
-
-		// Build menu
 		// Add description
 		this.root.append(`<h3>${this.description}</h3>`)
 
 		// Add buttons with onclicks
-		let buttonHtml = '<div class="menu">'
+		this.root.append('<div id="menu" class="menu"></div>')
+
 		for (let item of this.choices) {
-			buttonHtml += `<button>${item.text}</button>`
+			let button = $("<button/>")
+				.text(item.text)
+				.click(() => {
+					invoke(item, "onclick")
+					if (item.next) {
+						states.push(item.next)
+					}
+				})
+			$("#menu").append(button)
 		}
-		buttonHtml += "</div>"
-		this.root.append(buttonHtml)
 	}
 }
