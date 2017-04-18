@@ -27,7 +27,7 @@ class StateTester {
 function runTests() {
 	let tester = new StateTester()
 	let tester2 = new StateTester()
-	let states = new StateStack(tester, 1, 2)
+	let states = new StateStack(tester, "#game", 1, 2)
 	console.assert(tester.events.length === 3)
 	console.assert(tester.events[0] === "onPush: 1 2")
 	console.assert(tester.events[1] === "onEnter")

@@ -1,5 +1,3 @@
-const rootElement = "#game"
-
 /*
 Stores the current state, can push/pop states
 
@@ -11,7 +9,7 @@ States can contain:
 	onExit(): Called when a state is left/removed
 */
 class StateStack {
-	constructor(initialState, ...args) {
+	constructor(initialState = undefined, rootElement = "#game", ...args) {
 		// Get root DOM element (this can be changed if needed)
 		this.root = $(rootElement)
 

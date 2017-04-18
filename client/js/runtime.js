@@ -17,7 +17,7 @@ $(document).ready(function() {
 	let theirSupplies = new Supplies(10000);
 	party = new Party([tokenLeader, eric, quang, cory, tez], theirSupplies);
 
-	// Create state stack with initial main menu state
-	states = new StateStack(mainMenu);
+	// Create state stack with initial main menu state and "game" DOM element
+	states = new StateStack(mainMenu, "#game");
 
 });
