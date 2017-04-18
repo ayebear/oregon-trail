@@ -15,6 +15,7 @@ let shopState = new Menu("shopState", continueItem)
 let mainMenu = new Menu("Welcome to Oregon Trail", [
 	{text: "Continue on trail", next: continueState},
 	{text: "Check supplies", next: checkSuppliesState, onclick: () => {
+		// This shows that custom callbacks work as well - most of the time you'll want to simply switch states though
 		console.log("Check supplies clicked")
 	}},
 	{text: "Look at map", next: mapState},
