@@ -2,26 +2,26 @@ let continueItem = [{text: "Go back", onclick: () => {
 	states.pop()
 }}]
 
-let continueState = new Menu("continueState", continueItem)
-let checkSuppliesState = new Menu("checkSuppliesState", continueItem)
-let mapState = new Menu("mapState", continueItem)
-let changePaceState = new Menu("changePaceState", continueItem)
-let changeFoodState = new Menu("changeFoodState", continueItem)
-let restState = new Menu("restState", continueItem)
-let tradeState = new Menu("tradeState", continueItem)
-let talkState = new Menu("talkState", continueItem)
-let shopState = new Menu("shopState", continueItem)
+let continueState = new MenuState("continueState", continueItem)
+let checkSuppliesState = new MenuState("checkSuppliesState", continueItem)
+let mapState = new MenuState("mapState", continueItem)
+let changePaceState = new MenuState("changePaceState", continueItem)
+let changeFoodState = new MenuState("changeFoodState", continueItem)
+let restState = new MenuState("restState", continueItem)
+let tradeState = new MenuState("tradeState", continueItem)
+let talkState = new MenuState("talkState", continueItem)
+let shopState = new MenuState("shopState", continueItem)
 
-let mainMenu = new Menu("Welcome to Oregon Trail", [
+let mainMenu = new MenuState("Welcome to Oregon Trail", [
 	{text: "Continue on trail", next: continueState},
-	{text: "Check supplies", next: checkSuppliesState, onclick: () => {
-		// This shows that custom callbacks work as well - most of the time you'll want to simply switch states though
-		console.log("Check supplies clicked")
-	}},
+	{text: "Check supplies", next: checkSuppliesState},
 	{text: "Look at map", next: mapState},
 	{text: "Change pace", next: changePaceState},
 	{text: "Change food rations", next: changeFoodState},
-	{text: "Stop to rest", next: restState},
+	{text: "Stop to rest", next: restState, onclick: () => {
+		// This shows that custom callbacks work as well - most of the time you'll want to simply switch states though
+		console.log("Stopped and rested")
+	}},
 	{text: "Attempt to trade", next: tradeState},
 	{text: "Talk to people", next: talkState},
 	{text: "Buy Supplies", next: shopState}

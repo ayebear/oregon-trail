@@ -5,7 +5,7 @@ Onclick is optional but runs first
 Next is then run afterwards
 If you need to pass parameters to the state being pushed, then use onclick to push it manually.
 */
-class Menu {
+class MenuState {
 	constructor(description, choices) {
 		// May need other options, for styling, images, other elements, etc.
 		this.description = description
