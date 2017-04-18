@@ -22,16 +22,30 @@ let trailState = new MenuState("What shall you do?", [
 ])
 
 let acceptTradeState = new ContinueState("Bob was taken into slavery, you were given 3 pounds of rotten food.", undefined, backup(2))
+
 let declineTradeState = new ContinueState("Bob was happy that you decided to keep him.", undefined, backup(2))
 
 let checkSuppliesState = new MenuState("checkSuppliesState", goBackItem)
+
 let mapState = new MenuState("mapState", goBackItem)
-let changePaceState = new MenuState("changePaceState", goBackItem)
+
+let changePaceState = new MenuState("Choose the pace you will travel at:", [
+	{text: "Grueling (100%)", onclick: () => { party.pace = 3; states.pop() }},
+	{text: "Strenuous (75%)", onclick: () => { party.pace = 2; states.pop() }},
+	{text: "Steady (50%)", onclick: () => { party.pace = 1; states.pop() }},
+	{text: "Cancel", onclick: () => { states.pop() }}
+])
+
 let changeFoodState = new MenuState("changeFoodState", goBackItem)
+
 let restState = new MenuState("restState", goBackItem)
+
 let tradeState = new QuestionState("Would you like to trade one of your party members for 3 pounds of food?", acceptTradeState, declineTradeState)
+
 let talkState = new MenuState("talkState", goBackItem)
+
 let shopState = new MenuState("Welcome to the shop. What would you like?", goBackItem)
+
 let fishState = new MenuState("You went fishing!", goBackItem)
 
 let mainMenu = new MenuState("Welcome to Oregon Trail", [
