@@ -1,6 +1,9 @@
 let river = false
 let shop = false
 
+// TODO: Support popping multiple times in the state stack
+// Or, have "temporary" states that pop themselves when they are re-entered
+// Or, pop the temporary states immediately before pushing new states onto the stack
 function backup(amount = 1) {
 	return () => {
 		for (let i = 0; i < amount; ++i) {
@@ -42,7 +45,11 @@ let restState = new MenuState("restState", goBackItem)
 
 let tradeState = new QuestionState("Would you like to trade one of your party members for 3 pounds of food?", acceptTradeState, declineTradeState)
 
-let talkState = new MenuState("talkState", goBackItem)
+let talkState = new InputState("Say something", "text", value => {
+	return value != "invalid"
+}, value => {
+	states.push(new ContinueState(`Susan says ${value} too.`, undefined, backup(2)))
+})
 
 let shopState = new MenuState("Welcome to the shop. What would you like?", goBackItem)
 
