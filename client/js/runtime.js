@@ -1,6 +1,8 @@
 //Main game runtime
 
 let states = undefined;
+const debug = true;
+
 
 $(document).ready(function() {
 
@@ -15,7 +17,7 @@ $(document).ready(function() {
 	let cory = new PartyMember("Cory", false);
 	let tez = new PartyMember("Tez", false);
 	let theirSupplies = new Supplies(10000);
-	party = new Party([tokenLeader, eric, quang, cory, tez], theirSupplies);
+	party = new Party([tokenLeader, eric, quang, cory, tez], theirSupplies, new Date(1848, 8));
 
 	// Create state stack with initial main menu state and "game" DOM element
 	states = new StateStack(mainMenu, "#game");
