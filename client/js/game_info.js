@@ -12,19 +12,19 @@ class PartyMember {
 		this.name = name;
 		this.isWagonLeader = isWagonLeader;
 		this.diseases = [];
-        this.health = 5; //from 0 to 5
-    }
+		this.health = 5; //from 0 to 5
+	}
 
 	get healthString(){
-        return healthArray[Math.ceil(this.health) - 1];
-    }
+		return healthArray[Math.ceil(this.health) - 1];
+	}
 
-    //update health and call onDeathCallback if this change kills the party member
-    updateHealth(change, onDeathCallback){
+	//update health and call onDeathCallback if this change kills the party member
+	updateHealth(change, onDeathCallback){
 		if (this.health + change <= 0){
 			this.health = 0;
-            onDeathCallback();
-        }
+			onDeathCallback();
+		}
 		else if(this.health + change > 5){
 			this.health = 5; //health change would put them over 5
 		}
@@ -35,9 +35,9 @@ class PartyMember {
 
 	//used to apply disease per day damage + additional damagge
 	updateDailyHealth(change, onDeathCallback){
-    	//get total disease damage
-    	for (let disease of this.diseases){
-    		change += diseases[disease].perDay;
+		//get total disease damage
+		for (let disease of this.diseases){
+			change += diseases[disease].perDay;
 		}
 
 		//update health
@@ -58,11 +58,11 @@ class Supplies {
 		this.food = 0;
 	}
 
-    decrementFood(change){
+	decrementFood(change){
 		if (this.food - change > 0) {
-            this.food -= change;
+			this.food -= change;
 		} else {
-            this.food = 0;
+			this.food = 0;
 		}
 	}
 
@@ -87,15 +87,15 @@ class Party {
 
 
 	incrementMiles(change){
-        //have we hit our next mark?
-        if (change >= party.milesToNextMark){
-            party.milesTraveled += party.milesToNextMark;
-            party.milesToNextMark = 0;
-        }
-        else{
-            party.milesToNextMark -= change;
-            party.milesTraveled += change;
-        }
+		//have we hit our next mark?
+		if (change >= this.milesToNextMark){
+			this.milesTraveled += this.milesToNextMark;
+			this.milesToNextMark = 0;
+		}
+		else{
+			this.milesToNextMark -= change;
+			this.milesTraveled += change;
+		}
 
 	}
 

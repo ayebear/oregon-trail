@@ -14,15 +14,6 @@ function backup(amount = 1) {
 
 let goBackItem = [{text: "Go back", onclick: backup()}]
 
-let trailState = new MenuState("What shall you do?", [
-	{text: "Go near river", onclick: () => {
-		river = true
-	}},
-	{text: "Go near shop", onclick: () => {
-		shop = true
-	}},
-	{text: "Go back to main menu", onclick: backup(2)}
-])
 
 let acceptTradeState = new ContinueState("Bob was taken into slavery, you were given 3 pounds of rotten food.", undefined, backup(2))
 
@@ -49,14 +40,14 @@ let talkState = new InputState("Say something", "text", value => {
 	return value != "invalid"
 }, value => {
 	states.push(new ContinueState(`Susan says ${value} too.`, undefined, backup(2)))
-})
+});
 
 let shopState = new MenuState("Welcome to the shop. What would you like?", goBackItem)
 
 let fishState = new MenuState("You went fishing!", goBackItem)
 
 let mainMenu = new MenuState("Welcome to Oregon Trail", [
-	{text: "Continue on trail", next: new ContinueState("You are traveling along the trail...", trailState)},
+	{text: "Continue on trail", next: new TravelingState()},
 	{text: "Check supplies", next: checkSuppliesState},
 	{text: "Look at map", next: mapState},
 	{text: "Change pace", next: changePaceState},
