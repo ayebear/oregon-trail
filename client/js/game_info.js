@@ -73,7 +73,7 @@ class Supplies {
 
 class Party {
 	constructor(partyMembers, supplies, startingDate){
-		this.partyMembers = partyMembers;
+		this.partyMembers = new Set(partyMembers);
 		this.supplies = supplies;
 		this.pace = 1; //from 1 to 3
 		this.rations = 3; //from 1 to 3;

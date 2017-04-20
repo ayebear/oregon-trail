@@ -27,17 +27,17 @@ class TravelingState{
 	}
 
 	onEnter(){
-        this.interval = setInterval(() => {this.tick()}, 1000);
+		this.interval = setInterval(() => {this.tick()}, 1000);
 	}
 
 	onExit(){
-        clearInterval(this.interval);
+		clearInterval(this.interval);
 	}
 
 	tick(){
 
 
-	    let summaryString = "";
+		let summaryString = "";
 		const foodPerRations = 5;
 		const milesPerPace = 10;
 
@@ -78,16 +78,16 @@ class TravelingState{
 				partyChange += highPaceChange;
 
 
-            //go through partyMembers, apply health change based on diseases + base party change
-            for(let partyMember of party.partyMembers) {
+			//go through partyMembers, apply health change based on diseases + base party change
+			for(let partyMember of party.partyMembers) {
 
-                partyMember.updateDailyHealth(partyChange, function (){
-                    //This killed the partyMember, remove them from our array
-                    let index = party.partyMembers.indexOf(partyMember);
-                    party.partyMembers.splice(index, 1);
-                    summaryString += `<h4> ${partyMember.name} has died </h4>`
-                });
-            }
+				partyMember.updateDailyHealth(partyChange, () => {
+					summaryString += `<h4> ${partyMember.name} has died </h4>`
+
+					//This killed the partyMember, remove them from the set
+					party.partyMembers.delete(partyMember)
+				});
+			}
 
 
 
@@ -102,9 +102,8 @@ class TravelingState{
 
 
 		if (summaryString.length){
-
-            states.push(new ContinueState(summaryString, undefined, () => {states.pop()}));
-        }
+			states.push(new ContinueState(summaryString, undefined, () => {states.pop()}));
+		}
 
 		if (debug){
 			console.log("---------------------");
