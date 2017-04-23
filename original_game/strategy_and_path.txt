@@ -1,0 +1,312 @@
+Oregon Trail(Apple) FAQ/walkthrough version 1.0.0
+by Andrew Schultz schultza@earthlink.net
+
+This FAQ/Walkthrough is copyright 2000 Andrew Schultz.  Please do not
+reproduce for profit without my consent.  However, a polite request to
+post this FAQ on a website, asking me by name, will more than likely be
+honored.
+
+------------------------------------------
+
+Outline:
+
+STARTING OFF
+
+HOW YOU SCORE POINTS
+
+ON THE ROAD--THE BASICS
+
+  TRAVELING
+
+  HUNTING
+
+  RANDOM EVENTS
+
+WHAT'S FASTER, WHAT'S QUICKER, WHAT'S SAFER
+
+OLD MAN RIVER
+
+INFLATION AND SUCH
+
+HOW TO GET STUCK/KILLED
+
+MY PREFERRED STRATEGY
+
+TIPS, TRICKS AND QUIRKS
+
+THE VERY MAXIMUM
+
+------------------------------------------
+
+STARTING OFF
+
+    Follow Matt's recommendations, but don't get too much more.  The one
+exception I would make is food;  you're going to have to learn to hunt,
+so why not force yourself to do so right away?  If you are a beginner it
+is up to you to start as a banker, carpenter or farmer.  However, when
+you get better you will surely want to take on the challenge of being a
+farmer.
+
+HOW YOU SCORE POINTS
+
+    You must get to the Willammette valley in order to score any points.
+Once you do, you receive a multiplier based on your profession:  three
+for farmers, two for carpenters, one for bankers.  You get the majority
+of your points based on your party's health at the time you arrive in
+Oregon.  The other items are listed below.  A general rule of thumb is
+that you get one point for every $5 that the material would cost you at
+Matt's General Store, except in the case of the wagon.
+
+500 points * number of survivors--if you are in good health
+400 points * number of survivors--if you are in fair health
+300 points * number of survivors--if you are in poor health
+200 points * number of survivors--if you are in very poor health
+
+50 points for the wagon
+4 points for each ox
+2 points for each spare wagon part
+2 points for each pair of clothes
+1 point for each multiple of 50 bullets
+1 point for each 25-pound ration of food
+1 point for each $5 you possess in cash
+
+ON THE ROAD--THE BASICS
+
+  TRAVELING
+
+    Rationing works as follows:  filling uses up three pounds of food
+per person per day, meager two, bare bones one.  The pace, grueling,
+strenuous, or steady, goes at a rate of 100%, 75%, or 50% of the
+maximum.  This maximum is adjusted by the number of oxen that you have
+and where you are.  On disk "A" (before Fort Laramie) you can go up to
+forty miles a day.  Afterwards, on disk B, the maximum is 24.
+
+    There are places where the road splits off as well.  Usually the
+longer of the two paths is either safer or contains a fort.
+
+  HUNTING
+
+    Consider that a bullet costs 10 cents at Matt's Store.  A pound of
+food costs 20 cents.  Therefore, to get a good return on your
+investment, you'll need to shoot half a pound of meat with each bullet.
+Not too tough.  But remember also that you are eating food for each day
+you are hunting--this has its advantages.  You can rest while hunting,
+but it does take time, too.  Below is a Field Guide to species on the
+Oregon Trail.
+
+Skunk:  gives 1-3 meat.  Long and thing.  Not too quick, but shoot one
+and it will block your range for more valuable animals.
+Rabbit:  gives 1-5 meat.  Small and quick.
+Deer:  gives 50-80 meat.  Large and pretty quick.
+Bear:  gives 100-250 meat.  Large and pretty slow.
+Buffalo/bison:  gives 800-1000 meat.  Large and slow.  Amazing how the
+things that give you more meat are easier to shoot.
+
+    Note that you can only take 100 pounds of meat per day, and the
+maximum food you can have in your wagon at any time is 2000 pounds.
+Still, if you are trying for a top score or are very low on food,
+hunting is at least as good as resting.  The background and animals that
+appear while you are hunting seem to be random, and animals will
+invariably pop out just before you are ready to shoot(the best strategy
+is to get to a place where you can shoot in many directions--there is
+some luck in the scenery you will get) or just before the day ends(if
+only you'd had ten more seconds!) but even a clumsy hunter will be able
+to bag 100 pounds at least a third of the time.  As you can't eat more
+than 15 food a day, that is a positive net result.
+
+  RANDOM EVENTS
+
+  --find wild fruit
+  --wagon gets stolen
+  --wagon part gets broken
+  --rain washes out path
+  --bad track
+  --thunderstorm
+  --person develops cholera, exhaustion, broken arm, broken leg,
+measles, typhoid, dysentery
+
+WHAT'S FASTER, WHAT'S QUICKER, WHAT'S SAFER
+
+  Below is a list of paths that you can take.  Your path is arranged
+from top to bottom, and it branches where you have a choice.  There are
+only three real breaks.
+
+              Independence, MO
+                    |
+               (102 miles)
+                    |
+              Kansas River Crossing
+                    |
+               (83 miles)
+                    |
+              Big Blue River Crossing
+                    |
+               (119 miles)
+                    |
+              Fort Kearney
+                    |
+               (250 miles)
+                    |
+              Chimney Rock
+                    |
+               (86 miles)
+                    |
+              Fort Laramie(Switch to side 2)
+                    |
+               (190 miles)
+                    |
+              Independence Rock
+                    |
+               (102 miles)
+                    |
+              South Pass
+             /          \
+        (57 miles)  (125 miles)
+            |            |
+       Green River  Fort Bridger
+            |            |
+        (144 miles) (162 miles)
+             \          /
+             Soda Springs
+                    |
+               (57 miles)
+                    |
+             Fort Hall
+                    |
+               (182 miles)
+                    |
+             Snake River Crossing
+                    |
+               (114 miles)
+                    |
+             Fort Boise
+                    |
+               (160 miles)
+                    |
+             Blue Mountains
+            /              \
+            |              |
+       (55 miles)          /
+            |        (125 miles)
+    Fort Walla Walla     /
+            |           /
+       (120 miles)     /
+             \        /
+             The Dalles
+            /          \
+       (100 miles)     Columbia River
+    Barlow Toll Road   (0 miles, action sequence)
+
+OLD MAN RIVER
+
+INFLATION AND SUCH
+
+  The forts along the way aren't as good to you as Matt's General Store.
+The farther you go, the higher the markup.
+
+Place          |Mark|Oxen(2)| Parts/ |Bullets|Food|
+               | up |       |Clothes | (100) |1 lb|
+---------------+----+-------+--------+-------+----+
+Matt's         |  0%|  $20  | $10.00 | $2.00 |$.20|
+Ft. Kearney    | 25%|  $25  | $12.50 | $2.50 |$.25|
+Ft. Laramie    | 50%|  $30  | $15.00 | $3.00 |$.30|
+Ft. Bridger    | 75%|  $35  | $17.50 | $3.50 |$.35|
+Ft. Hall       |100%|  $40  | $20.00 | $4.00 |$.40|
+Ft. Boise      |125%|  $45  | $22.50 | $4.50 |$.45|
+Ft. Walla Walla|150%|  $50  | $25.00 | $5.00 |$.50|
+---------------+----+-------+--------+-------+----+
+
+It's a pretty simple arithmetic progression--also note that you will in
+effect lose points at the end if you have to trade at a fort.
+
+HOW TO GET STUCK/KILLED
+
+  Note that none of these signify the end of the game, but they will
+hasten your demise.  Beware of them.
+
+--Your wagon breaks down without the specific spare part
+--You wade through a river >3 feet deep
+--Your wagon falls in the river
+--One of your people is sick, and you do not rest
+--Your food runs out
+--With bad water/inadequate grass, you push the oxen too fast
+
+MY PREFERRED STRATEGY
+
+  My preferred strategy is as follows.  Be a farmer for the maximum
+multiple at the end, and start in the month of March.  Buy the
+following:  three yoke oxen($120), fifty pounds food($10--just hunt
+right away), fourteen pairs of clothes($140), twenty boxes
+ammunition($40), and two spare wagon parts each, just in case($60--
+perhaps one of each will do just as well).  This will leave you with
+$30.  Start at a grueling pace with bare bones rations.  At the Kansas
+River crossing, caulk the wagon.  This really should work.  If you fall
+in, just start over if you want.  Then just before you get to the Big
+Blue River crossing, do a bunch of hunting.  Hunt until March 20 or so
+and then approach the river.  It may be shallow enough to ford, and you
+can wait a few days to do so(<2.5 feet) but caulking the wagon usually
+works pretty well, too.  Continue at a fast pace with little food,
+stopping only if a person or ox is sick.  When you do so, hunt a bit,
+and put yourself at filling rations before so doing.  That will help
+your health.  This should be good enough to get you to South Pass.
+  At South Pass you have your first choice.  I prefer to avoid the Green
+River, since rivers and the risk of falling in will be your main problem
+in this game.  An extra 86 miles, or four days(versus one day to cross
+by boat) is not a big deal.  Continue with the quick strategy, stopping
+only for health reasons(if you feel you need to rest, or if there is any
+doubt, rest.)  At the Snake River you will want the Indian to guide you
+across.  It should almost always work, but caulking or even the ferry
+can be hazardous.  The Snake seems to stay at 6 feet deep and 1000 wide,
+but it is the most treacherous river in the game.  Go through to Fort
+Boise and the Blue Mountains.  You probably don't need supplies, so go
+directly to the Dalles and save a day or two en route.  But just before
+you get to The Dalles, rest your party on fulfilling rations, hunt a
+lot, and put the pace at steady.  You'll get your health way up for the
+endgame.  Once at the Dalles, the Columbia River is much safer than the
+Barlow Toll Road, and it doesn't cost any money, either.
+  On the Columbia River, you will use the arrows to change the momentum
+of your craft(left = up/left, right = down/right) and avoid rocks.  You
+will also want to avoid the shore until the third arrow appears on the
+lower right.  There will be a pathway trailing off just after it, and if
+you miss it, you will lose supplies from your wagon.  This "video game"
+part is even easier than the hunting and although it is the weakest part
+of the game it should ensure a successful finish.
+
+TIPS, TRICKS AND QUIRKS
+
+THE VERY MAXIMUM
+
+  Due to his triple multiplier, the farmer beats the carpenter and
+banker if you are going for big stakes, hands down.  My main question
+when I played this in junior high was, could you achieve eight thousand
+points?  The answer seems to be yes.  I haven't done it yet as a farmer,
+but the numbers seem to indicate it is possible.
+
+You really only need 2667 points before the multiple, and that is quite
+possible.
+
+Possible maximums(achievable with some luck, and assuming you don't lose
+anything)
+5 survivors in good health = 2500 points
+1950 food = 78 points (2000 maximum food, but you will use some up if
+you travel just after hunting)
+Wagon = 50 points
+Oxen = 4 points / ox * 6 points = 24 points
+Clothes = 2 points * 10 pairs = 20 points:  buy 14 pairs, give <4 pairs
+on the Snake River
+Spare parts = 2 points * 6 = 12 points
+Cash = $30 = 6 points
+
+Total = 2690 points.  It's do-able, with a margin of error(if 25 points
+or so doesn't seem like a margin of error you can afford to lose, think
+how hard it is to GAIN it!)
+
+------------------------------------------
+
+Versions
+1.0.0 submitted to GameFAQs 11/23/2000
+
+Credits:
+ftp.apple.asimov.net as usual for the disk image!
+
+Send comments to schultza@earthlink.net
