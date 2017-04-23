@@ -28,7 +28,7 @@ class MenuState {
 		for (let item of this.choices) {
 			if (invoke(item, "show") !== false) {
 				let button = $("<button/>")
-					.text(item.text)
+					.html(item.text)
 					.click(() => {
 						invoke(item, "onclick")
 						if (item.next) {
