@@ -1,18 +1,8 @@
 // Continue state - Shows general information, lets the user continue, then goes to a new state
 class TravelingState{
 	constructor(){
-		this.interval = null;
+		this.timerId = null;
 	}
-
-
-	// if (debug){
-	//     eric.diseases.push("typhoid");
-	//     party.supplies.food = 1000000000;
-	//
-	//     setInterval(function(){
-	//         tick();
-	//     }, 1000);
-	// }
 
 	display(){
 		this.root.append(`<h3>Traveling on the trail</h3>`)
@@ -27,11 +17,15 @@ class TravelingState{
 	}
 
 	onEnter(){
-		this.interval = setInterval(() => {this.tick()}, 1000);
+		this.requestTick();
 	}
 
 	onExit(){
-		clearInterval(this.interval);
+		clearTimeout(this.timerId);
+	}
+
+	requestTick(){
+		this.timerId = setTimeout(() => {this.tick()}, 1000);
 	}
 
 	tick(){
@@ -100,11 +94,6 @@ class TravelingState{
 		incMiles(); //increment miles based on pace
 		updateHealth();
 
-
-		if (summaryString.length){
-			states.push(new ContinueState(summaryString, undefined, () => {states.pop()}));
-		}
-
 		if (debug){
 			console.log("---------------------");
 			console.log("Date: " + party.date.toString());
@@ -114,6 +103,13 @@ class TravelingState{
 				console.log(`${partyMember.name} has health of ${partyMember.health}`);
 			}
 			console.log("---------------------");
+		}
+
+		// Display any events that occurred along the trail
+		if (summaryString.length){
+			states.push(new ContinueState(summaryString));
+		} else {
+			this.requestTick();
 		}
 	}
 }
