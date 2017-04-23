@@ -7,6 +7,12 @@ let diseases = {
 	flu: {name: "The Flu", onContract: 0, perDay: -.1, onCure: .5}
 };
 
+const occupations = {
+	banker: {start: 1600, score: 1},
+	carpenter: {start: 800, score: 2},
+	farmer: {start: 400, score: 3}
+}
+
 class PartyMember {
 	constructor(name, isWagonLeader){
 		this.name = name;
@@ -47,8 +53,8 @@ class PartyMember {
 }
 
 class Supplies {
-	constructor(money){
-		this.money = money;
+	constructor(){
+		this.money = 0;
 		this.oxen = 0;
 		this.clothSets = 0;
 		this.bullets = 0;
@@ -72,19 +78,38 @@ class Supplies {
 }
 
 class Party {
-	constructor(partyMembers, supplies, startingDate){
-		this.partyMembers = new Set(partyMembers);
-		this.supplies = supplies;
+	constructor(){
+		this.supplies = new Supplies();
 		this.pace = 1; //from 1 to 3
 		this.rations = 3; //from 1 to 3;
 		this.wagonState = "stopped"; //stopped, resting, delayed, moving, tipped, or sank
-		this.date = startingDate ? startingDate : new Date();
 		this.milesTraveled = 0;	//how many miles the party has traveled
 		this.milesToNextMark = 1000000000;
-
-		console.log(this.date);
 	}
 
+	// Called initially when player chooses occupation
+	set occupation(name) {
+		this.occupationName = name
+		this.supplies.money = occupations[name].start;
+		this.scoreModifier = occupations[name].score;
+	}
+
+	// Called initially when player chooses start month
+	set startingDate(date) {
+		this.date = date;
+	}
+
+	// Called initially when player enters party member names
+	// Note: First member at index 0 is assumed to be the leader
+	set members(names) {
+		// Create PartyMember instances array
+		let party = names.map((name, i) => {
+			return new PartyMember(name, (i === 0));
+		})
+
+		// Create Set() object from array
+		this.partyMembers = new Set(party);
+	}
 
 	incrementMiles(change){
 		//have we hit our next mark?
@@ -109,6 +134,3 @@ class Party {
 	}
 
 }
-
-//global variable for our party
-let party = null;

@@ -1,10 +1,14 @@
+#game {
+	width: 50%;
+}
+
 .menu button {
 	background-color: #2265A3;
 	border: 2px solid gray;
 	color: white;
 	padding: 12px 24px;
 	cursor: pointer;
-	width: 50%; /* This should be 100% once the other elements on the page are placed, and the game div is setup properly */
+	width: 100%;
 	display: block;
 	font-size: 1em;
 	font-family: sans-serif;
@@ -18,4 +22,24 @@
 	color: black;
 	background-color: #6FDFFF;
 	font-weight: bold;
+}
+
+.menu button:disabled {
+	background-color: #555;
+}
+
+.menu input[type] {
+	width: 100%;
+	padding: 12px 24px;
+	margin: 8px 0;
+	box-sizing: border-box;
+	border: 2px solid gray;
+	border-radius: 4px;
+	display: block;
+	font-size: 1em;
+	font-family: sans-serif;
+}
+
+.menu h1, h2, h3, h4, h5, h6 {
+	font-family: sans-serif;
 }

@@ -64,6 +64,11 @@ class StateStack {
 			// Display
 			this.clear()
 			invoke(this.state, "display")
+
+			// Pop temporary states when re-entered from a pop
+			if (this.state.temporary === true) {
+				this.pop(...args)
+			}
 		}
 
 		return this

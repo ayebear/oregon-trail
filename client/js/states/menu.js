@@ -20,15 +20,18 @@ class MenuState {
 
 	display() {
 		// Add description
-		this.root.append(`<h3>${this.description}</h3>`)
+		this.root.append(`<div id="description" class="menu"><h3>${this.description}</h3></div>`)
 
 		// Add buttons with onclicks
 		this.root.append('<div id="menu" class="menu"></div>')
 
+		let i = 0
 		for (let item of this.choices) {
+			// Only show button if its show function is undefined or returns true
 			if (invoke(item, "show") !== false) {
 				let button = $("<button/>")
-					.text(item.text)
+					.html(item.text)
+					.attr("id", `button${i}`)
 					.click(() => {
 						invoke(item, "onclick")
 						if (item.next) {
@@ -37,6 +40,9 @@ class MenuState {
 					})
 				$("#menu").append(button)
 			}
+
+			// Count even if the button is hidden, so it correlates with the choices array
+			++i
 		}
 	}
 }
