@@ -1,0 +1,1317 @@
+Document (c) 2009 VinnyVideo (VHamilton002@gmail.com)
+Game Text (c) 1993 MECC
+
+------------------------------------------------------------------------------
+
+Borland C++ - Copyright 1991 Borland Intl.
+
+Divide error
+Abnormal program termination
+
+BEEP.SND
+
+Pulling up on shore...
+unable to write to drive %c,
+it is write protected.
+
+drive %c is not ready.
+
+critical error #%d.
+
+action not completed.
+press any key.
+
+NOSOUND
+
+The Oregon Trail requires 480K of memory to run,
+525K with sound turned on.  There is not enough
+free memory.  Remove any TSR programs or device
+drivers that are not needed.
+
+Your display is not supported by The Oregon Trail.
+
+The Oregon Trail requires a VGA video device.
+
+The Oregon Trail requires a mouse to run.
+
+Please make sure that you have a mouse attached
+and a mouse driver loaded.
+
+OREGON.GXL
+
+Unable to open The Oregon Trail library.
+
+Your copy of The Oregon Trail may be damaged.
+Please reinstall The Oregon Trail.
+
+Licensed To:
+
+Trail Guide
+Adventurer
+Greenhorn
+
+
+Memory Allocation Error, not enough memory to continue.
+Remove any TSR programs or device drivers that are not
+needed and run The Oregon Trail again.
+
+Stephen Meek
+David Hastings
+Andrew Sublette
+Celinda Hines
+Ezra Meeker
+William Vaughn
+Mary Bartlett
+William Wiggins
+Charles Hopper
+Elijah White
+
+You Lost:
+ wagon wheels
+ wagon tongues
+ wagon axles
+ pounds of food
+ sets of clothes
+ bullets
+ oxen
+ (drowned)
+your raft
+nothing
+
+
+Independence, Missouri
+the Kansas River Crossing
+the Big Blue River Crossing
+Fort Kearney
+Chimney Rock
+Fort Laramie
+Independence Rock
+South Pass
+Fort Bridger
+the Green River Crossing
+Soda Springs
+Fort Hall
+the Snake River Crossing
+Fort Boise
+Grande Ronde in the Blue Mountains
+Fort Walla Walla
+The Dalles
+the Willamette Valley
+
+You started down the trail with .
+You brought back   pound s  of food.
+You bought   at the store.
+You decided to hunt.
+You chose to ford the river.
+You chose to caulk your wagon and float it across the river.
+You chose to take a ferry across the river.
+You chose to have an Indian guide help you cross the river.
+You decided to rest for   day s .
+You have reached  .
+
+January
+February
+March
+April
+May
+June
+July
+August
+September
+October
+November
+December
+
+Steady
+Strenuous
+Grueling
+
+Filling
+Meager
+Bare Bones
+
+Good
+Fair
+Poor
+Very Poor
+Dying
+
+ lbs.
+
+Stopped
+Resting
+Delayed
+Moving
+tipped
+sank
+
+ member s  of your wagon drowned.
+
+Your wagon   and you lost .
+
+steady
+strenuous
+grueling
+
+You decided to change the pace to  .
+
+wheel
+axle
+tongue
+
+Heavy snow has rendered your wagon snowbound.
+ was bitten by a snake.
+An Indian helped you find some food.
+You found some wild fruit.
+Blizzard!
+Severe storm.
+Heavy fog.
+Hailstorm!
+You've lost the trail.
+You took the wrong trail.
+The trail is impassable.
+Rough trail.
+You had a wagon   break but were able to fix it.
+You had a wagon   break but were able to replace it from supplies.
+You have a broken wagon   and are unable to fix it.
+You have no more oxen.
+An ox is sick.
+An ox died.
+ has a broken arm.
+ has a broken leg.
+Strong Winds!
+An ox wandered off.
+ got lost.
+A fire in your wagon destroyed  .
+Strong Winds!
+You found an abandoned wagon, but there was nothing to be scavenged.
+You found   in an abandoned wagon.
+A thief stole   from your wagon.
+No grass for the oxen.
+Bad water.
+No water.
+Strong Winds!
+
+ox en
+set s of clothing
+bullet s
+wagon wheel s
+wagon axle s
+wagon tongue s
+pound s of food,
+and
+
+ is suffering from exhaustion.
+ is sick with typhoid fever.
+ has cholera.
+ has the measles.
+ has dysentery.
+ has a fever.
+
+ died of typhoid fever.
+ died of cholera.
+ died of measles.
+ died of dysentery.
+ died of a snakebite.
+ is well again.
+ got sick and died.
+
+Burying and mourning the dead.
+
+
+Hunting Outcome:
+You brought back
+You shot   pound s  of food and used   bullet s.
+If you continue to hunt in this area, game will become scarce.
+ , but were only able to fit   more pound s in your wagon.
+ , but were only able to carry   pound s of food back.
+You can only buy supplies at forts.
+You can't go hunting because the weather is too severe.
+Hunting is not allowed near
+You have no oxen.  You must get another ox to continue.
+You have a broken wagon
+Your only ox is sick.  You must get another ox to continue.
+You made it safely across the river.
+You can't go hunting because you have no bullets.
+You made it across the river, but got stuck in the muddy river banks.
+You made it across the river, but all of your supplies got wet.
+Your wagon tipped.
+Your wagon sank.
+You don't have three sets of clothing to give the Indian.
+You cannot afford to take the Barlow Toll Road.
+You cannot afford to take the ferry.
+
+wheel
+axle
+tongue
+
+ , because there are too many people around.
+ and are unable to fix it.  You will have to trade for one.
+Fortunately, nobody was injured and you recovered all your supplies.
+Your wagon  tipped  sank  while crossing the river.
+You lost:
+Everyone in your wagon has died.
+ (drowned)
+
+ ox en
+ set s of clothing
+ bullet s
+ wagon wheel s
+ wagon axle s
+ wagon tongue s
+ pound s of food
+
+You decided to take the trail to
+
+the Green River Crossing.
+Fort Bridger.
+Fort Walla Walla.
+The Dalles.
+the Barlow Toll Road.
+You decided to go rafting.
+
+River Crossing Help
+To ford a river means to pull your wagon across a
+shallow part of the river, with the oxen still
+attached.
+
+To caulk the wagon means to seal it with pitch or
+tar so that no water can get in.  The wagon can
+then be floated across like a boat.
+
+To use a ferry means to put your wagon on top of a
+flat boat that belongs to someone else.  The
+owner of the ferry will charge a fee to take
+your wagon across the river.
+
+To hire an Indian means that you will give
+an Indian several sets of clothing to help you
+across the river.
+
+You must cross the river to continue.
+The river is currently   feet wide and  .5  0 feet deep.
+
+Head to Fort Bridger to buy supplies
+Take the shortcut to the Green River
+Head to Fort Walla Walla to buy supplies
+Take the shortcut to the Dalles
+Take the Barlow Toll Road
+Raft down the River
+
+filling
+meager
+bare bones
+
+You changed your rations to .
+
+RATION.CTR
+
+Sorry, but nobody here's got   to spare.
+Sure, I'll trade you   for  . Is it a deal? (You have  .)
+You traded   for  .
+
+ox
+set of clothing
+bullet
+wagon wheel
+wagon axle
+wagon tongue
+pound of food
+dollar
+sets of clothing
+pounds of food
+You don't have enough space in the wagon.
+There won't be enough grass for all the oxen.
+
+Zeke
+Jed
+Anna
+Mary
+Joey
+Beth
+John
+Sara
+Henry
+Emily
+
+Exhaustion
+Typhoid
+Cholera
+Measles
+Dysentery
+Fever
+Broken Leg
+Broken Arm
+Snake Bite
+
+Healthy
+Deceased
+
+Banker
+Blacksmith
+Carpenter
+Doctor
+Farmer
+Merchant
+Saddlemaker
+Teacher
+
+Good
+Fair
+Poor
+Very Poor
+Dying
+
+Status
+Current Supplies:
+Current Health:
+
+ox en
+set s of clothes
+bullet s
+wagon wheel s
+wagon axle s
+wagon tongue s
+pound s of food
+Money:
+Occupation:
+more
+
+I'm afraid there's not enough room in your wagon to carry %d %s%s. You'll have
+to go back and buy less.
+
+Matt's General Store
+Fort Kearney
+Fort Laramie
+Fort Bridger
+Fort Hall
+Fort Boise
+Fort Walla Wall
+
+I'm afraid there won't be enough grass along the trail for %d more oxen. You
+will have to go back and buy less.
+
+sets of clothing
+boxes of bullets
+wagon wheels
+wagon axles
+wagon tongues
+pounds of food
+
+ is well again.
+
+Independence, Missouri
+Kansas River Crossing
+Big Blue River Crossing
+Fort Kearney
+Chimney Rock
+Fort Laramie
+Independence Rock
+South Pass
+Fort Bridger
+Green River Crossing
+Soda Springs
+Fort Hall
+Snake River Crossing
+Fort Boise
+Grande Ronde in the Blue Mountains
+Fort Walla Walla
+The Dalles
+
+Everyone in your party has died.
+Many wagons fail to make it all the way to Oregon.
+
+Crossing the river
+
+Banker
+Blacksmith
+Carpenter
+Doctor
+Farmer
+Merchant
+Saddlemaker
+Teacher
+Wagon Score
+You arrived on   and received the following number of points.
+ people  person
+arriving in
+ good
+ fair
+ poor
+ very poor
+health
+ x 1 wagon
+ x 50 oxen
+ x 4 spare wagon parts
+ x 2 sets of clothing
+ x 2 bullets
+ 50 pounds of food
+ 25 dollars
+ 5 = bonus x .
+
+Your Score
+
+Unknown Traveler
+
+Animals of the Plains
+Animals of the Mountains
+Arapaho Indians
+Bannock Indians
+Barlow Toll Road
+Bear Lake
+Big Blue River
+Blackfoot Indians
+Blue Mountains
+Boise Climate
+Caulking
+Cheyenne Indians
+Chimney Rock
+Chinook Indians
+Cholera
+Columbia River
+Dalles, The
+Diseases
+Donner Party
+Dysentery
+Ferry
+Fording
+Fort Boise
+Fort Bridger
+Fort Hall
+Fort Kearney
+Fort Laramie
+Fort Walla Walla
+Fur Trade
+Grande Ronde
+"Great American Desert"
+Green River
+Independence, Missouri
+Independence Rock
+Indian Reservations
+Kansas-Nebraska Climate
+Kansas River
+Laramie Climate
+Laramie Mountains
+Measles
+Mount Hood
+Nez Percé & Cayuse Indians
+Oregon City
+Oregon Territory
+Pawnee Indians
+Plains Indians
+Platte River
+River Crossings
+Rocky Mountains
+Shoshoni Indians
+Sioux (Lakota) Indians
+Snake River
+Soda Springs
+South Pass
+Sweetwater River
+Typhoid
+Umatila Indians
+Wagon Tongue
+Wasatch Mountains
+Waterfalls
+Willamette Valley
+
+MECC OREGON TRAIL
+MECC OREGON TRAIL
+
+CLOCK$
+CON
+AUX
+COM1
+COM2
+COM3
+COM4
+LPT1
+LPT2
+NUL
+PRN
+
+
+This disk appears to be damaged or some
+files are missing.
+
+
+This is a MECC Membership product copy that
+has not been properly duplicated and registered.
+
+Please use the MECC duplication program
+to make working copies.
+
+This is a MECC Demo product whose time
+has run out.
+
+Please call MECC to obtain
+a legal copy.
+
+PROGRAM IS NOT AVAILABLE
+
+This product is licensed for use by a single computer
+at a time.  It is currently being used by someone else
+on the network.
+
+Please try again later.
+
+The network version of this program may be licensed
+from MECC.  Please call MECC at %s for
+details.
+
+------------------------------------------------------------------------------
+
+What would you like to read about?
+
+Introduction
+
+What was it like to cross 2,000 miles of plains, rivers, and mountains in 1848?
+The Oregon Trail" allows you relive one of the greatest adventures in
+American history:  the journey taken by thousands of emigrants on the
+Oregon Trail.  It was a long, difficult journey--one that often resulted in
+failure and death.  But for those who succeeded, it led to a new and better
+life in the rich, fertile Willamette Valley of Oregon.
+
+How will you make life-and-death decisions?  How will you cross the rivers?
+How much and what kind of supplies should you take along?  If you run low on
+provisions, will you be able to hunt or trade to get the food you need?  Will
+you overcome the dangers of disease and severe weather?
+
+"The Oregon Trail" poses these and other exciting challenges.
+
+If for some reason you don't survive--your wagon burns, thieves steal your
+oxen, you run out of provisions, or you die of cholera--don't give up!  Unlike
+the real-life pioneers of 1848, you can try again and again until you succeed
+and your name is added to "The Oregon Trail List of Legends."
+
+The object of "The Oregon Trail" is for you to make it all the way from
+Independence, Missouri, to Oregon's Willamette Valley.  Along the way, you'll
+have many decisions to make.
+
+On the computer screen you'll see various "buttons" that you can click with
+the mouse.  Clicking on these buttons allows you to perform different
+functions vital to the success of your journey.  For example, clicking on the
+"Rations" button lets you decide how much food you'll eat each day along the
+trail.
+
+
+How fast do you want to travel?
+
+A steady pace
+A strenuous pace
+A grueling pace
+
+
+Welcome to The Oregon Trail!
+
+You're about to begin a great adventure, traveling the Oregon Trail across
+the rugged landscape of North America.  Your covered wagon, pulled by a
+team of oxen, will travel from Independence, Missouri, to the fertile
+Willamette Valley of the Oregon Territory--a journey of approximately
+2,000 miles.
+
+Before you set off on the trail, register your name, the names of the
+members of your wagon party, and your occupation. After that, you'll
+need to buy supplies and make other important decisions.
+Good Luck!
+
+
+The final leg of your journey is a trip down the Columbia River, beginning
+at The Dalles and ending at the Willamette Valley, where the Willamette
+River flows into the Columbia.  You've built a raft and loaded your
+wagon, supplies and oxen aboard.
+
+Use your mouse to steer the raft down the river.  You can steer to the left
+and right by moving the mouse in those directions.  Moving the mouse up and
+down and clicking has no effect.
+
+The Columbia River is very rough in spots, with lots of rocks.  If there's
+been a lot of rain recently, the river level is higher and rocks won't be as
+much a problem.  But if there hasn't been much rain--which is common since
+eastern Oregon is a dry region--you'll see more rocks in the river.  Try to
+avoid those rocks!  If your raft hits a rock, it may be damaged and you may
+lose some supplies.  Your raft may even tip over or be destroyed, and lives
+may be lost!
+
+Good luck!
+
+
+The Great Plains boast a diverse wildlife population.  Among the animals
+that you may see on the plains are bison (also called "buffalo"),
+whitetail deer, mule deer, pronghorn antelope, ground squirrels, prairie
+dogs, and jackrabbits.  You may also see prairie chickens, geese, and
+ducks.  The hunting is pretty good, but the closer you get to the
+mountains, the drier it gets.  In the drier regions, wildlife is less
+plentiful.
+
+Among the many animals that live in the mountains and valleys of the West are
+whitetail deer, mule deer, elk, moose, beavers, snowshoe hares, jackrabbits,
+squirrels, bighorn sheep, minks, otters, geese, and ducks.  There are also some
+large predators, such as bears and mountain lions. These can pose a danger to
+careless travelers, so it's important always to have your rifle handy.
+
+One of the American Indian tribes that live in the region along the
+Platte River is the Inuna-ina, better known as the Arapaho.  Like most other
+Plains tribes, they are a nomadic people.  Inuna-ina culture includes highly
+structured military societies, but most of their wars are fought with other
+Indian tribes, such as the Pawnee and the Shoshoni. Their relations with
+settlers so far have been peaceful.
+
+The Bannock Indians live along the Snake River in the southeastern part
+of the Oregon Territory.  They're a small nomadic tribe but exercise
+considerable influence over their neighbors, the Shoshoni, with whom they
+are closely allied.  During the summer they catch salmon in the Snake
+River and its tributaries, while in the fall they hunt buffalo
+
+Emigrants who don't want to raft down the Columbia River can take the
+Barlow Toll Road. It was cut in 1845 by Samuel Barlow, who obtained a
+grant from the territorial legislature to charge a toll for its use.
+Passing through rough, mountainous terrain, it runs from The Dalles to the
+Willamette Valley.  It's a difficult 90 miles, but many prefer it to rafting.
+
+Between Fort Bridger and Soda Springs, the Oregon Trail passes near Bear
+Lake.  With a surface area of a little more than 100 square miles, it's
+one of the largest lakes you'll encounter on your journey to Oregon.  It's
+also one of the best sources of good drinking water in the region.  Near
+Bear Lake is the Bear River, which you'll follow for a short ways.
+
+The Big Blue River is a tributary to the Kansas River, which is in turn a
+tributary to the Missouri.  It's approximately 300 miles long.  Farther to
+the south and west is the Little Blue River, which links up with the Big Blue
+at Blue Rapids.  You'll cross the Big Blue north of the rapids, allowing you
+to avoid the Little Blue River altogether.
+
+Although it's unlikely, you may encounter some Siksika Indians--better known
+as the Blackfoot--near Soda Springs, which is at the extreme southern fringe
+of their territory.  Unlike most of the other tribes on the trail, the Siksika
+have not had peaceful relations with emigrants, whom they consider to be
+trespassers.  The Siksika are the most powerful tribe of the Rocky Mountains
+region.
+
+After you leave Fort Boise, you'll face another dry stretch of rugged land.
+But soon you'll see the Blue Mountains, so named because their slopes are
+covered with pine and fir trees, which give them a dark blue color.  At the
+Blue Mountains, the trail divides.  If you're low on supplies, head for Fort
+Walla Walla.  Otherwise, you should go straight to The Dalles.
+
+Although near Fort Boise there is adequate moisture for many trees, this
+region is still quite dry overall.  In some areas it's like a desert!
+Luckily, you'll have plenty of water as long as you stay close to the rivers.
+During the summer, it gets extremely hot.  The winters are equally harsh, and
+blizzards are not uncommon.  Don't be caught here during the winter!
+
+"Caulking" is when you turn your wagon over and cover the bottom with pitch
+or tar to make it watertight.  Then you can pile your supplies on top and try
+to float them across a river.  It should only be attempted in water more than
+two-and-a-half feet deep.  Even then, there's some risk that the wagon may sink
+or capsize, in which case you may lose some supplies.  There may even be some
+drownings.
+
+The Tsistsista--better known as the Cheyenne--are a widely scattered American
+Indian people, some of whom live in the region surrounding Fort Laramie.  They
+have a nomadic culture, following the buffalo herds and living in easily moved
+tepees.  Until recently they were in a long-standing war with the Kiowa, but
+peace has now been established.  So far relations with settlers have been good.
+
+Chimney Rock is an important landmark on the Oregon Trail.  It's a spectacular
+natural formation of solid rock and can be seen for miles around.  In fact, you
+can see it for a whole day as you approach it and for another whole day as you
+leave it behind.  If you don't see it at all within a week or so after leaving
+Fort Kearney, you've probably strayed too far off the trail.
+
+The Chinook Indians live along the Columbia River.  Famous as traders, they
+travel widely across the Northwest, carrying goods back and forth between
+coastal peoples and those living in the mountains and Great Plains.  The
+Chinook language has therefore become the chief trading language of the region.
+Anyone who wants to succeed as a trader in the Oregon Territory had better know
+Chinook.
+
+Cholera is caused by a bacterial infection of the small intestine, acquired
+from contaminated food or water.  Its symptoms include severe diarrhea,
+vomiting, muscle cramps, and weakness.  If left untreated, its victims can
+quickly become dehydrated, go into a coma, and die.  It's vital that patients
+rest and replace the water and salt they've lost.  Recovery takes place within
+two to seven days.
+
+The Columbia River is the largest, most important river in the Northwest.  It
+starts up in Canada and passes through the Oregon Territory, flowing more than
+1,000 miles to the Pacific Ocean.  It has cut a deep gorge through the rugged
+Oregon countryside.  It also has many rapids, making navigation difficult.
+Rafting down the Columbia can be very dangerous!
+
+The Dalles is the chief embarkation point for rafts heading down the Columbia
+River toward the Willamette Valley.  It was named by French fur-trappers, who
+likened the deep, stony river gorge to a huge gutter.  (In French, the word
+"dalles" can refer to "gutters" or "flagstones.")  Emigrants to Oregon often
+stop here to rest and trade before rafting down the Columbia.
+
+Various types of disease are common threats on the trail, especially during the
+second half of the journey as supplies run low or travelers become exhausted.
+Among these diseases are measles, cholera, dysentery, and typhoid.  When
+members of your party fall ill, you would be wise to stop and rest for several
+days in order to aid their recovery.
+
+In 1846, a wagon train captained by George Donner set off on the Oregon Trail.
+After South Pass, they turned southwest toward California.  But they were
+delayed in the Rockies and Great Salt Lake Desert and were blocked by winter
+snows in the Sierra Nevada.  Half of them died, and the survivors resorted to
+cannibalism.  To keep slow wagons moving, usually all you have to do is mention
+the Donner Party.
+
+Dysentery is an inflammation of the intestines that can be caused by bacteria,
+internal parasites, or chemical poisons spread by contaminated food or water.
+Its symptoms include abdominal pain and severe diarrhea.  Death can result from
+dehydration or blood poisoning.  Rest and good water are important for
+recovery, although it can recur chronically for a long period of time.
+
+At some rivers, there are large, flat rafts known as "ferries" available to
+take your wagon across.  You'll have to pay the ferry-owner several dollars for
+the crossing.  It is, however, one of the safest ways of crossing a river,
+especially if the water level is high.  But it's not without some risk.  Like
+any boat or raft, a ferry can sink.
+
+"Fording" a river means trying to pull your wagon through a shallow part of the
+river, with the oxen still attached.  It should only be attempted in slow-
+moving water less than two-and-a-half feet deep.  Even then, there's some risk
+of getting stuck, of the oxen losing their footing, or of having your wagon
+swamped by water, in which case you may lose some supplies.
+
+Fort Boise was built by the Hudson's Bay Company in 1834 as a fur-trading
+outpost. Its name comes from the French word "boisé," meaning "wooded."  That's
+because there are lots of trees here, unlike the dry region of the Snake River
+Plain to the east.  An important stop on the Oregon Trail, it stands on the
+banks of the Boise River, a tributary to the Snake River.
+
+Fort Bridger is a U.S. Army outpost, although it was founded in 1843 by fur
+trader and scout Jim Bridger as a trading post and way station.  It's an
+important stop along the Oregon Trail, where travelers can rest, buy supplies,
+and obtain information about the next stretch of the journey.  A little over
+100 miles to the southwest is the recent Mormon settlement of Salt Lake City.
+
+Fort Hall is an outpost on the banks of the Snake River.  It was originally a
+fur-trading post, founded by Nathaniel Wyeth in 1834.  Later it was bought by
+the Hudson's Bay Company.  Ever since it has served as an important stop along
+the Oregon Trail, where emigrants can rest and buy supplies.  Some travelers
+turn southwest at this point and head for California.
+
+Fort Kearney is a U.S. Army post established in 1848 near the Platte River.  It
+garrisons cavalry troops who protect settlers and travelers along the Oregon
+Trail.  It was named for Gen. Stephen Watts Kearny (often spelled "Kearney"),
+who died in 1848 after helping to establish law and order in the region and
+serving in the Mexican War.
+
+Fort Laramie is a U.S. Army post near the junction of the North Platte and
+Laramie Rivers.  Originally called Fort William, it was founded as a fur-
+trading post in 1834.   It was renamed for Jacques Laramie, a French trapper
+who worked in the region earlier in the century.  Fort Laramie is an important
+stop for resting and getting supplies along the trail.
+
+Fort Walla Walla was established in 1818 as a fur-trading post at the juncture
+of the Columbia and Walla Walla Rivers.  It later became a military fort.
+Marcus Whitman worked as a medical missionary nearby from 1836 to 1847.  Walla
+Walla is the name of an American Indian tribe living in the region.  The Walla
+Wallas are closely related to and allied with the Umatila.
+
+The Oregon country was opened up by fur trappers and traders.  Indians,
+British, Russians, French, Spanish, and Americans all took part in the
+northwest fur trade.  But it was the British and Americans who eventually laid
+claim to the Oregon country, and they divided it between themselves in 1846.
+The fur trade is still important to the region, but agriculture and the timber
+industry are gaining on it.
+
+The Grande Ronde (French for "great ring") is a river that runs roughly
+parallel to the Blue Mountains.  The Oregon Trail crosses through the Grande
+Ronde river valley just before the mountains.  The Grande Ronde valley is noted
+for its beauty and is greatly appreciated by emigrants as a sign that their
+long journey is nearing its end.
+
+Many people call the region that stretches out hundreds of miles to the west of
+the Big Blue River "the Great American Desert."  That's because it's a flat,
+dry region in which there isn't much growing except for grass.  Others,
+however, see all that grass as evidence that such crops as wheat may be grown
+here someday.  But for now hardly anyone wants to live here.
+
+The Green River is a tributary to the Colorado River, flowing south from the
+Continental Divide along a twisted, rugged path.  It's estimated to be more
+than 700 miles in length.  It's navigable only at high water, and even then
+it's extremely dangerous.  But you must cross it before proceeding west on the
+Oregon Trail, so be very careful.
+
+The town of Independence in western Missouri is one of the chief starting
+points for folks setting off on the Oregon Trail.  Emigrants from the east
+often rendezvous here to form wagon trains.  They stock up on supplies, get
+information about the journey, and make important decisions--such as when to
+set off on the trail.
+
+Independence Rock is an important landmark and resting place along the Oregon
+Trail.  It's a large natural formation, almost 200 feet tall, made of soft
+stone into which many travelers and traders have carved their names, initials,
+or brief messages.  It gets its name from the fact that, in order to stay on
+schedule, travelers try to reach it no later than July 4--Independence Day.
+
+Early on the trail, in the area of the Kansas River, you'll be passing through
+some Indian reservations.  The Indians who live here belong to tribes that
+originally lived much farther to the east, but were forced by the government to
+move.  Among these tribes are the Lenni Lenape (Delaware), the Kaskaskia, the
+Kiwigapawa (Kickapoo), the Maumee (Miami), the Peoria, and the Shawunogi
+(Shawnee).
+
+The Kansas-Nebraska region has a continental climate, with very hot summers and
+cold winters.  But the soil is quite fertile, and already some farmers are
+beginning to settle here, especially along the Kansas River.  But the farther
+west you go, the fewer settlers you'll find.  Once you cross the Big Blue
+River, you'll be entering the so-called "Great American Desert."
+
+The Kansas River is a tributary to the Missouri.  It is approximately 170 miles
+long.  Its width and depth vary depending on the amount of recent rain or snow
+melt.  Where the Oregon Trail crosses the Kansas River, the average width is
+620 feet and the usual depth in the middle is about 4 feet.  But be sure to
+check the present conditions when you get there.
+
+The farther west you travel along the North Platte River, the drier it gets.
+The region surrounding Fort Laramie has a near-desert climate with sparse
+vegetation.  In the summer it's extremely hot, and in the winter the cold can
+be just as extreme.  It's important that you stay close to good sources of
+water.  That's why the Oregon Trail follows the rivers.
+
+After you leave Fort Laramie, you'll see the Laramie Mountains rising in the
+distance.  These are at the eastern edge of the Rocky Mountain system and are
+relatively low.  The mountains get much higher as you go farther west.  Still,
+the Laramie Mountains would be difficult to cross.  Luckily, the Oregon Trail
+cuts to the north, allowing you to go around them.
+
+Measles is a highly contagious disease that usually strikes children, although
+adults can get it if they've never had it before.  Its symptoms include fever,
+cold-like symptoms (such as a sore throat), and a splotchy red rash.  If
+patients get good food and rest, they almost always recover after several days.
+If ignored, however, it can lead to pneumonia and death, especially among
+infants and the elderly.
+
+If you take the Barlow Toll Road, you'll be winding around the southern foot of
+Mount Hood.  One of the tallest mountains in the Oregon Territory--more than
+10,000 feet in height--its snow-capped volcanic peak can be seen for many miles
+around.  It's less than fifty miles from the Willamette Valley.  Emigrants use
+it as a landmark, telling them that their long journey is nearly complete.
+
+There are many different American Indian tribes in the region surrounding Fort
+Boise.  Two of the largest are the Tsutpeli and the Waiilatpus, better known as
+the Nez Percé and the Cayuse.  Their major source of food is salmon, although
+they also hunt deer and gather roots and berries.  They are the sworn enemies
+of the Shoshoni.  Be careful not to get involved in any disputes between
+different tribes!
+
+Oregon City is the capital and one of the largest towns of the Oregon
+Territory.  It sits at the end of the Barlow Toll Road at the north end of the
+Willamette Valley, just south from where the Willamette flows into the
+Columbia.  Many emigrants settle within a few miles of Oregon City, though
+others head for less crowded unclaimed land farther south.
+
+If you're on the trail between Soda Springs and Fort Hall, you're already in
+the Oregon Territory.  The bill establishing the Oregon Territory was passed by
+Congress and signed by President Polk in 1848.  But you still have a long way
+to go before you reach your final destination, the fertile Willamette Valley.
+In fact, some of the most difficult country still lies ahead.
+
+Many of the American Indians in the area surrounding Fort Kearney and along the
+Platte River are Chahiksichahiks, a Plains tribe better known as the Pawnee.
+They live in villages consisting of dome-shaped earth lodges, although on
+buffalo hunts they use tepees.  Relations between the Pawnee and emigrants are
+peaceful.  In fact, many Pawnee serve the army as scouts.
+
+For about the first half of the trail, most of the American Indians you may
+encounter will be Plains Indians, who live very differently than eastern
+Indians.  They're generally migratory and rely heavily upon buffalo for food
+and clothing.  Among the Plains tribes that you may meet along the first half
+of the trail are the Pawnee, the Arapaho, the Cheyenne, and the Sioux.
+
+After leaving Fort Kearney, you'll travel along the Platte River for quite a
+ways.  This will help keep you on the trail as well as provide you with a
+reliable source of good water.  About 60 miles west of Fort Kearney, the Platte
+River splits in two, into the North Platte and the South Platte.  The trail
+then follows the North Platte on to Chimney Rock and beyond.
+
+You'll have many rivers to cross on your way to Oregon.  You can always choose
+to ford a river--that is, to pull your wagon across a shallow part--or to caulk
+your wagon and float it across.  At some rivers you can also choose to pay to
+take a ferry across or to hire an Indian guide to help.  Be sure to consider a
+river's present conditions before deciding how to cross.
+
+The Rocky Mountains make up the largest, longest mountain system in the United
+States.  In fact, one might think of them as being the "backbone" of the North
+American continent.  They are very high and extremely rugged.  If it weren't
+for a few valleys, such as South Pass, it would be almost impossible for wagons
+to pass through them.
+
+You may encounter Shoshoni Indians (who call themselves the Nomo) near
+Independence Rock and beyond.  They are a nomadic people who live on wild
+seeds, insects, and the mammals of the region--rabbits, pronghorn, and
+sometimes buffalo.  Their relations with emigrants so far have been peaceful.
+Sacajawea, who was a guide for Lewis and Clark, was a Shoshoni woman.
+
+The Lakota Indians are better known as the "Sioux"--a French term based on an
+Ojibwa word that's insulting to the Lakota.  They are one of the largest
+American Indian tribes of the northern plains.  They inhabit a vast territory
+stretching from Minnesota west to the Rockies and south to the Platte River.
+While traveling to Oregon, you may see their hunting parties in pursuit of
+buffalo.
+
+After leaving Fort Hall, the trail follows the Snake River for hundreds of
+miles.  The Snake River gets its name from the way it twists and turns through
+this rugged country, sometimes through steep gorges.  But the trail is fairly
+flat (though dry and desolate) near the river, which makes wagon travel
+possible.  Crossing the Snake River, however, can be very dangerous.
+
+Soda Springs is an important landmark and stopping-off point along the trail.
+It gets its name from the alkaline (sodium) mineral springs you find there.
+Some travelers separate from the Oregon Trail at this point and head southwest
+to California.  Others wait until they get to Fort Hall before going on the
+"California Trail."
+
+South Pass is a valley that cuts through the Rocky Mountains at their highest
+point, the Continental Divide.  It marks the halfway point on your journey to
+Oregon.  After South Pass, the trail splits.  If you're short on supplies, you
+should head for Fort Bridger.  But if you don't need supplies, you may want to
+take the shorter route and go directly to the Green River.
+
+The Oregon Trail follows the Sweetwater River southwest from Independence Rock
+to South Pass.  About 175 miles long, the Sweetwater is a tributary to the
+North Platte River.  In this hot, dry country, life depends upon the rivers.
+It's very important that travelers stay close to the Sweetwater at this point
+along the trail.
+
+Typhoid is a serious disease caused by a bacterial infection of the
+bloodstream.  It's usually spread by contaminated food or water.  Early
+symptoms include fever, headache, and weakness, later followed by a red rash.
+Often there's also diarrhea, nosebleeding, and coughing.  Good food, water, and
+rest help in recovery, which may take several weeks.  Untreated, it can lead to
+massive organ failure and death.
+
+The Umatila Indians, who live in the region of the Blue Mountains, are related
+to the Nez Percé and the Cayuse and, like them, have a culture based on salmon
+fishing.  So far their relations with emigrants coming to settle in the Oregon
+country have been good.  Some are worried, however, that this may not last as
+settlers continue to flood into Oregon.
+
+The wagon tongue is a wooden beam that extends from the front of the wagon to
+which the oxen harness assembly is attached.  In other words, it connects the
+wagon to the oxen that pull it.  If the wagon tongue breaks, you have to repair
+or replace it before you can continue on the trail.
+
+The region between the Green River and Fort Hall is extremely rugged and
+difficult to cross.  The Wasatch Mountains account for much of this ruggedness.
+A branch of the Rocky Mountains, the Wasatch Mountains run south about 250
+miles from near Soda Springs down to the area of the Great Salt Lake.
+
+As you follow the Snake River through the southeastern Oregon Territory, you'll
+see many waterfalls--some of them quite spectacular!  It's because of these
+waterfalls that you can't simply get on a raft and float all the way down the
+Snake River to the Columbia.  Among the more scenic falls are the American
+Falls, the Shoshoni Falls, and the Fishing Falls.
+
+The Willamette Valley is the goal of most emigrants to Oregon.  The Willamette
+River flows north into the Columbia River, running parallel to the Pacific
+coast, only about 50 miles to the west.  The river has created a wide, fertile
+valley with some of the best soil in Oregon.  That, plus the mild climate and
+plenty of rainfall, makes it ideal farming country.
+
+
+Steady - You travel 8 hours a day.  You
+take many rests and rarely get very tired.
+
+Strenuous - You travel 12 hours a day,
+starting at sunrise and stopping at sunset.
+
+You stop to rest only when you must.  You
+finish each day very tired.
+
+
+Grueling - You travel 16 hours a day,
+starting before dawn and going until dark.
+You rarely rest and sleep.  You finish each
+day exhausted and your health suffers.
+
+
+Occupation Help
+
+People from all walks of life went west to Oregon.  You can pick your
+occupation, but each choice has its advantages and disadvantages.
+
+
+
+
+Starting
+Final
+Occupation
+Cash
+Special Advantages
+Bonus
+
+Bankers
+Doctors
+Merchants
+Blacksmiths
+Carpenters
+Saddlemakers
+Farmers
+Teachers
+
+none
+sick or injured people are less likely to die
+more likely to repair broken wagon parts
+more likely to repair broken wagon parts
+oxen are less likely to get sick and die
+
+Congratulations! You've made it onto the Oregon Trail List of Legends!
+Please enter your name :
+
+There is no game to exit.
+
+Notice!
+The sound & music system that The Oregon Trail uses is not compatible
+with Microsoft Windows.  Since you are running under Windows, sound and
+music will be turned off.  If you want to hear the sounds you will have
+to exit Windows and then run The Oregon Trail.
+
+
+Better take extra sets of clothing.  Trade 'em to Indians for fresh
+vegetables, fish, or meat.  It's well worth hiring an Indian guide at river
+crossings.  Expect to pay them!  They're sharp traders, not easily cheated.
+
+Did you read the Missouri Republican today? --Says some folk start for Oregon
+without carrying spare parts, not even an extra wagon axle.  Must think they
+grow on trees!  Hope they're lucky enough to find an abandoned wagon.
+
+Some folks seem to think that two oxen are enough to get them to Oregon!  Two
+oxen can barely move a fully loaded wagon, and if one of them gets sick or
+dies, you won't be going anywhere.  I wouldn't go overland with less than six.
+
+With the crowds of people waiting to get on the ferry, we could be stranded
+here for days!  Hope there's enough graze for all those animals--not many
+people carry feed!  I'd rather wait, though, than cross in a rickety wagon
+boat!
+
+Can't afford to take a ferry.  We're making our wagon into a boat.  We'll turn
+it over, caulk the bottom and sides with pitch, and use it to float our goods
+across.  Have to swim the animals.  Hope it doesn't rain--the river's high
+enough!
+
+Don't try to ford any river deeper than the wagon bed--about two and a half
+feet.  You'll swamp your wagon and lose your supplies.  You can caulk the
+wagon bed and float it--or be smart and hire me to take your wagon on my ferry!
+
+We've had enough!  Pesky flies all day and mosquitoes all night!  It's either
+baking sun or oceans of mud--and sometimes both.  Worry over Indians
+attacking--haven't seen any yet, but still a worry.
+
+This prairie is mighty pretty with all the wild flowers and tall grasses.  But
+there's too much of it!  I miss not having a town nearby. I wonder how many
+days until I see a town--a town with real shops, a church, people...
+
+Be careful you don't push those animals too hard!  Keep 'em moving but set them
+a fair pace.  Can't keep driving 'em so fast or you'll end up with lame-footed
+animals.  A lame ox is about as good to you as a dead one!
+
+The trails from the jumping off places --Independence, St. Joseph, Council
+Bluffs--come together at Fort Kearney.  This new fort was built by the U.S.
+Army to protect those bound for California and Oregon.
+
+The Platte River valley forms a natural roadway from Fort Kearney to Fort
+Laramie.  Travelers bound for California, Utah, and Oregon all take this road.
+Could be the easiest stretch of the whole trip.  Should see antelope and plenty
+of buffalo.
+
+The game is still plentiful along here, but gettin' harder to find.  With so
+many overlanders, I don't expect it to last more'n a few years.  Folks shoot
+the game for sport, take a small piece, and let the rest rot in the sun.
+
+I hear terrible stories about wagon parties running out of food before Oregon
+--the whole party starving to death.  We must check our supplies often;
+we might not get there as soon as we think.  Always plan for the worst, I say.
+
+Chimney Rock by moonlight is awfully sublime.  Many Indians came to our wagon
+with fish to exchange for clothing.  We bought a number.  They
+understand 'swap' and 'no swap.'  Seem most anxious to get shirts and socks.
+
+About noon yesterday we came in sight of Chimney Rock looming up in the
+distance like the lofty tower of some town.  We did not tire gazing on it.  It
+was about 20 miles from us, and stayed in sight 'til we reached it today.
+
+The Pawnee are the mortal enemies of the Sioux.  I would not hesitate to kill
+any Pawnee I met.  But I have never killed a white man.  All I ask from the
+white man is to leave me alone, and to leave my buffalo alone.
+
+Be warned, stranger.  Don't dig a water hole!  Drink only river water.  Salty
+as the Platte River is--it's better than the cholera.  We buried my husband
+last week.  Could use some help with this harness, if you can spare the time.
+
+These greenhorns heading across the Rockies know nothing about surviving in
+the mountains.  It gets awful cold up there, even in summer.  Many a traveler
+crossing the mountains too late in the year has gotten snowbound and died!
+
+I carved my name way up the side of Independence Rock, near the top.  There
+are hundreds of names up there!  The oldest ones were carved by mountain men
+and fur trappers --famous names like Fremont, Bonneville, and DeSmet!
+
+No butter or cheese or fresh fruit since Fort Laramie!  Bless me, but I'd
+rather have my larder full of food back East than have our names carved on
+that rock!  Well, tis a sight more cheery than all the graves we passed.
+
+Goodbye Platte River!  Goodbye sand hills and white buffalo skulls!  Now we
+climb the Sweetwater valley to cross the Continental Divide at South Pass.
+Once across the Rockies, we'll make a steep descent into the Green River
+valley.
+
+My family and I travel with 40 other families to the valley of the Great Salt
+Lake to seek religious freedom.  Back east, Mormons are persecuted.  In Utah,
+we'll join together to build a new community, changing desert into farm land.
+
+When the white man first crossed our lands their wagons were few.  Now they
+crowd the trail in great numbers.  The land is overgrazed with their many
+animals.  Do any white men still live in the East?  My people talk of moving.
+
+My father is very sick and we are resting here until he gets better.  We have
+been pushing too hard and our health has suffered.  When my father is able to
+travel again, we will go at a slower pace.
+
+One child drowned in a swollen creek east of Fort Laramie.  My husband died of
+typhoid near Independence Rock.  Now I travel alone with my five children.
+The eldest, Caleb, is eleven.  I fear he'll be a man before we reach Oregon.
+
+This fort was built by Jim Bridger.  Jim was a mountain man before he put in
+this blacksmith shop and small store to supply the overlanders.  Does a big
+trade in horses, Jim and his partner, Vasquez.
+
+We should've taken the Sublette Cutoff!  Not enough at this fort worth the
+time it took to get here.  And the outrageous prices!  Food's not fit to eat,
+much less pay for.  Some folks'd sell the clothes off our backs if we'd let
+them!
+
+When wagons first started coming through here, we did not mind.  We even found
+it good to trade game and fish with the travelers and help them cross the
+rivers.  Now there are too many white men and too little land for grazing.
+
+Five dollars to ferry us over the Green River?  Those ferrymen'll make a
+hundred dollars before breakfast!  We'll keep down river until we find a place
+to ford our wagon and animals.  What little money we have left, we'll keep!
+
+My family didn't buy enough food in Independence.  We have been eating very
+small rations since Fort Laramie.  Because of that our health is poor.  My
+sister has mountain fever, so we're stopped here for a while.
+
+I've heard it said that there are many cutoffs to take to shorten the journey
+--that by taking all the shortcuts, you can save many days on the trail.  And
+why not?  Saving time and provisions is worth the risk!
+
+My, the Soda Springs are so pretty!  Seem to spout at regular intervals.  Felt
+good to just rest and not be jostled in the wagon all day.  When I get to
+Oregon, I'll have a soft feather bed and never sleep in a wagon again!
+
+My job every day is to find wood for the cook fire.  Sometimes it's very hard
+to find enough, so I store extra pieces in a box under the wagon.  On the
+prairie I gathered buffalo chips to burn when there wasn't any wood.
+
+Well, friend, this is where we part.  I'm bound for California with an
+imposing desert to cross.  And you--you've got the Snake River to cross,
+which I hear is no picnic!  Write us, you or the Missus, just as soon as you
+reach Oregon!
+
+Hear there's mountain sheep around here.  Enough water too, but hardly a stick
+of wood.  Thank heaven for Fort Hall!  But I'm real sorry to be saying goodbye
+to cousin Miles and all the folks heading for California.
+
+Fort Hall is a busy fort!  The wide stretches of meadow grass here are just
+what our tired animals need.  As for me, I'll fix up the wagon leaks.
+
+Amanda's real anxious to wash all the clothes and linens in one of those clear
+streams.
+
+It says right here in the Shively guidebook: "You must hire an Indian to pilot
+you at the crossings of the Snake river, it being dangerous if not perfectly
+understood."  But my husband insists on crossing without a guide!
+
+Down there between those steep lava gorges, twisting and writhing, is the Snake
+River.  So much water--and so hard to get to!
+
+We've got many miles of desert before Oregon, so be sure to fill your water
+kegs at the crossing!
+
+See that wild river?  That's the Snake.  Many a craft's been swamped in her
+foaming rapids.  Her waters travel all the way to Oregon!  We'll be crossing
+her soon, and then again after Fort Boise.  Take care at the crossing!
+
+You'll not get yer wagon over them Blue Mountains, mister.  Leave it!  Cross
+yer goods over with pack animals.  Get yerself a couple of good mules.  Pieces
+of wagons litter the trail--left by them folks who don't heed good advice!
+
+At every fort along the trail, prices have been higher than at the previous
+fort!  This is outrageous!  They're taking advantage of us!  If I had the
+chance to do it again, I'd buy more supplies in Independence.
+
+Every night, even though I ache from the day's toils, my head is filled with
+dreams of the rich farm land of the Willamette Valley.  I will build myself a
+fine, handsome homestead--and I'm certain I'll be rich within five years.
+
+Since crossing the Snake at Fort Boise, it's been just mountains and desert.
+Dust deeper each day--six inches at times.  No tracks, just clouds of dust.
+Many cattle choked on the dust after swimming the river, then bled and died.
+
+We followed the edge of the desert from Fort Boise to the forbidding wall of
+the Blue Mountains.  The hills were dreadful steep!  Locking both wheels and
+coming down slow, we got down safe.  Poor animals!  No grass or water for days.
+
+This valley of the Grande Ronde is the most beautiful sight I've seen in
+months.  Water and graze in abundance!  And if this valley is so fine, the
+Willamette must be twice as fine!  We'll be sittin' pretty in our new
+homestead!
+
+I've traveled in fear of Indians since our journey began.  As of yet we've
+seen few.  Those we met helped us cross rivers or sold us vegetables.  Still I
+fear.  I've read grave markers and heard stories of killings in these
+mountains.
+
+My cousin Catherine was one of six children orphaned and left at Whitman's
+Mission.  Lived with them for three years--until the massacre last November.
+She has survived snakebites, stampedes, falls, fights--not to mention a
+massacre.
+
+You ask about the Whitman massacre.  I ask you why Doctor Whitman's medicine
+did not cure my people's children?  Many caught the measles from the
+strangers.  Why did the medicine poison our children and cure the children of
+white people?
+
+These last hundred miles to the Willamette Valley are the roughest--either
+rafting down the swift and turbulent Columbia River or driving your wagon over
+the steep Cascade Mountains.  Hire an Indian guide if you take the river.
+
+My cousin Lydia engaged passage down the Columbia with Indians--a canoe with
+17 people and luggage!  The wind blew so heavy they had to lay by.  Near dark,
+high waves came up over their heads!  Finally, they made it to shore safely.
+
+
+I collect the tolls for the Barlow Road--a bargain at twice the price!
+
+Until last year the overlander had no choice--everyone floated the
+Columbia.  Now with Mr. Barlow's new road, you can drive your wagon right into
+Oregon City!
+
+We tried floating our wagon across the Kansas when the river was high.  The
+wagon overturned in the middle of the river and we lost everything we had.
+But we're not giving up!  We'll be back and try again.
+
+Check your supplies often.  If you are near to running out of essentials, you
+can usually buy more at the forts.  If you have no money, you might be able to
+trade with other travelers for what you need.  Don't wait until too late!
+
+My brother went overland to Oregon last year.  He wrote and said that he spent
+all his money in Independence.  He had no money left for buying supplies along
+the way, for paying ferries and tolls, or for hiring Indian guides.
+
+You need to decide when to set off on the trail.  If you leave too early, there
+won't be much grass for your oxen to eat.  You may encounter some very
+cold weather and late spring snow storms.
+
+But if you leave too late, you may not get to Oregon before winter, which can
+be very dangerous.  If you leave at just the right time, there will be green
+grass and, for the most part, mild weather.
+
+When do you want to start?
