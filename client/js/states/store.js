@@ -1,6 +1,7 @@
 // Store state - Allows the player to purchase items with an intuitive GUI
-class StoreState {
+class BaseStoreState extends ContinueState {
 	constructor(description, nextState) {
+		super()
 		this.description = description
 		this.nextState = nextState
 	}
@@ -10,4 +11,8 @@ class StoreState {
 
 		states.push(this.nextState)
 	}
+}
+
+class StoreState extends BaseStoreState {
+
 }

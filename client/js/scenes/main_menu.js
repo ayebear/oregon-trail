@@ -50,7 +50,12 @@ let occupationMenu = new MenuState("The Oregon Trail", [
 
 
 
-let learnState = new ContinueState("Take a journey to Oregon across 2000 miles of plains, rivers, and mountains.")
+let learnState = new ContinueState(`Try taking a journey by covered wagon across 2000 miles of plains, rivers, and mountains. Try! On the plains, will you slosh your oxen through mud and water-filled ruts or will you plod through dust six inches deep?<br><br>
+How will you cross the rivers? If you have money, you might take a ferry (if there is a ferry). Or, you can ford the river and hope you and your wagon aren't swallowed alive!<br><br>
+What about supplies? Well, if you're low on food you can hunt. You might get a buffalo... you might. And there are bear in the mountains.<br><br>
+At the Dalles, you can try navigating the Columbia River, but if running the rapids with a makeshift raft makes you queasy, better take the Barlow Road.<br><br>
+If for some reason you don't survive &mdash; you wagon burns, or thieves steal your oxen, or you run out of provisions, or you die of cholera &mdash; don't give up! Try again... and again... until your name is up with the other on the High Scores.<br><br>
+This software was written by a team of students at UMBC, based on the original Oregon Trail game for DOS from 1990.`)
 
 let highScoresState = new ContinueState("High scores:")
 

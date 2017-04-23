@@ -4,8 +4,9 @@ class PartyEntryState {
 	}
 
 	display() {
-		// 5 input boxes + Submit button
-		// Submit button should push nextState
+		// Description + 5 input boxes + Submit button
+		// Submit button should push nextState, if all names are filled in
+		// Note: Original game would generate random names if you didn't fill them all in - could hardcode a default name for each position
 	}
 
 	onPush() {
