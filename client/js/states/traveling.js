@@ -87,8 +87,8 @@ class TravelingState{
 
 		}
 
-		//Increment Date;
-		party.date.setDate(party.date.getDate() + 1);
+		// Increment Date
+		party.nextDay();
 
 		decFood(); 	//lower food based on rations
 		incMiles(); //increment miles based on pace

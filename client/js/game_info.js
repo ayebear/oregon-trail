@@ -99,6 +99,13 @@ class Party {
 		this.date = date;
 	}
 
+	// Increment date by one day (or certain number of days)
+	nextDay(days = 1) {
+		if (days > 0) {
+			this.date.setDate(this.date.getDate() + days);
+		}
+	}
+
 	// Called initially when player enters party member names
 	// Note: First member at index 0 is assumed to be the leader
 	set members(names) {
@@ -109,6 +116,10 @@ class Party {
 
 		// Create Set() object from array
 		this.partyMembers = new Set(party);
+	}
+
+	get members() {
+		return this.partyMembers;
 	}
 
 	incrementMiles(change){

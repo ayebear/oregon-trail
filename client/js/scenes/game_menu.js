@@ -11,8 +11,6 @@ let changePaceState = new MenuState("Choose the pace you will travel at:", [
 
 let changeFoodState = new ContinueState("Choose the food ration size:")
 
-let restState = new ContinueState("How many days would you like to rest?")
-
 let tradeState = temporary(new QuestionState("Would you like to trade one of your party members for 3 pounds of food?", acceptTradeState, declineTradeState))
 
 let shopState = new ContinueState("Welcome to the shop. What would you like?")
@@ -30,10 +28,7 @@ let gameMenu = new MenuState("What would you like to do?", [
 	{text: "Continue on trail", next: new TravelingState()},
 	{text: "Change pace", next: changePaceState},
 	{text: "Change food rations", next: changeFoodState},
-	{text: "Stop to rest", next: restState, onclick: () => {
-		// This shows that custom callbacks work as well - most of the time you'll want to simply switch states though
-		console.log("Stopped and rested")
-	}},
+	{text: "Stop to rest", next: restState},
 	{text: "Attempt to trade", next: tradeState},
 	{text: "Talk to people", onclick: () => {
 		states.push(new ContinueState(randElem(conversations)))
