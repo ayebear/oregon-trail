@@ -1,5 +1,24 @@
-const paceArray = ["steady", "strenuous", "grueling"];
-const rationsArray = ["bare bones", "meager", "filling"];
+const noFoodChange = -0.3;
+
+// Speed is a percentage
+// Health is added
+// Food is used up more at higher paces
+const paceTypes = {
+	grueling: {speed: 1, health: -0.1, food: 1.2},
+	strenuous: {speed: 0.75, health: 0, food: 1},
+	steady: {speed: 0.5, health: 0.1, food: 0.8}
+};
+
+// Miles that one oxen can travel per day
+const oxenMilesPerDay = 6;
+
+// Pounds and health modifier per day per person
+const rationTypes = {
+	filling: {pounds: 3, health: 0.1},
+	meager: {pounds: 2, health: 0},
+	bareBones: {pounds: 1, health: -0.1},
+};
+
 const healthArray = ["dying", "very poor", "poor", "fair", "good"];
 
 let diseases = {
@@ -11,7 +30,9 @@ const occupations = {
 	banker: {start: 1600, score: 1},
 	carpenter: {start: 800, score: 2},
 	farmer: {start: 400, score: 3}
-}
+};
+
+
 
 class PartyMember {
 	constructor(name, isWagonLeader){
@@ -80,11 +101,19 @@ class Supplies {
 class Party {
 	constructor(){
 		this.supplies = new Supplies();
-		this.pace = 1; //from 1 to 3
-		this.rations = 3; //from 1 to 3;
+		this.pace = "steady";
+		this.rations = "filling";
 		this.wagonState = "stopped"; //stopped, resting, delayed, moving, tipped, or sank
 		this.milesTraveled = 0;	//how many miles the party has traveled
 		this.milesToNextMark = 1000000000;
+	}
+
+	get rationsValue() {
+		return rationTypes[this.rations];
+	}
+
+	get paceValue() {
+		return paceTypes[this.pace];
 	}
 
 	// Called initially when player chooses occupation
@@ -134,14 +163,4 @@ class Party {
 		}
 
 	}
-
-	//returns the pace in string format;
-	get paceString(){
-		return paceArray[this.pace - 1];
-	}
-
-	get rationsString(){
-		return rationsArray[this.rations - 1];
-	}
-
 }

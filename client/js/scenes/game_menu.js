@@ -3,13 +3,18 @@ let acceptTradeState = new ContinueState("Bob was taken into slavery, you were g
 let declineTradeState = new ContinueState("Bob was happy that you decided to keep him.")
 
 let changePaceState = new MenuState("Choose the pace you will travel at:", [
-	{text: "Grueling (100%)", onclick: () => { party.pace = 3; states.pop() }},
-	{text: "Strenuous (75%)", onclick: () => { party.pace = 2; states.pop() }},
-	{text: "Steady (50%)", onclick: () => { party.pace = 1; states.pop() }},
+	{text: "Grueling (100%)", onclick: () => { party.pace = "grueling"; states.pop() }},
+	{text: "Strenuous (75%)", onclick: () => { party.pace = "strenuous"; states.pop() }},
+	{text: "Steady (50%)", onclick: () => { party.pace = "steady"; states.pop() }},
 	{text: "Cancel", onclick: () => { states.pop() }}
 ])
 
-let changeFoodState = new ContinueState("Choose the food ration size:")
+let changeFoodState = new MenuState("The amount of food the people in your party eat each day can change. These amounts are:", [
+	{text: "Filling &mdash; Meals are large and generous", onclick: () => { party.rations = "filling"; states.pop() }},
+	{text: "Meager &mdash; Meals are small, but adequate", onclick: () => { party.rations = "meager"; states.pop() }},
+	{text: "Bare bones &mdash; Meals are very small; everyone stays hungry", onclick: () => { party.rations = "bareBones"; states.pop() }},
+	{text: "Cancel", onclick: () => { states.pop() }}
+])
 
 let tradeState = temporary(new QuestionState("Would you like to trade one of your party members for 3 pounds of food?", acceptTradeState, declineTradeState))
 
