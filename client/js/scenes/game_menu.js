@@ -15,12 +15,6 @@ let restState = new ContinueState("How many days would you like to rest?")
 
 let tradeState = temporary(new QuestionState("Would you like to trade one of your party members for 3 pounds of food?", acceptTradeState, declineTradeState))
 
-let talkState = temporary(new InputState("Say something", "text", value => {
-	return value != "invalid"
-}, value => {
-	states.push(new ContinueState(`Susan says ${value} too.`))
-}))
-
 let shopState = new ContinueState("Welcome to the shop. What would you like?")
 
 /*
@@ -41,7 +35,9 @@ let gameMenu = new MenuState("What would you like to do?", [
 		console.log("Stopped and rested")
 	}},
 	{text: "Attempt to trade", next: tradeState},
-	{text: "Talk to people", next: talkState},
+	{text: "Talk to people", onclick: () => {
+		states.push(new ContinueState(randElem(conversations)))
+	}},
 	{text: "Buy Supplies", next: shopState, show: () => {
 		// TODO: Only show if near a shop/fort
 		return false

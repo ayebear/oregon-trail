@@ -1,4 +1,4 @@
-[
+let conversations = [
     "Better take extra sets of clothing.  Trade 'em to Indians for fresh vegetables, fish, or meat.  It's well worth hiring an Indian guide at river crossings.  Expect to pay them!  They're sharp traders, not easily cheated.",
     "Did you read the Missouri Republican today? --Says some folk start for Oregon without carrying spare parts, not even an extra wagon axle.  Must think they grow on trees!  Hope they're lucky enough to find an abandoned wagon.",
     "Some folks seem to think that two oxen are enough to get them to Oregon!  Two oxen can barely move a fully loaded wagon, and if one of them gets sick or dies, you won't be going anywhere.  I wouldn't go overland with less than six.",
