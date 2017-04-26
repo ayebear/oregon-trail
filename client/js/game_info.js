@@ -164,3 +164,53 @@ class Party {
 
 	}
 }
+
+// Note: "distance" is miles to this landmark
+// TODO: Associate states with these, and trigger those states when the landmarks are reached
+const landmarks = [
+	{name: "Independence, MO", distance: 0},
+	{name: "Kansas River Crossing", distance: 102},
+	{name: "Big Blue River Crossing", distance: 83},
+	{name: "Fort Kearney", distance: 119},
+	{name: "Chimney Rock", distance: 250},
+	{name: "Fort Laramie", distance: 86},
+	{name: "Independence Rock", distance: 190},
+	{name: "South Pass", distance: 102, choices: [
+		[
+			{name: "Green River", distance: 57},
+			{name: "Soda Springs", distance: 144}
+		],
+		[
+			{name: "Fort Bridger", distance: 125},
+			{name: "Soda Springs", distance: 162}
+		]
+	]},
+	{name: "Fort Hall", distance: 57},
+	{name: "Snake River Crossing", distance: 182},
+	{name: "Fort Boise", distance: 114},
+	{name: "Blue Mountains", distance: 160, choices: [
+		[
+			{name: "Fort Walla Walla", distance: 55},
+			{name: "The Dalles", distance: 120}
+		],
+		[
+			{name: "The Dalles", distance: 125}
+		]
+	]},
+	{name: "The Dalles (Final Choice)", distance: 0, choices: [
+		[{name: "Barlow Toll Road", distance: 100}],
+		[{name: "Columbia River", distance: 0}]
+	]},
+	{name: "The End", distance: 0}
+]
+
+// Keeps track of miles traveled, possible paths, and landmarks you'll encounter.
+class Location {
+	constructor() {
+		this.miles = 0
+		this.fortsPassed = 0
+		this.landmarksQueue = []
+	}
+}
+
+let location = new Location()
