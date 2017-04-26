@@ -3,16 +3,16 @@ let acceptTradeState = new ContinueState("Bob was taken into slavery, you were g
 let declineTradeState = new ContinueState("Bob was happy that you decided to keep him.")
 
 let changePaceState = new MenuState("Choose the pace you will travel at:", [
-	{text: "Grueling (100%)", onclick: () => { party.pace = 3; states.pop() }},
-	{text: "Strenuous (75%)", onclick: () => { party.pace = 2; states.pop() }},
-	{text: "Steady (50%)", onclick: () => { party.pace = 1; states.pop() }},
+	{text: "Grueling (100%)", onclick: () => { party.pace = "grueling"; states.pop() }},
+	{text: "Strenuous (75%)", onclick: () => { party.pace = "strenuous"; states.pop() }},
+	{text: "Steady (50%)", onclick: () => { party.pace = "steady"; states.pop() }},
 	{text: "Cancel", onclick: () => { states.pop() }}
 ])
 
 let changeFoodState = new MenuState("The amount of food the people in your party eat each day can change. These amounts are:", [
-	{text: "1. Filling - meals are large and generous", onclick: () => { party.rations = 3; states.pop() }},
-	{text: "2. Meager - meals are small, but adequate", onclick: () => { party.rations = 2; states.pop() }},
-	{text: "3. Bare bones - meals are very small; everyone stays hungry", onclick: () => { party.rations = 1; states.pop() }},
+	{text: "1. Filling - meals are large and generous", onclick: () => { party.rations = "filling"; states.pop() }},
+	{text: "2. Meager - meals are small, but adequate", onclick: () => { party.rations = "meager"; states.pop() }},
+	{text: "3. Bare bones - meals are very small; everyone stays hungry", onclick: () => { party.rations = "bareBones"; states.pop() }},
 	{text: "Cancel", onclick: () => { states.pop() }}
 ])
 
