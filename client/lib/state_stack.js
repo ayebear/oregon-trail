@@ -74,3 +74,10 @@ class StateStack {
 		return this
 	}
 }
+
+function temporary(object) {
+	if (object) {
+		object.temporary = true
+	}
+	return object
+}
