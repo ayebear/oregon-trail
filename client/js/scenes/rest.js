@@ -1,4 +1,19 @@
-let restState = new InputState({
+function rest(days) {
+	let summary = `Your party rested for ${days} days.`
+	party.members.forEach(member => {
+		// TODO: Remove diseases here
+		// Find out what other things happen when resting
+		member.updateHealth(0.5)
+	})
+
+	// Increment days
+	party.nextDay(days)
+
+	// Show a summary of what happened
+	states.push(new ContinueState(summary))
+}
+
+let restState = temporary(new InputState({
 	description: "How many days would you like to rest?",
 	type: "number",
 	min: 0,
@@ -10,16 +25,10 @@ let restState = new InputState({
 	},
 	onSubmit: value => {
 		let days = parseInt(value)
-		party.members.forEach(member => {
-			// TODO: Remove diseases here
-			// Find out what other things happen when resting
-			member.updateHealth(0.5)
-		})
-
-		// Increment days
-		party.nextDay(days)
-
-		// Go back
-		states.pop()
+		if (days > 0) {
+			rest(days)
+		} else {
+			states.pop()
+		}
 	}
-})
+}))
