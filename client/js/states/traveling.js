@@ -30,47 +30,24 @@ class TravelingState{
 
 	tick(){
 
-
 		let summaryString = "";
-		const foodPerRations = 5;
-		const milesPerPace = 10;
-
-
-		const noFoodChange = -.2;
-		const lowRationsChange = -.1;
-		const highRationsChange = .1;
-
-		const highPaceChange = -.1;
-		const lowPaceChange = .1;
-
 		const debug = true;
 
 		function decFood(){
-			party.supplies.decrementFood(party.rations * foodPerRations);
+			party.supplies.decrementFood(party.rationsValue.pounds * party.paceValue.food);
 		}
 
 		function incMiles(){
-			let milesTraveled = (party.pace + 1) * milesPerPace;
-			party.incrementMiles(milesTraveled);
+			party.incrementMiles(party.paceValue.speed * party.supplies.oxen * oxenMilesPerDay);
 		}
 
 		function updateHealth(){
-			let partyChange = 0; //net change for entire party
+			//net health change for entire party
+			let partyChange = party.paceValue.health + party.rationsValue.health;
 
 			//update based on food/rations
 			if (party.supplies.noFood())
 				partyChange += noFoodChange;
-			else if (party.rations === 1)
-				partyChange += lowRationsChange;
-			else if (party.rations === 3)
-				partyChange += highRationsChange;
-
-			//update based on pace;
-			if (party.pace === 1)
-				partyChange += lowPaceChange;
-			else if (party.pace ===3)
-				partyChange += highPaceChange;
-
 
 			//go through partyMembers, apply health change based on diseases + base party change
 			for(let partyMember of party.partyMembers) {
@@ -87,12 +64,12 @@ class TravelingState{
 
 		}
 
-		// Increment Date
-		party.nextDay();
-
 		decFood(); 	//lower food based on rations
 		incMiles(); //increment miles based on pace
 		updateHealth();
+
+		// Increment Date
+		party.nextDay();
 
 		if (debug){
 			console.log("---------------------");
