@@ -9,7 +9,12 @@ let changePaceState = new MenuState("Choose the pace you will travel at:", [
 	{text: "Cancel", onclick: () => { states.pop() }}
 ])
 
-let changeFoodState = new ContinueState("Choose the food ration size:")
+let changeFoodState = new MenuState("The Amount of food the people in your party eat each day can change. These amounts are:", [
+	{text: "1. filling - meals are large and generous", onclick: () => { party.foodRations = 1; states.pop() }},
+	{text: "2. meager - meals are small, but adequate", onclick: () => { party.foodRations = 2; states.pop() }},
+	{text: "3. bare bones - meals are very small; everyone stays hungry", onclick: () => { party.foodRations = 3; states.pop() }},
+	{text: "Cancel", onclick: () => { states.pop() }}
+])
 
 let tradeState = temporary(new QuestionState("Would you like to trade one of your party members for 3 pounds of food?", acceptTradeState, declineTradeState))
 
