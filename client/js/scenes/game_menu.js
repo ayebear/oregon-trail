@@ -21,7 +21,7 @@ TODO: Allow player to enter number of bullets to use, then based on location
 */
 let huntState = new ContinueState("You went hunting!")
 
-
+//sdf
 
 // The main game menu, which can be returned to during travel
 let gameMenu = new MenuState("What would you like to do?", [
