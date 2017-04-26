@@ -1,4 +1,4 @@
-const noFoodChange = -0.2;
+const noFoodChange = -0.3;
 
 // Speed is a percentage
 // Health is added

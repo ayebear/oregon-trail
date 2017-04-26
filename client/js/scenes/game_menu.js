@@ -10,9 +10,9 @@ let changePaceState = new MenuState("Choose the pace you will travel at:", [
 ])
 
 let changeFoodState = new MenuState("The amount of food the people in your party eat each day can change. These amounts are:", [
-	{text: "1. Filling - meals are large and generous", onclick: () => { party.rations = "filling"; states.pop() }},
-	{text: "2. Meager - meals are small, but adequate", onclick: () => { party.rations = "meager"; states.pop() }},
-	{text: "3. Bare bones - meals are very small; everyone stays hungry", onclick: () => { party.rations = "bareBones"; states.pop() }},
+	{text: "Filling &mdash; Meals are large and generous", onclick: () => { party.rations = "filling"; states.pop() }},
+	{text: "Meager &mdash; Meals are small, but adequate", onclick: () => { party.rations = "meager"; states.pop() }},
+	{text: "Bare bones &mdash; Meals are very small; everyone stays hungry", onclick: () => { party.rations = "bareBones"; states.pop() }},
 	{text: "Cancel", onclick: () => { states.pop() }}
 ])
 
