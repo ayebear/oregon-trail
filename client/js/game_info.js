@@ -101,7 +101,9 @@ class Party {
 
 	// Increment date by one day (or certain number of days)
 	nextDay(days = 1) {
-		this.date.setDate(this.date.getDate() + days);
+		if (days > 0) {
+			this.date.setDate(this.date.getDate() + days);
+		}
 	}
 
 	// Called initially when player enters party member names

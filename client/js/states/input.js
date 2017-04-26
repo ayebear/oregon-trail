@@ -1,12 +1,12 @@
+const inputStateBlacklist = new Set(["description", "next", "valid", "onSubmit"])
+
 // Input state - Asks the user to enter a value
 class InputState extends ContinueState {
-	constructor(description = "InputState", type = "text", valid = undefined, onSubmit = undefined) {
-		super(description, undefined, () => {
+	constructor(options = {}) {
+		super(options.description, options.next, () => {
 			this.submit()
 		})
-		this.type = type
-		this.valid = valid
-		this.onSubmit = onSubmit
+		this.options = options
 	}
 
 	getValue() {
@@ -14,12 +14,12 @@ class InputState extends ContinueState {
 	}
 
 	isValid() {
-		return (invoke(this, "valid", this.getValue()) !== false)
+		return (invoke(this.options, "valid", this.getValue()) !== false)
 	}
 
 	submit() {
 		if (this.isValid()) {
-			return invoke(this, "onSubmit", this.getValue())
+			return invoke(this.options, "onSubmit", this.getValue())
 		}
 	}
 
@@ -29,7 +29,6 @@ class InputState extends ContinueState {
 		let input = $("<input/>")
 			.attr("id", "inputStateValue")
 			.attr("class", "menu")
-			.attr("type", this.type)
 			.on("change keyup paste click", () => {
 				// Check "valid" function whenever input changes
 				$("#button0").prop("disabled", !this.isValid())
@@ -39,6 +38,14 @@ class InputState extends ContinueState {
 					this.submit()
 				}
 			})
+
+		// Set any additional parameters as attributes on the input element
+		for (let key in this.options) {
+			if (!inputStateBlacklist.has(key)) {
+				let value = this.options[key]
+				input.attr(key, value)
+			}
+		}
 
 		$("#description").append(input)
 	}
