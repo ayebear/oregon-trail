@@ -13,15 +13,13 @@ let changeFoodState = new ContinueState("Choose the food ration size:")
 
 let restState = new ContinueState("How many days would you like to rest?")
 
-let tradeState = new QuestionState("Would you like to trade one of your party members for 3 pounds of food?", acceptTradeState, declineTradeState)
-tradeState.temporary = true
+let tradeState = temporary(new QuestionState("Would you like to trade one of your party members for 3 pounds of food?", acceptTradeState, declineTradeState))
 
-let talkState = new InputState("Say something", "text", value => {
+let talkState = temporary(new InputState("Say something", "text", value => {
 	return value != "invalid"
 }, value => {
 	states.push(new ContinueState(`Susan says ${value} too.`))
-})
-talkState.temporary = true
+}))
 
 let shopState = new ContinueState("Welcome to the shop. What would you like?")
 
