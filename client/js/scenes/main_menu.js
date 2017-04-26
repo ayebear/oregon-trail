@@ -1,27 +1,26 @@
 let startGameState = new ContinueState("Well then, you're ready to start. Good luck! You have a long and difficult journey ahead of you.", gameMenu)
 
-
-
-let firstStoreState = new StoreState("Matt's General Store - Independence, Missouri", startGameState)
-
-
+let mattsGeneralStore = new StoreState({
+	description: "Matt's General Store - Independence, Missouri",
+	nextState: startGameState
+})
 
 let departureAdviceState = new ContinueState("If you leave too early, there won't be any grass for your oxen to eat. If you leave too late, you may not get to Oregon before winter comes. If you leave at just the right time, there will be green grass and the weather will still be cool.")
 
 let departureState = new MenuState("It is 1848. Your jumping off place for Oregon is Independence, Missouri. You must decide which month to leave Independence.", [
-	{text: "March", next: firstStoreState, onclick: () => {
+	{text: "March", next: mattsGeneralStore, onclick: () => {
 		party.startingDate = new Date(1848, 2)
 	}},
-	{text: "April", next: firstStoreState, onclick: () => {
+	{text: "April", next: mattsGeneralStore, onclick: () => {
 		party.startingDate = new Date(1848, 3)
 	}},
-	{text: "May", next: firstStoreState, onclick: () => {
+	{text: "May", next: mattsGeneralStore, onclick: () => {
 		party.startingDate = new Date(1848, 4)
 	}},
-	{text: "June", next: firstStoreState, onclick: () => {
+	{text: "June", next: mattsGeneralStore, onclick: () => {
 		party.startingDate = new Date(1848, 5)
 	}},
-	{text: "July", next: firstStoreState, onclick: () => {
+	{text: "July", next: mattsGeneralStore, onclick: () => {
 		party.startingDate = new Date(1848, 6)
 	}},
 	{text: "Ask for advice", next: departureAdviceState}

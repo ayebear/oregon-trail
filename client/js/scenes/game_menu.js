@@ -13,8 +13,6 @@ let changeFoodState = new ContinueState("Choose the food ration size:")
 
 let tradeState = temporary(new QuestionState("Would you like to trade one of your party members for 3 pounds of food?", acceptTradeState, declineTradeState))
 
-let shopState = new ContinueState("Welcome to the shop. What would you like?")
-
 /*
 TODO: Allow player to enter number of bullets to use, then based on location
 	and some RNG, show a result on how much food was collected.
@@ -33,8 +31,9 @@ let gameMenu = new MenuState("What would you like to do?", [
 	{text: "Talk to people", onclick: () => {
 		states.push(new ContinueState(randElem(conversations)))
 	}},
-	{text: "Buy Supplies", next: shopState, show: () => {
+	{text: "Buy Supplies", next: storeState, show: () => {
 		// TODO: Only show if near a shop/fort
+		// TODO: Update prices based on distance traveled
 		return false
 	}},
 	{text: "Go Hunting", next: huntState, show: () => {
