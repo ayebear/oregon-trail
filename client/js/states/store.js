@@ -1,21 +1,13 @@
-// TODO: Support beginning store + all stores near forts and stuff
-// Note: Weights can be computed from cost/item
-	// 1 food == $4
-	// 1 wheel == $20
-	// 20/4 == 5
-	// Someone wants 1 wheel for 5 food would be a fair deal
-	// At a 0.5 unfairness value, this would equate to them wanting 10 food
-
 /*
 Mockup:
 Matt's general store
 
-Food: $5 x [ 3 ] = $15
-Oxen: $30 x [ 3 ] = $90
+Food: $5 x [__3__] = $15
+Oxen: $30 x [__4__] = $120
 ...
 
 -------------------------
-Total: $105
+Total: $135
 (Buy)
 */
 
@@ -43,48 +35,52 @@ class StoreState extends ContinueState {
 			item.quantity = 1
 
 			// Each item has a name, price, quantity input, and buy button
-			let storeItem = $(`<p>${item.name}: $${item.price} x </p>`)
-				.attr("class", "storeItem")
-				.change(() => {this.update()})
+			let storeItem = $("<div/>").attr("id", item.id)
+			storeItem.append($(`<span>${item.name}: $${item.price} x </span>`))
 			storeItem.append($("<input/>")
-				.html(1)
+				.val(item.quantity)
 				.attr("id", item.id)
 				.attr("type", "number")
+				.attr("min", 0)
 				.change(e => {
-					// let id = $(e.target).prop("id")
-					// let val = $(e.target).val()
-					// this.options.items[id].quantity = val
-
 					item.quantity = $(e.target).val()
 					this.update()
 				}))
 			// storeItem.append($("<button/>").html("Buy").click(() => {this.buy(item, $(`#${item.id}`).val())}))
+			storeItem.append($(`<span> = $<span id="itemPrice"></span></span>`))
 			store.append(storeItem)
 		}
 
 		store.append($("<hr/>"))
-		store.append($("<h4/>").html(`Total: <span id="totalCost"></span>`))
+		store.append($("<h4/>").html(`Your money: $<span id="currentMoney"></span>`))
+		store.append($("<h4/>").html(`Total: $<span id="totalCost"></span>`))
 		store.append($("<button/>").html("Buy").click(() => {this.buy()}))
 		store.append($("<hr/>"))
 
-		$("#description").append(store)
+		$("#content").append(store)
+
+		this.update()
 	}
 
 	// Updates item costs and total cost
 	update() {
-		console.log("update()")
-
 		this.total = 0
-		$(".storeItem").each(item => {
-			console.log(item)
-			// this.total += item.val()
-		})
+
+		for (let item of this.options.items) {
+			let itemPrice = item.quantity * item.price
+			$(`#${item.id} #itemPrice`).html(itemPrice)
+			this.total += itemPrice
+		}
 
 		$("#totalCost").html(this.total)
+
+		$("#currentMoney").html(party.supplies.money)
 	}
 
 	// Note: options.buy needs to exist
 	buy() {
-		return invoke(this.options, "buy", this.total, this.options.items)
+		invoke(this.options, "buy", this.total, this.options.items)
+
+		this.update()
 	}
 }

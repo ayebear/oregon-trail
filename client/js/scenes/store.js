@@ -13,7 +13,7 @@ function makeStore(options) {
 
 	// Define buy function
 	options.buy = (total, items) => {
-		if (total < party.supplies.money) {
+		if (total <= party.supplies.money) {
 			// Subtract total cost and add items to supplies
 			party.supplies.money -= total
 			for (let name in items) {
