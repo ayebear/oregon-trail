@@ -36,10 +36,12 @@ let gameMenu = new MenuState("What would you like to do?", [
 	{text: "Talk to people", onclick: () => {
 		states.push(new ContinueState(randElem(conversations)))
 	}},
-	{text: "Buy Supplies", next: storeState, show: () => {
-		// TODO: Only show if near a shop/fort
-		// TODO: Update prices based on distance traveled
-		return false
+	{text: "Buy Supplies", show: () => {
+		return locations.atShop()
+	}, onclick: () => {
+		states.push(makeStore({
+			description: "Fort __________"
+		}))
 	}},
 	{text: "Go Hunting", next: huntState, show: () => {
 		// Only show if in the wild (not near a fort or landmark)

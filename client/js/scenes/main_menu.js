@@ -1,6 +1,6 @@
 let startGameState = new ContinueState("Well then, you're ready to start. Good luck! You have a long and difficult journey ahead of you.", gameMenu)
 
-let mattsGeneralStore = new StoreState({
+let mattsGeneralStore = makeStore({
 	description: "Matt's General Store - Independence, Missouri",
 	nextState: startGameState
 })

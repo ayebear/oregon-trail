@@ -169,9 +169,13 @@ class Party {
 // TODO: Associate states with these, and trigger those states when the landmarks are reached
 const landmarks = [
 	{name: "Independence, MO", distance: 0},
-	{name: "Kansas River Crossing", distance: 102},
+	{name: "Kansas River Crossing", distance: 102, river: {
+		ferry: true,
+		depth: 6.5,
+		width: 120
+	}},
 	{name: "Big Blue River Crossing", distance: 83},
-	{name: "Fort Kearney", distance: 119},
+	{name: "Fort Kearney", distance: 119, fort: true},
 	{name: "Chimney Rock", distance: 250},
 	{name: "Fort Laramie", distance: 86},
 	{name: "Independence Rock", distance: 190},
@@ -205,12 +209,20 @@ const landmarks = [
 ]
 
 // Keeps track of miles traveled, possible paths, and landmarks you'll encounter.
-class Location {
+class Locations {
 	constructor() {
 		this.miles = 0
 		this.fortsPassed = 0
 		this.landmarksQueue = []
 	}
+
+	atShop() {
+		return true
+	}
+
+	atRiver() {
+		return true
+	}
 }
 
-let location = new Location()
+let locations = new Locations()

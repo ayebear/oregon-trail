@@ -5,64 +5,86 @@
 	// 20/4 == 5
 	// Someone wants 1 wheel for 5 food would be a fair deal
 	// At a 0.5 unfairness value, this would equate to them wanting 10 food
-// Having access to the array of item names and prices will be useful
 
 /*
-Items format:
-[
-	{name: "Food", price: 4}
-	{name: "Wheel", price: 20}
-]
+Mockup:
+Matt's general store
+
+Food: $5 x [ 3 ] = $15
+Oxen: $30 x [ 3 ] = $90
+...
+
+-------------------------
+Total: $105
+(Buy)
 */
 
 // Generic store state - Allows the player to purchase items with an intuitive GUI
 // Takes a list of items with prices
-class BaseStoreState extends ContinueState {
+// Triggers a "buy" function when user clicks the buy button
+class StoreState extends ContinueState {
 	constructor(options) {
 		super(options.description, options.nextState, options.onContinue)
 		this.options = options
+		this.total = 0
 	}
 
 	display() {
 		super.display()
 
-		let store = $("<ul/>")
+		let store = $("<div/>").attr("id", "store")
 
 		for (let item of this.options.items) {
-			// Each item has a name, price, quantity input, and buy button
+			// let item = this.options.items[i]
+			// Adjust price based on price function
+			// item.adjustedPrice = invoke(this.options, "price", item.price) || item.price
+
 			// Default quantity is 1 so you can spam click the buy button
-			let storeItem = $("<li/>")
-			storeItem.append($(`<p>${item.name}: $${item.price}</p>`))
-			storeItem.append($("<input/>").html(1).attr("id", item.id))
-			storeItem.append($("<button/>").html("Buy").click(() => {this.buy(item, $(`#${item.id}`).val())}))
+			item.quantity = 1
+
+			// Each item has a name, price, quantity input, and buy button
+			let storeItem = $(`<p>${item.name}: $${item.price} x </p>`)
+				.attr("class", "storeItem")
+				.change(() => {this.update()})
+			storeItem.append($("<input/>")
+				.html(1)
+				.attr("id", item.id)
+				.attr("type", "number")
+				.change(e => {
+					// let id = $(e.target).prop("id")
+					// let val = $(e.target).val()
+					// this.options.items[id].quantity = val
+
+					item.quantity = $(e.target).val()
+					this.update()
+				}))
+			// storeItem.append($("<button/>").html("Buy").click(() => {this.buy(item, $(`#${item.id}`).val())}))
 			store.append(storeItem)
 		}
+
+		store.append($("<hr/>"))
+		store.append($("<h4/>").html(`Total: <span id="totalCost"></span>`))
+		store.append($("<button/>").html("Buy").click(() => {this.buy()}))
+		store.append($("<hr/>"))
 
 		$("#description").append(store)
 	}
 
-	// Sub class must override this
-	buy(item, amount) {}
-}
+	// Updates item costs and total cost
+	update() {
+		console.log("update()")
 
-// Specific store state for this game
-class StoreState extends BaseStoreState {
-	constructor(options) {
-		options.items = options.items || [
-			{id: "oxen", name: "Oxen", price: 60},
-			{id: "clothSets", name: "Sets of clothing", price: 20},
-			{id: "bullets", name: "Bullets", price: 5},
-			{id: "wheels", name: "Wagon wheels", price: 50},
-			{id: "axles", name: "Wagon axles", price: 50},
-			{id: "tongues", name: "Wagon tongues", price: 50},
-			{id: "food", name: "Pounds of food", price: 10}
-		]
-		super(options)
+		this.total = 0
+		$(".storeItem").each(item => {
+			console.log(item)
+			// this.total += item.val()
+		})
+
+		$("#totalCost").html(this.total)
 	}
 
-	buy(item, amount) {
-		// Subtract cost and add quantity of purchased item
-		party.supplies.money -= item.price * amount
-		party.supplies[item.id] += amount
+	// Note: options.buy needs to exist
+	buy() {
+		return invoke(this.options, "buy", this.total, this.options.items)
 	}
 }
