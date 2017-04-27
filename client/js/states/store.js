@@ -1,16 +1,3 @@
-/*
-Mockup:
-Matt's general store
-
-Food: $5 x [__3__] = $15
-Oxen: $30 x [__4__] = $120
-...
-
--------------------------
-Total: $135
-(Buy)
-*/
-
 // Generic store state - Allows the player to purchase items with an intuitive GUI
 // Takes a list of items with prices
 // Triggers a "buy" function when user clicks the buy button
@@ -23,6 +10,10 @@ class StoreState extends ContinueState {
 
 	display() {
 		super.display()
+
+		// TODO: Table layout:
+		// Item | Price | Amount to buy | Cost | You own
+		// Food | $10   | ______5______ | $50  | 3
 
 		let store = $("<div/>").attr("id", "store").attr("class", "store")
 
