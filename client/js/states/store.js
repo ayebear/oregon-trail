@@ -24,7 +24,7 @@ class StoreState extends ContinueState {
 	display() {
 		super.display()
 
-		let store = $("<div/>").attr("id", "store")
+		let store = $("<div/>").attr("id", "store").attr("class", "store")
 
 		for (let item of this.options.items) {
 			// let item = this.options.items[i]

@@ -43,3 +43,41 @@
 .menu h1, h2, h3, h4, h5, h6 {
 	font-family: sans-serif;
 }
+
+.store button {
+	width: 128px;
+	background-color: #2265A3;
+	border: 2px solid gray;
+	color: white;
+	padding: 12px 24px;
+	cursor: pointer;
+	display: block;
+	font-size: 1em;
+	font-family: sans-serif;
+}
+
+.store button:hover {
+	color: black;
+	background-color: #6FDFFF;
+	font-weight: bold;
+}
+
+.store button:disabled {
+	background-color: #555;
+}
+
+.store input[type] {
+	width: 128px;
+	padding: 12px 24px;
+	margin: 8px 0;
+	box-sizing: border-box;
+	border: 2px solid gray;
+	border-radius: 4px;
+	/*display: block;*/
+	font-size: 1em;
+	font-family: sans-serif;
+}
+
+.store h1, h2, h3, h4, h5, h6 {
+	font-family: sans-serif;
+}
