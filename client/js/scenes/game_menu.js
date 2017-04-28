@@ -19,7 +19,7 @@ let shopState = new ContinueState("Welcome to the shop. What would you like?")
 TODO: Allow player to enter number of bullets to use, then based on location
 	and some RNG, show a result on how much food was collected.
 */
-let huntState = new ContinueState("You went hunting!")
+//let fishState = new InputState()
 
 
 
@@ -37,8 +37,8 @@ let gameMenu = new MenuState("What would you like to do?", [
 		// TODO: Only show if near a shop/fort
 		return false
 	}},
-	{text: "Go Hunting", next: huntState, show: () => {
+	{text: "Go fishing", next: fishState, show: () => {
 		// Only show if in the wild (not near a fort or landmark)
-		return false
+		//return false
 	}}
 ])

@@ -57,7 +57,7 @@ class Supplies {
 		this.money = 0;
 		this.oxen = 0;
 		this.clothSets = 0;
-		this.bullets = 0;
+		this.worms = 10;
 		this.wheels = 0;
 		this.axles = 0;
 		this.tongues = 0;
