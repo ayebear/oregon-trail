@@ -22,8 +22,8 @@ class StoreState extends ContinueState {
 			// Adjust price based on price function
 			// item.adjustedPrice = invoke(this.options, "price", item.price) || item.price
 
-			// Default quantity is 1 so you can spam click the buy button
-			item.quantity = 1
+			// Set default quantity
+			item.quantity = 0
 
 			// Each item has a name, price, quantity input, and buy button
 			let storeItem = $("<div/>").attr("id", item.id)
