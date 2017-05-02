@@ -22,6 +22,9 @@ class MenuState {
 		// Add description
 		this.root.append(`<div id="description" class="menu"><h3>${this.description}</h3></div>`)
 
+		// For use by other states
+		this.root.append('<div id="content"></div>')
+
 		// Add buttons with onclicks
 		this.root.append('<div id="menu" class="menu"></div>')
 
