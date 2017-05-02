@@ -11,7 +11,7 @@ const occupations = {
 	banker: {start: 1600, score: 1},
 	carpenter: {start: 800, score: 2},
 	farmer: {start: 400, score: 3}
-}
+};
 
 class PartyMember {
 	constructor(name, isWagonLeader){
@@ -61,7 +61,7 @@ class Supplies {
 		this.wheels = 0;
 		this.axles = 0;
 		this.tongues = 0;
-		this.food = 0;
+		this.food = 1000000;
 	}
 
 	decrementFood(change){
@@ -89,7 +89,7 @@ class Party {
 
 	// Called initially when player chooses occupation
 	set occupation(name) {
-		this.occupationName = name
+		this.occupationName = name;
 		this.supplies.money = occupations[name].start;
 		this.scoreModifier = occupations[name].score;
 	}
@@ -112,7 +112,7 @@ class Party {
 		// Create PartyMember instances array
 		let party = names.map((name, i) => {
 			return new PartyMember(name, (i === 0));
-		})
+		});
 
 		// Create Set() object from array
 		this.partyMembers = new Set(party);
@@ -143,5 +143,6 @@ class Party {
 	get rationsString(){
 		return rationsArray[this.rations - 1];
 	}
-
 }
+
+let party = new Party();

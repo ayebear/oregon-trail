@@ -21,11 +21,41 @@ TODO: Allow player to enter number of bullets to use, then based on location
 */
 let huntState = new ContinueState("You went hunting!")
 
+function getSupplies(){
+	return `<p> Oxen: ${party.supplies.oxen} </p>
+	<p> Sets of Clothing: ${party.supplies.clothSets} </p>
+	<p> Pounds of Food: ${party.supplies.food} </p>
+	<p> Wagon Wheels: ${party.supplies.wheels} </p>
+	<p> Wagon Axles: ${party.supplies.axles} </p>
+	<p> Wagon Tounges: ${party.supplies.clothSets} </p>
+	<p> Money Left: ${party.supplies.money} </p>`;
+}
+
+function getSupplies(){
+	
+	let healthString = "";
+	for (let partyMember of party.members){
+		
+	}
+	return `<p> Oxen: ${party.supplies.oxen} </p>
+	<p> Sets of Clothing: ${party.supplies.clothSets} </p>
+	<p> Pounds of Food: ${party.supplies.food} </p>
+	<p> Wagon Wheels: ${party.supplies.wheels} </p>
+	<p> Wagon Axles: ${party.supplies.axles} </p>
+	<p> Wagon Tounges: ${party.supplies.clothSets} </p>
+	<p> Money Left: ${party.supplies.money} </p>`;
+}
 
 
 // The main game menu, which can be returned to during travel
 let gameMenu = new MenuState("What would you like to do?", [
 	{text: "Continue on trail", next: new TravelingState()},
+	{text: "Check Supplies", onclick: () => {
+		states.push(new ContinueState(getSupplies()));
+	}},
+	{text: "Check up on everyone", onclick: () => {
+		states.push(new ContinueState(getPartyHealth()));
+	}},
 	{text: "Change pace", next: changePaceState},
 	{text: "Change food rations", next: changeFoodState},
 	{text: "Stop to rest", next: restState},
