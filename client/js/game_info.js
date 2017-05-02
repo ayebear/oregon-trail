@@ -21,7 +21,7 @@ class PartyMember {
 		this.health = 5; //from 0 to 5
 	}
 
-	get healthString(){
+	healthString(){
 		return healthArray[Math.ceil(this.health) - 1];
 	}
 
@@ -61,7 +61,7 @@ class Supplies {
 		this.wheels = 0;
 		this.axles = 0;
 		this.tongues = 0;
-		this.food = 1000000;
+		this.food = 0;
 	}
 
 	decrementFood(change){

@@ -32,11 +32,7 @@ function getSupplies(){
 }
 
 function getSupplies(){
-	
-	let healthString = "";
-	for (let partyMember of party.members){
-		
-	}
+
 	return `<p> Oxen: ${party.supplies.oxen} </p>
 	<p> Sets of Clothing: ${party.supplies.clothSets} </p>
 	<p> Pounds of Food: ${party.supplies.food} </p>
@@ -44,6 +40,10 @@ function getSupplies(){
 	<p> Wagon Axles: ${party.supplies.axles} </p>
 	<p> Wagon Tounges: ${party.supplies.clothSets} </p>
 	<p> Money Left: ${party.supplies.money} </p>`;
+}
+
+function getPartyHealth(){
+
 }
 
 
