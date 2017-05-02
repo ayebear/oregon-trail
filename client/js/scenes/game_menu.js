@@ -18,8 +18,6 @@ let changeFoodState = new MenuState("The amount of food the people in your party
 
 let tradeState = temporary(new QuestionState("Would you like to trade one of your party members for 3 pounds of food?", acceptTradeState, declineTradeState))
 
-let shopState = new ContinueState("Welcome to the shop. What would you like?")
-
 /*
 TODO: Allow player to enter number of bullets to use, then based on location
 	and some RNG, show a result on how much food was collected.
@@ -38,9 +36,12 @@ let gameMenu = new MenuState("What would you like to do?", [
 	{text: "Talk to people", onclick: () => {
 		states.push(new ContinueState(randElem(conversations)))
 	}},
-	{text: "Buy Supplies", next: shopState, show: () => {
-		// TODO: Only show if near a shop/fort
-		return false
+	{text: "Buy Supplies", show: () => {
+		return locations.atShop()
+	}, onclick: () => {
+		states.push(makeStore({
+			description: "Fort __________"
+		}))
 	}},
 	{text: "Go Hunting", next: huntState, show: () => {
 		// Only show if in the wild (not near a fort or landmark)
