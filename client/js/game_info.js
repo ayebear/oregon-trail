@@ -32,8 +32,6 @@ const occupations = {
 	farmer: {start: 400, score: 3}
 };
 
-
-
 class PartyMember {
 	constructor(name, isWagonLeader){
 		this.name = name;
@@ -42,7 +40,7 @@ class PartyMember {
 		this.health = 5; //from 0 to 5
 	}
 
-	get healthString(){
+	healthString(){
 		return healthArray[Math.ceil(this.health) - 1];
 	}
 
@@ -118,7 +116,7 @@ class Party {
 
 	// Called initially when player chooses occupation
 	set occupation(name) {
-		this.occupationName = name
+		this.occupationName = name;
 		this.supplies.money = occupations[name].start;
 		this.scoreModifier = occupations[name].score;
 	}
@@ -141,7 +139,7 @@ class Party {
 		// Create PartyMember instances array
 		let party = names.map((name, i) => {
 			return new PartyMember(name, (i === 0));
-		})
+		});
 
 		// Create Set() object from array
 		this.partyMembers = new Set(party);
@@ -163,7 +161,19 @@ class Party {
 		}
 
 	}
+
+	//returns the pace in string format;
+	get paceString(){
+		return paceArray[this.pace - 1];
+	}
+
+	get rationsString(){
+		return rationsArray[this.rations - 1];
+	}
+
 }
+
+let party = new Party();
 
 // Note: "distance" is miles to this landmark
 // TODO: Associate states with these, and trigger those states when the landmarks are reached

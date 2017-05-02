@@ -1,6 +1,5 @@
 //Main game runtime
 
-let party = undefined;
 let states = undefined;
 const debug = true;
 
@@ -11,7 +10,7 @@ $(document).ready(function() {
 	runTests();
 
 	// Create global instance for the party
-	party = new Party();
+
 
 	// Create state stack with initial main menu state and "game" DOM element
 	states = new StateStack(mainMenu, "#game");
