@@ -221,8 +221,8 @@ const landmarks = [
 // Keeps track of miles traveled, possible paths, and landmarks you'll encounter.
 class Locations {
 	constructor() {
-		this.miles = 0
-		this.fortsPassed = 0
+		this.miles = 0;
+		this.fortsPassed = 0;
 		this.landmarksQueue = []
 	}
 
