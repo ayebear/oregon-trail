@@ -3,23 +3,23 @@ class TravelingState{
 	constructor(){
 		this.timerId = null;
 		this.traveledElement = null;
-        this.nextMarkerElement = null;
+		this.nextMarkerElement = null;
 
-    }
+	}
 
 	display(){
 		this.root.append(`<h3>Traveling on the trail</h3>`);
 		this.root.append(`<div id="menu" class="menu"><div id = "milesTraveled">Miles Traveled: ${party.milesTraveled}</div><div id = "milesToNextMark">Next Landmark: ${party.milesToNextMark}</div></div>`);
 
-        let button = $("<button/>")
+		let button = $("<button/>")
 			.text("Size up the Situation")
 			.click(() => {
 				states.pop();
 			})
 		$("#menu").append(button);
 
-        this.traveledElement = $("#milesTraveled");
-        this.nextMarkerElement = $("#milesToNextMark");
+		this.traveledElement = $("#milesTraveled");
+		this.nextMarkerElement = $("#milesToNextMark");
 	}
 
 	onEnter(){
@@ -76,17 +76,17 @@ class TravelingState{
 
 
 
-        //increment miles based on pace
-        //if we hit a new landmark when incrementing miles
-       	incMiles();
+		//increment miles based on pace
+		//if we hit a new landmark when incrementing miles
+		incMiles();
 		decFood(); 	//lower food based on rations
 		updateHealth();
 
-        // Increment Date
-        party.nextDay();
+		// Increment Date
+		party.nextDay();
 
-        this.nextMarkerElement.text(`Next Landmark: ${party.milesToNextMark}`);
-        this.traveledElement.text(`Miles Traveled: ${party.milesTraveled}`);
+		this.nextMarkerElement.text(`Next Landmark: ${party.milesToNextMark}`);
+		this.traveledElement.text(`Miles Traveled: ${party.milesTraveled}`);
 
 		if (debug){
 			console.log("---------------------");
@@ -104,13 +104,13 @@ class TravelingState{
 			states.push(new ContinueState(summaryString), locations.update);
 		}
 		else if (summaryString.length){
-            states.push(new ContinueState(summaryString));
-        }
-        else if (newLandmark){
+			states.push(new ContinueState(summaryString));
+		}
+		else if (newLandmark){
 			locations.update();
 		}
 		else {
-        	this.requestTick();
+			this.requestTick();
 		}
 	}
 
