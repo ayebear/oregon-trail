@@ -57,6 +57,7 @@ class Supplies {
 		this.money = 0;
 		this.oxen = 0;
 		this.clothSets = 0;
+		this.bullets = 0;
 		this.worms = 10;
 		this.wheels = 0;
 		this.axles = 0;
@@ -89,7 +90,7 @@ class Party {
 
 	// Called initially when player chooses occupation
 	set occupation(name) {
-		this.occupationName = name
+		this.occupationName = name;
 		this.supplies.money = occupations[name].start;
 		this.scoreModifier = occupations[name].score;
 	}

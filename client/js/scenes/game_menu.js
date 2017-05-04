@@ -38,7 +38,7 @@ let gameMenu = new MenuState("What would you like to do?", [
 		return false
 	}},
 	{text: "Go fishing", next: fishState, show: () => {
-		// Only show if in the wild (not near a fort or landmark)
-		//return false
+		//always show fishing for now
+		return true;
 	}}
 ])
