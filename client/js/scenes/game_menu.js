@@ -22,7 +22,7 @@ let tradeState = temporary(new QuestionState("Would you like to trade one of you
 TODO: Allow player to enter number of bullets to use, then based on location
 	and some RNG, show a result on how much food was collected.
 */
-let huntState = new ContinueState("You went hunting!")
+//let fishState = new InputState()
 
 function getSupplies(){
 	return `<p> Oxen: ${party.supplies.oxen} </p>
@@ -73,8 +73,8 @@ let gameMenu = new MenuState("What would you like to do?", [
 			description: "Fort __________"
 		}))
 	}},
-	{text: "Go Hunting", next: huntState, show: () => {
-		// Only show if in the wild (not near a fort or landmark)
-		return false
+	{text: "Go fishing", next: fishState, show: () => {
+		//always show fishing for now
+		return true;
 	}}
 ])
