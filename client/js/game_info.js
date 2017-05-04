@@ -22,7 +22,7 @@ const rationTypes = {
 // Note: "distance" is miles to this landmark
 // TODO: Associate states with these, and trigger those states when the landmarks are reached
 const landmarks = [
-    {name: "Independence, MO", distance: 0, generateState: () => {return new ContinueState("Leaving Independence, MO")}},
+    {name: "Independence, MO", distance: 1, generateState: () => {return new ContinueState("Leaving Independence, MO")}},
     {name: "Kansas River Crossing", distance: 102, river: {
         ferry: true,
         depth: 6.5,
