@@ -2,11 +2,14 @@
 class TravelingState{
 	constructor(){
 		this.timerId = null;
+		this.traveledElement = null;
+		this.nextMarkerElement = null;
+
 	}
 
 	display(){
-		this.root.append(`<h3>Traveling on the trail</h3>`)
-		this.root.append('<div id="menu" class="menu"></div>')
+		this.root.append(`<h3>Traveling on the trail</h3>`);
+		this.root.append(`<div id="menu" class="menu"><div id = "milesTraveled">Miles Traveled: ${party.milesTraveled}</div><div id = "milesToNextMark">Next Landmark: ${party.milesToNextMark}</div></div>`);
 
 		let button = $("<button/>")
 			.text("Size up the Situation")
@@ -14,6 +17,9 @@ class TravelingState{
 				states.pop();
 			})
 		$("#menu").append(button);
+
+		this.traveledElement = $("#milesTraveled");
+		this.nextMarkerElement = $("#milesToNextMark");
 	}
 
 	onEnter(){
@@ -30,6 +36,7 @@ class TravelingState{
 
 	tick(){
 
+		let newLandmark = false;
 		let summaryString = "";
 		const debug = true;
 
@@ -37,8 +44,11 @@ class TravelingState{
 			party.supplies.decrementFood(party.rationsValue.pounds * party.paceValue.food);
 		}
 
+		//returns true if we hit a new landmark
 		function incMiles(){
-			party.incrementMiles(party.paceValue.speed * party.supplies.oxen * oxenMilesPerDay);
+			party.incrementMiles(party.paceValue.speed * party.supplies.oxen * oxenMilesPerDay, () => {
+				newLandmark = true;
+			});
 		}
 
 		function updateHealth(){
@@ -64,12 +74,19 @@ class TravelingState{
 
 		}
 
+
+
+		//increment miles based on pace
+		//if we hit a new landmark when incrementing miles
+		incMiles();
 		decFood(); 	//lower food based on rations
-		incMiles(); //increment miles based on pace
 		updateHealth();
 
 		// Increment Date
 		party.nextDay();
+
+		this.nextMarkerElement.text(`Next Landmark: ${party.milesToNextMark}`);
+		this.traveledElement.text(`Miles Traveled: ${party.milesTraveled}`);
 
 		if (debug){
 			console.log("---------------------");
@@ -83,10 +100,18 @@ class TravelingState{
 		}
 
 		// Display any events that occurred along the trail
-		if (summaryString.length){
+		if (summaryString.length && newLandmark){
+			states.push(new ContinueState(summaryString), locations.update);
+		}
+		else if (summaryString.length){
 			states.push(new ContinueState(summaryString));
-		} else {
+		}
+		else if (newLandmark){
+			locations.update();
+		}
+		else {
 			this.requestTick();
 		}
 	}
+
 }
