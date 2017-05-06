@@ -32,7 +32,7 @@ let partyEntryState = new PartyEntryState(departureState)
 
 
 
-let learnOccupationState = new ContinueState("Bankers start with the most money, but farmers get the biggest point bonus at the end.<br>Banker: $1600 budget &mdash; No score bonus<br>Carpenter: $800 budget &mdash; 2x score bonus<br>Farmer: $400 budget &mdash; 3x score bonus")
+let learnOccupationState = new ContinueState("Bankers start with the most money, but farmers get the biggest point bonus at the end.<br><br>Banker: $1600 budget - No score bonus<br>Carpenter: $800 budget - 2x score bonus<br>Farmer: $400 budget - 3x score bonus")
 
 let occupationMenu = new MenuState("The Oregon Trail", [
 	{text: "Easy - Be a banker from Boston", next: partyEntryState, onclick: () => {
@@ -53,13 +53,13 @@ let learnState = new ContinueState(`Try taking a journey by covered wagon across
 How will you cross the rivers? If you have money, you might take a ferry (if there is a ferry). Or, you can ford the river and hope you and your wagon aren't swallowed alive!<br><br>
 What about supplies? Well, if you're low on food you can hunt. You might get a buffalo... you might. And there are bear in the mountains.<br><br>
 At the Dalles, you can try navigating the Columbia River, but if running the rapids with a makeshift raft makes you queasy, better take the Barlow Road.<br><br>
-If for some reason you don't survive &mdash; you wagon burns, or thieves steal your oxen, or you run out of provisions, or you die of cholera &mdash; don't give up! Try again... and again... until your name is up with the other on the High Scores.<br><br>
+If for some reason you don't survive - your wagon burns, or thieves steal your oxen, or you run out of provisions, or you die of cholera - don't give up! Try again... and again... until your name is up with the other on the High Scores.<br><br>
 This software was written by a team of students at UMBC, based on the original Oregon Trail game for DOS from 1990.`)
 
 let highScoresState = new ContinueState("High scores:")
 
 let mainMenu = new MenuState("The Oregon Trail", [
-	{text: "Travel the trail", next: occupationMenu},
-	{text: "Learn about the trail", next: learnState},
+	{text: "Travel The Trail", next: occupationMenu},
+	{text: "Learn About The Trail", next: learnState},
 	{text: "High Scores", next: highScoresState}
 ])
