@@ -1,8 +1,21 @@
+@font-face {
+	font-family: "Apple-2";
+	src: url(../data/font/Apple.ttf) format("truetype");
+}
+
+body {
+	background-color:black;
+	color:white;
+}
+
 #game {
 	text-align: center;
 	margin-left: auto;
 	margin-right: auto;
 	width: 50%;
+	font-family: Apple-2;
+	font-size: 1em;
+
 }
 
 button {
@@ -10,24 +23,26 @@ button {
 }
 
 .menu button {
-	background-color: #2265A3;
+	margin-top: 5px;
+	background-color: white;
 	border: 2px solid gray;
-	color: white;
+	color: black;
 	padding: 12px 24px;
 	cursor: pointer;
-	width: 100%;
+	width: 75%;
 	display: block;
 	font-size: 1em;
-	font-family: sans-serif;
+	font-family: Apple-2;
 }
+
+
 
 .menu button:not(:last-child) {
 	border-bottom: none; /* Prevent double borders */
 }
 
 .menu button:hover {
-	color: black;
-	background-color: #6FDFFF;
+	background-color: grey;
 	font-weight: bold;
 }
 
@@ -36,7 +51,7 @@ button {
 }
 
 .menu input[type] {
-	width: 100%;
+	width: 75%;
 	padding: 12px 24px;
 	margin: 8px 0;
 	box-sizing: border-box;
@@ -44,28 +59,27 @@ button {
 	border-radius: 4px;
 	display: block;
 	font-size: 1em;
-	font-family: sans-serif;
+	font-family: Apple-2;
 }
 
 .menu h1, h2, h3, h4, h5, h6 {
-	font-family: sans-serif;
+	font-family: Apple-2;
 }
 
 .store button {
 	width: 128px;
-	background-color: #2265A3;
+	background-color: white;
 	border: 2px solid gray;
-	color: white;
+	color: black;
 	padding: 12px 24px;
 	cursor: pointer;
 	display: block;
 	font-size: 1em;
-	font-family: sans-serif;
+	font-family: Apple-2;
 }
 
 .store button:hover {
-	color: black;
-	background-color: #6FDFFF;
+	background-color: grey;
 	font-weight: bold;
 }
 
@@ -82,9 +96,9 @@ button {
 	border-radius: 4px;
 	/*display: block;*/
 	font-size: 1em;
-	font-family: sans-serif;
+	font-family: Apple-2;
 }
 
 .store h1, h2, h3, h4, h5, h6 {
-	font-family: sans-serif;
+	font-family: Apple-2;
 }

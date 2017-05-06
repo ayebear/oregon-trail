@@ -35,13 +35,13 @@ let partyEntryState = new PartyEntryState(departureState)
 let learnOccupationState = new ContinueState("Bankers start with the most money, but farmers get the biggest point bonus at the end.<br>Banker: $1600 budget &mdash; No score bonus<br>Carpenter: $800 budget &mdash; 2x score bonus<br>Farmer: $400 budget &mdash; 3x score bonus")
 
 let occupationMenu = new MenuState("The Oregon Trail", [
-	{text: "Easy &mdash; Be a banker from Boston", next: partyEntryState, onclick: () => {
+	{text: "Easy - Be a banker from Boston", next: partyEntryState, onclick: () => {
 		party.occupation = "banker"
 	}},
-	{text: "Medium &mdash; Be a carpenter from Ohio", next: partyEntryState, onclick: () => {
+	{text: "Medium - Be a carpenter from Ohio", next: partyEntryState, onclick: () => {
 		party.occupation = "carpenter"
 	}},
-	{text: "Hard &mdash; Be a farmer from Illinois", next: partyEntryState, onclick: () => {
+	{text: "Hard - Be a farmer from Illinois", next: partyEntryState, onclick: () => {
 		party.occupation = "farmer"
 	}},
 	{text: "Find out more about these choices", next: learnOccupationState}
