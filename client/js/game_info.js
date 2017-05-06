@@ -21,6 +21,7 @@ const rationTypes = {
 
 // Note: "distance" is miles to this landmark
 // TODO: Associate states with these, and trigger those states when the landmarks are reached
+
 const landmarks = [
     {name: "Independence, MO", distance: 1, generateState: () => {return new ContinueState("Leaving Independence, MO")}},
     {name: "Kansas River Crossing", distance: 102, river: {
@@ -238,6 +239,9 @@ class Locations {
 		}
 		party.milesToNextMark = landmarks[++party.landmarkIndex].distance;
         console.log(party.milesToNextMark);
+        if (!landmark.generateState){
+        	states.push(new ContinueState("This Landmark Dosen't have a Defined State yet"));
+		}
         states.push(landmark.generateState());
     }
 
