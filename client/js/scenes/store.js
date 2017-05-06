@@ -2,13 +2,13 @@
 function makeStore(options) {
 	// Setup store items
 	options.items = [
-		{id: "oxen", name: "Oxen", price: 60},
-		{id: "clothSets", name: "Sets of clothing", price: 20},
-		{id: "bullets", name: "Bullets", price: 5},
-		{id: "wheels", name: "Wagon wheels", price: 50},
-		{id: "axles", name: "Wagon axles", price: 50},
-		{id: "tongues", name: "Wagon tongues", price: 50},
-		{id: "food", name: "Pounds of food", price: 10}
+		{id: "oxen", name: "Oxen", price: 20},
+		{id: "clothSets", name: "Sets of clothing", price: 10},
+		{id: "worms", name: "Worms", price: 0.1},
+		{id: "wheels", name: "Wagon wheels", price: 10},
+		{id: "axles", name: "Wagon axles", price: 10},
+		{id: "tongues", name: "Wagon tongues", price: 10},
+		{id: "food", name: "Pounds of food", price: 0.2}
 	]
 
 	// Define buy function
