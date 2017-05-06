@@ -24,9 +24,10 @@ button {
 
 .menu button {
 	margin-top: 5px;
-	background-color: white;
+	background-color: #222;
 	border: 2px solid gray;
-	color: black;
+	border-radius: 4px;
+	color: white;
 	padding: 12px 24px;
 	cursor: pointer;
 	width: 75%;
@@ -35,14 +36,12 @@ button {
 	font-family: Apple-2;
 }
 
-
-
 .menu button:not(:last-child) {
 	border-bottom: none; /* Prevent double borders */
 }
 
 .menu button:hover {
-	background-color: grey;
+	background-color: gray;
 	font-weight: bold;
 }
 
@@ -60,6 +59,8 @@ button {
 	display: block;
 	font-size: 1em;
 	font-family: Apple-2;
+	color: white;
+	background-color: #222;
 }
 
 .menu h1, h2, h3, h4, h5, h6 {
@@ -67,10 +68,11 @@ button {
 }
 
 .store button {
-	width: 128px;
-	background-color: white;
+	width: 192px;
+	background-color: #222;
 	border: 2px solid gray;
-	color: black;
+	border-radius: 4px;
+	color: white;
 	padding: 12px 24px;
 	cursor: pointer;
 	display: block;
@@ -79,7 +81,7 @@ button {
 }
 
 .store button:hover {
-	background-color: grey;
+	background-color: gray;
 	font-weight: bold;
 }
 
@@ -97,6 +99,8 @@ button {
 	/*display: block;*/
 	font-size: 1em;
 	font-family: Apple-2;
+	color: white;
+	background-color: #222;
 }
 
 .store h1, h2, h3, h4, h5, h6 {
