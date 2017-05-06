@@ -1,5 +1,12 @@
 #game {
-	width: 100%;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+}
+
+button {
+	margin: auto;
 }
 
 .menu button {

@@ -25,29 +25,25 @@ TODO: Allow player to enter number of bullets to use, then based on location
 //let fishState = new InputState()
 
 function getSupplies(){
-	return `<p> Oxen: ${party.supplies.oxen} </p>
-	<p> Sets of Clothing: ${party.supplies.clothSets} </p>
-	<p> Pounds of Food: ${party.supplies.food} </p>
-	<p> Wagon Wheels: ${party.supplies.wheels} </p>
-	<p> Wagon Axles: ${party.supplies.axles} </p>
-	<p> Wagon Tounges: ${party.supplies.clothSets} </p>
-	<p> Money Left: ${party.supplies.money} </p>`;
-}
-
-function getSupplies(){
 
 	return `<p> Oxen: ${party.supplies.oxen} </p>
 	<p> Sets of Clothing: ${party.supplies.clothSets} </p>
-	<p> Pounds of Food: ${party.supplies.food} </p>
+	<p> Pounds of Food: ${parseFloat(party.supplies.food).toFixed(1)} </p>
 	<p> Wagon Wheels: ${party.supplies.wheels} </p>
 	<p> Wagon Axles: ${party.supplies.axles} </p>
 	<p> Wagon Tounges: ${party.supplies.clothSets} </p>
-	<p> Money Left: ${party.supplies.money} </p>`;
+	<p> Money Left: $${party.supplies.money} </p>`;
 }
 
 function getPartyHealth(){
-
+	let healthString = "";
+	for (let partyMember of party.members){
+		healthString += `<p> ${partyMember.name} : ${partyMember.healthString()} </p>`;
+	}
+	return healthString
 }
+
+
 
 
 // The main game menu, which can be returned to during travel
