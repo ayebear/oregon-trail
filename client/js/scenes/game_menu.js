@@ -18,21 +18,15 @@ let changeFoodState = new MenuState("The amount of food the people in your party
 
 let tradeState = temporary(new QuestionState("Would you like to trade one of your party members for 3 pounds of food?", acceptTradeState, declineTradeState))
 
-/*
-TODO: Allow player to enter number of bullets to use, then based on location
-	and some RNG, show a result on how much food was collected.
-*/
-//let fishState = new InputState()
-
 function getSupplies(){
 
 	return `<p> Oxen: ${party.supplies.oxen} </p>
 	<p> Sets of Clothing: ${party.supplies.clothSets} </p>
-	<p> Pounds of Food: ${parseFloat(party.supplies.food).toFixed(1)} </p>
+	<p> Pounds of Food: ${party.supplies.food.toFixed(1)} </p>
 	<p> Wagon Wheels: ${party.supplies.wheels} </p>
 	<p> Wagon Axles: ${party.supplies.axles} </p>
 	<p> Wagon Tounges: ${party.supplies.clothSets} </p>
-	<p> Money Left: $${party.supplies.money} </p>`;
+	<p> Money Left: $${party.supplies.money.toFixed(2)} </p>`;
 }
 
 function getPartyHealth(){

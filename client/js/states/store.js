@@ -17,31 +17,28 @@ class StoreState extends ContinueState {
 
 		let store = $("<div/>").attr("id", "store").attr("class", "store")
 
+		// Create store items
 		for (let item of this.options.items) {
-			// let item = this.options.items[i]
-			// Adjust price based on price function
-			// item.adjustedPrice = invoke(this.options, "price", item.price) || item.price
-
 			// Set default quantity
 			item.quantity = 0
 
 			// Each item has a name, price, quantity input, and buy button
 			let storeItem = $("<div/>").attr("id", item.id)
-			storeItem.append($(`<span>${item.name}: $${item.price} x </span>`))
+			storeItem.append($(`<span>${item.name}: $${item.price.toFixed(2)} x </span>`))
 			storeItem.append($("<input/>")
 				.val(item.quantity)
 				.attr("id", item.id)
 				.attr("type", "number")
 				.attr("min", 0)
 				.change(e => {
-					item.quantity = $(e.target).val()
+					item.quantity = parseInt($(e.target).val())
 					this.update()
 				}))
-			// storeItem.append($("<button/>").html("Buy").click(() => {this.buy(item, $(`#${item.id}`).val())}))
 			storeItem.append($(`<span> = $<span id="itemPrice"></span></span>`))
 			store.append(storeItem)
 		}
 
+		// Create totals information and buy button at the bottom
 		store.append($("<hr/>"))
 		store.append($("<h4/>").html(`Your money: $<span id="currentMoney"></span>`))
 		store.append($("<h4/>").html(`Total: $<span id="totalCost"></span>`))
@@ -59,13 +56,13 @@ class StoreState extends ContinueState {
 
 		for (let item of this.options.items) {
 			let itemPrice = item.quantity * item.price
-			$(`#${item.id} #itemPrice`).html(itemPrice)
+			$(`#${item.id} #itemPrice`).html(itemPrice.toFixed(2))
 			this.total += itemPrice
 		}
 
-		$("#totalCost").html(this.total)
+		$("#totalCost").html(this.total.toFixed(2))
 
-		$("#currentMoney").html(party.supplies.money)
+		$("#currentMoney").html(party.supplies.money.toFixed(2))
 	}
 
 	// Note: options.buy needs to exist
