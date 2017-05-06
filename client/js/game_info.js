@@ -242,7 +242,9 @@ class Locations {
         if (!landmark.generateState){
         	states.push(new ContinueState("This Landmark Dosen't have a Defined State yet"));
 		}
-        states.push(landmark.generateState());
+		else {
+            states.push(landmark.generateState());
+        }
     }
 
     atShop() {
