@@ -23,44 +23,44 @@ const rationTypes = {
 // TODO: Associate states with these, and trigger those states when the landmarks are reached
 
 const landmarks = [
-    {name: "Independence, MO", distance: 1, generateState: () => {return new ContinueState("Leaving Independence, MO")}},
-    {name: "Kansas River Crossing", distance: 102, river: {
-        ferry: true,
-        depth: 6.5,
-        width: 120
-    }},
-    {name: "Big Blue River Crossing", distance: 83},
-    {name: "Fort Kearney", distance: 119, fort: true},
-    {name: "Chimney Rock", distance: 250},
-    {name: "Fort Laramie", distance: 86},
-    {name: "Independence Rock", distance: 190},
-    {name: "South Pass", distance: 102, choices: [
-        [
-            {name: "Green River", distance: 57},
-            {name: "Soda Springs", distance: 144}
-        ],
-        [
-            {name: "Fort Bridger", distance: 125},
-            {name: "Soda Springs", distance: 162}
-        ]
-    ]},
-    {name: "Fort Hall", distance: 57},
-    {name: "Snake River Crossing", distance: 182},
-    {name: "Fort Boise", distance: 114},
-    {name: "Blue Mountains", distance: 160, choices: [
-        [
-            {name: "Fort Walla Walla", distance: 55},
-            {name: "The Dalles", distance: 120}
-        ],
-        [
-            {name: "The Dalles", distance: 125}
-        ]
-    ]},
-    {name: "The Dalles (Final Choice)", distance: 0, choices: [
-        [{name: "Barlow Toll Road", distance: 100}],
-        [{name: "Columbia River", distance: 0}]
-    ]},
-    {name: "The End", distance: 0}
+	{name: "Independence, MO", distance: 1, generateState: () => {return new ContinueState("Leaving Independence, MO")}},
+	{name: "Kansas River Crossing", distance: 102, river: {
+		ferry: true,
+		depth: 6.5,
+		width: 120
+	}},
+	{name: "Big Blue River Crossing", distance: 83},
+	{name: "Fort Kearney", distance: 119, fort: true},
+	{name: "Chimney Rock", distance: 250},
+	{name: "Fort Laramie", distance: 86},
+	{name: "Independence Rock", distance: 190},
+	{name: "South Pass", distance: 102, choices: [
+		[
+			{name: "Green River", distance: 57},
+			{name: "Soda Springs", distance: 144}
+		],
+		[
+			{name: "Fort Bridger", distance: 125},
+			{name: "Soda Springs", distance: 162}
+		]
+	]},
+	{name: "Fort Hall", distance: 57},
+	{name: "Snake River Crossing", distance: 182},
+	{name: "Fort Boise", distance: 114},
+	{name: "Blue Mountains", distance: 160, choices: [
+		[
+			{name: "Fort Walla Walla", distance: 55},
+			{name: "The Dalles", distance: 120}
+		],
+		[
+			{name: "The Dalles", distance: 125}
+		]
+	]},
+	{name: "The Dalles (Final Choice)", distance: 0, choices: [
+		[{name: "Barlow Toll Road", distance: 100}],
+		[{name: "Columbia River", distance: 0}]
+	]},
+	{name: "The End", distance: 0}
 ];
 
 const healthArray = ["dying", "very poor", "poor", "fair", "good"];
@@ -224,36 +224,36 @@ let party = new Party();
 
 // Keeps track of miles traveled, possible paths, and landmarks you'll encounter.
 class Locations {
-    constructor() {
-        this.miles = 0;
-        this.fortsPassed = 0;
-        this.landmarksQueue = []
-    }
+	constructor() {
+		this.miles = 0;
+		this.fortsPassed = 0;
+		this.landmarksQueue = []
+	}
 
-    //update our location based on landmarkObjects
-    update(){
-        let landmark = landmarks[party.landmarkIndex];
+	//update our location based on landmarkObjects
+	update(){
+		let landmark = landmarks[party.landmarkIndex];
 
-        if (landmark.fort){
-        	this.fortsPassed++;
+		if (landmark.fort){
+			this.fortsPassed++;
 		}
 		party.milesToNextMark = landmarks[++party.landmarkIndex].distance;
-        console.log(party.milesToNextMark);
-        if (!landmark.generateState){
-        	states.push(new ContinueState("This Landmark Dosen't have a Defined State yet"));
+		console.log(party.milesToNextMark);
+		if (!landmark.generateState){
+			states.push(new ContinueState("This Landmark Dosen't have a Defined State yet"));
 		}
 		else {
-            states.push(landmark.generateState());
-        }
-    }
+			states.push(landmark.generateState());
+		}
+	}
 
-    atShop() {
-        return true
-    }
+	atShop() {
+		return true
+	}
 
-    atRiver() {
-        return true
-    }
+	atRiver() {
+		return true
+	}
 }
 
 let locations = new Locations();
