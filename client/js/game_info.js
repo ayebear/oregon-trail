@@ -54,14 +54,14 @@ class PartyMember {
 
 class Supplies {
 	constructor(){
-		this.money = 0;
-		this.oxen = 0;
-		this.clothSets = 0;
+		this.money = 10;
+		this.oxen = 10;
+		this.clothSets = 10;
 		this.worms = 10;
-		this.wheels = 0;
-		this.axles = 0;
-		this.tongues = 0;
-		this.food = 0;
+		this.wheels = 10;
+		this.axles = 10;
+		this.tongues = 10;
+		this.food =10;
 	}
 
 	decrementFood(change){
@@ -76,6 +76,24 @@ class Supplies {
 		return this.food === 0;
 	}
 }
+// ignore for now 
+class Weather{
+	constructor(){
+		this.temp = 0;
+	}
+	updateWinter(){
+		this.temp = 32 - Math.floor(Math.random())
+	}
+}
+
+class River{
+	constructor(){
+		this.width = 5;
+		this.depth = 3;
+		this.widthB = 5;
+		this.depthB = 5;
+	}
+}
 
 class Party {
 	constructor(){
@@ -85,6 +103,7 @@ class Party {
 		this.wagonState = "stopped"; //stopped, resting, delayed, moving, tipped, or sank
 		this.milesTraveled = 0;	//how many miles the party has traveled
 		this.milesToNextMark = 1000000000;
+		//this.river = new River();
 	}
 
 	// Called initially when player chooses occupation

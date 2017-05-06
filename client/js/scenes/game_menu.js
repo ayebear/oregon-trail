@@ -21,8 +21,6 @@ TODO: Allow player to enter number of bullets to use, then based on location
 */
 //let fishState = new InputState()
 
-
-
 // The main game menu, which can be returned to during travel
 let gameMenu = new MenuState("What would you like to do?", [
 	{text: "Continue on trail", next: new TravelingState()},
@@ -40,5 +38,10 @@ let gameMenu = new MenuState("What would you like to do?", [
 	{text: "Go fishing", next: fishState, show: () => {
 		// Only show if in the wild (not near a fort or landmark)
 		//return false
+	}},
+	{text: "Cross River", next: riverChoices, show: () => {
+		// Only show if in the wild (not near a fort or landmark)
+		//return false
 	}}
+
 ])
