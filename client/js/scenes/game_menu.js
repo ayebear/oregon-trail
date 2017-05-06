@@ -42,18 +42,18 @@ function getPartyHealth(){
 
 // The main game menu, which can be returned to during travel
 let gameMenu = new MenuState("What would you like to do?", [
-	{text: "Continue on trail", next: new TravelingState()},
+	{text: "Continue On Trail", next: new TravelingState()},
 	{text: "Check Supplies", onclick: () => {
 		states.push(new ContinueState(getSupplies()));
 	}},
-	{text: "Check up on everyone", onclick: () => {
+	{text: "Check Up On Everyone", onclick: () => {
 		states.push(new ContinueState(getPartyHealth()));
 	}},
-	{text: "Change pace", next: changePaceState},
-	{text: "Change food rations", next: changeFoodState},
-	{text: "Stop to rest", next: restState},
-	{text: "Attempt to trade", next: tradeState},
-	{text: "Talk to people", onclick: () => {
+	{text: "Change Pace", next: changePaceState},
+	{text: "Change Food Rations", next: changeFoodState},
+	{text: "Stop to Rest", next: restState},
+	{text: "Attempt to Trade", next: tradeState},
+	{text: "Talk to People", onclick: () => {
 		states.push(new ContinueState(randElem(conversations)))
 	}},
 	{text: "Buy Supplies", show: () => {
@@ -63,7 +63,7 @@ let gameMenu = new MenuState("What would you like to do?", [
 			description: "Fort __________"
 		}))
 	}},
-	{text: "Go fishing", next: fishState, show: () => {
+	{text: "Go Fishing", next: fishState, show: () => {
 		//always show fishing for now
 		return true;
 	}}
