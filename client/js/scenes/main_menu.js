@@ -63,3 +63,4 @@ let mainMenu = new MenuState("The Oregon Trail", [
 	{text: "Learn About The Trail", next: learnState},
 	{text: "High Scores", next: highScoresState}
 ])
+

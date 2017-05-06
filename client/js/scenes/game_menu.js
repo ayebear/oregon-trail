@@ -38,8 +38,6 @@ function getPartyHealth(){
 }
 
 
-
-
 // The main game menu, which can be returned to during travel
 let gameMenu = new MenuState("What would you like to do?", [
 	{text: "Continue On Trail", next: new TravelingState()},
@@ -64,7 +62,11 @@ let gameMenu = new MenuState("What would you like to do?", [
 		}))
 	}},
 	{text: "Go Fishing", next: fishState, show: () => {
-		//always show fishing for now
+        //always show fishing for now
+        return true;
+    }},
+	{text: "Cross River", next: riverChoices, show: () => {
+		// Only show if in the wild (not near a fort or landmark)
 		return true;
 	}}
-])
+]);

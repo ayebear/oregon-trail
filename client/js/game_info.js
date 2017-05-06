@@ -139,6 +139,24 @@ class Supplies {
 		return this.food === 0;
 	}
 }
+// ignore for now 
+class Weather{
+	constructor(){
+		this.temp = 0;
+	}
+	updateWinter(){
+		this.temp = 32 - Math.floor(Math.random())
+	}
+}
+
+class River{
+	constructor(){
+		this.width = 5;
+		this.depth = 3;
+		this.widthB = 5;
+		this.depthB = 5;
+	}
+}
 
 class Party {
 	constructor(){
