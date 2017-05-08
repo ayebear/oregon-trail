@@ -2,11 +2,14 @@
 class TravelingState{
 	constructor(){
 		this.timerId = null;
+		this.traveledElement = null;
+		this.nextMarkerElement = null;
+
 	}
 
 	display(){
-		this.root.append(`<h3>Traveling on the trail</h3>`)
-		this.root.append('<div id="menu" class="menu"></div>')
+		this.root.append(`<h3>Traveling on the trail</h3>`);
+		this.root.append(`<div id="menu" class="menu"><div id = "milesTraveled">Miles Traveled: ${party.milesTraveled}</div><div id = "milesToNextMark">Next Landmark: ${party.milesToNextMark}</div></div>`);
 
 		let button = $("<button/>")
 			.text("Size up the Situation")
@@ -14,6 +17,9 @@ class TravelingState{
 				states.pop();
 			})
 		$("#menu").append(button);
+
+		this.traveledElement = $("#milesTraveled");
+		this.nextMarkerElement = $("#milesToNextMark");
 	}
 
 	onEnter(){
@@ -30,47 +36,28 @@ class TravelingState{
 
 	tick(){
 
-
+		let newLandmark = false;
 		let summaryString = "";
-		const foodPerRations = 5;
-		const milesPerPace = 10;
-
-
-		const noFoodChange = -.2;
-		const lowRationsChange = -.1;
-		const highRationsChange = .1;
-
-		const highPaceChange = -.1;
-		const lowPaceChange = .1;
-
 		const debug = true;
 
 		function decFood(){
-			party.supplies.decrementFood(party.rations * foodPerRations);
+			party.supplies.decrementFood(party.rationsValue.pounds * party.paceValue.food);
 		}
 
+		//returns true if we hit a new landmark
 		function incMiles(){
-			let milesTraveled = (party.pace + 1) * milesPerPace;
-			party.incrementMiles(milesTraveled);
+			party.incrementMiles(party.paceValue.speed * party.supplies.oxen * oxenMilesPerDay, () => {
+				newLandmark = true;
+			});
 		}
 
 		function updateHealth(){
-			let partyChange = 0; //net change for entire party
+			//net health change for entire party
+			let partyChange = party.paceValue.health + party.rationsValue.health;
 
 			//update based on food/rations
 			if (party.supplies.noFood())
 				partyChange += noFoodChange;
-			else if (party.rations === 1)
-				partyChange += lowRationsChange;
-			else if (party.rations === 3)
-				partyChange += highRationsChange;
-
-			//update based on pace;
-			if (party.pace === 1)
-				partyChange += lowPaceChange;
-			else if (party.pace ===3)
-				partyChange += highPaceChange;
-
 
 			//go through partyMembers, apply health change based on diseases + base party change
 			for(let partyMember of party.partyMembers) {
@@ -87,12 +74,19 @@ class TravelingState{
 
 		}
 
+
+
+		//increment miles based on pace
+		//if we hit a new landmark when incrementing miles
+		incMiles();
+		decFood(); 	//lower food based on rations
+		updateHealth();
+
 		// Increment Date
 		party.nextDay();
 
-		decFood(); 	//lower food based on rations
-		incMiles(); //increment miles based on pace
-		updateHealth();
+		this.nextMarkerElement.text(`Next Landmark: ${party.milesToNextMark}`);
+		this.traveledElement.text(`Miles Traveled: ${party.milesTraveled}`);
 
 		if (debug){
 			console.log("---------------------");
@@ -106,10 +100,18 @@ class TravelingState{
 		}
 
 		// Display any events that occurred along the trail
-		if (summaryString.length){
+		if (summaryString.length && newLandmark){
+			states.push(new ContinueState(summaryString), locations.update);
+		}
+		else if (summaryString.length){
 			states.push(new ContinueState(summaryString));
-		} else {
+		}
+		else if (newLandmark){
+			locations.update();
+		}
+		else {
 			this.requestTick();
 		}
 	}
+
 }

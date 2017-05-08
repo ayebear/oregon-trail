@@ -3,45 +3,71 @@ let acceptTradeState = new ContinueState("Bob was taken into slavery, you were g
 let declineTradeState = new ContinueState("Bob was happy that you decided to keep him.")
 
 let changePaceState = new MenuState("Choose the pace you will travel at:", [
-	{text: "Grueling (100%)", onclick: () => { party.pace = 3; states.pop() }},
-	{text: "Strenuous (75%)", onclick: () => { party.pace = 2; states.pop() }},
-	{text: "Steady (50%)", onclick: () => { party.pace = 1; states.pop() }},
+	{text: "Grueling (100%)", onclick: () => { party.pace = "grueling"; states.pop() }},
+	{text: "Strenuous (75%)", onclick: () => { party.pace = "strenuous"; states.pop() }},
+	{text: "Steady (50%)", onclick: () => { party.pace = "steady"; states.pop() }},
 	{text: "Cancel", onclick: () => { states.pop() }}
 ])
 
-let changeFoodState = new ContinueState("Choose the food ration size:")
+let changeFoodState = new MenuState("The amount of food the people in your party eat each day can change. These amounts are:", [
+	{text: "Filling - Meals are large and generous", onclick: () => { party.rations = "filling"; states.pop() }},
+	{text: "Meager - Meals are small, but adequate", onclick: () => { party.rations = "meager"; states.pop() }},
+	{text: "Bare bones - Meals are very small; everyone stays hungry", onclick: () => { party.rations = "bareBones"; states.pop() }},
+	{text: "Cancel", onclick: () => { states.pop() }}
+])
 
 let tradeState = temporary(new QuestionState("Would you like to trade one of your party members for 3 pounds of food?", acceptTradeState, declineTradeState))
 
-let shopState = new ContinueState("Welcome to the shop. What would you like?")
+function getSupplies(){
 
-/*
-TODO: Allow player to enter number of bullets to use, then based on location
-	and some RNG, show a result on how much food was collected.
-*/
-//let fishState = new InputState()
+	return `<p> Oxen: ${party.supplies.oxen} </p>
+	<p> Sets of Clothing: ${party.supplies.clothSets} </p>
+	<p> Pounds of Food: ${party.supplies.food.toFixed(1)} </p>
+	<p> Wagon Wheels: ${party.supplies.wheels} </p>
+	<p> Wagon Axles: ${party.supplies.axles} </p>
+	<p> Wagon Tounges: ${party.supplies.clothSets} </p>
+	<p> Money Left: $${party.supplies.money.toFixed(2)} </p>`;
+}
+
+function getPartyHealth(){
+	let healthString = "";
+	for (let partyMember of party.members){
+		healthString += `<p> ${partyMember.name} : ${partyMember.healthString()} </p>`;
+	}
+	return healthString
+}
+
 
 // The main game menu, which can be returned to during travel
 let gameMenu = new MenuState("What would you like to do?", [
-	{text: "Continue on trail", next: new TravelingState()},
-	{text: "Change pace", next: changePaceState},
-	{text: "Change food rations", next: changeFoodState},
-	{text: "Stop to rest", next: restState},
-	{text: "Attempt to trade", next: tradeState},
-	{text: "Talk to people", onclick: () => {
+	{text: "Continue On Trail", next: new TravelingState()},
+	{text: "Check Supplies", onclick: () => {
+		states.push(new ContinueState(getSupplies()));
+	}},
+	{text: "Check Up On Everyone", onclick: () => {
+		states.push(new ContinueState(getPartyHealth()));
+	}},
+	{text: "Change Pace", next: changePaceState},
+	{text: "Change Food Rations", next: changeFoodState},
+	{text: "Stop to Rest", next: restState},
+	{text: "Attempt to Trade", next: tradeState},
+	{text: "Talk to People", onclick: () => {
 		states.push(new ContinueState(randElem(conversations)))
 	}},
-	{text: "Buy Supplies", next: shopState, show: () => {
-		// TODO: Only show if near a shop/fort
-		return false
+	{text: "Buy Supplies", show: () => {
+		return locations.atShop()
+	}, onclick: () => {
+		states.push(makeStore({
+			description: "Fort __________"
+		}))
 	}},
 	{text: "Go fishing", next: fishState, show: () => {
 		// Only show if in the wild (not near a fort or landmark)
-		//return false
+		return true;
 	}},
 	{text: "Cross River", next: riverChoices, show: () => {
 		// Only show if in the wild (not near a fort or landmark)
 		//return false
-	}}
+  }}
 
 ])

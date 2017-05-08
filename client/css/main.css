@@ -1,17 +1,39 @@
+@font-face {
+	font-family: "Apple-2";
+	src: url(../data/font/Apple.ttf) format("truetype");
+}
+
+body {
+	background-color:black;
+	color:white;
+}
+
 #game {
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
 	width: 50%;
+	font-family: Apple-2;
+	font-size: 1em;
+
+}
+
+button {
+	margin: auto;
 }
 
 .menu button {
-	background-color: #2265A3;
+	margin-top: 5px;
+	background-color: #222;
 	border: 2px solid gray;
+	border-radius: 4px;
 	color: white;
 	padding: 12px 24px;
 	cursor: pointer;
-	width: 100%;
+	width: 75%;
 	display: block;
 	font-size: 1em;
-	font-family: sans-serif;
+	font-family: Apple-2;
 }
 
 .menu button:not(:last-child) {
@@ -19,8 +41,7 @@
 }
 
 .menu button:hover {
-	color: black;
-	background-color: #6FDFFF;
+	background-color: gray;
 	font-weight: bold;
 }
 
@@ -29,7 +50,7 @@
 }
 
 .menu input[type] {
-	width: 100%;
+	width: 75%;
 	padding: 12px 24px;
 	margin: 8px 0;
 	box-sizing: border-box;
@@ -37,9 +58,51 @@
 	border-radius: 4px;
 	display: block;
 	font-size: 1em;
-	font-family: sans-serif;
+	font-family: Apple-2;
+	color: white;
+	background-color: #222;
 }
 
 .menu h1, h2, h3, h4, h5, h6 {
-	font-family: sans-serif;
+	font-family: Apple-2;
+}
+
+.store button {
+	width: 192px;
+	background-color: #222;
+	border: 2px solid gray;
+	border-radius: 4px;
+	color: white;
+	padding: 12px 24px;
+	cursor: pointer;
+	display: block;
+	font-size: 1em;
+	font-family: Apple-2;
+}
+
+.store button:hover {
+	background-color: gray;
+	font-weight: bold;
+}
+
+.store button:disabled {
+	background-color: #555;
+}
+
+.store input[type] {
+	width: 128px;
+	padding: 12px 24px;
+	margin: 8px 0;
+	box-sizing: border-box;
+	border: 2px solid gray;
+	border-radius: 4px;
+	/*display: block;*/
+	font-size: 1em;
+	font-family: Apple-2;
+	color: white;
+	background-color: #222;
+}
+
+.store h1, h2, h3, h4, h5, h6 {
+	font-family: Apple-2;
 }
