@@ -136,7 +136,7 @@ class Supplies {
 		return this.food === 0;
 	}
 }
-// ignore for now 
+// ignore for now
 class Weather{
 	constructor(){
 		this.temp = 0;
@@ -147,15 +147,15 @@ class Weather{
 }
 
 class Party {
-    constructor() {
-        this.landmarkIndex = 0;
-        this.supplies = new Supplies();
-        this.pace = "steady";
-        this.rations = "filling";
-        this.wagonState = "stopped"; //stopped, resting, delayed, moving, tipped, or sank
-        this.milesTraveled = 0;	//how many miles the party has traveled
-        this.milesToNextMark = landmarks[0].distance;
-    }
+	constructor() {
+		this.landmarkIndex = 0;
+		this.supplies = new Supplies();
+		this.pace = "steady";
+		this.rations = "filling";
+		this.wagonState = "stopped"; //stopped, resting, delayed, moving, tipped, or sank
+		this.milesTraveled = 0;	//how many miles the party has traveled
+		this.milesToNextMark = landmarks[0].distance;
+	}
 
 
 	get rationsValue()
@@ -226,40 +226,40 @@ class Party {
 
 }
 
-    let party = new Party();
+	let party = new Party();
 
 // Keeps track of miles traveled, possible paths, and landmarks you'll encounter.
-    class Locations {
-    constructor() {
-        this.miles = 0;
-        this.fortsPassed = 0;
-        this.landmarksQueue = []
-    }
+	class Locations {
+	constructor() {
+		this.miles = 0;
+		this.fortsPassed = 0;
+		this.landmarksQueue = []
+	}
 
-    //update our location based on landmarkObjects
-    update() {
-        let landmark = landmarks[party.landmarkIndex];
+	//update our location based on landmarkObjects
+	update() {
+		let landmark = landmarks[party.landmarkIndex];
 
-        if (landmark.fort) {
-            this.fortsPassed++;
-        }
-        party.milesToNextMark = landmarks[++party.landmarkIndex].distance;
-        console.log(party.milesToNextMark);
-        if (!landmark.generateState) {
-            states.push(new ContinueState("This Landmark Dosen't have a Defined State yet"));
-        }
-        else {
-            states.push(landmark.generateState());
-        }
-    }
+		if (landmark.fort) {
+			this.fortsPassed++;
+		}
+		party.milesToNextMark = landmarks[++party.landmarkIndex].distance;
+		console.log(party.milesToNextMark);
+		if (!landmark.generateState) {
+			states.push(new ContinueState("This Landmark Dosen't have a Defined State yet"));
+		}
+		else {
+			states.push(landmark.generateState());
+		}
+	}
 
-    atShop() {
-        return true
-    }
+	atShop() {
+		return true
+	}
 
-    atRiver() {
-        return true
-    }
+	atRiver() {
+		return true
+	}
 }
 
 let locations = new Locations();

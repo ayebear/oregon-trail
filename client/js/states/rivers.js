@@ -1,35 +1,35 @@
 class RiverState extends MenuState {
-    constructor(width, depth, canFerry, canIndian) {
+	constructor(width, depth, canFerry, canIndian) {
 
-    	let choiceArray = [
-    		{
+		let choiceArray = [
+			{
 				text: "Attempt to ford the river", onclick: () => {
 					this.fordingOption();
 				}
 			},
-            {
-                text: "Attempt to chaulk the river", onclick: () => {
-                this.chaulkingOption(); // << this is done before ^^
-            }
-            },
-            {
-                text: "Rest", onclick: () => {
-                states.push(restState); // doest work?
-            }
-            },
-            {
-                text: "Learn about the options", onclick: () => {
-                states.push(new ContinueState("Fording: making your oxens swim across the river. Not advised for depths greater than 3 feet <br><br> Chaulking: Seal and Float your wagon across the river <br><br> Ferry/Indian: Safest way across a river <br><br> Rest: Rest and see if the river depth will change enough for you to pass"));
-            }
-            }];
+			{
+				text: "Attempt to chaulk the river", onclick: () => {
+				this.chaulkingOption(); // << this is done before ^^
+			}
+			},
+			{
+				text: "Rest", onclick: () => {
+				states.push(restState); // doest work?
+			}
+			},
+			{
+				text: "Learn about the options", onclick: () => {
+				states.push(new ContinueState("Fording: making your oxens swim across the river. Not advised for depths greater than 3 feet <br><br> Chaulking: Seal and Float your wagon across the river <br><br> Ferry/Indian: Safest way across a river <br><br> Rest: Rest and see if the river depth will change enough for you to pass"));
+			}
+			}];
 
-    	if (canFerry){
-    		choiceArray.splice(2,0,
-                {
-                    text: "Hire a ferry for $50", /*next: ferryState,*/ onclick: () => {
-                    	this.ferryOption();
+		if (canFerry){
+			choiceArray.splice(2,0,
+				{
+					text: "Hire a ferry for $50", /*next: ferryState,*/ onclick: () => {
+						this.ferryOption();
 					}
-                });
+				});
 		}
 
 		if (canIndian){
@@ -41,14 +41,14 @@ class RiverState extends MenuState {
 				});
 		}
 
-        super(`Weather: cool. <br><br>River width: ${width} feet. <br><br>River depth: ${depth} feet deep`,choiceArray);
+		super(`Weather: cool. <br><br>River width: ${width} feet. <br><br>River depth: ${depth} feet deep`,choiceArray);
 
-        this.width = width;
-        this.depth = depth;
+		this.width = width;
+		this.depth = depth;
 	}
 
 
-    failed(){
+	failed(){
 		let suppliesArray = [party.supplies.oxen, party.supplies.clothSets, party.supplies.worms,
 			party.supplies.wheels, party.supplies.axles, party.supplies.tongues, party.supplies.food];
 		let random = Math.floor(Math.random() * suppliesArray.length); // randomly picks something to lose in the array
@@ -104,33 +104,33 @@ class RiverState extends MenuState {
 		}
 	}
 
-    successCrossing() {
+	successCrossing() {
 		states.push(new ContinueState("You have safely crossed the river!", null, () => states.push(gameMenu)));
 	}
 
 	ferryOption(){
-        let money = party.supplies.money;
-        if (money >= 50) {
-            party.supplies.money -= 50;
-            states.push(new ContinueState("You took the ferry for 50 dollars", null, () => states.push(gameMenu)));
-        }
-        else {
-            states.push(new ContinueState("You do not have enough money to take the ferry"));
-        }
+		let money = party.supplies.money;
+		if (money >= 50) {
+			party.supplies.money -= 50;
+			states.push(new ContinueState("You took the ferry for 50 dollars", null, () => states.push(gameMenu)));
+		}
+		else {
+			states.push(new ContinueState("You do not have enough money to take the ferry"));
+		}
 	}
 
 	indianOption(){
 		let clothSets = party.supplies.clothSets;
 		if (clothSets >= 3){
-            party.supplies.clothSets -= 3;
-            states.push(new ContinueState("You gave the Indian 3 Sets of Clothing for Help crossing the river", null, () => states.push(gameMenu)));
-        }
-        else {
-            states.push(new ContinueState("You don't have enough Clothes to give the Indian"));
-        }
+			party.supplies.clothSets -= 3;
+			states.push(new ContinueState("You gave the Indian 3 Sets of Clothing for Help crossing the river", null, () => states.push(gameMenu)));
+		}
+		else {
+			states.push(new ContinueState("You don't have enough Clothes to give the Indian"));
+		}
 	}
 
-    fordingOption() {
+	fordingOption() {
 		let x = this.width; // need to update later depending on river actual depth
 		let y = this.depth;
 
@@ -160,8 +160,8 @@ class RiverState extends MenuState {
 		}
 	}
 
-    chaulkingOption(){
-    	let random = Math.floor(Math.random() * 100);
+	chaulkingOption(){
+		let random = Math.floor(Math.random() * 100);
 		if(random <= 70){ // 55 % chance of success
 			this.successCrossing();
 		}
