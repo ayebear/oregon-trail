@@ -111,6 +111,17 @@ class PartyMember {
 
 }
 
+const itemPlural = {
+	money: "dollars",
+	oxen: "oxen",
+	clothSets: "sets of clothes",
+	worms: "worms",
+	wheels: "wagon wheels",
+	axles: "wagon axles",
+	tongues: "wagon tongues",
+	food: "pounds of food",
+}
+
 class Supplies {
 	constructor(){
 
@@ -226,10 +237,10 @@ class Party {
 
 }
 
-	let party = new Party();
+let party = new Party();
 
 // Keeps track of miles traveled, possible paths, and landmarks you'll encounter.
-	class Locations {
+class Locations {
 	constructor() {
 		this.miles = 0;
 		this.fortsPassed = 0;

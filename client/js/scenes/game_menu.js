@@ -52,7 +52,7 @@ let gameMenu = new MenuState("What would you like to do?", [
 	{text: "Stop to Rest", next: restState},
 	{text: "Attempt to Trade", next: tradeState},
 	{text: "Talk to People", onclick: () => {
-		states.push(new ContinueState(randElem(conversations)))
+		states.push(new ContinueState(randValue(conversations)))
 	}},
 	{text: "Buy Supplies", show: () => {
 		return locations.atShop()
@@ -61,7 +61,7 @@ let gameMenu = new MenuState("What would you like to do?", [
 			description: "Fort __________"
 		}))
 	}},
-	{text: "Go fishing", next: fishState, show: () => {
+	{text: "Go Fishing", next: fishState, show: () => {
 		// Only show if in the wild (not near a fort or landmark)
 		return true;
 	}}
