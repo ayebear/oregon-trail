@@ -92,8 +92,8 @@ button {
 .store input[type] {
 	width: 128px;
 	padding: 12px 24px;
-	margin: 8px 0;
-	box-sizing: border-box;
+	/*margin: 8px 0;*/
+	/*box-sizing: border-box;*/
 	border: 2px solid gray;
 	border-radius: 4px;
 	/*display: block;*/
@@ -105,4 +105,24 @@ button {
 
 .store h1, h2, h3, h4, h5, h6 {
 	font-family: Apple-2;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+	border: 2px solid gray;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+	background-color: #111
+}
+
+th {
+    background-color: #444;
+    color: white;
 }

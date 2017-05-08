@@ -23,6 +23,8 @@ function makeStore(options) {
 		}
 	}
 
+	options.get = id => party.supplies[id]
+
 	// Adjust prices
 	for (let item of options.items) {
 		item.price += (0.25 * locations.fortsPassed * item.price)

@@ -11,30 +11,37 @@ class StoreState extends ContinueState {
 	display() {
 		super.display()
 
-		// TODO: Table layout:
-		// Item | Price | Amount to buy | Cost | You own
-		// Food | $10   | ______5______ | $50  | 3
-
 		let store = $("<div/>").attr("id", "store").attr("class", "store")
+		let table = $("<table/>").appendTo(store)
+		table.append("<tr><th>Item</th><th>Price</th><th>Quantity</th><th>Cost</th><th>You own</th></tr>")
 
 		// Create store items
 		for (let item of this.options.items) {
 			// Set default quantity
 			item.quantity = 0
 
+			let storeItem = $("<tr/>").attr("id", item.id).appendTo(table)
+
+			storeItem.append(`<td>${item.name}</td>`)
+
+			storeItem.append(`<td>$${item.price.toFixed(2)}</td>`)
+
 			// Each item has a name, price, quantity input, and buy button
-			let storeItem = $("<div/>").attr("id", item.id)
-			storeItem.append($(`<span>${item.name}: $${item.price.toFixed(2)} x </span>`))
-			storeItem.append($("<input/>")
+			$("<td/>").append($("<input/>")
 				.val(item.quantity)
-				.attr("id", item.id)
+				.attr("id", `Quantity${item.id}`)
 				.attr("type", "number")
 				.attr("min", 0)
 				.change(e => {
 					item.quantity = parseInt($(e.target).val())
 					this.update()
-				}))
-			storeItem.append($(`<span> = $<span id="itemPrice"></span></span>`))
+				})).appendTo(storeItem)
+
+			storeItem.append(`<td>$<span id="itemPrice"></span></td>`)
+
+			let current = invoke(this.options, "get", item.id) || 0
+			storeItem.append(`<td>${current}</td>`)
+
 			store.append(storeItem)
 		}
 
