@@ -47,7 +47,8 @@ class StateStack {
 	}
 
 	// Goes back to the parent state
-	pop(...args) {
+	// Pops all the way back to an optionally specified state by name
+	pop(stateName, ...args) {
 		if (this.state && this.state.parent) {
 			let childState = this.state
 
@@ -68,6 +69,14 @@ class StateStack {
 			// Pop temporary states when re-entered from a pop
 			if (this.state.temporary === true) {
 				this.pop(...args)
+			}
+
+			// Pop back to the state with this state name
+			// If not found, then the stack will be popped back to the initial state
+			if (stateName) {
+				while (stateName !== this.state.stateName && this.state.parent) {
+					this.pop(...args)
+				}
 			}
 		}
 
