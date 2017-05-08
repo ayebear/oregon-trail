@@ -24,12 +24,8 @@ const rationTypes = {
 
 const landmarks = [
 	{name: "Independence, MO", distance: 1, generateState: () => {return new ContinueState("Leaving Independence, MO")}},
-	{name: "Kansas River Crossing", distance: 102, river: {
-		ferry: true,
-		depth: 6.5,
-		width: 120
-	}},
-	{name: "Big Blue River Crossing", distance: 83},
+	{name: "Kansas River Crossing", distance: 102,  generateState: () => {return new RiverState(12,18, true, false)}},
+	{name: "Big Blue River Crossing", distance: 83,  generateState: () => {return new RiverState(12,18, false, false)}},
 	{name: "Fort Kearney", distance: 119, fort: true},
 	{name: "Chimney Rock", distance: 250},
 	{name: "Fort Laramie", distance: 86},
@@ -45,7 +41,7 @@ const landmarks = [
 		]
 	]},
 	{name: "Fort Hall", distance: 57},
-	{name: "Snake River Crossing", distance: 182},
+	{name: "Snake River Crossing", distance: 182, generateState: () => {return new RiverState(12,18, false, true)}},
 	{name: "Fort Boise", distance: 114},
 	{name: "Blue Mountains", distance: 160, choices: [
 		[
@@ -146,15 +142,6 @@ class Weather{
 	}
 	updateWinter(){
 		this.temp = 32 - Math.floor(Math.random())
-	}
-}
-
-class River{
-	constructor(){
-		this.width = 5;
-		this.depth = 3;
-		this.widthB = 5;
-		this.depthB = 5;
 	}
 }
 

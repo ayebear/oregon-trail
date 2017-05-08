@@ -7,14 +7,14 @@ let changePaceState = new MenuState("Choose the pace you will travel at:", [
 	{text: "Strenuous (75%)", onclick: () => { party.pace = "strenuous"; states.pop() }},
 	{text: "Steady (50%)", onclick: () => { party.pace = "steady"; states.pop() }},
 	{text: "Cancel", onclick: () => { states.pop() }}
-])
+]);
 
 let changeFoodState = new MenuState("The amount of food the people in your party eat each day can change. These amounts are:", [
 	{text: "Filling - Meals are large and generous", onclick: () => { party.rations = "filling"; states.pop() }},
 	{text: "Meager - Meals are small, but adequate", onclick: () => { party.rations = "meager"; states.pop() }},
 	{text: "Bare bones - Meals are very small; everyone stays hungry", onclick: () => { party.rations = "bareBones"; states.pop() }},
 	{text: "Cancel", onclick: () => { states.pop() }}
-])
+]);
 
 let tradeState = temporary(new QuestionState("Would you like to trade one of your party members for 3 pounds of food?", acceptTradeState, declineTradeState))
 
@@ -64,9 +64,5 @@ let gameMenu = new MenuState("What would you like to do?", [
 	{text: "Go Fishing", next: fishState, show: () => {
         //always show fishing for now
         return true;
-    }},
-	{text: "Cross River", next: riverChoices, show: () => {
-		// Only show if in the wild (not near a fort or landmark)
-		return true;
-	}}
+    }}
 ]);
