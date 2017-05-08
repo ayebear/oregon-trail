@@ -170,4 +170,3 @@ class RiverState extends MenuState {
 		}
 	}
 }
-
