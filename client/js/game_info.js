@@ -146,16 +146,6 @@ class Weather{
 	}
 }
 
-
-class River{
-	constructor(){
-		this.width = 5;
-		this.depth = 3;
-		this.widthB = 5;
-		this.depthB = 5;
-	}
-}
-
 class Party {
     constructor() {
         this.landmarkIndex = 0;
