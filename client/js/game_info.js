@@ -224,16 +224,6 @@ class Party {
 
 	}
 
-	//returns the pace in string format;
-	get paceString()
-	{
-		return paceArray[this.pace - 1];
-	}
-
-	get rationsString()
-	{
-		return rationsArray[this.rations - 1];
-	}
 }
 
     let party = new Party();
