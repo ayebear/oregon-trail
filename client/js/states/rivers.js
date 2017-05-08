@@ -14,7 +14,7 @@ class RiverState extends MenuState {
 			},
 			{
 				text: "Rest", onclick: () => {
-					states.push(restState); // doest work?
+					states.push(restState);
 				}
 			},
 			{
@@ -49,7 +49,7 @@ class RiverState extends MenuState {
 			party.supplies[item] -= lost;
 
 			// Show result to user
-			states.push(new ContinueState(`You crossed the river, but lost ${lost} ${itemPlural[item]}!`));
+			states.push(new ContinueState(`You crossed the river, but lost ${lost} ${itemPlural[item]}!`, undefined, () => states.pop("gameMenu")));
 		} else {
 			// Player has nothing to lose!
 			this.successCrossing();
@@ -57,13 +57,13 @@ class RiverState extends MenuState {
 	}
 
 	successCrossing() {
-		states.push(new ContinueState("You have safely crossed the river!", null, () => states.push(gameMenu)));
+		states.push(new ContinueState("You have safely crossed the river!", undefined, () => states.pop("gameMenu")));
 	}
 
 	ferryOption(){
 		if (party.supplies.money >= 50) {
 			party.supplies.money -= 50;
-			states.push(new ContinueState("You took the ferry for 50 dollars", null, () => states.push(gameMenu)));
+			states.push(new ContinueState("You took the ferry for 50 dollars", undefined, () => states.pop("gameMenu")));
 		} else {
 			states.push(new ContinueState("You do not have enough money to take the ferry"));
 		}
@@ -72,7 +72,7 @@ class RiverState extends MenuState {
 	indianOption(){
 		if (party.supplies.clothSets >= 3) {
 			party.supplies.clothSets -= 3;
-			states.push(new ContinueState("You gave the Indian 3 Sets of Clothing for Help crossing the river", null, () => states.push(gameMenu)));
+			states.push(new ContinueState("You gave the Indian 3 Sets of Clothing for Help crossing the river", undefined, () => states.pop("gameMenu")));
 		} else {
 			states.push(new ContinueState("You don't have enough Clothes to give the Indian"));
 		}

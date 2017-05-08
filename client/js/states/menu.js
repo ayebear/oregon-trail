@@ -8,6 +8,9 @@ Choice object:
 	onclick: Runs when the button is clicked
 	next: Pushes this state after the button is clicked (always runs after onclick)
 	show: Callback which must explicitly return false to hide the menu item
+
+TODO:
+	Allow "next" to be a class, and have an optional forwarded array of "args"
 */
 class MenuState {
 	constructor(description, choices) {

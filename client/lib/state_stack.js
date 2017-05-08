@@ -7,6 +7,12 @@ States can contain:
 	onPop(args): Called when this state is removed (args are forwarded from StateStack::pop)
 	onEnter(): Called when a state is added/returned back to
 	onExit(): Called when a state is left/removed
+
+Note:
+	Calling push() with a state that is currently a parent in the chain, will break the chain.
+	Reusing states is fine, as long as they were previously popped.
+	Try to use pop() with named states to prevent endlessly calling push().
+	If we need to support pushing duplicate states, we can use an array instead of the tree-chain structure.
 */
 class StateStack {
 	constructor(initialState = undefined, rootElement = "#game", ...args) {
