@@ -7,6 +7,12 @@ States can contain:
 	onPop(args): Called when this state is removed (args are forwarded from StateStack::pop)
 	onEnter(): Called when a state is added/returned back to
 	onExit(): Called when a state is left/removed
+
+Note:
+	Calling push() with a state that is currently a parent in the chain, will break the chain.
+	Reusing states is fine, as long as they were previously popped.
+	Try to use pop() with named states to prevent endlessly calling push().
+	If we need to support pushing duplicate states, we can use an array instead of the tree-chain structure.
 */
 class StateStack {
 	constructor(initialState = undefined, rootElement = "#game", ...args) {
@@ -25,7 +31,7 @@ class StateStack {
 
 	// Switches to a new state object, sets its parent, triggers onPush, and displays it
 	push(newState, ...args) {
-		if (newState) {
+		if (newState && typeof newState === 'object') {
 			// Set parent and root element (undefined parent means this is the root)
 			newState.parent = this.state
 			newState.root = this.root
@@ -47,7 +53,8 @@ class StateStack {
 	}
 
 	// Goes back to the parent state
-	pop(...args) {
+	// Pops all the way back to an optionally specified state by name
+	pop(stateName, ...args) {
 		if (this.state && this.state.parent) {
 			let childState = this.state
 
@@ -68,6 +75,14 @@ class StateStack {
 			// Pop temporary states when re-entered from a pop
 			if (this.state.temporary === true) {
 				this.pop(...args)
+			}
+
+			// Pop back to the state with this state name
+			// If not found, then the stack will be popped back to the initial state
+			if (stateName) {
+				while (stateName !== this.state.stateName && this.state.parent) {
+					this.pop(...args)
+				}
 			}
 		}
 

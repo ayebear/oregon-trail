@@ -32,7 +32,7 @@ function getSupplies(){
 function getPartyHealth(){
 	let healthString = "";
 	for (let partyMember of party.members){
-		healthString += `<p> ${partyMember.name} : ${partyMember.healthString()} </p>`;
+		healthString += `<p>${partyMember.name}: ${partyMember.healthString()}</p>`;
 	}
 	return healthString
 }
@@ -49,20 +49,20 @@ let gameMenu = new MenuState("What would you like to do?", [
 	}},
 	{text: "Change Pace", next: changePaceState},
 	{text: "Change Food Rations", next: changeFoodState},
-	{text: "Stop to Rest", next: restState},
+	{text: "Stop to Rest", next: RestState},
 	{text: "Attempt to Trade", next: tradeState},
 	{text: "Talk to People", onclick: () => {
-		states.push(new ContinueState(randElem(conversations)))
+		states.push(new ContinueState(randValue(conversations)));
 	}},
 	{text: "Buy Supplies", show: () => {
-		return locations.atShop()
+		return locations.atShop();
 	}, onclick: () => {
 		states.push(makeStore({
 			description: "Fort __________"
 		}))
 	}},
-	{text: "Go fishing", next: fishState, show: () => {
-		// Only show if in the wild (not near a fort or landmark)
-		return true;
+	{text: "Go Fishing", next: fishState, show: () => {
+		return locations.atRiver();
 	}}
 ]);
+gameMenu.stateName = "gameMenu";
