@@ -40,7 +40,7 @@ function getPartyHealth(){
 
 // The main game menu, which can be returned to during travel
 let gameMenu = new MenuState("What would you like to do?", [
-	{text: "Continue On Trail", next: new TravelingState()},
+	{text: "Continue On Trail", next: new TravelingState(), onclick: () => {locations.atShop = false}},
 	{text: "Check Supplies", onclick: () => {
 		states.push(new ContinueState(getSupplies()));
 	}},
@@ -55,10 +55,10 @@ let gameMenu = new MenuState("What would you like to do?", [
 		states.push(new ContinueState(randValue(conversations)));
 	}},
 	{text: "Buy Supplies", show: () => {
-		return locations.atShop();
+		return locations.canShop();
 	}, onclick: () => {
 		states.push(makeStore({
-			description: "Fort __________"
+			description: locations.shopName
 		}))
 	}},
 	{text: "Go Fishing", next: fishState, show: () => {
