@@ -25,7 +25,7 @@ const landmarks = [
 	{name: "Big Blue River Crossing", distance: 83,  generateState: () => {return new RiverState(12,18, false, false)}},
 	{name: "Fort Kearney", distance: 119, generateState: () => {return locations.generateFort("Fort Kearney")}},
 	{name: "Chimney Rock", distance: 250},
-	{name: "Fort Laramie", distance: 86},
+	{name: "Fort Laramie", distance: 86, generateState: () => {return locations.generateFort("Fort Laramie")}},
 	{name: "Independence Rock", distance: 190},
 	{name: "South Pass", distance: 102, choices: [
 		[
@@ -33,16 +33,16 @@ const landmarks = [
 			{name: "Soda Springs", distance: 144}
 		],
 		[
-			{name: "Fort Bridger", distance: 125},
+			{name: "Fort Bridger", distance: 125, generateState: () => {return locations.generateFort("Fort Bridger")}},
 			{name: "Soda Springs", distance: 162}
 		]
 	]},
-	{name: "Fort Hall", distance: 57},
+	{name: "Fort Hall", distance: 57, generateState: () => {return locations.generateFort("Fort Hall")}},
 	{name: "Snake River Crossing", distance: 182, generateState: () => {return new RiverState(12,18, false, true)}},
-	{name: "Fort Boise", distance: 114},
+	{name: "Fort Boise", distance: 114, generateState: () => {return locations.generateFort("Fort Boise")}},
 	{name: "Blue Mountains", distance: 160, choices: [
 		[
-			{name: "Fort Walla Walla", distance: 55},
+			{name: "Fort Walla", distance: 55, generateState: () => {return locations.generateFort("Fort Walla")}},
 			{name: "The Dalles", distance: 120}
 		],
 		[
