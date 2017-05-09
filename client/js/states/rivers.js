@@ -15,6 +15,16 @@ class RiverState extends MenuState {
 					this.chaulkingOption(); // << this is done before ^^
 				}
 			},
+            {
+                show: canFerry, text: "Hire a ferry for $50", /*next: ferryState,*/ onclick: () => {
+                	this.ferryOption();
+				}
+            },
+            {
+                show: canIndian, text: "Hire an Indian for 3 sets of clothing", /*next: ferryState,*/ onclick: () => {
+                	this.indianOption();
+				}
+			},
 			{
 				text: "Rest", next: RestState, args: [days => {
 					console.log('Rested for', days, 'days.');
@@ -34,16 +44,6 @@ class RiverState extends MenuState {
 				text: "Learn about the options", onclick: () => {
 					states.push(new ContinueState("Fording: making your oxens swim across the river. Not advised for depths greater than 3 feet <br><br> Chaulking: Seal and Float your wagon across the river <br><br> Ferry/Indian: Safest way across a river <br><br> Rest: Rest and see if the river depth will change enough for you to pass"));
 				}
-			},
-			{
-				show: canFerry, text: "Hire a ferry for $50", /*next: ferryState,*/ onclick: () => {
-					this.ferryOption();
-				}
-			},
-			{
-				show: canIndian, text: "Hire an Indian for 3 sets of clothing", /*next: ferryState,*/ onclick: () => {
-					this.indianOption();
-				}
 			}
 		];
 	}
@@ -52,7 +52,7 @@ class RiverState extends MenuState {
 		this.description = `Weather: cool. <br><br>River width: ${this.width} feet. <br><br>River depth: ${this.depth} feet deep`;
 	}
 
-	onEnter() {1
+	onEnter() {
 		this.updateDescription()
 	}
 

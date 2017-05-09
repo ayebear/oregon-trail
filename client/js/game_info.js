@@ -19,16 +19,13 @@ const rationTypes = {
 	bareBones: {pounds: 1, health: -0.1},
 };
 
-// Note: "distance" is miles to this landmark
-// TODO: Associate states with these, and trigger those states when the landmarks are reached
 
 const landmarks = [
-	{name: "Independence, MO", distance: 1, generateState: () => {return new ContinueState("Leaving Independence, MO")}},
 	{name: "Kansas River Crossing", distance: 102,  generateState: () => {return new RiverState(12,18, true, false)}},
 	{name: "Big Blue River Crossing", distance: 83,  generateState: () => {return new RiverState(12,18, false, false)}},
-	{name: "Fort Kearney", distance: 119, fort: true},
+	{name: "Fort Kearney", distance: 119, generateState: () => {return locations.generateFort("Fort Kearney")}},
 	{name: "Chimney Rock", distance: 250},
-	{name: "Fort Laramie", distance: 86},
+	{name: "Fort Laramie", distance: 86, generateState: () => {return locations.generateFort("Fort Laramie")}},
 	{name: "Independence Rock", distance: 190},
 	{name: "South Pass", distance: 102, choices: [
 		[
@@ -36,16 +33,16 @@ const landmarks = [
 			{name: "Soda Springs", distance: 144}
 		],
 		[
-			{name: "Fort Bridger", distance: 125},
+			{name: "Fort Bridger", distance: 125, generateState: () => {return locations.generateFort("Fort Bridger")}},
 			{name: "Soda Springs", distance: 162}
 		]
 	]},
-	{name: "Fort Hall", distance: 57},
+	{name: "Fort Hall", distance: 57, generateState: () => {return locations.generateFort("Fort Hall")}},
 	{name: "Snake River Crossing", distance: 182, generateState: () => {return new RiverState(12,18, false, true)}},
-	{name: "Fort Boise", distance: 114},
+	{name: "Fort Boise", distance: 114, generateState: () => {return locations.generateFort("Fort Boise")}},
 	{name: "Blue Mountains", distance: 160, choices: [
 		[
-			{name: "Fort Walla Walla", distance: 55},
+			{name: "Fort Walla", distance: 55, generateState: () => {return locations.generateFort("Fort Walla")}},
 			{name: "The Dalles", distance: 120}
 		],
 		[
@@ -244,7 +241,9 @@ class Locations {
 	constructor() {
 		this.miles = 0;
 		this.fortsPassed = 0;
-		this.landmarksQueue = []
+		this.landmarksQueue = [];
+		this.atShop = true;
+		this.shopName = "Matt's General Store - Independence, Missouri";
 	}
 
 	//update our location based on landmarkObjects
@@ -264,8 +263,18 @@ class Locations {
 		}
 	}
 
-	atShop() {
-		return true
+	generateFort(fortName){
+		this.setShop(fortName);
+		return new ContinueState(`Arriving at ${fortName}`, null, ()=> {states.pop("gameMenu")});
+	}
+
+	setShop(shopName){
+		this.atShop = true;
+		this.shopName = shopName;
+	}
+
+	canShop() {
+		return this.atShop;
 	}
 
 	atRiver() {

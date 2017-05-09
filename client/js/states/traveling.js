@@ -46,7 +46,7 @@ class TravelingState{
 
 		//returns true if we hit a new landmark
 		function incMiles(){
-			party.incrementMiles(party.paceValue.speed * party.supplies.oxen * oxenMilesPerDay, () => {
+			party.incrementMiles(party.paceValue.speed * Math.min(party.supplies.oxen, 9) * oxenMilesPerDay, () => {
 				newLandmark = true;
 			});
 		}
