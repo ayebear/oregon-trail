@@ -32,7 +32,7 @@ function getSupplies(){
 function getPartyHealth(){
 	let healthString = "";
 	for (let partyMember of party.members){
-		healthString += `<p> ${partyMember.name} : ${partyMember.healthString()} </p>`;
+		healthString += `<p>${partyMember.name}: ${partyMember.healthString()}</p>`;
 	}
 	return healthString
 }
@@ -49,7 +49,7 @@ let gameMenu = new MenuState("What would you like to do?", [
 	}},
 	{text: "Change Pace", next: changePaceState},
 	{text: "Change Food Rations", next: changeFoodState},
-	{text: "Stop to Rest", next: restState},
+	{text: "Stop to Rest", next: RestState},
 	{text: "Attempt to Trade", next: tradeState},
 	{text: "Talk to People", onclick: () => {
 		states.push(new ContinueState(randValue(conversations)));

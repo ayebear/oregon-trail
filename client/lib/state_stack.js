@@ -31,7 +31,7 @@ class StateStack {
 
 	// Switches to a new state object, sets its parent, triggers onPush, and displays it
 	push(newState, ...args) {
-		if (newState) {
+		if (newState && typeof newState === 'object') {
 			// Set parent and root element (undefined parent means this is the root)
 			newState.parent = this.state
 			newState.root = this.root

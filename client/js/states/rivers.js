@@ -1,7 +1,10 @@
 class RiverState extends MenuState {
 	constructor(width, depth, canFerry, canIndian) {
-
-		super(`Weather: cool. <br><br>River width: ${width} feet. <br><br>River depth: ${depth} feet deep`, [
+		super();
+		this.width = width;
+		this.depth = depth;
+		this.updateDescription();
+		this.choices = [
 			{
 				text: "Attempt to ford the river", onclick: () => {
 					this.fordingOption();
@@ -13,9 +16,19 @@ class RiverState extends MenuState {
 				}
 			},
 			{
-				text: "Rest", onclick: () => {
-					states.push(restState);
-				}
+				text: "Rest", next: RestState, args: [days => {
+					console.log('Rested for', days, 'days.');
+
+					// Lower river depth based on how many days went by
+					this.depth -= days;
+
+					// Deep rivers should not fall below 5 feet, even after resting
+					if (depth >= 5 && this.depth < 5) {
+						this.depth = 5;
+					}
+
+					console.log(`Depth is now ${this.depth}`);
+				}]
 			},
 			{
 				text: "Learn about the options", onclick: () => {
@@ -32,10 +45,15 @@ class RiverState extends MenuState {
 					this.indianOption();
 				}
 			}
-		]);
+		];
+	}
 
-		this.width = width;
-		this.depth = depth;
+	updateDescription() {
+		this.description = `Weather: cool. <br><br>River width: ${this.width} feet. <br><br>River depth: ${this.depth} feet deep`;
+	}
+
+	onEnter() {1
+		this.updateDescription()
 	}
 
 	failed() {

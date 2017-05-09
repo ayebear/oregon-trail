@@ -7,10 +7,8 @@ Choice object:
 	text: Text on the button itself
 	onclick: Runs when the button is clicked
 	next: Pushes this state after the button is clicked (always runs after onclick)
-	show: Callback which must explicitly return false to hide the menu item
-
-TODO:
-	Allow "next" to be a class, and have an optional forwarded array of "args"
+	show: Callback which must explicitly return false to hide the menu item (can also be a boolean)
+	args: Array of arguments, which will be forwarded to the "next" state
 */
 class MenuState {
 	constructor(description, choices) {
@@ -40,8 +38,16 @@ class MenuState {
 					.attr("id", `button${i}`)
 					.click(() => {
 						invoke(item, "onclick")
-						if (item.next) {
-							states.push(item.next)
+						let state = item.next
+						if (state) {
+							if (typeof state === 'function') {
+								// Create a new state with optional arguments
+								let args = item.args || []
+								states.push(new state(...args))
+							} else {
+								// Push specified state instance
+								states.push(state)
+							}
 						}
 					})
 				$("#menu").append(button)
