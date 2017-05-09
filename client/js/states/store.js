@@ -29,8 +29,11 @@ class StoreState extends ContinueState {
 			// Each item has a name, price, quantity input, and buy button
 			$("<td/>").append($("<input/>")
 				.val(item.quantity)
-				.attr("type", "number")
-				.attr("min", 0)
+				.attr({
+					type: "number",
+					min: 0,
+					max: item.limit || 9999
+				})
 				.change(e => {
 					item.quantity = parseInt($(e.target).val())
 					this.update()
