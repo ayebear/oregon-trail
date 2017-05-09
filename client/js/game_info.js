@@ -24,12 +24,8 @@ const rationTypes = {
 
 const landmarks = [
 	{name: "Independence, MO", distance: 1, generateState: () => {return new ContinueState("Leaving Independence, MO")}},
-	{name: "Kansas River Crossing", distance: 102, river: {
-		ferry: true,
-		depth: 6.5,
-		width: 120
-	}},
-	{name: "Big Blue River Crossing", distance: 83},
+	{name: "Kansas River Crossing", distance: 102,  generateState: () => {return new RiverState(12,18, true, false)}},
+	{name: "Big Blue River Crossing", distance: 83,  generateState: () => {return new RiverState(12,18, false, false)}},
 	{name: "Fort Kearney", distance: 119, fort: true},
 	{name: "Chimney Rock", distance: 250},
 	{name: "Fort Laramie", distance: 86},
@@ -45,7 +41,7 @@ const landmarks = [
 		]
 	]},
 	{name: "Fort Hall", distance: 57},
-	{name: "Snake River Crossing", distance: 182},
+	{name: "Snake River Crossing", distance: 182, generateState: () => {return new RiverState(12,18, false, true)}},
 	{name: "Fort Boise", distance: 114},
 	{name: "Blue Mountains", distance: 160, choices: [
 		[
@@ -115,8 +111,20 @@ class PartyMember {
 
 }
 
+const itemNames = {
+	money: ["a dollar", "dollars"],
+	oxen: ["an ox", "oxen"],
+	clothSets: ["a set of clothes", "sets of clothes"],
+	worms: ["a worm", "worms"],
+	wheels: ["a wheel", "wagon wheels"],
+	axles: ["an axle", "wagon axles"],
+	tongues: ["a tongue", "wagon tongues"],
+	food: ["a pound of food", "pounds of food"]
+}
+
 class Supplies {
 	constructor(){
+
 		this.money = 0;
 		this.oxen = 0;
 		this.clothSets = 0;
@@ -139,9 +147,18 @@ class Supplies {
 		return this.food === 0;
 	}
 }
+// ignore for now
+class Weather{
+	constructor(){
+		this.temp = 0;
+	}
+	updateWinter(){
+		this.temp = 32 - Math.floor(Math.random())
+	}
+}
 
 class Party {
-	constructor(){
+	constructor() {
 		this.landmarkIndex = 0;
 		this.supplies = new Supplies();
 		this.pace = "steady";
@@ -151,28 +168,34 @@ class Party {
 		this.milesToNextMark = landmarks[0].distance;
 	}
 
-	get rationsValue() {
+
+	get rationsValue()
+	{
 		return rationTypes[this.rations];
 	}
 
-	get paceValue() {
+	get paceValue()
+	{
 		return paceTypes[this.pace];
 	}
 
 	// Called initially when player chooses occupation
-	set occupation(name) {
+	set occupation(name)
+	{
 		this.occupationName = name;
 		this.supplies.money = occupations[name].start;
 		this.scoreModifier = occupations[name].score;
 	}
 
 	// Called initially when player chooses start month
-	set startingDate(date) {
+	set startingDate(date)
+	{
 		this.date = date;
 	}
 
 	// Increment date by one day (or certain number of days)
-	nextDay(days = 1) {
+	nextDay(days = 1)
+	{
 		if (days > 0) {
 			this.date.setDate(this.date.getDate() + days);
 		}
@@ -180,7 +203,8 @@ class Party {
 
 	// Called initially when player enters party member names
 	// Note: First member at index 0 is assumed to be the leader
-	set members(names) {
+	set members(names)
+	{
 		// Create PartyMember instances array
 		let party = names.map((name, i) => {
 			return new PartyMember(name, (i === 0));
@@ -190,32 +214,25 @@ class Party {
 		this.partyMembers = new Set(party);
 	}
 
-	get members() {
+	get members()
+	{
 		return this.partyMembers;
 	}
 
 	//increments miles and returns true if we hit a new landmark
-	incrementMiles(change, onNewLandmark){
+	incrementMiles(change, onNewLandmark)
+	{
 		//have we hit our next mark?
-		if (change >= this.milesToNextMark){
+		if (change >= this.milesToNextMark) {
 			this.milesTraveled += this.milesToNextMark;
 			this.milesToNextMark = 0;
 			onNewLandmark();
 		}
-		else{
+		else {
 			this.milesToNextMark -= change;
 			this.milesTraveled += change;
 		}
 
-	}
-
-	//returns the pace in string format;
-	get paceString(){
-		return paceArray[this.pace - 1];
-	}
-
-	get rationsString(){
-		return rationsArray[this.rations - 1];
 	}
 
 }
@@ -231,15 +248,15 @@ class Locations {
 	}
 
 	//update our location based on landmarkObjects
-	update(){
+	update() {
 		let landmark = landmarks[party.landmarkIndex];
 
-		if (landmark.fort){
+		if (landmark.fort) {
 			this.fortsPassed++;
 		}
 		party.milesToNextMark = landmarks[++party.landmarkIndex].distance;
 		console.log(party.milesToNextMark);
-		if (!landmark.generateState){
+		if (!landmark.generateState) {
 			states.push(new ContinueState("This Landmark Dosen't have a Defined State yet"));
 		}
 		else {
