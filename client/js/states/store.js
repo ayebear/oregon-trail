@@ -32,10 +32,11 @@ class StoreState extends ContinueState {
 				.attr({
 					type: "number",
 					min: 0,
-					max: item.limit || 9999
+					max: item.limit
 				})
 				.change(e => {
 					item.quantity = parseInt($(e.target).val())
+					this.setBounds(item)
 					this.update()
 				})).appendTo(storeItem)
 
@@ -64,10 +65,12 @@ class StoreState extends ContinueState {
 		this.total = 0
 
 		for (let item of this.options.items) {
+			// Set computed price
 			let itemPrice = item.quantity * item.price
 			$(`#${item.id} #itemPrice`).html(itemPrice.toFixed(2))
 			this.total += itemPrice
 
+			// Set currently owned quantity
 			let current = invoke(this.options, "get", item.id) || 0
 			$(`#${item.id} #ownedQuantity`).html(current)
 		}
@@ -82,6 +85,15 @@ class StoreState extends ContinueState {
 			item.quantity = 0
 		}
 		$(`#store input`).val(0)
+	}
+
+	setBounds(item) {
+		if (item.quantity < 0 || isNaN(item.quantity)) {
+			item.quantity = 0
+		} else if (item.quantity > item.limit) {
+			item.quantity = item.limit
+		}
+		$(`#${item.id} input`).val(item.quantity)
 	}
 
 	// Note: options.buy needs to exist - it also needs to return true to indicate a successful purchase
