@@ -81,12 +81,11 @@ class StoreState extends ContinueState {
 		$(`#store input`).val(0)
 	}
 
-	// Note: options.buy needs to exist
+	// Note: options.buy needs to exist - it also needs to return true to indicate a successful purchase
 	buy() {
-		invoke(this.options, "buy", this.total, this.options.items)
-
-		this.clearQuantities()
-
-		this.update()
+		if (invoke(this.options, "buy", this.total, this.options.items)) {
+			this.clearQuantities()
+			this.update()
+		}
 	}
 }

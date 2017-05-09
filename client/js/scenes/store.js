@@ -20,6 +20,7 @@ function makeStore(options) {
 				let item = items[name]
 				party.supplies[item.id] += item.quantity
 			}
+			return true
 		}
 	}
 
