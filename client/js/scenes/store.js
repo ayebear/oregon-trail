@@ -2,13 +2,13 @@
 function makeStore(options) {
 	// Setup store items
 	options.items = [
-		{id: "oxen", name: "Oxen", price: 20},
-		{id: "clothSets", name: "Sets of clothing", price: 10},
-		{id: "worms", name: "Worms", price: 0.1},
-		{id: "wheels", name: "Wagon wheels", price: 10},
-		{id: "axles", name: "Wagon axles", price: 10},
-		{id: "tongues", name: "Wagon tongues", price: 10},
-		{id: "food", name: "Pounds of food", price: 0.2}
+		{id: "oxen", name: "Oxen", price: 20, limit: 18},
+		{id: "clothSets", name: "Sets of clothing", price: 10, limit: 99},
+		{id: "worms", name: "Worms", price: 0.1, limit: 999},
+		{id: "wheels", name: "Wagon wheels", price: 10, limit: 3},
+		{id: "axles", name: "Wagon axles", price: 10, limit: 3},
+		{id: "tongues", name: "Wagon tongues", price: 10, limit: 3},
+		{id: "food", name: "Pounds of food", price: 0.2, limit: 2000}
 	]
 
 	// Define buy function
@@ -20,8 +20,11 @@ function makeStore(options) {
 				let item = items[name]
 				party.supplies[item.id] += item.quantity
 			}
+			return true
 		}
 	}
+
+	options.get = id => party.supplies[id]
 
 	// Adjust prices
 	for (let item of options.items) {
