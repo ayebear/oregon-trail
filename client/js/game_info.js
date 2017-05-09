@@ -111,15 +111,15 @@ class PartyMember {
 
 }
 
-const itemPlural = {
-	money: "dollars",
-	oxen: "oxen",
-	clothSets: "sets of clothes",
-	worms: "worms",
-	wheels: "wagon wheels",
-	axles: "wagon axles",
-	tongues: "wagon tongues",
-	food: "pounds of food",
+const itemNames = {
+	money: ["a dollar", "dollars"],
+	oxen: ["an ox", "oxen"],
+	clothSets: ["a set of clothes", "sets of clothes"],
+	worms: ["a worm", "worms"],
+	wheels: ["a wheel", "wagon wheels"],
+	axles: ["an axle", "wagon axles"],
+	tongues: ["a tongue", "wagon tongues"],
+	food: ["a pound of food", "pounds of food"]
 }
 
 class Supplies {
