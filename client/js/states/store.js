@@ -12,7 +12,7 @@ class StoreState extends ContinueState {
 		super.display()
 
 		let store = $("<div/>").attr("id", "store").attr("class", "store")
-		let table = $("<table/>").appendTo(store)
+		let table = $("<table/>")
 		table.append("<tr><th>Item</th><th>Price</th><th>Quantity</th><th>Cost</th><th>You own</th></tr>")
 
 		// Create store items
@@ -20,7 +20,7 @@ class StoreState extends ContinueState {
 			// Set default quantity
 			item.quantity = 0
 
-			let storeItem = $("<tr/>").attr("id", item.id).appendTo(table)
+			let storeItem = $("<tr/>").attr("id", item.id)
 
 			storeItem.append(`<td>${item.name}</td>`)
 
@@ -29,7 +29,6 @@ class StoreState extends ContinueState {
 			// Each item has a name, price, quantity input, and buy button
 			$("<td/>").append($("<input/>")
 				.val(item.quantity)
-				.attr("id", `Quantity${item.id}`)
 				.attr("type", "number")
 				.attr("min", 0)
 				.change(e => {
@@ -39,11 +38,11 @@ class StoreState extends ContinueState {
 
 			storeItem.append(`<td>$<span id="itemPrice"></span></td>`)
 
-			let current = invoke(this.options, "get", item.id) || 0
-			storeItem.append(`<td>${current}</td>`)
+			storeItem.append(`<td><span id="ownedQuantity"></span></td>`)
 
-			store.append(storeItem)
+			table.append(storeItem)
 		}
+		table.appendTo(store)
 
 		// Create totals information and buy button at the bottom
 		store.append($("<hr/>"))
@@ -65,6 +64,9 @@ class StoreState extends ContinueState {
 			let itemPrice = item.quantity * item.price
 			$(`#${item.id} #itemPrice`).html(itemPrice.toFixed(2))
 			this.total += itemPrice
+
+			let current = invoke(this.options, "get", item.id) || 0
+			$(`#${item.id} #ownedQuantity`).html(current)
 		}
 
 		$("#totalCost").html(this.total.toFixed(2))
@@ -72,9 +74,18 @@ class StoreState extends ContinueState {
 		$("#currentMoney").html(party.supplies.money.toFixed(2))
 	}
 
+	clearQuantities() {
+		for (let item of this.options.items) {
+			item.quantity = 0
+		}
+		$(`#store input`).val(0)
+	}
+
 	// Note: options.buy needs to exist
 	buy() {
 		invoke(this.options, "buy", this.total, this.options.items)
+
+		this.clearQuantities()
 
 		this.update()
 	}

@@ -12,7 +12,7 @@ body {
 	text-align: center;
 	margin-left: auto;
 	margin-right: auto;
-	width: 50%;
+	width: 100%;
 	font-family: Apple-2;
 	font-size: 1em;
 
@@ -94,13 +94,11 @@ input[type] {
 }
 
 .store input[type] {
-	width: 128px;
+	width: 100%;
 	padding: 12px 24px;
-	/*margin: 8px 0;*/
-	/*box-sizing: border-box;*/
+	box-sizing: border-box;
 	border: 2px solid gray;
 	border-radius: 4px;
-	/*display: block;*/
 	font-size: 1em;
 	font-family: Apple-2;
 	color: white;
