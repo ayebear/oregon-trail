@@ -15,14 +15,14 @@ class RiverState extends MenuState {
 					this.chaulkingOption(); // << this is done before ^^
 				}
 			},
-            {
-                show: canFerry, text: "Hire a ferry for $50", /*next: ferryState,*/ onclick: () => {
-                	this.ferryOption();
+			{
+				show: canFerry, text: "Hire a ferry for $50", /*next: ferryState,*/ onclick: () => {
+					this.ferryOption();
 				}
-            },
-            {
-                show: canIndian, text: "Hire an Indian for 3 sets of clothing", /*next: ferryState,*/ onclick: () => {
-                	this.indianOption();
+			},
+			{
+				show: canIndian, text: "Hire an Indian for 3 sets of clothing", /*next: ferryState,*/ onclick: () => {
+					this.indianOption();
 				}
 			},
 			{
@@ -67,9 +67,7 @@ class RiverState extends MenuState {
 			party.supplies[item] -= lost;
 
 			// Show result to user, using plural/singular tense
-			let plural = (lost === 1 ? 0 : 1)
-			let description = itemNames[item][plural]
-			let result = (plural ? `${lost} ${description}` : description)
+			let result = getItemDescription(item, lost)
 			states.push(new ContinueState(`You crossed the river, but lost ${result}!`, undefined, () => states.pop("gameMenu")));
 		} else {
 			// Player has nothing to lose!

@@ -16,12 +16,10 @@ let changeFoodState = new MenuState("The amount of food the people in your party
 	{text: "Cancel", onclick: () => { states.pop() }}
 ]);
 
-let tradeState = temporary(new QuestionState("Would you like to trade one of your party members for 3 pounds of food?", acceptTradeState, declineTradeState))
-
-function getSupplies(){
-
+function getSupplies() {
 	return `<p> Oxen: ${party.supplies.oxen} </p>
 	<p> Sets of Clothing: ${party.supplies.clothSets} </p>
+	<p> Worms: ${party.supplies.worms} </p>
 	<p> Pounds of Food: ${party.supplies.food.toFixed(1)} </p>
 	<p> Wagon Wheels: ${party.supplies.wheels} </p>
 	<p> Wagon Axles: ${party.supplies.axles} </p>
@@ -29,12 +27,12 @@ function getSupplies(){
 	<p> Money Left: $${party.supplies.money.toFixed(2)} </p>`;
 }
 
-function getPartyHealth(){
+function getPartyHealth() {
 	let healthString = "";
 	for (let partyMember of party.members){
 		healthString += `<p>${partyMember.name}: ${partyMember.healthString()}</p>`;
 	}
-	return healthString
+	return healthString;
 }
 
 
@@ -50,7 +48,7 @@ let gameMenu = new MenuState("What would you like to do?", [
 	{text: "Change Pace", next: changePaceState},
 	{text: "Change Food Rations", next: changeFoodState},
 	{text: "Stop to Rest", next: RestState},
-	{text: "Attempt to Trade", next: tradeState},
+	{text: "Attempt to Trade", onclick: tradeCheck},
 	{text: "Talk to People", onclick: () => {
 		states.push(new ContinueState(randValue(conversations)));
 	}},
