@@ -16,7 +16,7 @@ let changeFoodState = new MenuState("The amount of food the people in your party
 	{text: "Cancel", onclick: () => { states.pop() }}
 ]);
 
-let tradeState = temporary(new QuestionState("Would you like to trade one of your party members for 3 pounds of food?", acceptTradeState, declineTradeState))
+//let tradeState = temporary(new QuestionState("Would you like to trade one of your party members for 3 pounds of food?", acceptTradeState, declineTradeState))
 
 function getSupplies(){
 
@@ -50,7 +50,8 @@ let gameMenu = new MenuState("What would you like to do?", [
 	{text: "Change Pace", next: changePaceState},
 	{text: "Change Food Rations", next: changeFoodState},
 	{text: "Stop to Rest", next: RestState},
-	{text: "Attempt to Trade", next: tradeState},
+	{text: "Attempt to Trade", onclick: () => {
+		tradeCheck();}},// next: tradeState},
 	{text: "Talk to People", onclick: () => {
 		states.push(new ContinueState(randValue(conversations)));
 	}},
