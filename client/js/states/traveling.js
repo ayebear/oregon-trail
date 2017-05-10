@@ -10,6 +10,7 @@ class TravelingState{
 	display(){
 		this.root.append(`<h3>Traveling on the trail</h3>`);
 		this.root.append(`<div id="menu" class="menu">
+						  	<div id = "date">${party.date.toDateString()}</div>
 						  	<div id = "nextLandMark">Next Landmark: ${locations.nextLandMark}</div>
 						  	<div id = "milesTraveled">Miles Traveled: ${party.milesTraveled}</div>
 						  	<div id = "milesToNextMark">Miles to Next Landmark: ${party.milesToNextMark}</div>
@@ -24,6 +25,7 @@ class TravelingState{
 
 		this.traveledElement = $("#milesTraveled");
 		this.nextMarkerElement = $("#milesToNextMark");
+		this.dateElement = $("#date");
 	}
 
 	onEnter(){
@@ -91,7 +93,7 @@ class TravelingState{
 
 		this.nextMarkerElement.text(`Next Landmark: ${party.milesToNextMark}`);
 		this.traveledElement.text(`Miles Traveled: ${party.milesTraveled}`);
-
+		this.dateElement.text(`${party.date.toDateString()}`);
 		if (debug){
 			console.log("---------------------");
 			console.log("Date: " + party.date.toString());

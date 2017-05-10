@@ -27,60 +27,100 @@ const splitPaths = {
 	southPath: {
         description: "You Arrive at the South Pass. You need to get to Soda Springs, you can do so by way of a river or a fort.",
         choices: [
-			{
-				text: "Take the Short Path: Green River.",
-				onclick: () => {
-					locations.addPath(
+            {
+                text: "Take the Short Path: Green River.",
+                onclick: () => {
+                    locations.addPath(
                         [
                             {name: "Green River", distance: 57, generateState: () => {return new RiverState(12, 18, true, true)}},
                             {name: "Soda Springs", distance: 144}
                         ]
-					)
-				}
-			}
-			,
-			{
-				text: "Take the Safe Path: Fort Bridger ",
-                onclick: () => {
-					locations.addPath(
-						[
-							{name: "Fort Bridger", distance: 125, generateState: () => {return locations.generateFort("Fort Bridger")}},
-							{name: "Soda Springs", distance: 162}
-						]
-					)
+                    )
                 }
-			}
-		]
+            }
+            ,
+            {
+                text: "Take the Safe Path: Fort Bridger ",
+                onclick: () => {
+                    locations.addPath(
+                        [
+                            {name: "Fort Bridger", distance: 125, generateState: () => {return locations.generateFort("Fort Bridger")}},
+                            {name: "Soda Springs", distance: 162}
+                        ]
+                    )
+                }
+            }
+        ]
+    },
+    blueMountains: {
+        description: "You Arrive at Blue Mountains. You need to get to The Dalles, you can either go their directly or take a detour to get supplies at Fort Walla",
+        choices: [
+            {
+                text: "Go Straight to The Dalles",
+                onclick: () => {
+                    locations.addPath(
+                        [
+                            {name: "The Dalles", distance: 125, generateState: () => {return new MenuState(splitPaths.theDalles.description, splitPaths.theDalles.choices)}}
+                        ]
+                    )
+                }
+            }
+            ,
+            {
+                text: "Take a Detour to Fort Walla",
+                onclick: () => {
+                    locations.addPath(
+                        [
+                            {name: "Fort Walla", distance: 55, generateState: () => {return locations.generateFort("Fort Walla")}},
+                            {name: "The Dalles", distance: 120, generateState: () => {return new MenuState(splitPaths.theDalles.description, splitPaths.theDalles.choices)}}
+                        ]
+                    )
+                }
+            }
+        ]
+    },
+    theDalles: {
+        description: "You Arrive at the Dalles, the last stop before Oregon. You can choose to cross The Columbia River to save some distance or play it safe and take the Barlow Toll Road",
+        choices: [
+            {
+                text: "Take the Barlow Toll Road",
+                onclick: () => {
+                    locations.addPath(
+                        [
+                            {name: "The End", distance: 200}
+                        ]
+                    )
+                }
+            },
+            {
+                text: "Cross through the Columbia River",
+                onclick: () => {
+                    locations.addPath(
+                        [
+                            {name: "The Columbia River", distance: 50, generateState: () => {return new RiverState(20, 25, false, true)}},
+                            {name: "The End", distance: 20}
+                        ]
+                    )
+                }
+            }
+        ]
     }
 
 };
 
 
 landmarks = [
-    {name: "South Pass", distance: 102, generateState: () => {return new MenuState(splitPaths.southPath.description, splitPaths.southPath.choices)}},
     {name: "Kansas River Crossing", distance: 102,  generateState: () => {return new RiverState(12,18, true, false)}},
 	{name: "Big Blue River Crossing", distance: 83,  generateState: () => {return new RiverState(12,18, false, false)}},
 	{name: "Fort Kearney", distance: 119, generateState: () => {return locations.generateFort("Fort Kearney")}},
 	{name: "Chimney Rock", distance: 250},
-	{name: "Fort Laramie", distance: 86, generateState: () => {return locations.generateFort("Fort Laramie")}},
+    {name: "South Pass", distance: 102, generateState: () => {return new MenuState(splitPaths.southPath.description, splitPaths.southPath.choices)}},
+    {name: "Fort Laramie", distance: 86, generateState: () => {return locations.generateFort("Fort Laramie")}},
 	{name: "Independence Rock", distance: 190},
 	{name: "Fort Hall", distance: 57, generateState: () => {return locations.generateFort("Fort Hall")}},
 	{name: "Snake River Crossing", distance: 182, generateState: () => {return new RiverState(12,18, false, true)}},
 	{name: "Fort Boise", distance: 114, generateState: () => {return locations.generateFort("Fort Boise")}},
-	{name: "Blue Mountains", distance: 160, choices: [
-		[
-			{name: "Fort Walla", distance: 55, generateState: () => {return locations.generateFort("Fort Walla")}},
-			{name: "The Dalles", distance: 120}
-		],
-		[
-			{name: "The Dalles", distance: 125}
-		]
-	]},
-	{name: "The Dalles (Final Choice)", distance: 0, choices: [
-		[{name: "Barlow Toll Road", distance: 100}],
-		[{name: "Columbia River", distance: 0}]
-	]},
-	{name: "The End", distance: 0}
+    {name: "Blue Mountains", distance: 160, generateState: () => {return new MenuState(splitPaths.blueMountains.description, splitPaths.blueMountains.choices)}},
 ];
 
 const healthArray = ["dying", "very poor", "poor", "fair", "good"];
@@ -277,9 +317,10 @@ class Locations {
 	//update our location based on landmarkObjects
 	update() {
 		let landmark = landmarks[party.landmarkIndex];
-
-		party.milesToNextMark = landmarks[++party.landmarkIndex].distance;
-        this.nextLandMark = landmarks[party.landmarkIndex].name;
+		if (landmarks[++party.landmarkIndex]){
+            party.milesToNextMark = landmarks[party.landmarkIndex].distance;
+            this.nextLandMark = landmarks[party.landmarkIndex].name;
+		}
         if (!landmark.generateState) {
 			states.push(new ContinueState("This Landmark Dosen't have a Defined State yet"));
 		}
@@ -308,7 +349,7 @@ class Locations {
 
     addPath(path){
         insertArrayAt(landmarks, party.landmarkIndex, path);
-        party.milesToNextMark = landmarks[++party.landmarkIndex].distance;
+        party.milesToNextMark = landmarks[party.landmarkIndex].distance;
         this.nextLandMark = landmarks[party.landmarkIndex].name;
         states.push(new ContinueState("You Continue Along Your Chosen Path", null, () => states.pop("gameMenu")));
     }
