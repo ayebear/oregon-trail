@@ -188,6 +188,7 @@ class Party {
 	set startingDate(date)
 	{
 		this.date = date;
+		this.startDate = new Date(date);
 	}
 
 	// Increment date by one day (or certain number of days)
