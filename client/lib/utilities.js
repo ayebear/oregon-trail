@@ -41,3 +41,8 @@ function randNonZeroKey(object) {
 	// Return a random key
 	return randValue(nonZeroKeys)
 }
+
+// Returns a random person name
+function randomPerson() {
+	return randValue(["Susan", "Bob", "Shawn", "Katie", "Sarah", "Joe", "Lupoli", "Park", "Squire", "Linus", "Amy", "George", "Donald"])
+}

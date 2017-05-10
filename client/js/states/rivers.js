@@ -67,9 +67,7 @@ class RiverState extends MenuState {
 			party.supplies[item] -= lost;
 
 			// Show result to user, using plural/singular tense
-			let plural = (lost === 1 ? 0 : 1)
-			let description = itemNames[item][plural]
-			let result = (plural ? `${lost} ${description}` : description)
+			let result = getItemDescription(item, lost)
 			states.push(new ContinueState(`You crossed the river, but lost ${result}!`, undefined, () => states.pop("gameMenu")));
 		} else {
 			// Player has nothing to lose!

@@ -113,10 +113,15 @@ const itemNames = {
 	oxen: ["an ox", "oxen"],
 	clothSets: ["a set of clothes", "sets of clothes"],
 	worms: ["a worm", "worms"],
-	wheels: ["a wheel", "wagon wheels"],
-	axles: ["an axle", "wagon axles"],
-	tongues: ["a tongue", "wagon tongues"],
+	wheels: ["a wagon wheel", "wagon wheels"],
+	axles: ["a wagon axle", "wagon axles"],
+	tongues: ["a wagon tongue", "wagon tongues"],
 	food: ["a pound of food", "pounds of food"]
+}
+
+// Returns a description of amount of items (plural or singular)
+function getItemDescription(name, amount) {
+	return (amount === 1 ? itemNames[name][0] : `${amount} ${itemNames[name][1]}`)
 }
 
 class Supplies {
