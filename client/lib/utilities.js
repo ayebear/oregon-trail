@@ -24,6 +24,10 @@ function randValue(array) {
 	}
 }
 
+function insertArrayAt(array, index, arrayToInsert) {
+    Array.prototype.splice.apply(array, [index, 0].concat(arrayToInsert));
+}
+
 // Returns a random index in an array
 function randIndex(array) {
 	if (array.length) {
