@@ -15,14 +15,14 @@ class RiverState extends MenuState {
 					this.chaulkingOption(); // << this is done before ^^
 				}
 			},
-            {
-                show: canFerry, text: "Hire a ferry for $50", /*next: ferryState,*/ onclick: () => {
-                	this.ferryOption();
+			{
+				show: canFerry, text: "Hire a ferry for $50", /*next: ferryState,*/ onclick: () => {
+					this.ferryOption();
 				}
-            },
-            {
-                show: canIndian, text: "Hire an Indian for 3 sets of clothing", /*next: ferryState,*/ onclick: () => {
-                	this.indianOption();
+			},
+			{
+				show: canIndian, text: "Hire an Indian for 3 sets of clothing", /*next: ferryState,*/ onclick: () => {
+					this.indianOption();
 				}
 			},
 			{
