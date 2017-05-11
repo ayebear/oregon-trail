@@ -32,8 +32,16 @@ const splitPaths = {
                 onclick: () => {
                     locations.addPath(
                         [
-                            {name: "Green River", distance: 57, generateState: () => {return new RiverState(12, 18, true, true)}},
-                            {name: "Soda Springs", distance: 144}
+                            {name: "Green River", distance: 57, generateState: () => {return locations.generateRiver("The Green River", `The Green River is a tributary to the Colorado River, flowing south from the
+								Continental Divide along a twisted, rugged path.  It's estimated to be more
+								than 700 miles in length.  It's navigable only at high water, and even then
+								it's extremely dangerous.  But you must cross it before proceeding west on the
+								Oregon Trail, so be very careful.`, {depth: 30, width: 15, canFerry: true, canIndian: false})}},
+                            {name: "Soda Springs", distance: 144, generateState: () => {return locations.generateContinue("Soda Springs", `Soda Springs is an important landmark and stopping-off point along the trail.
+								It gets its name from the alkaline (sodium) mineral springs you find there.
+								Some travelers separate from the Oregon Trail at this point and head southwest
+								for California.  Others wait until they get to Fort Hall before going on the
+								"California Trail."`)}}
                         ]
                     )
                 }
@@ -44,15 +52,23 @@ const splitPaths = {
                 onclick: () => {
                     locations.addPath(
                         [
-                            {name: "Fort Bridger", distance: 125, generateState: () => {return locations.generateFort("Fort Bridger")}},
-                            {name: "Soda Springs", distance: 162}
+                            {name: "Fort Bridger", distance: 125, generateState: () => {return locations.generateFort("Fort Bridger", `Fort Bridger is a U.S. army outpost, although it was founded in 1843 by fur
+								trader and scout Jim Bridger as a trading post and way station.  It's an
+								important stop along the Oregon Trail, where travelers can rest, buy supplies,
+								and obtain information about the next stretch of the journey.  A little over
+								100 miles to the southwest is the recent Mormon settlement of Salt Lake City.`)}},
+                            {name: "Soda Springs", distance: 162, generateState: () => {return locations.generateContinue("Soda Springs", `Soda Springs is an important landmark and stopping-off point along the trail.
+								It gets its name from the alkaline (sodium) mineral springs you find there.
+								Some travelers separate from the Oregon Trail at this point and head southwest
+								for California.  Others wait until they get to Fort Hall before going on the
+								"California Trail."`)}}
                         ]
                     )
                 }
             }
         ]
     },
-    blueMountains: {
+    grandRonde: {
         description: "You Arrive at Blue Mountains. You need to get to The Dalles, you can either go their directly or take a detour to get supplies at Fort Walla",
         choices: [
             {
@@ -60,7 +76,11 @@ const splitPaths = {
                 onclick: () => {
                     locations.addPath(
                         [
-                            {name: "The Dalles", distance: 125, generateState: () => {return new MenuState(splitPaths.theDalles.description, splitPaths.theDalles.choices)}}
+                            {name: "The Dalles", distance: 125, generateState: () => {return locations.generateSplit("The Dalles", `The Dalles is the chief embarkation point for rafts heading down the Columbia
+								River toward the Willamette Valley.  It was named by French fur-trappers, who
+								likened the deep, stony river gorge to a huge gutter.  (In French, the word
+								'dalles' can refer to 'gutters' or 'flagstones.') Emigrants to Oregon often
+								stop here to rest and trade before rafting down the Columbia.`, splitPaths.theDalles)}}
                         ]
                     )
                 }
@@ -71,9 +91,16 @@ const splitPaths = {
                 onclick: () => {
                     locations.addPath(
                         [
-                            {name: "Fort Walla", distance: 55, generateState: () => {return locations.generateFort("Fort Walla")}},
-                            {name: "The Dalles", distance: 120, generateState: () => {return new MenuState(splitPaths.theDalles.description, splitPaths.theDalles.choices)}}
-                        ]
+                            {name: "Fort Walla", distance: 55, generateState: () => {return locations.generateFort("Fort Walla", `Fort Walla Walla was established in 1818 as a fur-trading post at the juncture
+								of the Columbia and Walla Walla Rivers.  It later became a military fort.
+								Marcus Whitman worked as a medical missionary nearby from 1836 to 1847.  Walla
+								Walla is the name of an American Indian tribe living in the region.  The Walla
+								Wallas are close related to and allied with the Umatila.`)}},
+                            {name: "The Dalles", distance: 120, generateState: () => {return locations.generateSplit("The Dalles", `The Dalles is the chief embarkation point for rafts heading down the Columbia
+								River toward the Willamette Valley.  It was named by French fur-trappers, who
+								likened the deep, stony river gorge to a huge gutter.  (In French, the word
+								'dalles' can refer to 'gutters' or 'flagstones.') Emigrants to Oregon often
+								stop here to rest and trade before rafting down the Columbia.`, splitPaths.theDalles)}}                        ]
                     )
                 }
             }
@@ -87,7 +114,7 @@ const splitPaths = {
                 onclick: () => {
                     locations.addPath(
                         [
-                            {name: "The End", distance: 200}
+                            {name: "The End", distance: 200, generateState: () => {return locations.generateEndGame()}}
                         ]
                     )
                 }
@@ -97,8 +124,12 @@ const splitPaths = {
                 onclick: () => {
                     locations.addPath(
                         [
-                            {name: "The Columbia River", distance: 50, generateState: () => {return new RiverState(20, 25, false, true)}},
-                            {name: "The End", distance: 20}
+                            {name: "The Columbia River", distance: 50, generateState: () => {return locations.generateRiver("The Columbia River", `The Columbia river is the largets, most imprtant river in the Northwest.  It
+								starts up in Canada and passes through the Oregon Territory, flowing more than
+								1,000 miles to the Pacific Ocean.  It has cut a deep gorge through the rugged
+								Oregon countryside.  It also has many rapids, making navigation difficult.
+								Rafting down the Columbia can be very dangerous!`, {depth: 20, width: 15, canFerry: false, canIndian: true})}},
+                            {name: "The End", distance: 20, generateState:() => {return locations.generateEndGame()}}
                         ]
                     )
                 }
@@ -110,17 +141,61 @@ const splitPaths = {
 
 
 landmarks = [
-    {name: "Kansas River Crossing", distance: 102,  generateState: () => {return new RiverState(12,18, true, false)}},
-	{name: "Big Blue River Crossing", distance: 83,  generateState: () => {return new RiverState(12,18, false, false)}},
-	{name: "Fort Kearney", distance: 119, generateState: () => {return locations.generateFort("Fort Kearney")}},
-	{name: "Chimney Rock", distance: 250},
-    {name: "South Pass", distance: 102, generateState: () => {return new MenuState(splitPaths.southPath.description, splitPaths.southPath.choices)}},
-    {name: "Fort Laramie", distance: 86, generateState: () => {return locations.generateFort("Fort Laramie")}},
-	{name: "Independence Rock", distance: 190},
-	{name: "Fort Hall", distance: 57, generateState: () => {return locations.generateFort("Fort Hall")}},
-	{name: "Snake River Crossing", distance: 182, generateState: () => {return new RiverState(12,18, false, true)}},
-	{name: "Fort Boise", distance: 114, generateState: () => {return locations.generateFort("Fort Boise")}},
-    {name: "Blue Mountains", distance: 160, generateState: () => {return new MenuState(splitPaths.blueMountains.description, splitPaths.blueMountains.choices)}},
+    {name: "Kansas River Crossing", distance: 102,  generateState: () => {return locations.generateRiver("Kansas River Crossing", `The Kansas River is a tributary to the Missouri.  It is approximately 170
+		miles long.  Its width and depth vary depending on the recent amount of snow
+		melt.  Where the Oregon Trail crosses the Kansas River, the average width is
+		620 feet and the usual depth in the middle is about 4 feet.  But be sure to
+		check the conditions when you get there.`, {depth: 12, width: 15, canFerry: true, canIndian: false })}},
+	{name: "The Big Blue River Crossing", distance: 83,  generateState: () => {return locations.generateRiver("Big Blue River Crossing", `The Big Blue River is a tributary to the Kansas River, which is in turn a
+		tributary to the Missouri.  It's approximately 300 miles long.  Farther to the
+		south and west is the Little Blue River, which links up with the Big Blue at
+		Blue Rapids.  You'll cross the Big Blue north of the rapids, allowing you to
+		avoid the Little Blue River altogether`, {depth: 12, width: 18, canFerry: false, canIndian: false })}},
+	{name: "Fort Kearney", distance: 119, generateState: () => {return locations.generateFort("Fort Kearney", `Fort Kearney is a U.S. Army post established in 1848 near the Platte River.
+		It garrisons cavalry troops who protect settlers and travelers along the Oregon
+    	Trail.  It was named for Gen. Stephen Kearny (often spelled 'Kearney'), who
+		died in 1848 after helping establish law and order in the region and serving in
+		the Mexican War`)}},
+	{name: "Chimney Rock", distance: 250, generateState: () => {return locations.generateContinue("Chimney Rock", `Chimney Rock is an important landmark on the Oregon Trail.  It's a spectacular
+		natural formation of solid rock and can be seen from miles around.  In fact,
+		you can see it for a whole day as you approach it and another whole day as you
+		leave it behind.  If you don't see it at all within a week or so after leaving
+		Fort Kearney, you've probably strayed too far off the trail.`)}},
+    {name: "South Pass", distance: 102, generateState: () => {return locations.generateSplit("The South Path", `South Pass is a valley that cuts through the Rocky Mountains at their highest
+		point, the Continental Divide.  It marks the halfway point on your journey to
+		Oregon.  After South Pass, the trail splits.  If you're short on supplies, you
+		should head to Fort Bridger.  But if you don't need supplies, you may want to
+		take the shorter route and go directly to the Green River.`, splitPaths.southPath)}},
+    {name: "Fort Laramie", distance: 86, generateState: () => {return locations.generateFort("Fort Laramie", `Fort Laramie is a US Army post near the junction of the North Platte and
+		Laramie Rivers.  Originally called Fort William, it was founded as a
+		fur-trading post in 1834.  It was renamed for Jacques Laramie, a French trapper
+		who worked in the region earlier in the century.  Fort Laramie is an important
+		stop for resting and getting supplies along the trail.`)}},
+	{name: "Independence Rock", distance: 190, generateState: () => {return locations.generateContinue("Independence Rock", `Independence Rock is an important landmark and resting place along the Oregon
+		Trail. It's a large natural formation, almost 200 feet tall, made of soft stone
+		into which many travelers and traders have carved their names, initials, or
+		brief messages.  It gets its name from the fact that, in order to stay on
+		schedule, travelers try to reach it no later than July 4--Independence Day`)}},
+	{name: "Fort Hall", distance: 57, generateState: () => {return locations.generateFort("Fort Hall", `Fort Hall is an outpost on the banks of the Snake River.  It was originally a
+		fur-trading post, founded by Nathaniel Wyeth in 1834.  Later it was bought by
+		the Hudson's Bay Company.  Ever since it has served as an important stop along
+		the Oregon Trail, where emigrants can rest and buy supplies.  Some travelers
+		turn southwest at this point and head for California.`)}},
+	{name: "Snake River Crossing", distance: 182, generateState: () => {return locations.generateRiver("The Snake River Crossing", `After leaving Fort Hall, the trail follows the Snake River for hundreds of
+		miles.  The Snake River gets its name from the way it twists and turns through
+		this ruffed country, sometimes through steep gorges.  But the trail is fairly
+		flat (through dry and desolate) near the river, which makes wagon travel
+		possible.  Crossing the Snake River, however, can be dangerous.`, {depth: 20, width: 15, canFerry: false, canIndian: true })}},
+	{name: "Fort Boise", distance: 114, generateState: () => {return locations.generateFort("Fort Boise", `Fort Boise was built by the Hudson's Bay Company in 1834 as a fur-trading
+		outpost.  Its name comes from the French word "boise," meaning "wooded."
+		That's because there are lots of trees here, unlike the dry region of the Snake
+		River Plain to the east.  An important stop on the Oregon Trail, it stands on
+		the banks of the Boise River, a tributary to the Snake River.`)}},
+    {name: "The Grand Ronde", distance: 160, generateState: () => {return locations.generateSplit("The Grand Ronde", `The Grand Ronde (French for 'great ring') is a river that runs roughly
+		parallel to the Blue Mountains.  The Oregon Trail crosses through the Grande
+		Ronde river valley just before the mountains.  The Grande Ronde valley is noted
+		for its beauty and is greatly appreciated by emigrants as a sign that their
+		long journey is nearing its end.`, splitPaths.grandRonde)}},
 ];
 
 const healthArray = ["dying", "very poor", "poor", "fair", "good"];
@@ -335,9 +410,35 @@ class Locations {
 		}
 	}
 
-	generateFort(fortName){
+	generateFort(fortName, description){
 		this.setShop(fortName);
-		return new ContinueState(`Arriving at ${fortName}`, null, ()=> {states.pop("gameMenu")});
+		return new ContinueState(`Arriving at ${fortName} <hr> ${description} <hr>`, null, ()=> {states.pop("gameMenu")});
+	}
+
+	generateContinue(name, description){
+        return new ContinueState(`Arriving at ${name} <hr> ${description} <hr>`, null, ()=> {states.pop("gameMenu")});
+	}
+
+	generateSplit(name, description, splitOptions){
+        return new ContinueState(`Arriving at ${name} <hr> ${description} <hr>`, null, () => {states.push(new MenuState(splitOptions.description, splitOptions.choices))});
+    }
+
+    generateRiver(name, description, riverOptions){
+        return new ContinueState(`Arriving at ${name} <hr> ${description} <hr>`, null, () => {states.push(new RiverState(riverOptions.depth, riverOptions.width, riverOptions.canFerry, riverOptions.canIndian))});
+    }
+
+	generateEndGame(){
+		return new InputState({
+                type: "text",
+                description: `Congragulations on making it to Oregon! <br> You made it in ${dateDiffInDays(party.startDate, party.date)} days. <br> Enter a name below to submit your highscore and return to the main menu!`,
+                valid: (input) => {
+                    return (input.length <= 20 && input.length >= 2)
+                },
+                onSubmit: (value) => {
+                    //Do Something Here Related to Submitting the score to the DataBase
+                    states.pop("mainMenu");
+                }
+            });
 	}
 
 	setShop(shopName){
