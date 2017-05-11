@@ -31,6 +31,15 @@ function randIndex(array) {
 	}
 }
 
+function dateDiffInDays(a, b) {
+	const MS_PER_DAY = 1000 * 60 * 60 * 24;
+    // Discard the time and time-zone information.
+    let utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
+    let utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
+
+    return Math.floor((utc2 - utc1) / MS_PER_DAY);
+}
+
 // Returns a random key with a non-zero value from an object
 // Example: {a: 0, b: 1} - Would never return "a"
 // Returns undefined if a non-zero key was not found

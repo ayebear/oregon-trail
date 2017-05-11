@@ -66,7 +66,7 @@ class TravelingState{
 					summaryString += `<h4> ${partyMember.name} has died </h4>`
 
 					//This killed the partyMember, remove them from the set
-					party.partyMembers.delete(partyMember)
+					party.partyMembers.delete(partyMember);
 				});
 			}
 
@@ -85,6 +85,7 @@ class TravelingState{
 		// Increment Date
 		party.nextDay();
 
+
 		this.nextMarkerElement.text(`Next Landmark: ${party.milesToNextMark}`);
 		this.traveledElement.text(`Miles Traveled: ${party.milesTraveled}`);
 
@@ -100,7 +101,23 @@ class TravelingState{
 		}
 
 		// Display any events that occurred along the trail
-		if (summaryString.length && newLandmark){
+		if (party.members.size === 0){
+			//everyone died
+			states.push(new ContinueState(summaryString, null, () => {
+				states.push(new InputState({
+					type: "text",
+					description: `Everyone in your wagon has died. <br> You covered ${party.milesTraveled} miles in ${dateDiffInDays(party.startDate, party.date)} days. <br> Enter a name below to submit your highscore and play again!!`,
+					valid: (input) => {
+						return (input.length <= 20 && input.length >= 2)
+					},
+					onSubmit: (value) => {
+						//Do Something Here Related to Submitting the score to the DataBase
+						states.pop("mainMenu");
+					}
+				}))
+			}));
+		}
+		else if (summaryString.length && newLandmark){
 			states.push(new ContinueState(summaryString), locations.update);
 		}
 		else if (summaryString.length){
