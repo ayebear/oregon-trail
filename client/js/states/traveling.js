@@ -5,11 +5,15 @@ class TravelingState{
 		this.traveledElement = null;
 		this.nextMarkerElement = null;
 
+		weather.updateSeason;
+		weather.updateWeather;
 	}
 
 	display(){
+		weather.updateWeather(); // checks weather first hand. if this is not placed here, it will just return "food" which is the default value
 		this.root.append(`<h3>Traveling on the trail</h3>`);
 		this.root.append(`<div id="menu" class="menu">
+							<div id = "weather">It is currently ${weather.daily}</div>
 						  	<div id = "date">${party.date.toDateString()}</div>
 						  	<div id = "nextLandMark">Next Landmark: ${locations.nextLandMark}</div>
 						  	<div id = "milesTraveled">Miles Traveled: ${party.milesTraveled}</div>
@@ -26,6 +30,7 @@ class TravelingState{
 		this.traveledElement = $("#milesTraveled");
 		this.nextMarkerElement = $("#milesToNextMark");
 		this.dateElement = $("#date");
+		this.weatherElement = $("#weather");
 	}
 
 	onEnter(){
@@ -59,7 +64,7 @@ class TravelingState{
 
 		function updateHealth(){
 			//net health change for entire party
-			let partyChange = party.paceValue.health + party.rationsValue.health;
+			let partyChange = party.paceValue.health + party.rationsValue.health + weather.currentHealth;
 
 			//update based on food/rations
 			if (party.supplies.noFood())
@@ -85,16 +90,19 @@ class TravelingState{
 		//increment miles based on pace
 		//if we hit a new landmark when incrementing miles
 		incMiles();
-		decFood(); 	//lower food based on rations
+		decFood(); 	//lower food based on rations	
+		//weather.updateSeason(); // checks month
+		weather.updateWeather(); // gives daily weather 
 		updateHealth();
 
 		// Increment Date
 		party.nextDay();
-
-
+		
+		
 		this.nextMarkerElement.text(`Next Landmark: ${party.milesToNextMark}`);
 		this.traveledElement.text(`Miles Traveled: ${party.milesTraveled}`);
 		this.dateElement.text(`${party.date.toDateString()}`);
+		this.weatherElement.text(`It is currently ${weather.daily}`);
 		if (debug){
 			console.log("---------------------");
 			console.log("Date: " + party.date.toString());
