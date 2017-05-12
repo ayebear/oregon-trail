@@ -298,6 +298,8 @@ class Weather{
 		this.season = 0;
 		this.daily = 'food';
 		this.currentHealth = 0.00;
+		this.riverDepth = 0.0;
+		this.riverWidth = 0.0;
 	}
 /* dont really need this
 	updateSeason(){
@@ -325,6 +327,7 @@ class Weather{
 			if(random <= 55){
 				this.daily = "snowing";
 				this.currentHealth -= .03; // snowing/hot weather is bad to travel in 
+				this.riverDepth +=.5;
 			}
 			
 			else if(random > 55 && random <= 75){
@@ -334,10 +337,12 @@ class Weather{
 			else if( random >75 && random <= 85 ){
 				this.daily = "raining";
 				this.currentHealth -= .01;
+				this.riverDepth +=.3;
 			}
 			else if( random > 85 ){
 				this.daily = "cool";
 				this.currentHealth += .02;
+				
 			}
 		}
 	
@@ -346,14 +351,17 @@ class Weather{
 			if(random <= 75){
 				this.daily = "hot";
 				this.currentHealth -= .03;
+				this.riverDepth -=.5;
 			}
 			else if(random > 75 && random <= 90){
 				this.daily = "warm";
 				this.currentHealth += .04;//rm weather is beneficial for health
+				this.riverDepth -=.3;
 			}
 			else if( random > 90 ){
 				this.daily = "raining";
 				this.currentHealth -= .01;
+				this.riverDepth +=.5;
 			}
 		}
 		else if((currentMonth >= 8 && currentMonth <= 10) || (currentMonth >= 2 && currentMonth <= 4 )){ // spring/ fall
@@ -361,14 +369,17 @@ class Weather{
 			if(random <= 65){
 				this.daily = "warm";
 				this.currentHealth += .04;
+				this.riverDepth -=.3;
 			}
 			else if(random > 65 && random <= 90){
 				this.daily = "raining";
 				this.currentHealth -= .01;
+				this.riverDepth +=.4;
 			}
 			else if( random > 90 ){
 				this.daily = "hot";
 				this.currentHealth -= .03;
+				this.riverDepth -=.5;
 			}
 		}
 
