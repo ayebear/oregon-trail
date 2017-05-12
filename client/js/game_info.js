@@ -292,14 +292,90 @@ class Supplies {
 	}
 }
 // ignore for now
+
 class Weather{
 	constructor(){
-		this.temp = 0;
+		this.season = 0;
+		this.daily = 'food';
+		this.currentHealth = 0.00;
 	}
-	updateWinter(){
-		this.temp = 32 - Math.floor(Math.random())
+/* dont really need this
+	updateSeason(){
+		var currentMonth = party.startDate.getMonth();
+		// dec - february = winter
+		if((currentMonth <= 1) || (currentMonth == 11)){
+			this.season = 1;
+		}
+		// june - august = summer
+		else if((currentMonth >= 5) || (currentMonth <= 7)){
+			this.season = 2;
+		}
+		// september - november = fall / march - may = spring
+		else if((currentMonth >= 8 && currentMonth <= 10) || (currentMonth >= 2 && currentMonth <= 4 )){
+			this.season = 3;
+		}
+	}
+*/
+	updateWeather(){ // should update the values 
+		var currentMonth = party.startDate.getMonth();
+		let random = Math.floor(Math.random() * 100);
+		if((currentMonth <= 1) || (currentMonth == 11)){ // winter
+			//var random = Math.floor(Math.random() * 100);
+			
+			if(random <= 55){
+				this.daily = "snowing";
+				this.currentHealth -= .03; // snowing/hot weather is bad to travel in 
+			}
+			
+			else if(random > 55 && random <= 75){
+				this.daily = "cold";
+				this.currentHealth -= .02;// traveling when raining reduces health by a little
+			}
+			else if( random >75 && random <= 85 ){
+				this.daily = "raining";
+				this.currentHealth -= .01;
+			}
+			else if( random > 85 ){
+				this.daily = "cool";
+				this.currentHealth += .02;
+			}
+		}
+	
+		else if((currentMonth >= 5) && (currentMonth <= 7)){ // summer
+			//let random = Math.floor(Math.random() * 100);
+			if(random <= 75){
+				this.daily = "hot";
+				this.currentHealth -= .03;
+			}
+			else if(random > 75 && random <= 90){
+				this.daily = "warm";
+				this.currentHealth += .04;//rm weather is beneficial for health
+			}
+			else if( random > 90 ){
+				this.daily = "raining";
+				this.currentHealth -= .01;
+			}
+		}
+		else if((currentMonth >= 8 && currentMonth <= 10) || (currentMonth >= 2 && currentMonth <= 4 )){ // spring/ fall
+			//let random = Math.floor(Math.random() * 100);
+			if(random <= 65){
+				this.daily = "warm";
+				this.currentHealth += .04;
+			}
+			else if(random > 65 && random <= 90){
+				this.daily = "raining";
+				this.currentHealth -= .01;
+			}
+			else if( random > 90 ){
+				this.daily = "hot";
+				this.currentHealth -= .03;
+			}
+		}
+
 	}
 }
+let weather = new Weather();
+
 
 class Party {
 	constructor() {
