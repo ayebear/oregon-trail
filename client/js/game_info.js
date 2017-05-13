@@ -494,7 +494,7 @@ class Locations {
 	generateEndGame(){
 		return new InputState({
                 type: "text",
-                description: `Congragulations on making it to Oregon! <br> You made it in ${dateDiffInDays(party.startDate, party.date)} days. <br> Enter a name below to submit your highscore and return to the main menu!`,
+                description: `Congratulations on making it to Oregon! <br> You made it in ${dateDiffInDays(party.startDate, party.date)} days. <br> Enter a name below to submit your highscore and return to the main menu!`,
                 valid: (input) => {
                     return (input.length <= 20 && input.length >= 2)
                 },
@@ -508,6 +508,7 @@ class Locations {
 	setShop(shopName){
 		this.atShop = true;
 		this.shopName = shopName;
+		this.fortsPassed++;
 	}
 
 	canShop() {
