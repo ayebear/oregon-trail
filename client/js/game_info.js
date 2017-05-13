@@ -409,10 +409,9 @@ class Party {
 	// Note: First member at index 0 is assumed to be the leader
 	set members(names)
 	{
-		let j = 0;
 		// Create PartyMember instances array
 		let party = names.map((name, i) => {
-            return new PartyMember(name, (i === 0));
+			return new PartyMember(name, (i === 0));
 		});
 
 		// Create Set() object from array
