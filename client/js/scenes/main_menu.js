@@ -28,7 +28,7 @@ let departureState = new MenuState("It is 1848. Your jumping off place for Orego
 
 
 
-let partyEntryState = new PartyEntryState(departureState)
+let partyEntryState = new PartyEntryState(departureState);
 
 
 

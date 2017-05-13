@@ -4,17 +4,13 @@ class TravelingState{
 		this.timerId = null;
 		this.traveledElement = null;
 		this.nextMarkerElement = null;
-
-		weather.updateSeason;
-		weather.updateWeather;
 	}
 
 	display(){
-		weather.updateWeather(); // checks weather first hand. if this is not placed here, it will just return "food" which is the default value
 		this.root.append(`<h3>Traveling on the trail</h3>`);
 		this.root.append(`<div id="menu" class="menu">
-							<div id = "weather">It is currently ${weather.daily}</div>
 						  	<div id = "date">${party.date.toDateString()}</div>
+						  	<div id = "weather">It is currently ${weather.daily}</div>
 						  	<div id = "nextLandMark">Next Landmark: ${locations.nextLandMark}</div>
 						  	<div id = "milesTraveled">Miles Traveled: ${party.milesTraveled}</div>
 						  	<div id = "milesToNextMark">Miles to Next Landmark: ${party.milesToNextMark}</div>
@@ -74,7 +70,7 @@ class TravelingState{
 			for(let partyMember of party.partyMembers) {
 
 				partyMember.updateDailyHealth(partyChange, () => {
-					summaryString += `<h4> ${partyMember.name} has died </h4>`
+					summaryString += `<h4> ${partyMember.name} has died </h4>`;
 
 					//This killed the partyMember, remove them from the set
 					party.partyMembers.delete(partyMember);
