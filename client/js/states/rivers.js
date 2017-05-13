@@ -53,6 +53,14 @@ class RiverState extends MenuState {
 	}
 
 	onEnter() {
+		// updates the river length based on weather 
+		// need to update precision of river depth value, ex: "River Width: 15.23239999999"
+		this.depth += weather.riverDepth;
+		if(weather.riverDepth < 0){ // checks for negative values 
+			var x = weather.riverDepth * -1;
+		}
+		this.width = this.width - (weather.riverDepth * 10);
+
 		this.updateDescription()
 	}
 
