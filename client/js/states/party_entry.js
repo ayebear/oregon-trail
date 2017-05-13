@@ -1,19 +1,32 @@
-class PartyEntryState {
-	constructor(nextState) {
-		this.nextState = nextState
+class PartyEntryState extends ContinueState {
+    constructor(nextState) {
+    	super("Enter The Names of your Party Members Below", nextState, () => {
+    		this.submit();
+		});
 	}
+
+    submit() {
+		let inputBoxes = $(".inputBox");
+		let names = ["Lupoli", "Cory", "Tez", "Eric", "Quang"];
+		inputBoxes.each((i, element) =>{
+			if ($(element).val()){
+				names[i] = $(element).val();
+			}
+		});
+		party.members = names;
+    }
 
 	display() {
-		// Description + 5 input boxes + Submit button
-		// Submit button should push nextState, if all names are filled in
-		// Note: Original game would generate random names if you didn't fill them all in - could hardcode a default name for each position
-	}
 
-	onPush() {
-		// TODO: Remove this once interface is complete
-		party.members = ["Leader", "Cory", "Eric", "Tez", "Quang"]
-		console.log("Set party members automatically, skipping PartyEntryState")
+        super.display();
 
-		states.push(this.nextState)
+        let input = $("<input/>")
+            .attr("class", "menu inputBox")
+			.attr("type", "text");
+
+
+        for (let i = 0; i < 5; i++){
+        	$("#description").append(input.clone())
+        }
 	}
 }
