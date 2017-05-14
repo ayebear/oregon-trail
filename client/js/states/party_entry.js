@@ -1,11 +1,11 @@
 class PartyEntryState extends ContinueState {
-    constructor(nextState) {
-    	super("Enter The Names of your Party Members Below", nextState, () => {
-    		this.submit();
+	constructor(nextState) {
+		super("Enter The Names of your Party Members Below", nextState, () => {
+			this.submit();
 		});
 	}
 
-    submit() {
+	submit() {
 		let inputBoxes = $(".inputBox");
 		let names = ["Lupoli", "Cory", "Tez", "Eric", "Quang"];
 		inputBoxes.each((i, element) =>{
@@ -14,19 +14,19 @@ class PartyEntryState extends ContinueState {
 			}
 		});
 		party.members = names;
-    }
+	}
 
 	display() {
 
-        super.display();
+		super.display();
 
-        let input = $("<input/>")
-            .attr("class", "menu inputBox")
+		let input = $("<input/>")
+			.attr("class", "menu inputBox")
 			.attr("type", "text");
 
 
-        for (let i = 0; i < 5; i++){
-        	$("#description").append(input.clone())
-        }
+		for (let i = 0; i < 5; i++){
+			$("#description").append(input.clone())
+		}
 	}
 }

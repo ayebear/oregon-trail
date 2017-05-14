@@ -3,12 +3,12 @@ function rest(days, callback) {
 	party.members.forEach(member => {
 		if (member.hasDisease()) {
 			let value = rand(days, 100);
-            if (value > 85) {
+			if (value > 85) {
 				let diseaseCured = member.removeRandomDisease();
 				summary += `<h4> ${member.name} no longer has ${diseaseCured} </h4>`;
-            }
-        }
-        member.updateHealth(.005);
+			}
+		}
+		member.updateHealth(.005);
 	});
 
 
