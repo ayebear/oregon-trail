@@ -4,9 +4,12 @@ class Server {
 	}
 
 	get(endpoint, success) {
-		$.getJSON(`${this.url}${endpoint}.php`, data => {
-			success(data)
-		})
+		$.getJSON(`${this.url}${endpoint}.php`, success)
+	}
+
+	// Post data to an endpoint on the server
+	post(endpoint, name, data, success) {
+		$.post(`${this.url}${endpoint}.php`, {[name]: JSON.stringify(data)}, success)
 	}
 
 	highScores(success) {
@@ -21,15 +24,15 @@ class Server {
 		})
 	}
 
-	// Add a high score, or a death
-	// Example: server.post({score: {name: "Linus", score: 999}}, done)
-	// Example: server.post({death: {name: "Steve", location: 47, date: "1848-04-02"}}, done)
-	post(data, success) {
-		$.post(this.url, JSON.stringify(data), success)
+	// Example: server.addScore("Linus", 999, success)
+	addScore(name, score, success) {
+		this.post("scores", "score", {name: name, score: score}, success)
+	}
+
+	// Example: server.addDeath("Steve", 252, party.daysPassed, success)
+	addDeath(name, location, daysPassed, success) {
+		this.post("deaths", "death", {name: name, location: location, daysPassed: daysPassed}, success)
 	}
 }
 
 let server = new Server("https://swe.umbc.edu/~ehebert1/")
-// server.post({score: {name: "Linus", score: 999}}, data => {
-// 	console.log("Posted score")
-// })

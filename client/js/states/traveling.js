@@ -5,12 +5,10 @@ class TravelingState{
 		this.traveledElement = null;
 		this.nextMarkerElement = null;
 	}
-  
+
 	updateMap(){
         let mapWidth = this.mapBarElement.width();
         let wagonPosition = mapWidth * (party.milesToNextMark / locations.initialDistance);
-        console.info(wagonPosition);
-        console.info(mapWidth);
 		this.wagonElement.css({
 			'left': wagonPosition,
 		});
@@ -76,7 +74,7 @@ class TravelingState{
 
 		let newLandmark = false;
 		let summaryString = "";
-		const debug = true;
+		const debug = false;
 
 		function decFood(){
 			party.supplies.decrementFood(party.rationsValue.pounds * party.paceValue.food);
@@ -130,9 +128,9 @@ class TravelingState{
 		//increment miles based on pace
 		//if we hit a new landmark when incrementing miles
 		incMiles();
-		decFood(); 	//lower food based on rations	
+		decFood(); 	//lower food based on rations
 		//weather.updateSeason(); // checks month
-		weather.updateWeather(); // gives daily weather 
+		weather.updateWeather(); // gives daily weather
 		updateHealth();
 
 		// Increment Date

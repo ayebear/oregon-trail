@@ -444,6 +444,10 @@ class Party {
 		}
 	}
 
+	get daysPassed() {
+		return dateDiffInDays(this.startDate, this.date);
+	}
+
 	// Called initially when player enters party member names
 	// Note: First member at index 0 is assumed to be the leader
 	set members(names)
@@ -527,16 +531,48 @@ class Locations {
         return new ContinueState(`Arriving at ${name} <hr> ${description} <hr>`, null, () => {states.push(new RiverState(riverOptions.depth, riverOptions.width, riverOptions.canFerry, riverOptions.canIndian))});
     }
 
+	get score() {
+		const itemPoints = {
+			money: 0.2,
+			oxen: 4,
+			clothSets: 2,
+			worms: 0.02,
+			wheels: 2,
+			axles: 2,
+			tongues: 2,
+			food: 0.04,
+		}
+
+		// Take less than 100 days and get a bonus of 10 points per day under
+		let dayBonus = Math.max(0, 100 - party.daysPassed) * 10
+
+		// Remaining supplies gives you a score bonus
+		let suppliesBonus = 50
+		Object.keys(itemPoints).forEach(item => {
+			suppliesBonus += party.supplies[item] * itemPoints[item]
+		})
+
+		// Surviving members (depending on health)
+		let partyBonus = 0
+		party.members.forEach(member => {
+			partyBonus += member.health * 100
+		})
+
+		const total = dayBonus + suppliesBonus + partyBonus
+		return Math.round(party.scoreModifier * total)
+	}
+
 	generateEndGame(){
+		const score = this.score;
 		return new InputState({
                 type: "text",
-                description: `Congratulations on making it to Oregon! <br> You made it in ${dateDiffInDays(party.startDate, party.date)} days. <br> Enter a name below to submit your highscore and return to the main menu!`,
-                valid: (input) => {
+                description: `Congratulations on making it to Oregon! <br> You made it in ${party.daysPassed} days. Your score is: ${score.toFixed(0)} <br> Enter a name below to submit your highscore and return to the main menu!`,
+                valid: input => {
                     return (input.length <= 20 && input.length >= 2)
                 },
-                onSubmit: (value) => {
-                    //Do Something Here Related to Submitting the score to the DataBase
-                    states.pop("mainMenu");
+                onSubmit: name => {
+                    // Submit score to high scores
+                    server.addScore(name, score, data => {states.pop("mainMenu")});
                 }
             });
 	}
