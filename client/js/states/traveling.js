@@ -6,9 +6,32 @@ class TravelingState{
 		this.nextMarkerElement = null;
 	}
 
-	display(){
-		this.root.append(`<h3>Traveling on the trail</h3>`);
-		this.root.append(`<div id="menu" class="menu">
+
+	updateMap(){
+        let mapWidth = this.mapBarElement.width();
+        let wagonPosition = mapWidth * (party.milesToNextMark / locations.initialDistance);
+        console.info(wagonPosition);
+        console.info(mapWidth);
+		this.wagonElement.css({
+			'left': wagonPosition,
+		});
+		this.nextMarkElement.html(`
+					<figure>
+						<img src="./data/images/${landmarks[party.landmarkIndex].type}.png" height="60px" width="60px"/>
+						<figcaption>${landmarks[party.landmarkIndex].name}</figcaption>
+           			</figure>`
+
+        )
+
+    }
+	display() {
+
+        this.root.append(`<h3>Traveling on the trail</h3>`);
+        this.root.append(`<div id="menu" class="menu">
+							<div id ="mapBar">
+								<div class="mapBarContainer" id = "nextMark"></div>
+								<div class="mapBarContainer" id = "wagon"><img src="./data/images/wagon.png" height="60px" width="60px"/></div>
+							</div>
 						  	<div id = "date">${party.date.toDateString()}</div>
 						  	<div id = "weather">It is currently ${weather.daily}</div>
 						  	<div id = "nextLandMark">Next Landmark: ${locations.nextLandMark}</div>
@@ -16,18 +39,25 @@ class TravelingState{
 						  	<div id = "milesToNextMark">Miles to Next Landmark: ${party.milesToNextMark}</div>
 						  </div>`);
 
-		let button = $("<button/>")
-			.text("Size up the Situation")
-			.click(() => {
-				states.pop();
-			})
-		$("#menu").append(button);
+        let button = $("<button/>")
+            .text("Size up the Situation")
+            .click(() => {
+                states.pop();
+            })
+        $("#menu").append(button);
 
-		this.traveledElement = $("#milesTraveled");
-		this.nextMarkerElement = $("#milesToNextMark");
-		this.dateElement = $("#date");
-		this.weatherElement = $("#weather");
-	}
+        this.traveledElement = $("#milesTraveled");
+        this.nextMarkerElement = $("#milesToNextMark");
+        this.dateElement = $("#date");
+        this.weatherElement = $("#weather");
+        this.mapBarElement = $("#mapBar");
+        this.wagonElement = $("#wagon");
+        this.nextMarkElement = $("#nextMark");
+
+
+        this.updateMap();
+    }
+
 
 	onEnter(){
 		this.requestTick();
@@ -110,7 +140,10 @@ class TravelingState{
 			console.log("---------------------");
 		}
 
-		// Display any events that occurred along the trail
+        this.updateMap();
+
+
+        // Display any events that occurred along the trail
 		if (party.members.size === 0){
 			//everyone died
 			states.push(new ContinueState(summaryString, null, () => {

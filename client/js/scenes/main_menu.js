@@ -64,3 +64,6 @@ let mainMenu = new MenuState("The Oregon Trail", [
 	{text: "High Scores", next: highScoresState}
 ])
 
+mainMenu.stateName = "mainMenu";
+
+
