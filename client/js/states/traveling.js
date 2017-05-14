@@ -59,15 +59,31 @@ class TravelingState{
 		}
 
 		function updateHealth(){
+			let diseaseStatus = "none";
 			//net health change for entire party
 			let partyChange = party.paceValue.health + party.rationsValue.health + weather.currentHealth;
 
 			//update based on food/rations
 			if (party.supplies.noFood())
 				partyChange += noFoodChange;
-
+			console.log(partyChange);
 			//go through partyMembers, apply health change based on diseases + base party change
 			for(let partyMember of party.partyMembers) {
+
+                let value = rand(-partyChange * 10, 100);
+				console.log(value);
+                if (value > 97.5){
+					let diseaseAdded = partyMember.addRandomDisease();
+					if (diseaseAdded){
+						summaryString += `<h4>${partyMember.name} has ${diseaseAdded}</h4>`
+					}
+				}
+                if (partyMember.hasDisease() && value < 15) {
+					let diseaseRemoved = partyMember.removeRandomDisease();
+					summaryString += `<h4>${partyMember.name} no longer has ${diseaseRemoved}</h4>`
+				}
+
+
 
 				partyMember.updateDailyHealth(partyChange, () => {
 					summaryString += `<h4> ${partyMember.name} has died </h4>`;

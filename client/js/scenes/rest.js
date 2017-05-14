@@ -1,13 +1,23 @@
 function rest(days, callback) {
-	let summary = `Your party rested for ${days} days.`
+	let summary = `<h4> Your party rested for ${days} days. </h4>`
 	party.members.forEach(member => {
-		// TODO: Remove diseases here
-		// Find out what other things happen when resting
-		member.updateHealth(0.5)
-	})
+		if (member.hasDisease()) {
+			let value = rand(days, 100);
+            if (value > 85) {
+				let diseaseCured = member.removeRandomDisease();
+				summary += `<h4> ${member.name} no longer has ${diseaseCured} </h4>`;
+            }
+        }
+        member.updateHealth(.005);
+	});
+
 
 	// Increment days
-	party.nextDay(days)
+	party.nextDay(days);
+
+	//decrement food
+	party.supplies.decrementFood(days * party.members * 2);
+
 
 	// Call custom callback
 	if (callback) {

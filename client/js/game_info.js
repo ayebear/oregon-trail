@@ -201,8 +201,13 @@ landmarks = [
 const healthArray = ["dying", "very poor", "poor", "fair", "good"];
 
 let diseases = {
-	typhoid: {name: "Typhoid Fever", onContract: 0, perDay: -.2, onCure: 1},
-	flu: {name: "The Flu", onContract: 0, perDay: -.1, onCure: .5}
+	typhoid: {name: "typhoid fever", onContract: 0, perDay: -.2, onCure: 1},
+	flu: {name: "the flu", onContract: 0, perDay: -.1, onCure: .5},
+	brokenBone: {name: "a broken bone", onContract: 0, perDay: -.05, onCure: .2},
+    cholera: {name: "cholera", onContract: 0, perDay: -.1, onCure: 1.2},
+	measles: {name: "the measles", onContract: 0, perDay: -.15, onCure: 1},
+    dysentery: {name: "dysentery", onContract: 0, perDay: -.05, onCure: .2},
+    fever: {name: "a fever", onContract: 0, perDay: -.1, onCure: 2},
 };
 
 const occupations = {
@@ -221,6 +226,35 @@ class PartyMember {
 
 	healthString(){
 		return healthArray[Math.ceil(this.health) - 1];
+	}
+
+	//adds a random disease and returns it's name
+	addRandomDisease(){
+		let randomDisease;
+		let diseasesNotHad = Object.keys(diseases).filter(key => this.diseases.indexOf(key));
+		if (diseasesNotHad.length){
+			//this person can get a random disease
+			randomDisease = randValue(diseasesNotHad);
+			this.diseases.push(randomDisease)
+			randomDisease = diseases[randomDisease].name;
+		}
+		return randomDisease;
+	}
+
+	//removes a random disease and return it's name
+	removeRandomDisease(){
+		let index = randIndex(this.diseases);
+		let diseaseName = this.diseases[index];
+
+		this.updateHealth(diseases[diseaseName].onCure);
+		this.diseases.splice(index, 1);
+		diseaseName = diseases[diseaseName].name;
+		return diseaseName;
+	}
+
+	//returns true if this partymember has any diseases
+	hasDisease(){
+		return this.diseases.length;
 	}
 
 	//update health and call onDeathCallback if this change kills the party member
@@ -368,6 +402,7 @@ class Party {
 		this.wagonState = "stopped"; //stopped, resting, delayed, moving, tipped, or sank
 		this.milesTraveled = 0;	//how many miles the party has traveled
 		this.milesToNextMark = landmarks[0].distance;
+		this.diseaseBias = 0;
 	}
 
 
