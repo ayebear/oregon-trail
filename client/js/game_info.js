@@ -402,7 +402,6 @@ class Party {
 		this.wagonState = "stopped"; //stopped, resting, delayed, moving, tipped, or sank
 		this.milesTraveled = 0;	//how many miles the party has traveled
 		this.milesToNextMark = landmarks[0].distance;
-		this.diseaseBias = 0;
 	}
 
 
