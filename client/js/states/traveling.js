@@ -5,8 +5,7 @@ class TravelingState{
 		this.traveledElement = null;
 		this.nextMarkerElement = null;
 	}
-
-
+  
 	updateMap(){
         let mapWidth = this.mapBarElement.width();
         let wagonPosition = mapWidth * (party.milesToNextMark / locations.initialDistance);
@@ -24,19 +23,19 @@ class TravelingState{
         )
 
     }
-	display() {
 
-        this.root.append(`<h3>Traveling on the trail</h3>`);
-        this.root.append(`<div id="menu" class="menu">
+	display(){
+		this.root.append(`<h3>Traveling on the trail</h3>`);
+		this.root.append(`<div id="menu" class="menu">
 							<div id ="mapBar">
 								<div class="mapBarContainer" id = "nextMark"></div>
 								<div class="mapBarContainer" id = "wagon"><img src="./data/images/wagon.png" height="60px" width="60px"/></div>
 							</div>
-						  	<div id = "date">${party.date.toDateString()}</div>
-						  	<div id = "weather">It is currently ${weather.daily}</div>
-						  	<div id = "nextLandMark">Next Landmark: ${locations.nextLandMark}</div>
-						  	<div id = "milesTraveled">Miles Traveled: ${party.milesTraveled}</div>
-						  	<div id = "milesToNextMark">Miles to Next Landmark: ${party.milesToNextMark}</div>
+							<div id = "date">${party.date.toDateString()}</div>
+							<div id = "weather">It is currently ${weather.daily}</div>
+							<div id = "nextLandMark">Next Landmark: ${locations.nextLandMark}</div>
+							<div id = "milesTraveled">Miles Traveled: ${party.milesTraveled}</div>
+							<div id = "milesToNextMark">Miles to Next Landmark: ${party.milesToNextMark}</div>
 						  </div>`);
 
         let button = $("<button/>")
@@ -95,9 +94,23 @@ class TravelingState{
 			//update based on food/rations
 			if (party.supplies.noFood())
 				partyChange += noFoodChange;
-
+			console.log(partyChange);
 			//go through partyMembers, apply health change based on diseases + base party change
 			for(let partyMember of party.partyMembers) {
+
+				let value = rand(-partyChange * 10, 100);
+				if (value > 97.5){
+					let diseaseAdded = partyMember.addRandomDisease();
+					if (diseaseAdded){
+						summaryString += `<h4>${partyMember.name} has ${diseaseAdded}</h4>`
+					}
+				}
+				if (partyMember.hasDisease() && value < 15) {
+					let diseaseRemoved = partyMember.removeRandomDisease();
+					summaryString += `<h4>${partyMember.name} no longer has ${diseaseRemoved}</h4>`
+				}
+
+
 
 				partyMember.updateDailyHealth(partyChange, () => {
 					summaryString += `<h4> ${partyMember.name} has died </h4>`;
