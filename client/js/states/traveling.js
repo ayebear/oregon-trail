@@ -5,29 +5,60 @@ class TravelingState{
 		this.traveledElement = null;
 		this.nextMarkerElement = null;
 	}
+  
+	updateMap(){
+        let mapWidth = this.mapBarElement.width();
+        let wagonPosition = mapWidth * (party.milesToNextMark / locations.initialDistance);
+        console.info(wagonPosition);
+        console.info(mapWidth);
+		this.wagonElement.css({
+			'left': wagonPosition,
+		});
+		let landmark = landmarks[party.landmarkIndex];
+		if (landmark){
+            this.nextMarkElement.html(`
+					<figure>
+						<img src="./data/images/${landmarks[party.landmarkIndex].type}.png" height="60px" width="60px"/>
+						<figcaption>${landmarks[party.landmarkIndex].name}</figcaption>
+           			</figure>`
+
+            )
+		}
+    }
 
 	display(){
 		this.root.append(`<h3>Traveling on the trail</h3>`);
 		this.root.append(`<div id="menu" class="menu">
-						  	<div id = "date">${party.date.toDateString()}</div>
-						  	<div id = "weather">It is currently ${weather.daily}</div>
-						  	<div id = "nextLandMark">Next Landmark: ${locations.nextLandMark}</div>
-						  	<div id = "milesTraveled">Miles Traveled: ${party.milesTraveled}</div>
-						  	<div id = "milesToNextMark">Miles to Next Landmark: ${party.milesToNextMark}</div>
+							<div id ="mapBar">
+								<div class="mapBarContainer" id = "nextMark"></div>
+								<div class="mapBarContainer" id = "wagon"><img src="./data/images/wagon.png" height="60px" width="60px"/></div>
+							</div>
+							<div id = "date">${party.date.toDateString()}</div>
+							<div id = "weather">It is currently ${weather.daily}</div>
+							<div id = "nextLandMark">Next Landmark: ${locations.nextLandMark}</div>
+							<div id = "milesTraveled">Miles Traveled: ${party.milesTraveled}</div>
+							<div id = "milesToNextMark">Miles to Next Landmark: ${party.milesToNextMark}</div>
 						  </div>`);
 
-		let button = $("<button/>")
-			.text("Size up the Situation")
-			.click(() => {
-				states.pop();
-			})
-		$("#menu").append(button);
+        let button = $("<button/>")
+            .text("Size up the Situation")
+            .click(() => {
+                states.pop();
+            })
+        $("#menu").append(button);
 
-		this.traveledElement = $("#milesTraveled");
-		this.nextMarkerElement = $("#milesToNextMark");
-		this.dateElement = $("#date");
-		this.weatherElement = $("#weather");
-	}
+        this.traveledElement = $("#milesTraveled");
+        this.nextMarkerElement = $("#milesToNextMark");
+        this.dateElement = $("#date");
+        this.weatherElement = $("#weather");
+        this.mapBarElement = $("#mapBar");
+        this.wagonElement = $("#wagon");
+        this.nextMarkElement = $("#nextMark");
+
+
+        this.updateMap();
+    }
+
 
 	onEnter(){
 		this.requestTick();
@@ -65,9 +96,22 @@ class TravelingState{
 			//update based on food/rations
 			if (party.supplies.noFood())
 				partyChange += noFoodChange;
-
 			//go through partyMembers, apply health change based on diseases + base party change
 			for(let partyMember of party.partyMembers) {
+
+				let value = rand(-partyChange * 10, 100);
+				if (value > 98.5){
+					let diseaseAdded = partyMember.addRandomDisease();
+					if (diseaseAdded){
+						summaryString += `<h4>${partyMember.name} has ${diseaseAdded}</h4>`
+					}
+				}
+				if (partyMember.hasDisease() && value < 10) {
+					let diseaseRemoved = partyMember.removeRandomDisease();
+					summaryString += `<h4>${partyMember.name} no longer has ${diseaseRemoved}</h4>`
+				}
+
+
 
 				partyMember.updateDailyHealth(partyChange, () => {
 					summaryString += `<h4> ${partyMember.name} has died </h4>`;
@@ -93,9 +137,10 @@ class TravelingState{
 
 		// Increment Date
 		party.nextDay();
-		
-		
-		this.nextMarkerElement.text(`Next Landmark: ${party.milesToNextMark}`);
+
+        this.updateMap();
+
+        this.nextMarkerElement.text(`Next Landmark: ${party.milesToNextMark}`);
 		this.traveledElement.text(`Miles Traveled: ${party.milesTraveled}`);
 		this.dateElement.text(`${party.date.toDateString()}`);
 		this.weatherElement.text(`It is currently ${weather.daily}`);
@@ -110,7 +155,7 @@ class TravelingState{
 			console.log("---------------------");
 		}
 
-		// Display any events that occurred along the trail
+        // Display any events that occurred along the trail
 		if (party.members.size === 0){
 			//everyone died
 			states.push(new ContinueState(summaryString, null, () => {
@@ -128,7 +173,7 @@ class TravelingState{
 			}));
 		}
 		else if (summaryString.length && newLandmark){
-			states.push(new ContinueState(summaryString), locations.update);
+			states.push(new ContinueState(summaryString), null, () => {locations.update()});
 		}
 		else if (summaryString.length){
 			states.push(new ContinueState(summaryString));

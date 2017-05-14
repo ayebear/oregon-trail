@@ -66,3 +66,6 @@ let mainMenu = new MenuState("The Oregon Trail", [
 	}}
 ])
 
+mainMenu.stateName = "mainMenu";
+
+
