@@ -14,6 +14,7 @@ class TravelingState{
 						  	<div id = "nextLandMark">Next Landmark: ${locations.nextLandMark}</div>
 						  	<div id = "milesTraveled">Miles Traveled: ${party.milesTraveled}</div>
 						  	<div id = "milesToNextMark">Miles to Next Landmark: ${party.milesToNextMark}</div>
+						  	<div id = "broken"></div>
 						  </div>`);
 
 		let button = $("<button/>")
@@ -27,10 +28,32 @@ class TravelingState{
 		this.nextMarkerElement = $("#milesToNextMark");
 		this.dateElement = $("#date");
 		this.weatherElement = $("#weather");
-	}
+		this.brokenElement = $("#broken");
+
+
+		// reminds user what needs to be repaired
+		if( party.wWheel == false || party.wAxle == false || party.wTongue == false){
+			if(party.wWheel == false){
+			this.brokenElement.text(`You need to find a spare wheel for your wagon!`);
+			}
+			else if(party.wAxle == false){
+				this.brokenElement.text(`You need to find a spare axle for your wagon!`);
+			}			
+			else if(party.wTongue == false){
+				this.brokenElement.text(`You need to find a spare tongue for your wagon!`);
+			}
+		}
+		else if(party.wWheel == true && party.wAxle == true && party.wTongue == true){
+			this.brokenElement.text(""); // resets 
+		}
+
+		}
 
 	onEnter(){
-		this.requestTick();
+
+		if(party.wWheel == true && party.wAxle == true && party.wTongue == true && party.supplies.oxen >= 1){// all 3 needs to be true to be able to move 
+			this.requestTick();
+		}
 	}
 
 	onExit(){
@@ -38,8 +61,9 @@ class TravelingState{
 	}
 
 	requestTick(){
-		this.timerId = setTimeout(() => {this.tick()}, 1000);
+			this.timerId = setTimeout(() => {this.tick()}, 1000);
 	}
+	
 
 	tick(){
 
@@ -48,7 +72,7 @@ class TravelingState{
 		const debug = true;
 
 		function decFood(){
-			party.supplies.decrementFood(party.rationsValue.pounds * party.paceValue.food);
+			party.supplies.decrementFood(party.rationsValue.pounds * party.paceValue.food *party.members.size);
 		}
 
 		//returns true if we hit a new landmark
@@ -81,7 +105,7 @@ class TravelingState{
 
 		}
 
-
+		let random = Math.floor(Math.random() * 100);
 
 		//increment miles based on pace
 		//if we hit a new landmark when incrementing miles
@@ -136,9 +160,16 @@ class TravelingState{
 		else if (newLandmark){
 			locations.update();
 		}
-		else {
-			this.requestTick();
-		}
-	}
+		else if(random <= 10){ // can change this to debug 
+			randomEvents.select();
 
+		}
+
+		else {
+				this.requestTick();
+		
+
+	
+	}
+	}
 }

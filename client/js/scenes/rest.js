@@ -8,7 +8,7 @@ function rest(days, callback) {
 
 	// Increment days
 	party.nextDay(days)
-
+	//party.supplies.decrementFood(party.rationsValue.pounds * party.paceValue.food *party.members.size * days);
 	// Call custom callback
 	if (callback) {
 		callback(days)

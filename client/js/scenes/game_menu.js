@@ -61,6 +61,48 @@ let gameMenu = new MenuState("What would you like to do?", [
 	}},
 	{text: "Go Fishing", next: fishState, show: () => {
 		return locations.atRiver();
+	}},
+
+	/* for debugging repairing/broken wagon 
+	{text: "WHEELS", onclick: () => {
+		party.supplies.wheels += 1;
+		party.supplies.axles += 1;
+		party.supplies.tongues += 1;
+
+	}},
+	*/
+	{text: "Replace a wagon part",onclick: () => {
+		if(party.wWheel != true){
+				party.supplies.wheels -= 1;
+				
+				states.push(new ContinueState("You have replaced your wagon wheel!"));
+				party.wWheel = true;
+		}
+		if(party.wAxle != true){
+				party.supplies.axles -= 1;
+				
+				states.push(new ContinueState("You have replaced your wagon axle!"));
+				party.wAxle = true;
+		}
+		if(party.wTongue != true){
+				party.supplies.tongues -= 1;
+				
+				states.push(new ContinueState("You have replaced your wagon tongue!"));
+				party.wTongue = true;
+		}
+
+
+	}, 
+	show: () => { // need the supply for it to show 
+		if((party.wWheel != true && party.supplies.wheels >=1) || (party.wAxle != true && party.supplies.axles >=1) || (party.wTongue != true && party.supplies.tongues >=1)){
+			return true;
+		}
+		else{
+			return false;
+		}
 	}}
+
+
+
 ]);
 gameMenu.stateName = "gameMenu";
