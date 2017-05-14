@@ -32,7 +32,7 @@ const splitPaths = {
                 onclick: () => {
                     locations.addPath(
                         [
-                            {name: "Green River", type: "river", istance: 57, generateState: () => {return locations.generateRiver("The Green River", `The Green River is a tributary to the Colorado River, flowing south from the
+                            {name: "Green River", type: "river", distance: 57, generateState: () => {return locations.generateRiver("The Green River", `The Green River is a tributary to the Colorado River, flowing south from the
 								Continental Divide along a twisted, rugged path.  It's estimated to be more
 								than 700 miles in length.  It's navigable only at high water, and even then
 								it's extremely dangerous.  But you must cross it before proceeding west on the
@@ -246,7 +246,7 @@ class PartyMember {
 		let index = randIndex(this.diseases);
 		let diseaseName = this.diseases[index];
 
-		this.updateHealth(diseases[diseaseName].onCure);
+		//this.updateHealth(diseases[diseaseName].onCure);
 		this.diseases.splice(index, 1);
 		diseaseName = diseases[diseaseName].name;
 		return diseaseName;

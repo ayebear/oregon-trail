@@ -14,14 +14,16 @@ class TravelingState{
 		this.wagonElement.css({
 			'left': wagonPosition,
 		});
-		this.nextMarkElement.html(`
+		let landmark = landmarks[party.landmarkIndex];
+		if (landmark){
+            this.nextMarkElement.html(`
 					<figure>
 						<img src="./data/images/${landmarks[party.landmarkIndex].type}.png" height="60px" width="60px"/>
 						<figcaption>${landmarks[party.landmarkIndex].name}</figcaption>
            			</figure>`
 
-        )
-
+            )
+		}
     }
 
 	display(){
@@ -94,18 +96,17 @@ class TravelingState{
 			//update based on food/rations
 			if (party.supplies.noFood())
 				partyChange += noFoodChange;
-			console.log(partyChange);
 			//go through partyMembers, apply health change based on diseases + base party change
 			for(let partyMember of party.partyMembers) {
 
 				let value = rand(-partyChange * 10, 100);
-				if (value > 97.5){
+				if (value > 98.5){
 					let diseaseAdded = partyMember.addRandomDisease();
 					if (diseaseAdded){
 						summaryString += `<h4>${partyMember.name} has ${diseaseAdded}</h4>`
 					}
 				}
-				if (partyMember.hasDisease() && value < 15) {
+				if (partyMember.hasDisease() && value < 10) {
 					let diseaseRemoved = partyMember.removeRandomDisease();
 					summaryString += `<h4>${partyMember.name} no longer has ${diseaseRemoved}</h4>`
 				}
@@ -136,9 +137,10 @@ class TravelingState{
 
 		// Increment Date
 		party.nextDay();
-		
-		
-		this.nextMarkerElement.text(`Next Landmark: ${party.milesToNextMark}`);
+
+        this.updateMap();
+
+        this.nextMarkerElement.text(`Next Landmark: ${party.milesToNextMark}`);
 		this.traveledElement.text(`Miles Traveled: ${party.milesTraveled}`);
 		this.dateElement.text(`${party.date.toDateString()}`);
 		this.weatherElement.text(`It is currently ${weather.daily}`);
@@ -152,9 +154,6 @@ class TravelingState{
 			}
 			console.log("---------------------");
 		}
-
-        this.updateMap();
-
 
         // Display any events that occurred along the trail
 		if (party.members.size === 0){
@@ -174,7 +173,7 @@ class TravelingState{
 			}));
 		}
 		else if (summaryString.length && newLandmark){
-			states.push(new ContinueState(summaryString), locations.update);
+			states.push(new ContinueState(summaryString), null, () => {locations.update()});
 		}
 		else if (summaryString.length){
 			states.push(new ContinueState(summaryString));
