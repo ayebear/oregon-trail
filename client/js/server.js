@@ -1,16 +1,23 @@
 class Server {
 	constructor(url) {
 		this.url = url
-		this.update()
 	}
 
-	// Get current deaths and scores from server
-	update() {
-		console.log(`Getting data from ${this.url}...`)
-		$.getJSON(this.url, data => {
-			this.scores = data.scores
-			this.deaths = data.deaths
-			console.log(this.scores, this.deaths)
+	get(endpoint, success) {
+		$.getJSON(`${this.url}${endpoint}.php`, data => {
+			success(data)
+		})
+	}
+
+	highScores(success) {
+		this.get("scores", data => {
+			// Build up an html table with the high scores
+			let html = "<table><tr><th>Name</th><th>Score</th></tr>"
+			for (let elem of data) {
+				html += `<tr><td>${elem.name}</td><td>${elem.score}</td></tr>`
+			}
+			html += "</table>"
+			success(html)
 		})
 	}
 
@@ -22,4 +29,7 @@ class Server {
 	}
 }
 
-let server = new Server("https://swe.umbc.edu/~ehebert1/server.php")
+let server = new Server("https://swe.umbc.edu/~ehebert1/")
+// server.post({score: {name: "Linus", score: 999}}, data => {
+// 	console.log("Posted score")
+// })

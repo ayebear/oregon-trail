@@ -56,11 +56,13 @@ At the Dalles, you can try navigating the Columbia River, but if running the rap
 If for some reason you don't survive - your wagon burns, or thieves steal your oxen, or you run out of provisions, or you die of cholera - don't give up! Try again... and again... until your name is up with the other on the High Scores.<br><br>
 This software was written by a team of students at UMBC, based on the original Oregon Trail game for DOS from 1990.`)
 
-let highScoresState = new ContinueState("High scores:")
-
 let mainMenu = new MenuState("The Oregon Trail", [
 	{text: "Travel The Trail", next: occupationMenu},
 	{text: "Learn About The Trail", next: learnState},
-	{text: "High Scores", next: highScoresState}
+	{text: "High Scores", onclick: () => {
+		server.highScores(scores => {
+			states.push(new ContinueState(`High scores: <hr> ${scores} <hr>`))
+		})
+	}}
 ])
 
