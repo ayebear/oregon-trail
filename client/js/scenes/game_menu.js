@@ -29,7 +29,7 @@ function getSupplies() {
 
 function getPartyHealth() {
 	let healthString = "";
-	for (let partyMember of party.members){
+	for (let partyMember of party.members) {
 		healthString += `<p>${partyMember.name}: ${partyMember.healthString()}</p>`;
 	}
 	return healthString;

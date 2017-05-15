@@ -1,6 +1,6 @@
 function getItemAmount(item) {
 	// TODO: Maybe base values on actual store prices?
-	if(item == "food" || item == "worms" || item == "money"){
+	if (item == "food" || item == "worms" || item == "money") {
 		return rand(20,50);
 	}
 	else{ // oxens // wagon parts // cloth sets
@@ -9,7 +9,7 @@ function getItemAmount(item) {
 }
 
 //let tradeState = temporary(new QuestionState("Would you like to trade one of your party members for 3 pounds of food?", acceptTradeState, declineTradeState))
-function tradeSupply(){
+function tradeSupply() {
 	// Pick an item you actually have
 	const yourItem = randNonZeroKey(party.supplies);
 
@@ -30,7 +30,8 @@ function tradeSupply(){
 			let description = `${person} wanted to trade you ${theirDescription} for ${yourDescription}, but you did not have enough.`;
 			party.nextDay();
 			states.push(temporary(new ContinueState(description)));
-		} else {
+		}
+		else {
 			// Get trade description
 			let description = `${person} will trade you ${theirDescription} for ${yourDescription}.`;
 
@@ -53,9 +54,9 @@ function tradeSupply(){
 	}
 }
 
-function tradeCheck(){ // checks to see if anyone wants to trade with you
+function tradeCheck() { // checks to see if anyone wants to trade with you
 	let random = Math.floor(Math.random() * 100);
-	if(random <= 85){
+	if (random <= 85) {
 		tradeSupply();
 	}
 	else{

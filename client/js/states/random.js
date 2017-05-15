@@ -59,14 +59,16 @@ class RandomEvents {
 			// Successful repairs, no need to use up a part
 			party.brokenPart = undefined;
 			states.push(temporary(new ContinueState(`You have successfully repaired the wagon ${wagonParts[part]}.`)));
-		} else {
+		}
+		else {
 			// Unsuccessful repairs, so must replace
 			if (party.supplies[part] >= 1) {
 				// Use a part to fix it
 				party.supplies[part] -= 1;
 				party.brokenPart = undefined;
 				states.push(temporary(new ContinueState(`You did not successfully repair the wagon ${wagonParts[part]}, so it was replaced.`)));
-			} else {
+			}
+			else {
 				states.push(temporary(new ContinueState(`You did not successfully repair the wagon ${wagonParts[part]} and do not have a spare part to replace it with.`)));
 			}
 		}
@@ -78,7 +80,8 @@ class RandomEvents {
 			party.supplies[part] -= 1;
 			party.brokenPart = undefined;
 			states.push(temporary(new ContinueState(`Your wagon ${wagonParts[part]} was replaced.`)));
-		} else {
+		}
+		else {
 			states.push(temporary(new ContinueState(`You do not have a spare wagon ${wagonParts[part]}.`)));
 		}
 	}

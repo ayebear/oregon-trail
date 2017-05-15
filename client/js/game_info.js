@@ -217,22 +217,22 @@ const occupations = {
 };
 
 class PartyMember {
-	constructor(name, isWagonLeader){
+	constructor(name, isWagonLeader) {
 		this.name = name;
 		this.isWagonLeader = isWagonLeader;
 		this.diseases = [];
 		this.health = 5; //from 0 to 5
 	}
 
-	healthString(){
+	healthString() {
 		return healthArray[Math.ceil(this.health) - 1];
 	}
 
 	//adds a random disease and returns it's name
-	addRandomDisease(){
+	addRandomDisease() {
 		let randomDisease;
 		let diseasesNotHad = Object.keys(diseases).filter(key => this.diseases.indexOf(key));
-		if (diseasesNotHad.length){
+		if (diseasesNotHad.length) {
 			//this person can get a random disease
 			randomDisease = randValue(diseasesNotHad);
 			this.diseases.push(randomDisease)
@@ -242,7 +242,7 @@ class PartyMember {
 	}
 
 	//removes a random disease and return it's name
-	removeRandomDisease(){
+	removeRandomDisease() {
 		let index = randIndex(this.diseases);
 		let diseaseName = this.diseases[index];
 
@@ -253,17 +253,17 @@ class PartyMember {
 	}
 
 	//returns true if this partymember has any diseases
-	hasDisease(){
+	hasDisease() {
 		return this.diseases.length;
 	}
 
 	//update health and call onDeathCallback if this change kills the party member
-	updateHealth(change, onDeathCallback){
-		if (this.health + change <= 0){
+	updateHealth(change, onDeathCallback) {
+		if (this.health + change <= 0) {
 			this.health = 0;
 			onDeathCallback();
 		}
-		else if(this.health + change > 5){
+		else if (this.health + change > 5) {
 			this.health = 5; //health change would put them over 5
 		}
 		else{
@@ -272,9 +272,9 @@ class PartyMember {
 	}
 
 	//used to apply disease per day damage + additional damagge
-	updateDailyHealth(change, onDeathCallback){
+	updateDailyHealth(change, onDeathCallback) {
 		//get total disease damage
-		for (let disease of this.diseases){
+		for (let disease of this.diseases) {
 			change += diseases[disease].perDay;
 		}
 
@@ -307,8 +307,7 @@ function getItemDescription(name, amount) {
 }
 
 class Supplies {
-	constructor(){
-
+	constructor() {
 		this.money = 0;
 		this.oxen = 0;
 		this.clothSets = 0;
@@ -319,85 +318,84 @@ class Supplies {
 		this.food = 0;
 	}
 
-	decrementFood(change){
+	decrementFood(change) {
 		if (this.food - change > 0) {
 			this.food -= change;
-		} else {
+		}
+		else {
 			this.food = 0;
 		}
 	}
 
-	noFood(){
+	noFood() {
 		return this.food === 0;
 	}
 }
-// ignore for now
 
 class Weather{
-	constructor(){
+	constructor() {
 		this.season = 0;
 		this.daily = 'warm';
 		this.currentHealth = 0.00;
 		this.riverDepth = 0.0;
 	}
 
-	updateWeather(){ // should update the values
+	updateWeather() { // should update the values
 		let currentMonth = party.date.getMonth();
 		let random = Math.floor(Math.random() * 100);
-		if((currentMonth <= 1) || (currentMonth === 11)){ // winter
-			if(random <= 55){
+		if ((currentMonth <= 1) || (currentMonth === 11)) { // winter
+			if (random <= 55) {
 				this.daily = "snowing";
 				this.currentHealth = .03; // snowing/hot weather is bad to travel in
 				this.riverDepth = 5;
 			}
-			else if(random > 55 && random <= 75){
+			else if (random > 55 && random <= 75) {
 				this.daily = "cold";
 				this.currentHealth = .02;// traveling when raining reduces health by a little
 			}
-			else if( random >75 && random <= 85 ){
+			else if ( random >75 && random <= 85 ) {
 				this.daily = "raining";
 				this.currentHealth = .01;
 			}
-			else if( random > 85 ){
+			else if ( random > 85 ) {
 				this.daily = "cool";
 				this.currentHealth = .02;
 			}
 		}
-		else if((currentMonth >= 5) && (currentMonth <= 7)){ // summer
-			if(random <= 75){
+		else if ((currentMonth >= 5) && (currentMonth <= 7)) { // summer
+			if (random <= 75) {
 				this.daily = "hot";
 				this.currentHealth = .03;
 				this.riverDepth = -10;
 			}
-			else if(random > 75 && random <= 90){
+			else if (random > 75 && random <= 90) {
 				this.daily = "warm";
 				this.currentHealth = .04;//rm weather is beneficial for health
 				this.riverDepth = -5;
 			}
-			else if( random > 90 ){
+			else if ( random > 90 ) {
 				this.daily = "raining";
 				this.currentHealth = .01;
 				this.riverDepth = 5;
 			}
 		}
-		else if((currentMonth >= 8 && currentMonth <= 10) || (currentMonth >= 2 && currentMonth <= 4 )){ // spring/ fall
-			if(random <= 65){
+		else if ((currentMonth >= 8 && currentMonth <= 10) || (currentMonth >= 2 && currentMonth <= 4 )) { // spring/ fall
+			if (random <= 65) {
 				this.daily = "warm";
 				this.currentHealth = .04;
 				this.riverDepth = -2;
 			}
-			else if(random > 65 && random <= 90){
+			else if (random > 65 && random <= 90) {
 				this.daily = "raining";
 				this.currentHealth = .01;
 				this.riverDepth = 5;
 			}
-			else if( random > 90 ){
+			else if ( random > 90 ) {
 				this.daily = "hot";
 				this.currentHealth = .03;
 				this.riverDepth = -5;
 			}
 		}
-
 	}
 }
 
@@ -413,41 +411,35 @@ class Party {
 		this.brokenPart = undefined;
 	}
 
-
-	get rationsValue()
-	{
+	get rationsValue() {
 		return rationTypes[this.rations];
 	}
 
-	get paceValue()
-	{
+	get paceValue() {
 		return paceTypes[this.pace];
 	}
 
 	// Called initially when player chooses occupation
-	set occupation(name)
-	{
+	set occupation(name) {
 		this.occupationName = name;
 		this.supplies.money = occupations[name].start;
 		this.scoreModifier = occupations[name].score;
 	}
 
 	// Called initially when player chooses start month
-	set startingDate(date)
-	{
+	set startingDate(date) {
 		this.date = date;
 		this.startDate = new Date(date);
 		weather.updateWeather();
 	}
 
 	// Increment date by one day (or certain number of days)
-	nextDay(days = 1)
-	{
+	nextDay(days = 1) {
 		if (days > 0) {
 			this.date.setDate(this.date.getDate() + days);
 
 			// TODO: Maybe use up food when going to the next day? Or do this instead of while traveling only?
-			//party.supplies.decrementFood(party.rationsValue.pounds * party.paceValue.food *party.members.size * daysLost);// still lose food based on days resting
+			// this.decrementFood();
 		}
 	}
 
@@ -457,38 +449,84 @@ class Party {
 
 	// Called initially when player enters party member names
 	// Note: First member at index 0 is assumed to be the leader
-	set members(names)
-	{
+	set members(names) {
 		// Create PartyMember instances array
-		let party = names.map((name, i) => {
+		let membersArray = names.map((name, i) => {
 			return new PartyMember(name, (i === 0));
 		});
 
 		// Create Set() object from array
-		this.partyMembers = new Set(party);
+		this.partyMembers = new Set(membersArray);
 	}
 
-	get members()
-	{
+	get members() {
 		return this.partyMembers;
 	}
 
-	//increments miles and returns true if we hit a new landmark
-	incrementMiles(change, onNewLandmark)
-	{
-		//have we hit our next mark?
+	// Increments miles and returns true if we hit a new landmark
+	incrementMiles(change) {
+		// Default speed is calculated by number of oxen and pace value
+		change = change || this.paceValue.speed * Math.min(this.supplies.oxen, 9) * oxenMilesPerDay;
+
+		// Have we hit our next mark?
 		if (change >= this.milesToNextMark) {
 			this.milesTraveled += this.milesToNextMark;
 			this.milesToNextMark = 0;
-			onNewLandmark();
-		}
-		else {
-			this.milesToNextMark -= change;
-			this.milesTraveled += change;
+			return true;
 		}
 
+		// Continue traveling
+		this.milesToNextMark -= change;
+		this.milesTraveled += change;
+		return false;
 	}
 
+	// Uses up food rations based on pace/rations settings, and party size
+	decrementFood() {
+		this.supplies.decrementFood(this.rationsValue.pounds * this.paceValue.food * this.members.size);
+	}
+
+	// Applies diseases, handles health logic, and returns a summary of everything that happened
+	updateHealth() {
+		// Net health change for entire party
+		let partyChange = this.paceValue.health + this.rationsValue.health + weather.currentHealth;
+
+		// Update based on food/rations
+		if (this.supplies.noFood()) {
+			partyChange += noFoodChange;
+		}
+
+		let summaryString = "";
+
+		// Go through partyMembers, apply health change based on diseases + base party change
+		for (let partyMember of this.partyMembers) {
+
+			// Add diseases
+			let value = rand(-partyChange * 10, 100);
+			if (value > 98.5) {
+				let diseaseAdded = partyMember.addRandomDisease();
+				if (diseaseAdded) {
+					summaryString += `<h4>${partyMember.name} has ${diseaseAdded}</h4>`;
+				}
+			}
+
+			// Remove diseases
+			if (partyMember.hasDisease() && value < 10) {
+				let diseaseRemoved = partyMember.removeRandomDisease();
+				summaryString += `<h4>${partyMember.name} no longer has ${diseaseRemoved}</h4>`;
+			}
+
+			// Update health values
+			partyMember.updateDailyHealth(partyChange, () => {
+				summaryString += `<h4> ${partyMember.name} has died </h4>`;
+
+				//This killed the partyMember, remove them from the set
+				this.partyMembers.delete(partyMember);
+			});
+		}
+
+		return summaryString;
+	}
 }
 
 let party = new Party();
@@ -508,33 +546,33 @@ class Locations {
 	//update our location based on landmarkObjects
 	update() {
 		let landmark = landmarks[party.landmarkIndex];
-		if (landmarks[++party.landmarkIndex]){
+		if (landmarks[++party.landmarkIndex]) {
 			party.milesToNextMark = landmarks[party.landmarkIndex].distance;
 			this.nextLandMark = landmarks[party.landmarkIndex].name;
 			this.initialDistance = landmarks[party.landmarkIndex].distance;
 		}
-		if (!landmark.generateState) {
-			states.push(new ContinueState("This Landmark Dosen't have a Defined State yet"));
+		if (landmark.generateState) {
+			states.push(landmark.generateState());
 		}
 		else {
-			states.push(landmark.generateState());
+			states.push(new ContinueState("Error: This landmark doesn't have a defined state yet."));
 		}
 	}
 
-	generateFort(fortName, description){
+	generateFort(fortName, description) {
 		this.setShop(fortName);
 		return new ContinueState(`Arriving at ${fortName} <hr> ${description} <hr>`, null, ()=> {states.pop("gameMenu")});
 	}
 
-	generateContinue(name, description){
+	generateContinue(name, description) {
 		return new ContinueState(`Arriving at ${name} <hr> ${description} <hr>`, null, ()=> {states.pop("gameMenu")});
 	}
 
-	generateSplit(name, description, splitOptions){
+	generateSplit(name, description, splitOptions) {
 		return new ContinueState(`Arriving at ${name} <hr> ${description} <hr>`, null, () => {states.push(new MenuState(splitOptions.description, splitOptions.choices))});
 	}
 
-	generateRiver(name, description, riverOptions){
+	generateRiver(name, description, riverOptions) {
 		return new ContinueState(`Arriving at ${name} <hr> ${description} <hr>`, null, () => {states.push(new RiverState(riverOptions.depth, riverOptions.width, riverOptions.canFerry, riverOptions.canIndian))});
 	}
 
@@ -569,7 +607,7 @@ class Locations {
 		return Math.round(party.scoreModifier * total)
 	}
 
-	generateEndGame(){
+	generateEndGame() {
 		const score = this.score;
 		return new InputState({
 				type: "text",
@@ -584,7 +622,7 @@ class Locations {
 			});
 	}
 
-	setShop(shopName){
+	setShop(shopName) {
 		this.atShop = true;
 		this.shopName = shopName;
 		this.fortsPassed++;
@@ -598,7 +636,7 @@ class Locations {
 		return true
 	}
 
-	addPath(path){
+	addPath(path) {
 		insertArrayAt(landmarks, party.landmarkIndex, path);
 		party.milesToNextMark = landmarks[party.landmarkIndex].distance;
 		this.nextLandMark = landmarks[party.landmarkIndex].name;

@@ -44,7 +44,8 @@ class MenuState {
 								// Create a new state with optional arguments
 								let args = item.args || []
 								states.push(new state(...args))
-							} else {
+							}
+							else {
 								// Push specified state instance
 								states.push(state)
 							}
