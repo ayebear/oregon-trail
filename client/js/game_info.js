@@ -12,7 +12,7 @@ const paceTypes = {
 };
 
 // Miles that one oxen can travel per day
-const oxenMilesPerDay = 6;
+const oxenMilesPerDay = 3;
 
 // Pounds and health modifier per day per person
 const rationTypes = {

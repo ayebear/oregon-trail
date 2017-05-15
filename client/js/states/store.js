@@ -18,7 +18,7 @@ class StoreState extends ContinueState {
 		// Create store items
 		for (let item of this.options.items) {
 			// Set default quantity
-			item.quantity = 0
+			item.quantity = 0;
 
 			let storeItem = $("<tr/>").attr("id", item.id)
 
