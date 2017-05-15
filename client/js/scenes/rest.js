@@ -10,8 +10,7 @@ function rest(days, callback) {
 		}
 		member.updateHealth(.005);
 	});
-
-
+	weather.updateWeather(days);
 	// Increment days
 	party.nextDay(days);
 

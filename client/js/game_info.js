@@ -145,12 +145,12 @@ landmarks = [
 		miles long.  Its width and depth vary depending on the recent amount of snow
 		melt.  Where the Oregon Trail crosses the Kansas River, the average width is
 		620 feet and the usual depth in the middle is about 4 feet.  But be sure to
-		check the conditions when you get there.`, {depth: 12, width: 15, canFerry: true, canIndian: false })}},
+		check the conditions when you get there.`, {depth: 3, width: 6, canFerry: true, canIndian: false })}},
 	{name: "The Big Blue River Crossing", type: "river", distance: 83,  generateState: () => {return locations.generateRiver("Big Blue River Crossing", `The Big Blue River is a tributary to the Kansas River, which is in turn a
 		tributary to the Missouri.  It's approximately 300 miles long.  Farther to the
 		south and west is the Little Blue River, which links up with the Big Blue at
 		Blue Rapids.  You'll cross the Big Blue north of the rapids, allowing you to
-		avoid the Little Blue River altogether`, {depth: 12, width: 18, canFerry: false, canIndian: false })}},
+		avoid the Little Blue River altogether`, {depth: 6, width: 20, canFerry: false, canIndian: false })}},
 	{name: "Fort Kearney", type: "fort", distance: 119, generateState: () => {return locations.generateFort("Fort Kearney", `Fort Kearney is a U.S. Army post established in 1848 near the Platte River.
 		It garrisons cavalry troops who protect settlers and travelers along the Oregon
 		Trail.  It was named for Gen. Stephen Kearny (often spelled 'Kearney'), who
@@ -185,7 +185,7 @@ landmarks = [
 		miles.  The Snake River gets its name from the way it twists and turns through
 		this ruffed country, sometimes through steep gorges.  But the trail is fairly
 		flat (through dry and desolate) near the river, which makes wagon travel
-		possible.  Crossing the Snake River, however, can be dangerous.`, {depth: 20, width: 15, canFerry: false, canIndian: true })}},
+		possible.  Crossing the Snake River, however, can be dangerous.`, {depth: 20, width: 50, canFerry: false, canIndian: true })}},
 	{name: "Fort Boise", type: "fort", distance: 114, generateState: () => {return locations.generateFort("Fort Boise", `Fort Boise was built by the Hudson's Bay Company in 1834 as a fur-trading
 		outpost.  Its name comes from the French word "boise," meaning "wooded."
 		That's because there are lots of trees here, unlike the dry region of the Snake
@@ -335,14 +335,15 @@ class Weather{
 		this.riverDepth = 0.0;
 	}
 
-	updateWeather(){ // should update the values
+	updateWeather(days = 1){ // should update the values
 		let currentMonth = party.date.getMonth();
 		let random = Math.floor(Math.random() * 100);
 		if((currentMonth <= 1) || (currentMonth === 11)){ // winter
+			this.season = 1;
 			if(random <= 55){
 				this.daily = "snowing";
 				this.currentHealth = .03; // snowing/hot weather is bad to travel in
-				this.riverDepth = 5;
+				this.riverDepth += .4 * days;
 			}
 			else if(random > 55 && random <= 75){
 				this.daily = "cold";
@@ -351,44 +352,49 @@ class Weather{
 			else if( random >75 && random <= 85 ){
 				this.daily = "raining";
 				this.currentHealth = .01;
+				this.riverDepth += .2 * days;
 			}
 			else if( random > 85 ){
 				this.daily = "cool";
 				this.currentHealth = .02;
+
 			}
 		}
 		else if((currentMonth >= 5) && (currentMonth <= 7)){ // summer
+			this.season = 2;
 			if(random <= 75){
 				this.daily = "hot";
 				this.currentHealth = .03;
-				this.riverDepth = -10;
+				this.riverDepth -= .3 * days ;
 			}
 			else if(random > 75 && random <= 90){
 				this.daily = "warm";
 				this.currentHealth = .04;//rm weather is beneficial for health
-				this.riverDepth = -5;
+				this.riverDepth -= .1 * days;
 			}
 			else if( random > 90 ){
 				this.daily = "raining";
 				this.currentHealth = .01;
-				this.riverDepth = 5;
+				this.riverDepth += .2 * days;
 			}
 		}
 		else if((currentMonth >= 8 && currentMonth <= 10) || (currentMonth >= 2 && currentMonth <= 4 )){ // spring/ fall
+			this.season = 3;
+
 			if(random <= 65){
 				this.daily = "warm";
 				this.currentHealth = .04;
-				this.riverDepth = -2;
+				this.riverDepth -= .1 * days;
 			}
 			else if(random > 65 && random <= 90){
 				this.daily = "raining";
 				this.currentHealth = .01;
-				this.riverDepth = 5;
+				this.riverDepth += .2 * days;
 			}
 			else if( random > 90 ){
 				this.daily = "hot";
 				this.currentHealth = .03;
-				this.riverDepth = -5;
+				this.riverDepth -= .3 * days ;
 			}
 		}
 
@@ -404,8 +410,8 @@ class Party {
 		this.wagonState = "stopped"; //stopped, resting, delayed, moving, tipped, or sank
 		this.milesTraveled = 0;	//how many miles the party has traveled
 		this.milesToNextMark = landmarks[0].distance;
+		this.winter = false;
 	}
-
 
 	get rationsValue()
 	{
