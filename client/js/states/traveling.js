@@ -76,7 +76,7 @@ class TravelingState{
 	}
 
 	requestTick(){
-			this.timerId = setTimeout(() => {this.tick()}, 1000);
+		this.timerId = setTimeout(() => {this.tick()}, 1250);
 	}
 
 
