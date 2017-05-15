@@ -59,3 +59,7 @@ function randNonZeroKey(object) {
 function randomPerson() {
 	return randValue(["Susan", "Bob", "Shawn", "Katie", "Sarah", "Joe", "Lupoli", "Park", "Squire", "Linus", "Amy", "George", "Donald"])
 }
+
+function invokeRandom(...args) {
+	return randValue(args)();
+}

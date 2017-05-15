@@ -71,38 +71,15 @@ let gameMenu = new MenuState("What would you like to do?", [
 
 	}},
 	*/
-	{text: "Replace a wagon part",onclick: () => {
-		if(party.wWheel != true){
-				party.supplies.wheels -= 1;
-
-				states.push(new ContinueState("You have replaced your wagon wheel!"));
-				party.wWheel = true;
-		}
-		if(party.wAxle != true){
-				party.supplies.axles -= 1;
-
-				states.push(new ContinueState("You have replaced your wagon axle!"));
-				party.wAxle = true;
-		}
-		if(party.wTongue != true){
-				party.supplies.tongues -= 1;
-
-				states.push(new ContinueState("You have replaced your wagon tongue!"));
-				party.wTongue = true;
-		}
-
-
+	{text: "Replace a wagon part", onclick: () => {
+		const description = getItemDescription(party.brokenPart, 1);
+		party.supplies[party.brokenPart]--;
+		party.brokenPart = undefined;
+		states.push(new ContinueState(`You have replaced ${description}!`));
 	},
-	show: () => { // need the supply for it to show
-		if((party.wWheel != true && party.supplies.wheels >=1) || (party.wAxle != true && party.supplies.axles >=1) || (party.wTongue != true && party.supplies.tongues >=1)){
-			return true;
-		}
-		else{
-			return false;
-		}
-	}}
 
-
+	// Having the supplies to repair your wagon will cause this menu option to show
+	show: () => (party.brokenPart && party.supplies[party.brokenPart] > 0)}
 
 ]);
 gameMenu.stateName = "gameMenu";

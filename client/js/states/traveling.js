@@ -55,20 +55,10 @@ class TravelingState{
 		this.wagonElement = $("#wagon");
 		this.nextMarkElement = $("#nextMark");
 
-		// reminds user what needs to be repaired
-		if( party.wWheel == false || party.wAxle == false || party.wTongue == false){
-			if(party.wWheel == false){
-			this.brokenElement.text(`You need to find a spare wheel for your wagon!`);
-			}
-			else if(party.wAxle == false){
-				this.brokenElement.text(`You need to find a spare axle for your wagon!`);
-			}
-			else if(party.wTongue == false){
-				this.brokenElement.text(`You need to find a spare tongue for your wagon!`);
-			}
-		}
-		else if(party.wWheel == true && party.wAxle == true && party.wTongue == true){
-			this.brokenElement.text(""); // resets
+		if (party.brokenPart) {
+			this.brokenElement.text(`You need to find a spare wheel for your wagon ${party.brokenPart}`);
+		} else {
+			this.brokenElement.text("");
 		}
 
 		this.updateMap();
@@ -76,7 +66,7 @@ class TravelingState{
 
 	onEnter(){
 
-		if(party.wWheel == true && party.wAxle == true && party.wTongue == true && party.supplies.oxen >= 1){// all 3 needs to be true to be able to move
+		if(!party.brokenPart && party.supplies.oxen >= 1){// all 3 needs to be true to be able to move
 			this.requestTick();
 		}
 	}
@@ -201,14 +191,9 @@ class TravelingState{
 		}
 		else if(random <= 10){ // can change this to debug
 			randomEvents.select();
-
 		}
-
 		else {
-				this.requestTick();
-
-
-
-	}
+			this.requestTick();
+		}
 	}
 }
