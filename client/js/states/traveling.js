@@ -36,7 +36,8 @@ class TravelingState{
 							<div id = "nextLandMark">Next Landmark: ${locations.nextLandMark}</div>
 							<div id = "milesTraveled">Miles Traveled: ${party.milesTraveled}</div>
 							<div id = "milesToNextMark">Miles to Next Landmark: ${party.milesToNextMark}</div>
-						  </div>`);
+							<div id = "broken"></div>
+							</div>`);
 
 		let button = $("<button/>")
 			.text("Size up the Situation")
@@ -49,17 +50,25 @@ class TravelingState{
 		this.nextMarkerElement = $("#milesToNextMark");
 		this.dateElement = $("#date");
 		this.weatherElement = $("#weather");
+		this.brokenElement = $("#broken");
 		this.mapBarElement = $("#mapBar");
 		this.wagonElement = $("#wagon");
 		this.nextMarkElement = $("#nextMark");
 
+		if (party.brokenPart) {
+			this.brokenElement.text(`You need to find a spare wheel for your wagon ${party.brokenPart}`);
+		} else {
+			this.brokenElement.text("");
+		}
 
 		this.updateMap();
 	}
 
-
 	onEnter(){
-		this.requestTick();
+
+		if(!party.brokenPart && party.supplies.oxen >= 1){// all 3 needs to be true to be able to move
+			this.requestTick();
+		}
 	}
 
 	onExit(){
@@ -67,8 +76,9 @@ class TravelingState{
 	}
 
 	requestTick(){
-		this.timerId = setTimeout(() => {this.tick()}, 1000);
+		this.timerId = setTimeout(() => {this.tick()}, 1250);
 	}
+
 
 	tick(){
 
@@ -77,7 +87,7 @@ class TravelingState{
 		const debug = false;
 
 		function decFood(){
-			party.supplies.decrementFood(party.rationsValue.pounds * party.paceValue.food);
+			party.supplies.decrementFood(party.rationsValue.pounds * party.paceValue.food *party.members.size);
 		}
 
 		//returns true if we hit a new landmark
@@ -132,7 +142,7 @@ class TravelingState{
 
 		}
 
-
+		let random = Math.floor(Math.random() * 100);
 
 		//increment miles based on pace
 		//if we hit a new landmark when incrementing miles
@@ -188,9 +198,11 @@ class TravelingState{
 		else if (newLandmark){
 			locations.update();
 		}
+		else if(random <= 10){ // can change this to debug
+			randomEvents.select();
+		}
 		else {
 			this.requestTick();
 		}
 	}
-
 }

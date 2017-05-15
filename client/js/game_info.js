@@ -12,7 +12,7 @@ const paceTypes = {
 };
 
 // Miles that one oxen can travel per day
-const oxenMilesPerDay = 6;
+const oxenMilesPerDay = 3;
 
 // Pounds and health modifier per day per person
 const rationTypes = {
@@ -410,7 +410,8 @@ class Party {
 		this.wagonState = "stopped"; //stopped, resting, delayed, moving, tipped, or sank
 		this.milesTraveled = 0;	//how many miles the party has traveled
 		this.milesToNextMark = landmarks[0].distance;
-		this.winter = false;
+
+		this.brokenPart = undefined;
 	}
 
 	get rationsValue()
@@ -444,6 +445,9 @@ class Party {
 	{
 		if (days > 0) {
 			this.date.setDate(this.date.getDate() + days);
+
+			// TODO: Maybe use up food when going to the next day? Or do this instead of while traveling only?
+			//party.supplies.decrementFood(party.rationsValue.pounds * party.paceValue.food *party.members.size * daysLost);// still lose food based on days resting
 		}
 	}
 
