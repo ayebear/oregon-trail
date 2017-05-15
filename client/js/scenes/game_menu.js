@@ -79,7 +79,8 @@ let gameMenu = new MenuState("What would you like to do?", [
 	},
 
 	// Having the supplies to repair your wagon will cause this menu option to show
-	show: () => (party.brokenPart && party.supplies[party.brokenPart] > 0)}
-
+	show: () => {
+		return !!(party.brokenPart && party.supplies[party.brokenPart] > 0)
+	}}
 ]);
 gameMenu.stateName = "gameMenu";

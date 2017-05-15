@@ -73,7 +73,7 @@ class RandomEvents{
 	}
 
 	replacingOption(part) {
-		if(party.supplies[part] >= 1){
+		if (party.supplies[part] >= 1) {
 			party.supplies[part] -= 1;
 			party.brokenPart = undefined;
 			states.push(temporary(new ContinueState(`Your wagon ${part} was replaced`)));
