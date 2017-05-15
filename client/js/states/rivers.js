@@ -3,6 +3,7 @@ class RiverState extends MenuState {
 		super();
 		this.width = width;
 		this.depth = depth;
+		this.originalDepth = depth;
 		this.updateDescription();
 		this.choices = [
 			{
@@ -49,17 +50,12 @@ class RiverState extends MenuState {
 	}
 
 	updateDescription() {
-		this.description = `Weather: cool. <br><br>River width: ${this.width.toFixed(1)} feet. <br><br>River depth: ${this.depth.toFixed(1)} feet deep`;
+		this.description = `Weather: ${weather.daily}<br><br>The river is ${this.width.toFixed(1)} feet wide, and ${this.depth.toFixed(1)} feet deep.`;
 	}
 
 	onEnter() {
-		// updates the river length based on weather
-		// need to update precision of river depth value, ex: "River Width: 15.23239999999"
-		this.depth += weather.riverDepth;
-		if(weather.riverDepth < 0){ // checks for negative values
-			var x = weather.riverDepth * -1;
-		}
-		this.width = this.width - (weather.riverDepth * 10);
+		// Change depth of river based on weather
+		this.depth = Math.max(1, this.originalDepth + weather.riverDepth);
 
 		this.updateDescription()
 	}

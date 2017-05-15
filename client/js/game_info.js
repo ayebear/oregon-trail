@@ -342,9 +342,8 @@ class Weather{
 			if(random <= 55){
 				this.daily = "snowing";
 				this.currentHealth = .03; // snowing/hot weather is bad to travel in
-				this.riverDepth +=.5;
+				this.riverDepth = 5;
 			}
-
 			else if(random > 55 && random <= 75){
 				this.daily = "cold";
 				this.currentHealth = .02;// traveling when raining reduces health by a little
@@ -358,39 +357,38 @@ class Weather{
 				this.currentHealth = .02;
 			}
 		}
-
 		else if((currentMonth >= 5) && (currentMonth <= 7)){ // summer
 			if(random <= 75){
 				this.daily = "hot";
 				this.currentHealth = .03;
-				this.riverDepth -=.5;
+				this.riverDepth = -10;
 			}
 			else if(random > 75 && random <= 90){
 				this.daily = "warm";
 				this.currentHealth = .04;//rm weather is beneficial for health
-				this.riverDepth -=.3;
+				this.riverDepth = -5;
 			}
 			else if( random > 90 ){
 				this.daily = "raining";
 				this.currentHealth = .01;
-				this.riverDepth +=.5;
+				this.riverDepth = 5;
 			}
 		}
 		else if((currentMonth >= 8 && currentMonth <= 10) || (currentMonth >= 2 && currentMonth <= 4 )){ // spring/ fall
 			if(random <= 65){
 				this.daily = "warm";
 				this.currentHealth = .04;
-				this.riverDepth -=.3;
+				this.riverDepth = -2;
 			}
 			else if(random > 65 && random <= 90){
 				this.daily = "raining";
 				this.currentHealth = .01;
-				this.riverDepth +=.4;
+				this.riverDepth = 5;
 			}
 			else if( random > 90 ){
 				this.daily = "hot";
 				this.currentHealth = .03;
-				this.riverDepth -=.5;
+				this.riverDepth = -5;
 			}
 		}
 
