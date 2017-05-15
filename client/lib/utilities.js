@@ -25,7 +25,7 @@ function randValue(array) {
 }
 
 function insertArrayAt(array, index, arrayToInsert) {
-    Array.prototype.splice.apply(array, [index, 0].concat(arrayToInsert));
+	Array.prototype.splice.apply(array, [index, 0].concat(arrayToInsert));
 }
 
 // Returns a random index in an array
@@ -37,11 +37,11 @@ function randIndex(array) {
 
 function dateDiffInDays(a, b) {
 	const MS_PER_DAY = 1000 * 60 * 60 * 24;
-    // Discard the time and time-zone information.
-    let utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
-    let utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
+	// Discard the time and time-zone information.
+	let utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
+	let utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
 
-    return Math.floor((utc2 - utc1) / MS_PER_DAY);
+	return Math.floor((utc2 - utc1) / MS_PER_DAY);
 }
 
 // Returns a random key with a non-zero value from an object
