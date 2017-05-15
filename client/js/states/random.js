@@ -17,9 +17,8 @@ class RandomEvents{
 
 		if (item) {
 			// Don't try to steal more than you have
-			const amount = Math.max(getItemAmount(item), party.supplies[item]);
+			const amount = Math.max(getItemAmount(item), party.supplies[item]) / 2 ;
 			party.supplies[item] -= amount;
-
 			// Show what the thieves stole
 			const itemDescription = getItemDescription(item, amount);
 			let description = `A gang of thieves raided your wagon for ${itemDescription}!`;

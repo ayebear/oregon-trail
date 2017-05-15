@@ -99,7 +99,16 @@ class TravelingState{
 
 		function updateHealth(){
 			//net health change for entire party
-			let partyChange = party.paceValue.health + party.rationsValue.health + weather.currentHealth;
+			let clothDamage = 0;
+			if(weather.season == 1){
+				if (party.supplies.clothSets< party.members.size()){
+					clothDamage = -(party.members.size()/(party.supplies.clothSets ? party.supplies.clothSets: 1))/25;
+					}
+			}
+			let partyChange = party.paceValue.health + party.rationsValue.health + weather.currentHealth + clothDamage;
+			
+
+
 
 			//update based on food/rations
 			if (party.supplies.noFood())
