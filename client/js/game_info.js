@@ -295,6 +295,12 @@ const itemNames = {
 	food: ["a pound of food", "pounds of food"]
 }
 
+const wagonParts = {
+	wheels: "wheel",
+	axles: "axle",
+	tongues: "tongue"
+}
+
 // Returns a description of amount of items (plural or singular)
 function getItemDescription(name, amount) {
 	return (amount === 1 ? itemNames[name][0] : `${amount} ${itemNames[name][1]}`)

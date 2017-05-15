@@ -56,7 +56,7 @@ class TravelingState{
 		this.nextMarkElement = $("#nextMark");
 
 		if (party.brokenPart) {
-			this.brokenElement.text(`You need to find a spare wheel for your wagon ${party.brokenPart}`);
+			this.brokenElement.text(`You need to find a spare wagon ${wagonParts[party.brokenPart]} for your wagon!`);
 		} else {
 			this.brokenElement.text("");
 		}
@@ -182,7 +182,7 @@ class TravelingState{
 		else if (newLandmark){
 			locations.update();
 		}
-		else if(random <= 10){ // can change this to debug
+		else if(random <= 10){
 			randomEvents.select();
 		}
 		else {
