@@ -23,7 +23,7 @@ function getSupplies() {
 	<p> Pounds of Food: ${party.supplies.food.toFixed(1)} </p>
 	<p> Wagon Wheels: ${party.supplies.wheels} </p>
 	<p> Wagon Axles: ${party.supplies.axles} </p>
-	<p> Wagon Tounges: ${party.supplies.clothSets} </p>
+	<p> Wagon Tounges: ${party.supplies.tongues} </p>
 	<p> Money Left: $${party.supplies.money.toFixed(2)} </p>`;
 }
 
@@ -61,6 +61,26 @@ let gameMenu = new MenuState("What would you like to do?", [
 	}},
 	{text: "Go Fishing", next: fishState, show: () => {
 		return locations.atRiver();
+	}},
+
+	/* for debugging repairing/broken wagon
+	{text: "WHEELS", onclick: () => {
+		party.supplies.wheels += 1;
+		party.supplies.axles += 1;
+		party.supplies.tongues += 1;
+
+	}},
+	*/
+	{text: "Replace a wagon part", onclick: () => {
+		const description = getItemDescription(party.brokenPart, 1);
+		party.supplies[party.brokenPart]--;
+		party.brokenPart = undefined;
+		states.push(new ContinueState(`You have replaced ${description}!`));
+	},
+
+	// Having the supplies to repair your wagon will cause this menu option to show
+	show: () => {
+		return !!(party.brokenPart && party.supplies[party.brokenPart] > 0)
 	}}
 ]);
 gameMenu.stateName = "gameMenu";
