@@ -11,13 +11,11 @@ function rest(days, callback) {
 		member.updateHealth(.005);
 	});
 
-
 	// Increment days
 	party.nextDay(days);
 
-	//decrement food
+	// Decrement food
 	party.supplies.decrementFood(days * party.members * 2);
-
 
 	// Call custom callback
 	if (callback) {
