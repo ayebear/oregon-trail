@@ -9,6 +9,11 @@ class TravelingState{
 	display(){
 		this.root.append(`<h3>Traveling on the trail</h3>`);
 		this.root.append(`<div id="menu" class="menu">
+
+							<div id ="mapBar">
+							<div class="mapBarContainer" id = "nextMark"></div>
+							<div class="mapBarContainer" id = "wagon"><img src="./data/images/wagon.png" height="60px" width="60px"/></div>
+							</div>
 						  	<div id = "date">${party.date.toDateString()}</div>
 						  	<div id = "weather">It is currently ${weather.daily}</div>
 						  	<div id = "nextLandMark">Next Landmark: ${locations.nextLandMark}</div>
@@ -30,6 +35,9 @@ class TravelingState{
 		this.weatherElement = $("#weather");
 		this.brokenElement = $("#broken");
 
+		this.mapBarElement = $("#mapBar");
+		this.wagonElement = $("#wagon");
+		this.nextMarkElement = $("#nextMark");
 
 		// reminds user what needs to be repaired
 		if( party.wWheel == false || party.wAxle == false || party.wTongue == false){
@@ -49,6 +57,8 @@ class TravelingState{
 
 		}
 
+
+		this.updateMap();
 	onEnter(){
 
 		if(party.wWheel == true && party.wAxle == true && party.wTongue == true && party.supplies.oxen >= 1){// all 3 needs to be true to be able to move 

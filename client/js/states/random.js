@@ -23,8 +23,7 @@ class RandomEvents{
 		const amount = getItemAmount(item);
 		const itemDescription = getItemDescription(item, amount);
 		if(party.supplies[item] >= 1){
-			let stolen = rand(1, party.supplies[item]);
-			party.supplies[item] -= stolen;
+			party.supplies[item] -= amount;
 			let description = `A gang of thieves raided your wagon for ${itemDescription}!`;
 			states.push(temporary(new ContinueState(description)));
 		}
