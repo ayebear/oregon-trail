@@ -23,7 +23,7 @@ function getSupplies() {
 	<p> Pounds of Food: ${party.supplies.food.toFixed(1)} </p>
 	<p> Wagon Wheels: ${party.supplies.wheels} </p>
 	<p> Wagon Axles: ${party.supplies.axles} </p>
-	<p> Wagon Tounges: ${party.supplies.clothSets} </p>
+	<p> Wagon Tounges: ${party.supplies.tongues} </p>
 	<p> Money Left: $${party.supplies.money.toFixed(2)} </p>`;
 }
 
@@ -63,7 +63,7 @@ let gameMenu = new MenuState("What would you like to do?", [
 		return locations.atRiver();
 	}},
 
-	/* for debugging repairing/broken wagon 
+	/* for debugging repairing/broken wagon
 	{text: "WHEELS", onclick: () => {
 		party.supplies.wheels += 1;
 		party.supplies.axles += 1;
@@ -74,26 +74,26 @@ let gameMenu = new MenuState("What would you like to do?", [
 	{text: "Replace a wagon part",onclick: () => {
 		if(party.wWheel != true){
 				party.supplies.wheels -= 1;
-				
+
 				states.push(new ContinueState("You have replaced your wagon wheel!"));
 				party.wWheel = true;
 		}
 		if(party.wAxle != true){
 				party.supplies.axles -= 1;
-				
+
 				states.push(new ContinueState("You have replaced your wagon axle!"));
 				party.wAxle = true;
 		}
 		if(party.wTongue != true){
 				party.supplies.tongues -= 1;
-				
+
 				states.push(new ContinueState("You have replaced your wagon tongue!"));
 				party.wTongue = true;
 		}
 
 
-	}, 
-	show: () => { // need the supply for it to show 
+	},
+	show: () => { // need the supply for it to show
 		if((party.wWheel != true && party.supplies.wheels >=1) || (party.wAxle != true && party.supplies.axles >=1) || (party.wTongue != true && party.supplies.tongues >=1)){
 			return true;
 		}
