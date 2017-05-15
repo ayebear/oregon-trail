@@ -8,8 +8,8 @@ class StateTester {
 		this.events.push(`onPush: ${a} ${b}`)
 	}
 
-	onPop(a, b) {
-		this.events.push(`onPop: ${a} ${b}`)
+	onPop() {
+		this.events.push(`onPop`)
 	}
 
 	onEnter() {
@@ -42,9 +42,9 @@ function runTests() {
 	console.assert(tester2.events[1] === "onEnter")
 	console.assert(tester2.events[2] === "display")
 
-	states.pop(undefined, 5, 6)
+	states.pop(undefined)
 	console.assert(tester2.events.length === 5)
-	console.assert(tester2.events[3] === "onPop: 5 6")
+	console.assert(tester2.events[3] === "onPop")
 	console.assert(tester2.events[4] === "onExit")
 	console.assert(tester.events.length === 6)
 	console.assert(tester.events[4] === "onEnter")

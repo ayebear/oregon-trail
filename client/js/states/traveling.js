@@ -166,18 +166,11 @@ class TravelingState{
 		// Display any events that occurred along the trail
 		if (party.members.size === 0){
 			//everyone died
+			const description = `Everyone in your wagon has died. <br> You covered ${party.milesTraveled} miles in ${dateDiffInDays(party.startDate, party.date)} days.`;
 			states.push(new ContinueState(summaryString, null, () => {
-				states.push(new InputState({
-					type: "text",
-					description: `Everyone in your wagon has died. <br> You covered ${party.milesTraveled} miles in ${dateDiffInDays(party.startDate, party.date)} days. <br> Enter a name below to submit your highscore and play again!!`,
-					valid: (input) => {
-						return (input.length <= 20 && input.length >= 2)
-					},
-					onSubmit: (value) => {
-						//Do Something Here Related to Submitting the score to the DataBase
-						states.pop("mainMenu");
-					}
-				}))
+				states.push(new ContinueState(description, null, () => {
+					states.pop("mainMenu");
+				}));
 			}));
 		}
 		else if (summaryString.length && newLandmark){
