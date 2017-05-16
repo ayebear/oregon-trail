@@ -25,6 +25,7 @@
 	<script src="./js/states/rivers.js"></script>
 	<script src="./js/states/random.js"></script>
 	<script src="./js/states/trading.js"></script>
+	<script src="./js/states/game.js"></script>
 
 	<!-- Include game source code and scenes -->
 	<script src="./js/game/server.js"></script>
@@ -47,7 +48,7 @@
 	<meta charset="UTF-8">
 	<title>Oregon Trail</title>
 </head>
-<body>
+<body onload="startGame()">
 
 <!-- Ever changing game area, controlled by game states -->
 <div id="game"></div>
