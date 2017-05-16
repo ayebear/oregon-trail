@@ -29,16 +29,17 @@ function tradeSupply() {
 		const yourAmount = getItemAmount(yourItem);
 		const theirDescription = getItemDescription(theirItem, theirAmount);
 		const yourDescription = getItemDescription(yourItem, yourAmount);
+		var str1= "<br><br> <img src='./data/images/tradingScreen.png' width=543px height=307px "
 
 		// Show trade to player, or just show that they don't have enough
 		if (party.supplies[yourItem] < yourAmount) {
 			// Waste a day if the player doesn't have enough
-			let description = `${person} wanted to trade you ${theirDescription} for ${yourDescription}, but you did not have enough.`;
+			let description = `${person} wanted to trade you ${theirDescription} for ${yourDescription}, but you did not have enough. ${str1}`;
 			states.push(temporary(new ContinueState(description)));
 		}
 		else {
 			// Get trade description
-			let description = `${person} will trade you ${theirDescription} for ${yourDescription}.`;
+			let description = `${person} will trade you ${theirDescription} for ${yourDescription}. ${str1}`;
 
 			// Show trade to player, when they accept then make the trade
 			states.push(temporary(new MenuState(description, [
