@@ -12,8 +12,46 @@ class RandomEvents {
 	}
 	// selects one of the three random events to happen
 	select() {
-		invokeRandom(this.thieves, this.brokenWagon, this.wrongPath);
+		//this.luckyWagon();
+
+		invokeRandom(this.thieves, this.brokenWagon, this.wrongPath, this.foodSpoil, this.lostOxen);
 	}
+	// food spoiling
+	foodSpoil(){
+		const amount = rand(1, Math.ceil(party.supplies['food'] / 10));
+		party.supplies['food'] -= amount;
+		// Show what the thieves stole
+		const itemDescription = getItemDescription('food', amount);
+		let description = `You lost ${itemDescription} due to spoilage!!`;
+		states.push(temporary(new ContinueState(description)));
+		}
+	// lose one oxen, only one because thieves have a chance of stealing a lot more
+	lostOxen(){
+
+		party.supplies['oxen'] >= 2;
+		party.supplies.oxen -= 1;
+		// Show what the thieves stole
+		let description = `An oxen roamed off! `;
+		states.push(temporary(new ContinueState(description)));
+		}
+
+/* doesnt work??
+	luckyWagon(){
+
+		// Pick any item
+		const item = randValue(Object.keys(party.supplies));
+		const amount = Math.floor(Math.random()*5 + 2);
+		const description = getItemDescription(item, amount); <<ISSUE  ????
+
+		// Don't try to steal more than half of what you have
+		
+		party.supplies[item] += amount;
+			// Show what the thieves stole
+	
+		let description = `You found ${description} near a broken wagon!!`;
+		states.push(temporary(new ContinueState(description)));
+		}
+*/
 	// thieves stealing your stuff
 	thieves() {
 		const item = randNonZeroKey(party.supplies);

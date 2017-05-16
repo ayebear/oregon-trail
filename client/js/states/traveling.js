@@ -111,8 +111,8 @@ class TravelingState {
 			// Go to next landmark state
 			locations.update();
 		}
-		else if (rand(0, 100) < 10) {
-			// 10% chance of a random event occurring
+		else if (rand(0, 100) < 7) {
+			// 7% chance of a random event occurring
 			randomEvents.select();
 		}
 		else {
