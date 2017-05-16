@@ -16,7 +16,7 @@ class RiverState extends MenuState {
 				}
 			},
 			{	// floating wagon across
-				text: "Attempt to chaulk the river", onclick: () => {
+				text: "Attempt to caulk the river", onclick: () => {
 					this.chaulkingOption(); 
 				}
 			},
@@ -47,7 +47,7 @@ class RiverState extends MenuState {
 			},
 			{
 				text: "Learn about the options", onclick: () => {
-					states.push(new ContinueState("Fording: making your oxens swim across the river. Not advised for depths greater than 3 feet <br><br> Chaulking: Seal and Float your wagon across the river <br><br> Ferry/Indian: Safest way across a river <br><br> Rest: Rest and see if the river depth will change enough for you to pass"));
+					states.push(new ContinueState("Fording: making your oxens swim across the river. Not advised for depths greater than 3 feet <br><br> Caulking: Seal and Float your wagon across the river <br><br> Ferry/Indian: Safest way across a river <br><br> Rest: Rest and see if the river depth will change enough for you to pass"));
 				}
 			}
 		];
