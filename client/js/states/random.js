@@ -25,7 +25,7 @@ class RandomEvents {
 		party.supplies['food'] -= amount;
 		// Show what the thieves stole
 		const itemDescription = getItemDescription('food', amount);
-		let description = `You lost ${itemDescription} due to spoilage!!`;
+		let description = `You lost ${itemDescription} due to spoilage!`;
 		states.push(temporary(new ContinueState(description)));
 		}
 
@@ -49,7 +49,7 @@ class RandomEvents {
 		party.supplies[item] += amount;
 			// Show what the thieves stole
 
-		description = `You found ${description} near a broken wagon!!`;
+		description = `You found ${description} near a broken wagon!`;
 		states.push(temporary(new ContinueState(description)));
 	}
 
@@ -73,7 +73,7 @@ class RandomEvents {
 		let daysLost = rand(1, 6);
 		party.nextDay(daysLost);
 		party.decrementRestFood(daysLost);
-		states.push(temporary(new ContinueState(`You took the wrong path and lost ${daysLost} day(s).`)));
+		states.push(temporary(new ContinueState(`You took the wrong path and lost ${daysLost} day${daysLost > 1 ? "s" : ""}.`)));
 	}
 
 
