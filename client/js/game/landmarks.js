@@ -1,4 +1,14 @@
 const landmarks = [
+    {name: "Kansas River Crossing", type: "river", distance: 102,  generateState: () => {
+        return locations.generateRiver("Kansas River Crossing",
+            `The Kansas River is a tributary to the Missouri.  It is approximately 170
+			miles long.  Its width and depth vary depending on the recent amount of snow
+			melt.  Where the Oregon Trail crosses the Kansas River, the average width is
+			620 feet and the usual depth in the middle is about 4 feet.  But be sure to
+			check the conditions when you get there.`,
+            {depth: 3, width: 6, canFerry: true, canIndian: false })
+    }
+    },
 	{name: "The Big Blue River Crossing", type: "river", distance: 83,  generateState: () => {
 		return locations.generateRiver("Big Blue River Crossing",
 			`The Big Blue River is a tributary to the Kansas River, which is in turn a
