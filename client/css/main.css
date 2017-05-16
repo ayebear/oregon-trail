@@ -147,14 +147,14 @@ figure figcaption{
 }
 
 table {
-    border-collapse: collapse;
-    width: 100%;
+	border-collapse: collapse;
+	width: 100%;
 }
 
 th, td {
 	border: 2px solid gray;
-    text-align: left;
-    padding: 8px;
+	text-align: left;
+	padding: 8px;
 }
 
 tr:nth-child(even) {
@@ -162,6 +162,10 @@ tr:nth-child(even) {
 }
 
 th {
-    background-color: #444;
-    color: white;
+	background-color: #444;
+	color: white;
+}
+
+ul {
+	list-style: none;
 }

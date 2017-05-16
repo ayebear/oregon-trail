@@ -1,10 +1,10 @@
 function getItemAmount(item) {
 	// TODO: Maybe base values on actual store prices?
 	if (item == "food" || item == "worms" || item == "money") {
-		return rand(20,50);
+		return rand(20, 50);
 	}
-	else{ // oxens // wagon parts // cloth sets
-		return rand(2,5);
+	else { // oxens // wagon parts // cloth sets
+		return rand(2, 5);
 	}
 }
 
@@ -59,7 +59,7 @@ function tradeCheck() { // checks to see if anyone wants to trade with you
 	if (random <= 85) {
 		tradeSupply();
 	}
-	else{
+	else {
 		party.nextDay(); // wasted a day
 		states.push(temporary(new ContinueState("No one wanted to trade with you today")));
 	}

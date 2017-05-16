@@ -48,7 +48,7 @@ class PartyMember {
 		else if (this.health + change > 5) {
 			this.health = 5; //health change would put them over 5
 		}
-		else{
+		else {
 			this.health += change; //standard change
 		}
 	}

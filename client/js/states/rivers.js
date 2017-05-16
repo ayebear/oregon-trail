@@ -56,21 +56,20 @@ class RiverState extends MenuState {
 
 	onEnter() {
 		// Change depth of river based on weather
-		//this.depth = Math.max(1,
 		this.depth = this.originalDepth + weather.riverDepth;
 		if (this.depth < 1) {
 			this.depth = 1;
 		}
 
-		this.width = this.originalWidth + (weather.riverDepth * 3/2);
+		// Change width of river based on depth affected by weather
+		this.width = this.originalWidth + (weather.riverDepth * (3 / 2));
 		if (this.width < 2) {
 			this.width = 2;
 		}
 
-
 		this.updateDescription();
-
 	}
+
 	failed() {
 		// Get random item to lose
 		// Will only use an item with more than 0 quantity
@@ -108,7 +107,7 @@ class RiverState extends MenuState {
 	indianOption() {
 		if (party.supplies.clothSets >= 3) {
 			party.supplies.clothSets -= 3;
-			states.push(new ContinueState("You gave the Indian 3 Sets of Clothing for Help crossing the river", undefined, () => states.pop("gameMenu")));
+			states.push(new ContinueState("You gave the Indian 3 Sets of Clothing for help crossing the river", undefined, () => states.pop("gameMenu")));
 		}
 		else {
 			states.push(new ContinueState("You don't have enough Clothes to give the Indian"));
@@ -130,7 +129,7 @@ class RiverState extends MenuState {
 			if (random <= 90) { // 90% chance of success since less water
 				this.successCrossing();
 			}
-			else{
+			else {
 				this.failed();
 			}
 		}
@@ -139,7 +138,7 @@ class RiverState extends MenuState {
 			if (random <= 75) { // 75 % chance of success
 				this.successCrossing();
 			}
-			else{
+			else {
 				this.failed();
 			}
 		}
@@ -150,7 +149,7 @@ class RiverState extends MenuState {
 		if (random <= 70) { // 55 % chance of success
 			this.successCrossing();
 		}
-		else{
+		else {
 			this.failed();
 		}
 	}

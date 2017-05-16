@@ -4,7 +4,7 @@ Stores the current state, can push/pop states
 States can contain:
 	display(): Should set DOM elements here
 	onPush(args): Called when this state is switched to (args are forwarded from StateStack::push)
-	onPop(args): Called when this state is removed (args are forwarded from StateStack::pop)
+	onPop(): Called when this state is removed
 	onEnter(): Called when a state is added/returned back to
 	onExit(): Called when a state is left/removed
 
