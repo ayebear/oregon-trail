@@ -8,7 +8,7 @@ let changePaceState = new MenuState("Choose the pace you will travel at:", [
 ]);
 
 // chaning food rations menu
-let changeFoodState = new MenuState("The amount of food the people in your party eat each day can change. These amounts are:", [
+let changeFoodState = new MenuState("The amount of food the people in your party eat each day can change. These amounts are: <br><br> <img src='./data/images/rationsPage2.png' width=640px height=250px", [
 	{text: "Filling - Meals are large and generous", onclick: () => { party.rations = "filling"; states.pop() }},
 	{text: "Meager - Meals are small, but adequate", onclick: () => { party.rations = "meager"; states.pop() }},
 	{text: "Bare bones - Meals are very small; everyone stays hungry", onclick: () => { party.rations = "bareBones"; states.pop() }},

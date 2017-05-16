@@ -1,6 +1,7 @@
 // Keeps track of miles traveled, possible paths, and landmarks you'll encounter.
 class Locations {
 	constructor() {
+		this.riversPassed = 0;
 		this.miles = 0;
 		this.fortsPassed = 0;
 		this.landmarksQueue = [];
@@ -13,6 +14,9 @@ class Locations {
 	//update our location based on landmarkObjects
 	update() {
 		let landmark = landmarks[party.landmarkIndex];
+		if (landmark.type === "river"){
+			this.riversPassed += 1;
+		}
 		if (landmarks[++party.landmarkIndex]) {
 			party.milesToNextMark = landmarks[party.landmarkIndex].distance;
 			this.nextLandMark = landmarks[party.landmarkIndex].name;

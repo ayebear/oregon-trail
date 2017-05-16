@@ -1,5 +1,5 @@
 function rest(days, callback) {
-	let summary = `<h4> Your party rested for ${days} days. </h4>`
+	let summary = `<h4> Your party rested for ${days} days. </h4>` + "<br><br> <img src='./data/images/rest.png' width=543px height=307px"
 	party.members.forEach(member => {
 		if (member.hasDisease()) {
 			let value = rand(days, 100);
