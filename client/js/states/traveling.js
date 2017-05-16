@@ -51,7 +51,7 @@ class TravelingState {
 			})
 		$("#menu").append(button);
 
-		// used to update after every click 
+		// used to update after every click
 		this.traveledElement = $("#milesTraveled");
 		this.nextMarkerElement = $("#milesToNextMark");
 		this.dateElement = $("#date");
@@ -111,7 +111,7 @@ class TravelingState {
 			// Go to next landmark state
 			locations.update();
 		}
-		else if (rand(0, 100) < 200) {
+		else if (rand(0, 100) < 10) {
 			// 10% chance of a random event occurring
 			randomEvents.select();
 		}
@@ -136,7 +136,7 @@ class TravelingState {
 
 		// Increment date
 		party.nextDay();
-		
+
 		// Update map animation and display information
 		this.updateMap();
 		this.updateDisplay();
