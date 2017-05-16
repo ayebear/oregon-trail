@@ -40,7 +40,7 @@ class StateStack {
 			invoke(this.state, "onExit")
 
 			// Set current state
-			this.state = newState
+			this.state = newState;
 			invoke(this.state, "onPush", ...args)
 			invoke(this.state, "onEnter")
 
@@ -70,7 +70,14 @@ class StateStack {
 
 			// Display
 			this.clear()
-			invoke(this.state, "display")
+			if (stateName){
+				if (stateName === this.state.stateName){
+                    invoke(this.state, "display")
+                }
+			}
+			else {
+                invoke(this.state, "display")
+            }
 
 			// Pop temporary states when re-entered from a pop
 			if (this.state.temporary === true) {

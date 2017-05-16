@@ -82,7 +82,7 @@ const splitPaths = {
 		]
 	},
 	theDalles: {
-		description: "You Arrive at the Dalles, the last stop before Oregon. You can choose to cross The Columbia River to save some distance or play it safe and take the Barlow Toll Road",
+		description: "You Arrive at the Dalles, the last stop before Oregon. You can choose to raft down the columbia river to save some distance or play it safe and take the Barlow Toll Road",
 		choices: [
 			{
 				text: "Take the Barlow Toll Road",
@@ -99,11 +99,13 @@ const splitPaths = {
 				onclick: () => {
 					locations.addPath(
 						[
-							{name: "The Columbia River", type: "river", distance: 50, generateState: () => {return locations.generateRiver("The Columbia River", `The Columbia river is the largets, most imprtant river in the Northwest.  It
+                            {name: "The Columbia River", type: "river", distance: 50,  generateState: () => {
+                                return new ContinueState(`Arriving at The Columbia River <hr> The Columbia river is the largets, most imprtant river in the Northwest.  It
 								starts up in Canada and passes through the Oregon Territory, flowing more than
 								1,000 miles to the Pacific Ocean.  It has cut a deep gorge through the rugged
 								Oregon countryside.  It also has many rapids, making navigation difficult.
-								Rafting down the Columbia can be very dangerous!`, {depth: 20, width: 15, canFerry: false, canIndian: true})}},
+								Rafting down the Columbia can be very dangerous! <hr> Use Your Arrow Keys To Navigate! Try to make it to the end without hitting rocks or the side! <hr>`, null, () => {states.push(new RiverGameState())});
+                            }},
 							{name: "The End", type: "town", distance: 20, generateState:() => {return locations.generateEndGame()}}
 						]
 					)
