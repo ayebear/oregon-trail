@@ -1,9 +1,10 @@
 class RiverState extends MenuState {
-	constructor(width, depth, canFerry, canIndian) {
+	constructor(depth, width, canFerry, canIndian) {
 		super();
 		this.width = width;
 		this.depth = depth;
 		this.originalDepth = depth;
+		this.originalWidth = width;
 		this.updateDescription();
 		this.choices = [
 			{
@@ -55,11 +56,21 @@ class RiverState extends MenuState {
 
 	onEnter() {
 		// Change depth of river based on weather
-		this.depth = Math.max(1, this.originalDepth + weather.riverDepth);
+		//this.depth = Math.max(1, 
+		this.depth = this.originalDepth + weather.riverDepth; //);
+		if(this.depth < 1){
+			this.depth = 1;
+		}
 
-		this.updateDescription()
+		this.width = this.originalWidth + (weather.riverDepth * 3/2);
+		if(this.width < 2){
+			this.width = 2;
+		}
+		
+
+		this.updateDescription();
+	
 	}
-
 	failed() {
 		// Get random item to lose
 		// Will only use an item with more than 0 quantity
