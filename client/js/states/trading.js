@@ -61,6 +61,6 @@ function tradeCheck() { // checks to see if anyone wants to trade with you
 	}
 	else{
 		party.nextDay(); // wasted a day
-		states.push(temporary( new ContinueState("No one wanted to trade with you today")));
+		states.push(temporary(new ContinueState("No one wanted to trade with you today")));
 	}
 }

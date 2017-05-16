@@ -56,7 +56,7 @@ class RiverState extends MenuState {
 
 	onEnter() {
 		// Change depth of river based on weather
-		//this.depth = Math.max(1, 
+		//this.depth = Math.max(1,
 		this.depth = this.originalDepth + weather.riverDepth; //);
 		if(this.depth < 1){
 			this.depth = 1;
@@ -66,10 +66,10 @@ class RiverState extends MenuState {
 		if(this.width < 2){
 			this.width = 2;
 		}
-		
+
 
 		this.updateDescription();
-	
+
 	}
 	failed() {
 		// Get random item to lose
@@ -125,7 +125,7 @@ class RiverState extends MenuState {
 		else if (x <= 1.5) { // water depth is relatively low making it easy
 			this.successCrossing();
 		}
-		else if ( x > 1.5 && x < 3) {
+		else if (x > 1.5 && x < 3) {
 			let random = Math.floor(Math.random() * 100);
 			if (random <= 90) { // 90% chance of success since less water
 				this.successCrossing();
@@ -134,7 +134,7 @@ class RiverState extends MenuState {
 				this.failed();
 			}
 		}
-		else if ( x >= 3 && x < 5) {
+		else if (x >= 3 && x < 5) {
 			let random = Math.floor(Math.random() * 100);
 			if (random <= 75) { // 75 % chance of success
 				this.successCrossing();
