@@ -29,7 +29,7 @@ function getSupplies() {
 
 function getPartyHealth() {
 	let healthString = "";
-	for (let partyMember of party.members){
+	for (let partyMember of party.members) {
 		healthString += `<p>${partyMember.name}: ${partyMember.healthString()}</p>`;
 	}
 	return healthString;
@@ -62,15 +62,6 @@ let gameMenu = new MenuState("What would you like to do?", [
 	{text: "Go Fishing", next: fishState, show: () => {
 		return locations.atRiver();
 	}},
-
-	/* for debugging repairing/broken wagon
-	{text: "WHEELS", onclick: () => {
-		party.supplies.wheels += 1;
-		party.supplies.axles += 1;
-		party.supplies.tongues += 1;
-
-	}},
-	*/
 	{text: "Replace a wagon part", onclick: () => {
 		const description = getItemDescription(party.brokenPart, 1);
 		party.supplies[party.brokenPart]--;

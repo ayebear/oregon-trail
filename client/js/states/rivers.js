@@ -56,21 +56,20 @@ class RiverState extends MenuState {
 
 	onEnter() {
 		// Change depth of river based on weather
-		//this.depth = Math.max(1, 
-		this.depth = this.originalDepth + weather.riverDepth; //);
-		if(this.depth < 1){
+		this.depth = this.originalDepth + weather.riverDepth;
+		if (this.depth < 1) {
 			this.depth = 1;
 		}
 
-		this.width = this.originalWidth + (weather.riverDepth * 3/2);
-		if(this.width < 2){
+		// Change width of river based on depth affected by weather
+		this.width = this.originalWidth + (weather.riverDepth * (3 / 2));
+		if (this.width < 2) {
 			this.width = 2;
 		}
-		
 
 		this.updateDescription();
-	
 	}
+
 	failed() {
 		// Get random item to lose
 		// Will only use an item with more than 0 quantity
@@ -84,7 +83,8 @@ class RiverState extends MenuState {
 			// Show result to user, using plural/singular tense
 			let result = getItemDescription(item, lost);
 			states.push(new ContinueState(`You crossed the river, but lost ${result}!`, undefined, () => states.pop("gameMenu")));
-		} else {
+		}
+		else {
 			// Player has nothing to lose!
 			this.successCrossing();
 		}
@@ -94,20 +94,22 @@ class RiverState extends MenuState {
 		states.push(new ContinueState("You have safely crossed the river!", undefined, () => states.pop("gameMenu")));
 	}
 
-	ferryOption(){
+	ferryOption() {
 		if (party.supplies.money >= 50) {
 			party.supplies.money -= 50;
 			states.push(new ContinueState("You took the ferry for 50 dollars", undefined, () => states.pop("gameMenu")));
-		} else {
+		}
+		else {
 			states.push(new ContinueState("You do not have enough money to take the ferry"));
 		}
 	}
 
-	indianOption(){
+	indianOption() {
 		if (party.supplies.clothSets >= 3) {
 			party.supplies.clothSets -= 3;
-			states.push(new ContinueState("You gave the Indian 3 Sets of Clothing for Help crossing the river", undefined, () => states.pop("gameMenu")));
-		} else {
+			states.push(new ContinueState("You gave the Indian 3 Sets of Clothing for help crossing the river", undefined, () => states.pop("gameMenu")));
+		}
+		else {
 			states.push(new ContinueState("You don't have enough Clothes to give the Indian"));
 		}
 	}
@@ -116,38 +118,38 @@ class RiverState extends MenuState {
 		let x = this.width; // need to update later depending on river actual depth
 		let y = this.depth;
 
-		if(x >= 5){ // water depth is too high
+		if (x >= 5) { // water depth is too high
 			this.failed();
 		}
-		else if (x <= 1.5){ // water depth is relatively low making it easy
+		else if (x <= 1.5) { // water depth is relatively low making it easy
 			this.successCrossing();
 		}
-		else if ( x > 1.5 && x < 3){
+		else if (x > 1.5 && x < 3) {
 			let random = Math.floor(Math.random() * 100);
-			if(random <= 90){ // 90% chance of success since less water
+			if (random <= 90) { // 90% chance of success since less water
 				this.successCrossing();
 			}
-			else{
+			else {
 				this.failed();
 			}
 		}
-		else if ( x >= 3 && x < 5){
+		else if (x >= 3 && x < 5) {
 			let random = Math.floor(Math.random() * 100);
-			if(random <= 75){ // 75 % chance of success
+			if (random <= 75) { // 75 % chance of success
 				this.successCrossing();
 			}
-			else{
+			else {
 				this.failed();
 			}
 		}
 	}
 
-	chaulkingOption(){
+	chaulkingOption() {
 		let random = Math.floor(Math.random() * 100);
-		if(random <= 70){ // 55 % chance of success
+		if (random <= 70) { // 55 % chance of success
 			this.successCrossing();
 		}
-		else{
+		else {
 			this.failed();
 		}
 	}

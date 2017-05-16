@@ -9,7 +9,7 @@ class PartyEntryState extends ContinueState {
 		let inputBoxes = $(".inputBox");
 		let names = ["Lupoli", "Cory", "Tez", "Eric", "Quang"];
 		inputBoxes.each((i, element) =>{
-			if ($(element).val()){
+			if ($(element).val()) {
 				names[i] = $(element).val();
 			}
 		});
@@ -25,7 +25,7 @@ class PartyEntryState extends ContinueState {
 			.attr("type", "text");
 
 
-		for (let i = 0; i < 5; i++){
+		for (let i = 0; i < 5; i++) {
 			$("#description").append(input.clone())
 		}
 	}

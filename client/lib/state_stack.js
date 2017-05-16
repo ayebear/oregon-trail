@@ -4,7 +4,7 @@ Stores the current state, can push/pop states
 States can contain:
 	display(): Should set DOM elements here
 	onPush(args): Called when this state is switched to (args are forwarded from StateStack::push)
-	onPop(args): Called when this state is removed (args are forwarded from StateStack::pop)
+	onPop(): Called when this state is removed
 	onEnter(): Called when a state is added/returned back to
 	onExit(): Called when a state is left/removed
 
@@ -54,7 +54,7 @@ class StateStack {
 
 	// Goes back to the parent state
 	// Pops all the way back to an optionally specified state by name
-	pop(stateName, ...args) {
+	pop(stateName, display = true) {
 		if (this.state && this.state.parent) {
 			let childState = this.state
 
@@ -62,7 +62,7 @@ class StateStack {
 			this.state = this.state.parent
 
 			// Pop and exit the old child state
-			invoke(childState, "onPop", ...args)
+			invoke(childState, "onPop")
 			invoke(childState, "onExit")
 
 			// Enter parent state
@@ -74,14 +74,14 @@ class StateStack {
 
 			// Pop temporary states when re-entered from a pop
 			if (this.state.temporary === true) {
-				this.pop(...args)
+				this.pop(undefined, display)
 			}
 
 			// Pop back to the state with this state name
 			// If not found, then the stack will be popped back to the initial state
 			if (stateName) {
 				while (stateName !== this.state.stateName && this.state.parent) {
-					this.pop(...args)
+					this.pop(undefined, false)
 				}
 			}
 		}

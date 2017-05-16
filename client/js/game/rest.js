@@ -43,7 +43,8 @@ class RestState extends InputState {
 				let days = parseInt(value)
 				if (days > 0) {
 					rest(days, callback)
-				} else {
+				}
+				else {
 					states.pop()
 				}
 			}

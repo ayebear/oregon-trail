@@ -1,19 +1,17 @@
 // Continue state - Shows general information, lets the user continue, then goes to a new state
-class TravelingState{
-	constructor(){
+class TravelingState {
+	constructor() {
 		this.timerId = null;
-		this.traveledElement = null;
-		this.nextMarkerElement = null;
 	}
 
-	updateMap(){
+	updateMap() {
 		let mapWidth = this.mapBarElement.width();
 		let wagonPosition = mapWidth * (party.milesToNextMark / locations.initialDistance);
 		this.wagonElement.css({
 			'left': wagonPosition,
 		});
 		let landmark = landmarks[party.landmarkIndex];
-		if (landmark){
+		if (landmark) {
 			this.nextMarkElement.html(`
 					<figure>
 						<img src="./data/images/${landmarks[party.landmarkIndex].type}.png" height="60px" width="60px"/>
@@ -24,7 +22,14 @@ class TravelingState{
 		}
 	}
 
-	display(){
+	updateDisplay() {
+		this.nextMarkerElement.text(`Next Landmark: ${party.milesToNextMark}`);
+		this.traveledElement.text(`Miles Traveled: ${party.milesTraveled}`);
+		this.dateElement.text(`${party.date.toDateString()}`);
+		this.weatherElement.text(`It is currently ${weather.daily}`);
+	}
+
+	display() {
 		this.root.append(`<h3>Traveling on the trail</h3>`);
 		this.root.append(`<div id="menu" class="menu">
 							<div id ="mapBar">
@@ -56,153 +61,84 @@ class TravelingState{
 		this.nextMarkElement = $("#nextMark");
 
 		if (party.brokenPart) {
-			this.brokenElement.text(`You need to find a spare wheel for your wagon ${party.brokenPart}`);
-		} else {
+			this.brokenElement.text(`You need to find a spare wagon ${wagonParts[party.brokenPart]} for your wagon!`);
+		}
+		else {
 			this.brokenElement.text("");
 		}
 
 		this.updateMap();
 	}
 
-	onEnter(){
-
-		if(!party.brokenPart && party.supplies.oxen >= 1){// all 3 needs to be true to be able to move
+	onEnter() {
+		// Must have a fully working wagon and at least one oxen to move
+		if (!party.brokenPart && party.supplies.oxen >= 1) {
 			this.requestTick();
 		}
 	}
 
-	onExit(){
+	onExit() {
 		clearTimeout(this.timerId);
 	}
 
-	requestTick(){
+	requestTick() {
 		this.timerId = setTimeout(() => {this.tick()}, 1250);
 	}
 
-
-	tick(){
-
-		let newLandmark = false;
-		let summaryString = "";
-		const debug = false;
-
-		function decFood(){
-			party.supplies.decrementFood(party.rationsValue.pounds * party.paceValue.food *party.members.size);
-		}
-
-		//returns true if we hit a new landmark
-		function incMiles(){
-			party.incrementMiles(party.paceValue.speed * Math.min(party.supplies.oxen, 9) * oxenMilesPerDay, () => {
-				newLandmark = true;
-			});
-		}
-
-		function updateHealth(){
-			//net health change for entire party
-			let clothDamage = 0;
-			if(weather.season == 1){
-				if (party.supplies.clothSets< party.members.size()){
-					clothDamage = -(party.members.size()/(party.supplies.clothSets ? party.supplies.clothSets: 1))/25;
-					}
-			}
-			let partyChange = party.paceValue.health + party.rationsValue.health + weather.currentHealth + clothDamage;
-			
-
-
-
-			//update based on food/rations
-			if (party.supplies.noFood())
-				partyChange += noFoodChange;
-			//go through partyMembers, apply health change based on diseases + base party change
-			for(let partyMember of party.partyMembers) {
-
-				let value = rand(-partyChange * 10, 100);
-				if (value > 98.5){
-					let diseaseAdded = partyMember.addRandomDisease();
-					if (diseaseAdded){
-						summaryString += `<h4>${partyMember.name} has ${diseaseAdded}</h4>`
-					}
-				}
-				if (partyMember.hasDisease() && value < 10) {
-					let diseaseRemoved = partyMember.removeRandomDisease();
-					summaryString += `<h4>${partyMember.name} no longer has ${diseaseRemoved}</h4>`
-				}
-
-
-
-				partyMember.updateDailyHealth(partyChange, () => {
-					summaryString += `<h4> ${partyMember.name} has died </h4>`;
-
-					//This killed the partyMember, remove them from the set
-					party.partyMembers.delete(partyMember);
-				});
-			}
-
-
-
-		}
-
-		let random = Math.floor(Math.random() * 100);
-
-		//increment miles based on pace
-		//if we hit a new landmark when incrementing miles
-		incMiles();
-		decFood(); 	//lower food based on rations
-		//weather.updateSeason(); // checks month
-		weather.updateWeather(); // gives daily weather
-		updateHealth();
-
-		// Increment Date
-		party.nextDay();
-
-		this.updateMap();
-
-		this.nextMarkerElement.text(`Next Landmark: ${party.milesToNextMark}`);
-		this.traveledElement.text(`Miles Traveled: ${party.milesTraveled}`);
-		this.dateElement.text(`${party.date.toDateString()}`);
-		this.weatherElement.text(`It is currently ${weather.daily}`);
-		if (debug){
-			console.log("---------------------");
-			console.log("Date: " + party.date.toString());
-			console.log("Miles Traveled : " + party.milesTraveled);
-			console.log("Food Rations: " + party.supplies.food);
-			for(let partyMember of party.partyMembers){
-				console.log(`${partyMember.name} has health of ${partyMember.health}`);
-			}
-			console.log("---------------------");
-		}
-
+	decide(newLandmark, summaryString) {
 		// Display any events that occurred along the trail
-		if (party.members.size === 0){
-			//everyone died
+		if (party.members.size === 0) {
+			// Game over, everyone died
+			const description = `Everyone in your wagon has died. <br> You covered ${party.milesTraveled} miles in ${dateDiffInDays(party.startDate, party.date)} days.`;
 			states.push(new ContinueState(summaryString, null, () => {
-				states.push(new InputState({
-					type: "text",
-					description: `Everyone in your wagon has died. <br> You covered ${party.milesTraveled} miles in ${dateDiffInDays(party.startDate, party.date)} days. <br> Enter a name below to submit your highscore and play again!!`,
-					valid: (input) => {
-						return (input.length <= 20 && input.length >= 2)
-					},
-					onSubmit: (value) => {
-						//Do Something Here Related to Submitting the score to the DataBase
-						states.pop("mainMenu");
-					}
-				}))
+				states.push(new ContinueState(description, null, () => {
+					states.pop("mainMenu");
+				}));
 			}));
 		}
-		else if (summaryString.length && newLandmark){
+		else if (summaryString.length && newLandmark) {
+			// Show new health information, then go to next landmark state
 			states.push(new ContinueState(summaryString), null, () => {locations.update()});
 		}
-		else if (summaryString.length){
+		else if (summaryString.length) {
+			// Show new health information
 			states.push(new ContinueState(summaryString));
 		}
-		else if (newLandmark){
+		else if (newLandmark) {
+			// Go to next landmark state
 			locations.update();
 		}
-		else if(random <= 10){ // can change this to debug
+		else if (rand(0, 100) < 10) {
+			// 10% chance of a random event occurring
 			randomEvents.select();
 		}
 		else {
+			// Continue traveling
 			this.requestTick();
 		}
+	}
+
+	tick() {
+		// Increment miles based on pace
+		const newLandmark = party.incrementMiles();
+
+		// Use up food while traveling
+		party.decrementFood();
+
+		// Randomize the daily weather
+		weather.updateWeather();
+
+		// Update party members' health values, also apply/remove diseases
+		const summaryString = party.updateHealth();
+
+		// Increment date
+		party.nextDay();
+
+		// Update map animation and display information
+		this.updateMap();
+		this.updateDisplay();
+
+		// Show another state, or continue traveling
+		this.decide(newLandmark, summaryString)
 	}
 }

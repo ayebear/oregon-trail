@@ -1,8 +1,6 @@
 //Main game runtime
 
 let states = undefined;
-const debug = true;
-
 
 $(document).ready(function() {
 

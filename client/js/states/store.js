@@ -90,7 +90,8 @@ class StoreState extends ContinueState {
 	setBounds(item) {
 		if (item.quantity < 0 || isNaN(item.quantity)) {
 			item.quantity = 0
-		} else if (item.quantity > item.limit) {
+		}
+		else if (item.quantity > item.limit) {
 			item.quantity = item.limit
 		}
 		$(`#${item.id} input`).val(item.quantity)
