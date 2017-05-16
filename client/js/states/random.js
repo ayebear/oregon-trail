@@ -1,3 +1,6 @@
+
+// random events that may happen during the traveling.
+// only a 10% chance of any of these happening 
 class RandomEvents {
 	constructor() {
 		this.current = 0;
@@ -7,17 +10,17 @@ class RandomEvents {
 		this.brokenWagon = this.brokenWagon.bind(this);
 		this.wrongPath = this.wrongPath.bind(this);
 	}
-
+	// selects one of the three random events to happen 
 	select() {
 		invokeRandom(this.thieves, this.brokenWagon, this.wrongPath);
 	}
-
+	// thieves stealing your stuff 
 	thieves() {
 		const item = randNonZeroKey(party.supplies);
 
 		if (item) {
 			// Don't try to steal more than half of what you have
-			const amount = Math.ceil(Math.max(getItemAmount(item), party.supplies[item]) / 2);
+			const amount = Math.ceil(Math.random(getItemAmount(item), party.supplies[item]) * party.supplies[item]/ 2);
 
 			party.supplies[item] -= amount;
 			// Show what the thieves stole
@@ -26,10 +29,11 @@ class RandomEvents {
 			states.push(temporary(new ContinueState(description)));
 		}
 	}
-
+	// took wrong path 
 	wrongPath() {
 		let daysLost = rand(1, 6);
 		party.nextDay(daysLost);
+		party.decrementRestFood(daysLost);
 		states.push(temporary(new ContinueState(`You took the wrong path and lost ${daysLost} day(s).`)));
 	}
 
@@ -46,6 +50,7 @@ class RandomEvents {
 			{text: "Accept", onclick: () => {
 				// Repairing takes one day
 				party.nextDay();
+				party.decrementRestFood(2);
 				this.repairingOption(part);
 			}},
 			{text: "Decline", onclick: () => {

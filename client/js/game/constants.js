@@ -36,7 +36,7 @@ const occupations = {
 	carpenter: {start: 800, score: 2},
 	farmer: {start: 400, score: 3}
 };
-
+// changes items to plural/singular
 const itemNames = {
 	money: ["a dollar", "dollars"],
 	oxen: ["an ox", "oxen"],
@@ -47,7 +47,7 @@ const itemNames = {
 	tongues: ["a wagon tongue", "wagon tongues"],
 	food: ["a pound of food", "pounds of food"]
 };
-
+// used for random events that a wagon part is broken
 const wagonParts = {
 	wheels: "wheel",
 	axles: "axle",

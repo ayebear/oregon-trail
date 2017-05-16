@@ -1,3 +1,6 @@
+
+// asks user to input name of the group
+// default values will appear instead if no/not enough values are entered
 class PartyEntryState extends ContinueState {
 	constructor(nextState) {
 		super("Enter The Names of your Party Members Below", nextState, () => {
@@ -7,7 +10,7 @@ class PartyEntryState extends ContinueState {
 
 	submit() {
 		let inputBoxes = $(".inputBox");
-		let names = ["Lupoli", "Cory", "Tez", "Eric", "Quang"];
+		let names = ["Lupoli", "Cory", "Tez", "Eric", "Quang"]; // default value if user does not enter names
 		inputBoxes.each((i, element) =>{
 			if ($(element).val()) {
 				names[i] = $(element).val();
@@ -24,7 +27,7 @@ class PartyEntryState extends ContinueState {
 			.attr("class", "menu inputBox")
 			.attr("type", "text");
 
-
+		// up to 5 party members can be added
 		for (let i = 0; i < 5; i++) {
 			$("#description").append(input.clone())
 		}

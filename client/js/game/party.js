@@ -85,7 +85,15 @@ class Party {
 	decrementFood() {
 		this.supplies.decrementFood(this.rationsValue.pounds * this.paceValue.food * this.members.size);
 	}
+	decrementRestFood(scale){
+		if (party.supplies.food > party.rationsValue.pounds * party.members.size){
+			party.supplies.food -= party.rationsValue.pounds * party.members.size * scale;
+		}
+		else{
+			party.supplies.food = 0;
+		}
 
+	}
 	// Applies diseases, handles health logic, and returns a summary of everything that happened
 	updateHealth() {
 		// Net health change for entire party

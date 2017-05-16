@@ -3,7 +3,7 @@ class Weather {
 		this.season = 0;
 		this.daily = 'warm';
 		this.currentHealth = 0.00;
-		this.riverDepth = 0.0;
+		this.riverDepth = 0.0; // accumulates to adjust river based on daily weather patterns 
 	}
 
 	updateWeather(days = 1) { // should update the values
@@ -42,7 +42,7 @@ class Weather {
 			}
 			else if (random > 75 && random <= 90) {
 				this.daily = "warm";
-				this.currentHealth = .04;//rm weather is beneficial for health
+				this.currentHealth = .04;//warm weather is beneficial for health
 				this.riverDepth -= .1 * days;
 			}
 			else if (random > 90) {
