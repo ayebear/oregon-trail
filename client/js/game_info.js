@@ -340,7 +340,7 @@ class Weather{
 		this.riverDepth = 0.0;
 	}
 
-	updateWeather(days) { // should update the values
+	updateWeather(days = 1) { // should update the values
 		let currentMonth = party.date.getMonth();
 		let random = Math.floor(Math.random() * 100);
 		if ((currentMonth <= 1) || (currentMonth === 11)) { // winter

@@ -57,13 +57,13 @@ class RiverState extends MenuState {
 	onEnter() {
 		// Change depth of river based on weather
 		//this.depth = Math.max(1,
-		this.depth = this.originalDepth + weather.riverDepth; //);
-		if(this.depth < 1){
+		this.depth = this.originalDepth + weather.riverDepth;
+		if (this.depth < 1) {
 			this.depth = 1;
 		}
 
 		this.width = this.originalWidth + (weather.riverDepth * 3/2);
-		if(this.width < 2){
+		if (this.width < 2) {
 			this.width = 2;
 		}
 
