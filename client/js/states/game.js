@@ -19,8 +19,8 @@ class RiverGameState {
         let gameElement = document.getElementById("game");
 
         function startGame() {
-            float = new component(50, 50, "black", 220, 90);
-            myGamePiece = new component(50, 50, "./data/images/wagon.png", 220, 90, "image");
+            float = new component(70, 35, "saddlebrown", 220, 90);
+            myGamePiece = new component(70, 35, "./data/images/wagon.png", 220, 90, "image");
 
             // starting land , may change to just green
             //startPieceBack =  new component(1000, 100, "./data/images/grass.jpg", 0, 0,"image");
