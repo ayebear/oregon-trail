@@ -51,6 +51,7 @@ class TravelingState {
 			})
 		$("#menu").append(button);
 
+		// used to update after every click
 		this.traveledElement = $("#milesTraveled");
 		this.nextMarkerElement = $("#milesToNextMark");
 		this.dateElement = $("#date");
@@ -60,6 +61,7 @@ class TravelingState {
 		this.wagonElement = $("#wagon");
 		this.nextMarkElement = $("#nextMark");
 
+		// reminds user what part is broken. will not tick until it is fixed
 		if (party.brokenPart) {
 			this.brokenElement.text(`You need to find a spare wagon ${wagonParts[party.brokenPart]} for your wagon!`);
 		}
@@ -82,6 +84,7 @@ class TravelingState {
 	}
 
 	requestTick() {
+		// everything is updated every 1.25 seconds
 		this.timerId = setTimeout(() => {this.tick()}, 1250);
 	}
 

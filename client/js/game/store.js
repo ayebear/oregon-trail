@@ -2,7 +2,7 @@
 function makeStore(options) {
 	// Setup store items
 	options.items = [
-		{id: "oxen", name: "Oxen", price: 20, limit: 18},
+		{id: "oxen", name: "Oxen", price: 20, limit: 10},
 		{id: "clothSets", name: "Sets of clothing", price: 10, limit: 99},
 		{id: "worms", name: "Worms", price: 0.1, limit: 999},
 		{id: "wheels", name: "Wagon wheels", price: 10, limit: 3},

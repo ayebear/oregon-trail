@@ -1,7 +1,5 @@
-let acceptTradeState = new ContinueState("Bob was taken into slavery, you were given 3 pounds of rotten food.")
 
-let declineTradeState = new ContinueState("Bob was happy that you decided to keep him.")
-
+// pace menu 
 let changePaceState = new MenuState("Choose the pace you will travel at:", [
 	{text: "Grueling (100%)", onclick: () => { party.pace = "grueling"; states.pop() }},
 	{text: "Strenuous (75%)", onclick: () => { party.pace = "strenuous"; states.pop() }},
@@ -9,6 +7,7 @@ let changePaceState = new MenuState("Choose the pace you will travel at:", [
 	{text: "Cancel", onclick: () => { states.pop() }}
 ]);
 
+// chaning food rations menu
 let changeFoodState = new MenuState("The amount of food the people in your party eat each day can change. These amounts are:", [
 	{text: "Filling - Meals are large and generous", onclick: () => { party.rations = "filling"; states.pop() }},
 	{text: "Meager - Meals are small, but adequate", onclick: () => { party.rations = "meager"; states.pop() }},
@@ -16,6 +15,7 @@ let changeFoodState = new MenuState("The amount of food the people in your party
 	{text: "Cancel", onclick: () => { states.pop() }}
 ]);
 
+// checking supplies menu
 function getSupplies() {
 	return `<p> Oxen: ${party.supplies.oxen} </p>
 	<p> Sets of Clothing: ${party.supplies.clothSets} </p>
@@ -27,6 +27,7 @@ function getSupplies() {
 	<p> Money Left: $${party.supplies.money.toFixed(2)} </p>`;
 }
 
+// checking party's members health
 function getPartyHealth() {
 	let healthString = "";
 	for (let partyMember of party.members) {

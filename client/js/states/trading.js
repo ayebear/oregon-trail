@@ -1,14 +1,20 @@
+
+// randomly gets amount of selected item 
 function getItemAmount(item) {
 	// TODO: Maybe base values on actual store prices?
-	if (item == "food" || item == "worms" || item == "money") {
+	if (item == "food" || item == "worms"){ 
 		return rand(20, 50);
 	}
-	else { // oxens // wagon parts // cloth sets
-		return rand(2, 5);
+	else if (item == "money") {
+		return rand(100,150);
+	}
+
+	else{ // oxens // wagon parts // cloth sets
+		return rand(2, 4);
 	}
 }
 
-//let tradeState = temporary(new QuestionState("Would you like to trade one of your party members for 3 pounds of food?", acceptTradeState, declineTradeState))
+
 function tradeSupply() {
 	// Pick an item you actually have
 	const yourItem = randNonZeroKey(party.supplies);
@@ -28,7 +34,6 @@ function tradeSupply() {
 		if (party.supplies[yourItem] < yourAmount) {
 			// Waste a day if the player doesn't have enough
 			let description = `${person} wanted to trade you ${theirDescription} for ${yourDescription}, but you did not have enough.`;
-			party.nextDay();
 			states.push(temporary(new ContinueState(description)));
 		}
 		else {
@@ -44,8 +49,6 @@ function tradeSupply() {
 					// Give them your item(s)
 					party.supplies[yourItem] -= yourAmount;
 
-					// Trading takes one day
-					party.nextDay();
 					states.pop();
 				}},
 				{text: "Decline", onclick: () => { party.nextDay(); states.pop(); }}
@@ -56,11 +59,18 @@ function tradeSupply() {
 
 function tradeCheck() { // checks to see if anyone wants to trade with you
 	let random = Math.floor(Math.random() * 100);
+	// 85% change that people will want to trade with you 
 	if (random <= 85) {
+
+		// Trading takes one day
+		party.nextDay();
+		party.decrementRestFood(1); // dec food
 		tradeSupply();
 	}
 	else {
 		party.nextDay(); // wasted a day
+		// dec food 
+		party.decrementRestFood(2);// scaled more because you are sad that no one wanted to trade with you
 		states.push(temporary(new ContinueState("No one wanted to trade with you today")));
 	}
 }

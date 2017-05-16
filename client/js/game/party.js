@@ -37,9 +37,6 @@ class Party {
 	nextDay(days = 1) {
 		if (days > 0) {
 			this.date.setDate(this.date.getDate() + days);
-
-			// TODO: Maybe use up food when going to the next day? Or do this instead of while traveling only?
-			// this.decrementFood();
 		}
 	}
 
@@ -84,6 +81,11 @@ class Party {
 	// Uses up food rations based on pace/rations settings, and party size
 	decrementFood() {
 		this.supplies.decrementFood(this.rationsValue.pounds * this.paceValue.food * this.members.size);
+	}
+
+	// Uses food for resting/non-traveling activities
+	decrementRestFood(scale) {
+		this.supplies.decrementFood(this.rationsValue.pounds * this.members.size * scale);
 	}
 
 	// Applies diseases, handles health logic, and returns a summary of everything that happened

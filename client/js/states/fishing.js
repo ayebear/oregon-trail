@@ -1,14 +1,20 @@
 function fishing(worms) {
-	// still a very low chance of getting 1 lb of fish even if no bait is used
-	let fishCaught = (Math.floor(Math.random() * worms) + Math.floor(Math.random() + Math.random()) * 2);
+	// still a very low chance of getting 1-2 lb of fish even if no bait is used
+
+	let fishCaught = ((Math.floor(Math.random() * worms) + Math.floor(Math.random() + Math.random()) * 2) * (Math.floor(Math.random() * 3) + 1));
 	// updates supplies
 	party.supplies.food += fishCaught;
 	party.supplies.worms -= worms;
-	states.push(new ContinueState("You've caught " + fishCaught + " pounds of fish! \n You have " + party.supplies.worms + " worms left!"))
-}
 
+	// fishing takes a day which means you also lose food
+	party.nextDay();
+	party.decrementRestFood(1);
+
+	states.push(new ContinueState("You've caught " + fishCaught + " pounds of fish! <br><br> You have " + party.supplies.worms + " worms left!"))
+}
+// asks user how much worms theyd like to use for fishing
 let fishState = temporary(new InputState({
-	description: "How many worms would you like to use?",
+	description: "How many would you like to use?",
 	type: "number",
 	min: 0,
 	max: 99,
