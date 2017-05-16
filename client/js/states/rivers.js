@@ -83,7 +83,8 @@ class RiverState extends MenuState {
 			party.supplies[item] -= lost;
 
 			// Show result to user, using plural/singular tense
-			let result = getItemDescription(item, lost);
+			var str1 = "<br><br> <img src='./data/images/riverCross.gif' width=543px height=307px"
+			let result = getItemDescription(item, lost) + str1;
 			states.push(new ContinueState(`You crossed the river, but lost ${result}!`, undefined, () => states.pop("gameMenu")));
 		}
 		else {
@@ -93,13 +94,13 @@ class RiverState extends MenuState {
 	}
 	// river was succcessfully cross with no items lost 
 	successCrossing() {
-		states.push(new ContinueState("You have safely crossed the river!", undefined, () => states.pop("gameMenu")));
+		states.push(new ContinueState("You have safely crossed the river! <br><br> <img src='./data/images/riverCross.gif' width=543px height=307px ", undefined, () => states.pop("gameMenu")));
 	}
 	// ferry option is safe but appears only at certain locations
 	ferryOption() {
 		if (party.supplies.money >= 50) {
 			party.supplies.money -= 50;
-			states.push(new ContinueState("You took the ferry for 50 dollars", undefined, () => states.pop("gameMenu")));
+			states.push(new ContinueState("You took the ferry for 50 dollars <br><br> <img src='./data/images/riverCross.gif' width=543px height=307px", undefined, () => states.pop("gameMenu")));
 		}
 		else {
 			states.push(new ContinueState("You do not have enough money to take the ferry"));
