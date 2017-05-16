@@ -14,9 +14,6 @@ class Locations {
 	//update our location based on landmarkObjects
 	update() {
 		let landmark = landmarks[party.landmarkIndex];
-		if (landmark.type === "river"){
-			this.riversPassed += 1;
-		}
 		if (landmarks[++party.landmarkIndex]) {
 			party.milesToNextMark = landmarks[party.landmarkIndex].distance;
 			this.nextLandMark = landmarks[party.landmarkIndex].name;
@@ -44,7 +41,8 @@ class Locations {
 	}
 
 	generateRiver(name, description, riverOptions) {
-		return new ContinueState(`Arriving at ${name} <hr> ${description} <hr>`, null, () => {states.push(new RiverState(riverOptions.depth, riverOptions.width, riverOptions.canFerry, riverOptions.canIndian))});
+        this.riversPassed += 1;
+        return new ContinueState(`Arriving at ${name} <hr> ${description} <hr>`, null, () => {states.push(new RiverState(riverOptions.depth, riverOptions.width, riverOptions.canFerry, riverOptions.canIndian))});
 	}
 
 	get score() {
