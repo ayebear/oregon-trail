@@ -29,6 +29,11 @@ class StateStack {
 		}
 	}
 
+	display() {
+		this.clear()
+		invoke(this.state, "display")
+	}
+
 	// Switches to a new state object, sets its parent, triggers onPush, and displays it
 	push(newState, ...args) {
 		if (newState && typeof newState === 'object') {
@@ -40,13 +45,12 @@ class StateStack {
 			invoke(this.state, "onExit")
 
 			// Set current state
-			this.state = newState
+			this.state = newState;
 			invoke(this.state, "onPush", ...args)
 			invoke(this.state, "onEnter")
 
-			// Display
-			this.clear()
-			invoke(this.state, "display")
+			// Display state that was pushed
+			this.display()
 		}
 
 		return this
@@ -54,7 +58,7 @@ class StateStack {
 
 	// Goes back to the parent state
 	// Pops all the way back to an optionally specified state by name
-	pop(stateName, display = true) {
+	pop(stateName) {
 		if (this.state && this.state.parent) {
 			let childState = this.state
 
@@ -68,21 +72,18 @@ class StateStack {
 			// Enter parent state
 			invoke(this.state, "onEnter")
 
-			// Display
-			this.clear()
-			invoke(this.state, "display")
-
-			// Pop temporary states when re-entered from a pop
-			if (this.state.temporary === true) {
-				this.pop(undefined, display)
-			}
-
 			// Pop back to the state with this state name
 			// If not found, then the stack will be popped back to the initial state
-			if (stateName) {
-				while (stateName !== this.state.stateName && this.state.parent) {
-					this.pop(undefined, false)
-				}
+			if (stateName && this.state && stateName !== this.state.stateName && this.state.parent) {
+				this.pop(stateName)
+			}
+			// Pop temporary states when re-entered from a pop
+			else if (this.state.temporary === true) {
+				this.pop()
+			}
+			// Display state that was popped to
+			else {
+				this.display()
 			}
 		}
 

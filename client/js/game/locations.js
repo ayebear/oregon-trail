@@ -1,6 +1,7 @@
 // Keeps track of miles traveled, possible paths, and landmarks you'll encounter.
 class Locations {
 	constructor() {
+		this.riversPassed = 0;
 		this.miles = 0;
 		this.fortsPassed = 0;
 		this.landmarksQueue = [];
@@ -40,6 +41,7 @@ class Locations {
 	}
 
 	generateRiver(name, description, riverOptions) {
+		this.riversPassed += 1;
 		return new ContinueState(`Arriving at ${name} <hr> ${description} <hr>`, null, () => {states.push(new RiverState(riverOptions.depth, riverOptions.width, riverOptions.canFerry, riverOptions.canIndian))});
 	}
 

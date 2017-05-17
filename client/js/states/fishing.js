@@ -10,8 +10,9 @@ function fishing(worms) {
 	party.nextDay();
 	party.decrementRestFood(1);
 
-	states.push(new ContinueState("You've caught " + fishCaught + " pounds of fish! <br><br> You have " + party.supplies.worms + " worms left!"))
+	states.push(new ContinueState("You've caught " + fishCaught + " pounds of fish! <br> You have " + party.supplies.worms + " worms left! <br><br> <img src='./data/images/fishingGif2.gif' width=543px height=307px />"))
 }
+
 // asks user how much worms theyd like to use for fishing
 let fishState = temporary(new InputState({
 	description: "How many would you like to use?",

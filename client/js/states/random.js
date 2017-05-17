@@ -9,11 +9,50 @@ class RandomEvents {
 		this.thieves = this.thieves.bind(this);
 		this.brokenWagon = this.brokenWagon.bind(this);
 		this.wrongPath = this.wrongPath.bind(this);
+		this.lostOxen = this.lostOxen.bind(this);
+		this.foodSpoil = this.foodSpoil.bind(this);
+		this.luckyWagon =this.luckyWagon.bind(this);
 	}
+
 	// selects one of the three random events to happen
 	select() {
-		invokeRandom(this.thieves, this.brokenWagon, this.wrongPath);
+		invokeRandom(this.thieves, this.brokenWagon, this.wrongPath, this.foodSpoil, this.lostOxen, this.luckyWagon);
 	}
+
+	// food spoiling
+	foodSpoil(){
+		const amount = rand(1, Math.ceil(party.supplies['food'] / 10));
+		party.supplies['food'] -= amount;
+		// Show what the thieves stole
+		const itemDescription = getItemDescription('food', amount);
+		let description = `You lost ${itemDescription} due to spoilage!`;
+		states.push(temporary(new ContinueState(description)));
+		}
+
+	// lose one oxen, only one because thieves have a chance of stealing a lot more
+	lostOxen(){
+		if (party.supplies['oxen'] >= 2){
+			party.supplies.oxen -= 1;
+			states.push(temporary(new ContinueState(`An oxen roamed off!`)));
+		}
+	}
+
+	//we found a random amount of some item!
+	luckyWagon(){
+		// Pick any item
+		const item = randValue(Object.keys(party.supplies));
+		const amount = Math.floor(Math.random()*5 + 2);
+		let description = getItemDescription(item, amount);
+
+		// Don't try to steal more than half of what you have
+
+		party.supplies[item] += amount;
+			// Show what the thieves stole
+
+		description = `You found ${description} near a broken wagon!`;
+		states.push(temporary(new ContinueState(description)));
+	}
+
 	// thieves stealing your stuff
 	thieves() {
 		const item = randNonZeroKey(party.supplies);
@@ -34,7 +73,7 @@ class RandomEvents {
 		let daysLost = rand(1, 6);
 		party.nextDay(daysLost);
 		party.decrementRestFood(daysLost);
-		states.push(temporary(new ContinueState(`You took the wrong path and lost ${daysLost} day(s).`)));
+		states.push(temporary(new ContinueState(`You took the wrong path and lost ${daysLost} day${daysLost === 1 ? "" : "s"}.`)));
 	}
 
 

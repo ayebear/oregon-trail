@@ -34,7 +34,7 @@ class TravelingState {
 		this.root.append(`<div id="menu" class="menu">
 							<div id ="mapBar">
 								<div class="mapBarContainer" id = "nextMark"></div>
-								<div class="mapBarContainer" id = "wagon"><img src="./data/images/wagon.png" height="60px" width="60px"/></div>
+								<div class="mapBarContainer" id = "wagon"><img src="./data/images/wagon.png" height="30px" width="60px"/></div>
 							</div>
 							<div id = "date">${party.date.toDateString()}</div>
 							<div id = "weather">It is currently ${weather.daily}</div>
@@ -111,8 +111,8 @@ class TravelingState {
 			// Go to next landmark state
 			locations.update();
 		}
-		else if (rand(0, 100) < 10) {
-			// 10% chance of a random event occurring
+		else if (rand(0, 100) < 7) {
+			// 7% chance of a random event occurring
 			randomEvents.select();
 		}
 		else {

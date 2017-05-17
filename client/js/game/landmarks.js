@@ -7,7 +7,7 @@ const landmarks = [
 			620 feet and the usual depth in the middle is about 4 feet.  But be sure to
 			check the conditions when you get there.`,
 			{depth: 3, width: 6, canFerry: true, canIndian: false })
-		}
+	}
 	},
 	{name: "The Big Blue River Crossing", type: "river", distance: 83,  generateState: () => {
 		return locations.generateRiver("Big Blue River Crossing",

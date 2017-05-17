@@ -8,6 +8,7 @@ class RiverState extends MenuState {
 		this.originalDepth = depth;
 		this.originalWidth = width;
 		this.updateDescription();
+		this.gifAddress = `<br><br> <img src='./data/images/riverCross${locations.riversPassed}.gif' width=543px height=307px/>`;
 		this.choices = [
 			{	// forcing oxens to swim acrossing the river
 				text: "Attempt to ford the river", onclick: () => {
@@ -15,7 +16,7 @@ class RiverState extends MenuState {
 				}
 			},
 			{	// floating wagon across
-				text: "Attempt to chaulk the river", onclick: () => {
+				text: "Attempt to caulk the river", onclick: () => {
 					this.chaulkingOption(); 
 				}
 			},
@@ -46,7 +47,7 @@ class RiverState extends MenuState {
 			},
 			{
 				text: "Learn about the options", onclick: () => {
-					states.push(new ContinueState("Fording: making your oxens swim across the river. Not advised for depths greater than 3 feet <br><br> Chaulking: Seal and Float your wagon across the river <br><br> Ferry/Indian: Safest way across a river <br><br> Rest: Rest and see if the river depth will change enough for you to pass"));
+					states.push(new ContinueState("Fording: making your oxens swim across the river. Not advised for depths greater than 3 feet <br><br> Caulking: Seal and Float your wagon across the river <br><br> Ferry/Indian: Safest way across a river <br><br> Rest: Rest and see if the river depth will change enough for you to pass"));
 				}
 			}
 		];
@@ -84,7 +85,7 @@ class RiverState extends MenuState {
 
 			// Show result to user, using plural/singular tense
 			let result = getItemDescription(item, lost);
-			states.push(new ContinueState(`You crossed the river, but lost ${result}!`, undefined, () => states.pop("gameMenu")));
+			states.push(new ContinueState(`You crossed the river, but lost ${result}! ${this.gifAddress}`, undefined, () => states.pop("gameMenu")));
 		}
 		else {
 			// Player has nothing to lose!
@@ -93,13 +94,13 @@ class RiverState extends MenuState {
 	}
 	// river was succcessfully cross with no items lost 
 	successCrossing() {
-		states.push(new ContinueState("You have safely crossed the river!", undefined, () => states.pop("gameMenu")));
+		states.push(new ContinueState(`You have safely crossed the river! ${this.gifAddress}`, undefined, () => states.pop("gameMenu")));
 	}
 	// ferry option is safe but appears only at certain locations
 	ferryOption() {
 		if (party.supplies.money >= 50) {
 			party.supplies.money -= 50;
-			states.push(new ContinueState("You took the ferry for 50 dollars", undefined, () => states.pop("gameMenu")));
+			states.push(new ContinueState(`You took the ferry for 50 dollars  ${this.gifAddress}`, undefined, () => states.pop("gameMenu")));
 		}
 		else {
 			states.push(new ContinueState("You do not have enough money to take the ferry"));
@@ -109,7 +110,7 @@ class RiverState extends MenuState {
 	indianOption() {
 		if (party.supplies.clothSets >= 3) {
 			party.supplies.clothSets -= 3;
-			states.push(new ContinueState("You gave the Indian 3 Sets of Clothing for help crossing the river", undefined, () => states.pop("gameMenu")));
+			states.push(new ContinueState(`You gave the Indian 3 Sets of Clothing for help crossing the river ${this.gifAddress}`, undefined, () => states.pop("gameMenu")));
 		}
 		else {
 			states.push(new ContinueState("You don't have enough Clothes to give the Indian"));
