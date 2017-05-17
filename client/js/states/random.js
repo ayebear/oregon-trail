@@ -73,7 +73,7 @@ class RandomEvents {
 		let daysLost = rand(1, 6);
 		party.nextDay(daysLost);
 		party.decrementRestFood(daysLost);
-		states.push(temporary(new ContinueState(`You took the wrong path and lost ${daysLost} day${daysLost > 1 ? "s" : ""}.`)));
+		states.push(temporary(new ContinueState(`You took the wrong path and lost ${daysLost} day${daysLost === 1 ? "" : "s"}.`)));
 	}
 
 
