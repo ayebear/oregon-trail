@@ -1,5 +1,5 @@
 
-// river crossing menu 
+// river crossing menu
 class RiverState extends MenuState {
 	constructor(depth, width, canFerry, canIndian) {
 		super();
@@ -17,10 +17,10 @@ class RiverState extends MenuState {
 			},
 			{	// floating wagon across
 				text: "Attempt to caulk the river", onclick: () => {
-					this.chaulkingOption(); 
+					this.chaulkingOption();
 				}
 			},
-			{	
+			{
 				show: canFerry, text: "Hire a ferry for $50", /*next: ferryState,*/ onclick: () => {
 					this.ferryOption();
 				}
@@ -32,17 +32,13 @@ class RiverState extends MenuState {
 			},
 			{
 				text: "Rest", next: RestState, args: [days => {
-					console.log('Rested for', days, 'days.');
-
 					// Lower river depth based on how many days went by
 					this.depth -= days;
 
 					// Deep rivers should not fall below 5 feet, even after resting
-					if (depth >= 5 && this.depth < 5) {
+					if (this.originalDepth >= 5 && this.depth < 5) {
 						this.depth = 5;
 					}
-
-					console.log(`Depth is now ${this.depth}`);
 				}]
 			},
 			{
@@ -72,7 +68,7 @@ class RiverState extends MenuState {
 
 		this.updateDescription();
 	}
-	// failing will still cross you the river, but you lose items 
+	// failing will still cross you the river, but you lose items
 	failed() {
 		// Get random item to lose
 		// Will only use an item with more than 0 quantity
@@ -92,7 +88,7 @@ class RiverState extends MenuState {
 			this.successCrossing();
 		}
 	}
-	// river was succcessfully cross with no items lost 
+	// river was succcessfully cross with no items lost
 	successCrossing() {
 		states.push(new ContinueState(`You have safely crossed the river! ${this.gifAddress}`, undefined, () => states.pop("gameMenu")));
 	}
@@ -106,7 +102,7 @@ class RiverState extends MenuState {
 			states.push(new ContinueState("You do not have enough money to take the ferry"));
 		}
 	}
-	// another option like ferry 
+	// another option like ferry
 	indianOption() {
 		if (party.supplies.clothSets >= 3) {
 			party.supplies.clothSets -= 3;
@@ -116,7 +112,7 @@ class RiverState extends MenuState {
 			states.push(new ContinueState("You don't have enough Clothes to give the Indian"));
 		}
 	}
-	// based on details of the OG game. 
+	// based on details of the OG game.
 	// certain depths give different % of success
 	fordingOption() {
 		let x = this.width; // need to update later depending on river actual depth

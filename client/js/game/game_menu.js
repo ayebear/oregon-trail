@@ -1,5 +1,5 @@
 
-// pace menu 
+// pace menu
 let changePaceState = new MenuState("Choose the pace you will travel at:", [
 	{text: "Grueling (100%)", onclick: () => { party.pace = "grueling"; states.pop() }},
 	{text: "Strenuous (75%)", onclick: () => { party.pace = "strenuous"; states.pop() }},

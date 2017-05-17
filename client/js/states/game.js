@@ -1,11 +1,5 @@
 class RiverGameState {
-	constructor(){
-		this._self = this;
-
-	}
-
-	display(){
-		console.log("display called");
+	display() {
 		let myGamePiece;
 		let float;
 
@@ -44,7 +38,7 @@ class RiverGameState {
 			start : function() {
 				// frame of game
 				this.canvas.width = 480;
-				this.canvas.height = 850;
+				this.canvas.height = window.innerHeight - 32;
 				this.context = this.canvas.getContext("2d");
 				gameElement.appendChild(this.canvas);
 				this.frameNo = 0;
@@ -175,10 +169,11 @@ class RiverGameState {
 			// left and right moves faster
 			// up and down moves slower
 			// moves wagon downstream in sync with floater
-			if (myGameArea.key && myGameArea.key === 37) {myGamePiece.speedX = -.7; float.speedX = -.7; }
-			if (myGameArea.key && myGameArea.key === 39) {myGamePiece.speedX = .7; float.speedX =.7;}
-			if (myGameArea.key && myGameArea.key === 38) {myGamePiece.speedY = -.2; float.speedY =-.2;}
-			if (myGameArea.key && myGameArea.key === 40) {myGamePiece.speedY = .2; float.speedY =.2;}
+			const moveSpeed = {x: 2, y: 1.2};
+			if (myGameArea.key && myGameArea.key === 37) {myGamePiece.speedX = -moveSpeed.x; float.speedX = -moveSpeed.x; }
+			if (myGameArea.key && myGameArea.key === 39) {myGamePiece.speedX = moveSpeed.x; float.speedX = moveSpeed.x;}
+			if (myGameArea.key && myGameArea.key === 38) {myGamePiece.speedY = -moveSpeed.y; float.speedY = -moveSpeed.y;}
+			if (myGameArea.key && myGameArea.key === 40) {myGamePiece.speedY = moveSpeed.y; float.speedY = moveSpeed.y;}
 
 			// creates random size rocks
 			// game ends when certain amount of rocks are passed
@@ -192,8 +187,8 @@ class RiverGameState {
 					let sizeY = Math.floor((Math.random()* 35) + 40);
 
 					// creates actual object rocks // this line is for images
-					//myObstacles.push(new component(sizeX, sizeY,"./data/images/rocks.jpg", x, y, "image")); // 10,52 is size
-					myObstacles.push(new component(sizeX, sizeY,"grey", x, y));
+					myObstacles.push(new component(sizeX, sizeY,"./data/images/rock.png", x, y, "image")); // 10,52 is size
+					// myObstacles.push(new component(sizeX, sizeY,"grey", x, y));
 				}
 			}
 			else{
