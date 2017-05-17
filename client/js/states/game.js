@@ -169,7 +169,7 @@ class RiverGameState {
 			// left and right moves faster
 			// up and down moves slower
 			// moves wagon downstream in sync with floater
-            const moveSpeed = {x: 2, y: 1.2};
+			const moveSpeed = {x: 2, y: 1.2};
 			if (myGameArea.key && myGameArea.key === 37) {myGamePiece.speedX = -moveSpeed.x; float.speedX = -moveSpeed.x; }
 			if (myGameArea.key && myGameArea.key === 39) {myGamePiece.speedX = moveSpeed.x; float.speedX = moveSpeed.x;}
 			if (myGameArea.key && myGameArea.key === 38) {myGamePiece.speedY = -moveSpeed.y; float.speedY = -moveSpeed.y;}
