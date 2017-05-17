@@ -38,7 +38,7 @@ class RiverGameState {
 			start : function() {
 				// frame of game
 				this.canvas.width = 480;
-				this.canvas.height = 700;
+				this.canvas.height = window.innerHeight - 32;
 				this.context = this.canvas.getContext("2d");
 				gameElement.appendChild(this.canvas);
 				this.frameNo = 0;
