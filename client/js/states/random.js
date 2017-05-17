@@ -17,7 +17,7 @@ class RandomEvents {
 	// selects one of the three random events to happen
 	select() {
 		invokeRandom(this.thieves, this.brokenWagon, this.wrongPath, this.foodSpoil, this.lostOxen, this.luckyWagon);
-    }
+	}
 
 	// food spoiling
 	foodSpoil(){
@@ -32,8 +32,8 @@ class RandomEvents {
 	// lose one oxen, only one because thieves have a chance of stealing a lot more
 	lostOxen(){
 		if (party.supplies['oxen'] >= 2){
-            party.supplies.oxen -= 1;
-            states.push(temporary(new ContinueState(`An oxen roamed off!`)));
+			party.supplies.oxen -= 1;
+			states.push(temporary(new ContinueState(`An oxen roamed off!`)));
 		}
 	}
 

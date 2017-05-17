@@ -72,12 +72,12 @@ class StateStack {
 			this.clear()
 			if (stateName){
 				if (stateName === this.state.stateName){
-                    invoke(this.state, "display")
-                }
+					invoke(this.state, "display")
+				}
 			}
 			else {
-                invoke(this.state, "display")
-            }
+				invoke(this.state, "display")
+			}
 
 			// Pop temporary states when re-entered from a pop
 			if (this.state.temporary === true) {

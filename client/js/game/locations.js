@@ -41,8 +41,8 @@ class Locations {
 	}
 
 	generateRiver(name, description, riverOptions) {
-        this.riversPassed += 1;
-        return new ContinueState(`Arriving at ${name} <hr> ${description} <hr>`, null, () => {states.push(new RiverState(riverOptions.depth, riverOptions.width, riverOptions.canFerry, riverOptions.canIndian))});
+		this.riversPassed += 1;
+		return new ContinueState(`Arriving at ${name} <hr> ${description} <hr>`, null, () => {states.push(new RiverState(riverOptions.depth, riverOptions.width, riverOptions.canFerry, riverOptions.canIndian))});
 	}
 
 	get score() {
