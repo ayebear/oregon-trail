@@ -1,5 +1,5 @@
 
-// pace menu 
+// pace menu
 let changePaceState = new MenuState("Choose the pace you will travel at:", [
 	{text: "Grueling (100%)", onclick: () => { party.pace = "grueling"; states.pop() }},
 	{text: "Strenuous (75%)", onclick: () => { party.pace = "strenuous"; states.pop() }},
@@ -39,7 +39,7 @@ function getPartyHealth() {
 
 // The main game menu, which can be returned to during travel
 let gameMenu = new MenuState("What would you like to do?", [
-	{text: "Continue On Trail", next: new TravelingState(), onclick: () => {locations.atShop = false}},
+	{text: "Continue On Trail", next: new RiverGameState(), onclick: () => {locations.atShop = false}},
 	{text: "Check Supplies", onclick: () => {
 		states.push(new ContinueState(getSupplies()));
 	}},
